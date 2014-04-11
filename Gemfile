@@ -37,7 +37,6 @@ end
 
 #pg_search gem for search bar functionality
 gem 'pg_search'
-gem 'pg'
 gem 'faker'
 
 # For omniauth and providers
