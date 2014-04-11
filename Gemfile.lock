@@ -145,7 +145,6 @@ DEPENDENCIES
   omniauth-linkedin-oauth2
   pg
   pg_search
-  purecss
   rails (= 4.0.3)
   sass-rails (~> 4.0.0)
   sdoc
