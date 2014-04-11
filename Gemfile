@@ -37,6 +37,10 @@ gem 'pg_search'
 gem 'pg'
 gem 'faker'
 
+# For omniauth and providers
+gem 'omniauth'
+gem 'omniauth-linkedin-oauth2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
