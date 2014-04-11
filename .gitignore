@@ -15,8 +15,5 @@
 /log/*.log
 /tmp
 
-/.Gemfile.lock
-/db/schema.rb
-
 # Ignore the yml file containing all of our API keys for the ENV
 /config/environment_variables.yml
