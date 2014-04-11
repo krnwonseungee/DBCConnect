@@ -11,15 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411035422) do
+ActiveRecord::Schema.define(version: 201404111120300700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cohorts", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "location"
+    t.date     "start_date"
+    t.boolean  "in_session"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pairings", force: true do |t|
+    t.integer  "requestor_id"
+    t.integer  "responder_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"
     t.integer  "searchable_id"
     t.string   "searchable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "requestors", force: true do |t|
+    t.integer  "user_id"
+    t.text     "feedback"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "responders", force: true do |t|
+    t.integer  "user_id"
+    t.text     "feedback"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
