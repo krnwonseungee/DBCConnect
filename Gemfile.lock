@@ -61,8 +61,6 @@ GEM
       activesupport (>= 3.1)
       arel
     polyglot (0.3.4)
-    purecss (0.4.2.1)
-      rails (>= 3.1)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -120,14 +118,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  coffee-rails (~> 4.0.0)
   dbc-ruby
   faker
   jbuilder (~> 1.2)
   jquery-rails
   pg
   pg_search
-  purecss
   rails (= 4.0.3)
   sass-rails (~> 4.0.0)
   sdoc
