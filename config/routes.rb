@@ -6,5 +6,5 @@ DBCconnect::Application.routes.draw do
     resources :responders
   end
 
-  resources :cohorts only: [:index, :show]
+  resources :cohorts, only: [:index, :show]
 end
