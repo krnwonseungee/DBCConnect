@@ -36,6 +36,7 @@ end
 gem 'pg_search'
 gem 'pg'
 gem 'faker'
+gem 'debugger'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

@@ -1,3 +1,5 @@
 testing
-
-<%= @results %>
+<% @user_obj_array.each do |user_obj| %>
+<p><%= user_obj.name %></p>
+<p><%=   user_obj.position %></p>
+<% end %>
