@@ -5,6 +5,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :position
+      t.string :lat
+      t.string :lon
       t.string :company
       t.string :location
       t.string :picture_url
