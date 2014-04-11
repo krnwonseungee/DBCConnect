@@ -18,11 +18,7 @@ class TestsController < ApplicationController
     @resulting_names.each do |name|
       @user_obj_array << User.find_by_name(name)
     end
-
-    @user_obj_array.map do |user_obj|
-      p "#{user_obj.name}"
-      p "#{user_obj.position}"
-    end
+    @user_obj_array
   end
 
 
