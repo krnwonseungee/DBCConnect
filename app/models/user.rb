@@ -1,4 +1,23 @@
 class User < ActiveRecord::Base
-  # include PgSearch
-  # multisearchable :against => [:name,:first_name,:last_name,:position,:company,:location,:picture_url,:cohort_id,:bio,:email,:github,:linkedin,:quora,:twitter,:facebook,:blog]
-end
+  belongs_to :cohort
+  include PgSearch
+  multisearchable :against => [ :name,
+                                :email,
+                                :bio,
+                                :role,
+                                :github,
+                                :quora,
+                                :twitter,
+                                :facebook,
+                                :linked_in,
+                                :blog,
+                                :about,
+                                :hometown,
+                                :current_location,
+                                :first_name,
+                                :last_name,
+                                :position,
+                                :company,
+                                :location
+                              ]
+  end

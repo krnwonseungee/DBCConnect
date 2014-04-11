@@ -1,19 +1,18 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.integer :dbc_user_id
+      t.belongs_to :cohort
       t.string :name
       t.string :email
       t.text :bio
-      t.integer :dbc_cohort_id
       t.string :role
-      t.string :github
-      t.string :quora
-      t.string :twitter
-      t.string :facebook
-      t.string :linked_in
-      t.string :blog
-      t.string :about
+      t.text :github
+      t.text :quora
+      t.text :twitter
+      t.text :facebook
+      t.text :linked_in
+      t.text :blog
+      t.text :about
       t.string :hometown
       t.string :current_location
       t.string :first_name
