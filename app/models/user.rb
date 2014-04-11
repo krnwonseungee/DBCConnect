@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :cohort
+  has_many :requestors
+  has_many :responders
   include PgSearch
   multisearchable :against => [ :name,
                                 :email,
