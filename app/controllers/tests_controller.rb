@@ -21,7 +21,6 @@ class TestsController < ApplicationController
     @user_obj_array
   end
 
-
 end
 
 
