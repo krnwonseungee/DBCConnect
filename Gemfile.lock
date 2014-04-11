@@ -58,7 +58,6 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
-
     multi_xml (0.5.5)
     pg (0.17.1)
     pg_search (0.7.3)
@@ -126,13 +125,13 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   dbc-ruby
+  faker
   httparty
   jbuilder (~> 1.2)
   jquery-rails
   pg
-  faker
-  purecss
   pg_search
+  purecss
   rails (= 4.0.3)
   sass-rails (~> 4.0.0)
   sdoc

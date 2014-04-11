@@ -32,8 +32,6 @@ gem 'jbuilder', '~> 1.2'
 
 gem "httparty"
 gem 'dbc-ruby'
-gem 'pg'
-
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -42,7 +40,6 @@ end
 
 #pg_search gem for search bar functionality
 gem 'pg_search'
-gem 'pg'
 gem 'faker'
 
 # Use ActiveModel has_secure_password
