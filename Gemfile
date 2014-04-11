@@ -38,6 +38,9 @@ gem 'faker'
 gem 'leaflet-rails'
 gem 'mapbox-rails'
 
+group :development, :test do
+  gem 'jasmine'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
