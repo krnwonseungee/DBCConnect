@@ -1,3 +1,5 @@
+#the following is a migration that was generated but is part of
+# the pg_search source code.
 class CreatePgSearchDocuments < ActiveRecord::Migration
   def self.up
     say_with_time("Creating table for pg_search multisearch") do
