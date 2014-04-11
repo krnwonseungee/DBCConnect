@@ -7,19 +7,19 @@ source 'https://rubygems.org'
  gem 'sqlite3'
 
  # Use SCSS for stylesheets
- gem 'sassrails', '~> 4.0.0'
+ gem 'sass-rails', '~> 4.0.0'
 
  # Use Uglifier as compressor for JavaScript assets
  gem 'uglifier', '>= 1.3.0'
 
  # Use CoffeeScript for .js.coffee assets and views
- gem 'coffeerails', '~> 4.0.0'
+ gem 'coffee-rails', '~> 4.0.0'
 
  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
  # gem 'therubyracer', platforms: :ruby
 
  # Use jquery as the JavaScript library
- gem 'jqueryrails'
+ gem 'jquery-rails', '~> 2.0.0'
 
  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
  gem 'turbolinks'
@@ -37,11 +37,9 @@ source 'https://rubygems.org'
  gem 'pg'
  gem 'faker'
 
-group :development, :test do
+ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
 end
-
-
 
  # Use ActiveModel has_secure_password
  # gem 'bcryptruby', '~> 3.1.2'
