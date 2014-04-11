@@ -36,6 +36,10 @@
  -gem 'pg_search'
  -gem 'pg'
  -gem 'faker'
+
+ group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
  -
  -# Use ActiveModel has_secure_password
  -# gem 'bcrypt-ruby', '~> 3.1.2'
