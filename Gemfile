@@ -32,6 +32,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+#pg_search gem for search bar functionality
+gem 'pg_search'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

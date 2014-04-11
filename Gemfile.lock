@@ -51,6 +51,10 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
+    pg_search (0.7.3)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -110,6 +114,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails
+  pg_search
   rails (= 4.0.3)
   sass-rails (~> 4.0.0)
   sdoc
