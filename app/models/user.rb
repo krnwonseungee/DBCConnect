@@ -20,4 +20,5 @@ class User < ActiveRecord::Base
                                 :company,
                                 :location
                               ]
-  end
+end
+
