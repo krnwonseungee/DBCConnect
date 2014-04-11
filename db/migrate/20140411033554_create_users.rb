@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :company
       t.string :location
       t.string :picture_url
-      t.integer :cohort_id
+      t.belongs_to :cohort
       t.text :bio
       t.string :email
       t.string :github
