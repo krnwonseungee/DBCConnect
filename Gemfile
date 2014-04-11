@@ -34,6 +34,10 @@ gem 'pg_search'
 gem 'pg'
 gem 'faker'
 
+#leaflet for mapping
+gem 'leaflet-rails'
+gem 'mapbox-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
