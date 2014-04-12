@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_many :requestors
   has_many :responders
 
-  def self.lookup_by_auth_hash(auth_hash)
-    user = User.find_by_linked_in(auth_hash.info.urls.public_profile)
+  def self.lookup_from_auth_hash(opts = {})
+    user = User.find_by_linked_in(opts[:linkedin_url])
     #Can eventually add in secondary checks by name/gmail etc if no linkedin url on socrates
     return user || false
   end

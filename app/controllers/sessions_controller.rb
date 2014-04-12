@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   def create
-    if @user = User.lookup_by_auth_hash(auth_hash)
+
+    lookup_opts = {}
+    lookup_opts[:linkedin_url] = auth_hash.info.urls.public_profile
+
+    if @user = User.lookup_from_auth_hash(lookup_opts)
       session[:user_id] = @user.id
       session[:lookup_error] = false
     else
