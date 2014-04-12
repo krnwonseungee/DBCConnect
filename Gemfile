@@ -1,4 +1,3 @@
-
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -36,11 +35,8 @@ gem 'faker'
 gem 'omniauth'
 gem 'omniauth-linkedin-oauth2'
 
-group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
-  gem 'shoulda-matchers'
-end
-
+#geocoder to generate lat,long
+gem "geocoder"
 
 # Use ActiveModel has_secure_password
 # gem 'bcryptruby', '~> 3.1.2'
@@ -53,4 +49,18 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'pry'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem 'debugger'
+end
 
