@@ -26,23 +26,17 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'dbc-ruby'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
 #pg_search gem for search bar functionality
 gem 'pg_search'
 gem 'pg'
 gem 'faker'
 
+# For omniauth and providers
+gem 'omniauth'
+gem 'omniauth-linkedin-oauth2'
+
 #geocoder to generate lat,long
 gem "geocoder"
-
-group :development, :test do
-  # gem 'rspec-rails', '~> 3.0.0.beta'
-  gem 'shoulda-matchers'
-end
 
 # Use ActiveModel has_secure_password
 # gem 'bcryptruby', '~> 3.1.2'
@@ -58,11 +52,11 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'pry'
 end
 
 group :test do
-  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'selenium-webdriver'
