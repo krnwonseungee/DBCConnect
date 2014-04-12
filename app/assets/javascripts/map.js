@@ -23,11 +23,14 @@ renderMap = function(mapObject,osm){
 }
 
 renderMarkers = function(locationArray, map){
+  var markers = new L.MarkerClusterGroup()
   for (i=0; i<locationArray.length; i++){
     var x=locationArray[i][0]
     var y=locationArray[i][1]
-    L.marker([x,y]).addTo(map)
+    var marker = L.marker([x,y])
+    markers.addLayer(marker)
   }
+  map.addLayer(markers)
 }
 
 getCoords = function(){
