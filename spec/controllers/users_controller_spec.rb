@@ -10,9 +10,6 @@ describe UsersController do
     before(:each) { get :index }
     it "renders @users to json" do
       @expected = { users: assigns(:users) }.to_json
-      # print "***** assigns(:users) = "; p assigns(:users)
-      # print "***** @expected = "; p @expected
-      # print "***** response.body = "; p response.body
       expect(response.body).to eq @expected
     end
   end
@@ -20,16 +17,11 @@ describe UsersController do
   context "show" do
     before(:each) { get :show, id: fake_user.id }
     it "loads a user tuple into 'user'" do
-      # print "***** fake_user = "; p fake_user
-      # print "***** assigns(:user) = "; p assigns(:user) # assigns(:user) = @user
       expect(assigns(:user)).to eq fake_user
     end
 
     it "renders user to json" do
       @expected = { user: assigns(:user) }.to_json
-      # print "***** assigns(:user) = "; p assigns(:user)
-      # print "***** @expected = "; p @expected
-      # print "***** response.body = "; p response.body
       expect(response.body).to eq @expected
     end
   end
@@ -61,17 +53,6 @@ describe UsersController do
         put(:update, id: fake_user.id, user: { name: new_name })
       }.to change { fake_user.reload.name }.to(new_name)
     end
-
-
-    let!(:user){FactoryGirl.create(:user)}
-    it 'updates the user' do
-      # new_name = "Joe"
-      # # put(:update, id: fake_user.id, user: {name: new_name})
-      # expect {
-      #   put(:update, id: fake_user.id, user: {name: new_name} )
-      # }.to change {user.reload.name}.to(new_name)
-    end
-
   end
 
 end

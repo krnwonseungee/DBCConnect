@@ -2,7 +2,6 @@ class CohortsController < ApplicationController
 
   def index
     @cohorts = Cohort.all
-    # print "***** from CohortsController ***** { cohorts: @cohorts }.to_json = "; p ({ cohorts: @cohorts }.to_json)
     render json: { cohorts: @cohorts }.to_json
   end
 

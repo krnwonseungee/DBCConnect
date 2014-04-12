@@ -1,8 +1,4 @@
 class User < ActiveRecord::Base
-  # attr_accessible :name,:email,:bio,:role,:github,:quora,
-  # :twitter,:facebook,:linked_in,:blog,:about,:hometown,
-  # :current_location,:first_name,:last_name,:position,
-  # :company,:location
   belongs_to :cohort
   has_many :requestors
   has_many :responders

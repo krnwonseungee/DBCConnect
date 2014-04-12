@@ -25,8 +25,6 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      # redirect_to user_path, notice: 'User was successfully updated.'
-      print "***** from UsersController ***** { user: @user }.to_json = "; p ({ user: @user }.to_json)
       render json: { success: true, user: @user }.to_json
     else
       render json: { success: false }
