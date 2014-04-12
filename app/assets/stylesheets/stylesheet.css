@@ -9,3 +9,8 @@ div#sidebar-avail h3 {
 .fa-circle {
   color: #85CE9D;
 }
+
+div#logo {
+  font-family: 'Exo', sans-serif;
+  font-size: 48px;
+}
