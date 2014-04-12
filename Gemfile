@@ -1,4 +1,3 @@
-
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -37,10 +36,23 @@ gem 'faker'
 #leaflet for mapping
 gem 'leaflet-rails'
 
+#geocoder to generate lat,long
+gem "geocoder"
+
 group :development, :test do
   gem 'jasmine'
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'shoulda-matchers'
+  gem 'rspec-rails'
+  gem 'pry'
 end
 
+group :test do
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem 'debugger'
+end
 

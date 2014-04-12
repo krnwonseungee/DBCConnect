@@ -73,13 +73,13 @@ ActiveRecord::Schema.define(version: 201404111120300700) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "position"
-    t.string   "lat"
-    t.string   "lon"
     t.string   "company"
     t.string   "location"
     t.string   "picture_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
 end
