@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411035422) do
+ActiveRecord::Schema.define(version: 201404111120300700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cohorts", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "location"
+    t.date     "start_date"
+    t.boolean  "in_session"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pairings", force: true do |t|
+    t.integer  "requestor_id"
+    t.integer  "responder_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"
@@ -24,8 +41,35 @@ ActiveRecord::Schema.define(version: 20140411035422) do
     t.datetime "updated_at"
   end
 
+  create_table "requestors", force: true do |t|
+    t.integer  "user_id"
+    t.text     "feedback"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "responders", force: true do |t|
+    t.integer  "user_id"
+    t.text     "feedback"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
+    t.integer  "cohort_id"
     t.string   "name"
+    t.string   "email"
+    t.text     "bio"
+    t.string   "role"
+    t.text     "github"
+    t.text     "quora"
+    t.text     "twitter"
+    t.text     "facebook"
+    t.text     "linked_in"
+    t.text     "blog"
+    t.text     "about"
+    t.string   "hometown"
+    t.string   "current_location"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "position"
@@ -34,15 +78,6 @@ ActiveRecord::Schema.define(version: 20140411035422) do
     t.string   "company"
     t.string   "location"
     t.string   "picture_url"
-    t.integer  "cohort_id"
-    t.text     "bio"
-    t.string   "email"
-    t.string   "github"
-    t.string   "linkedin"
-    t.string   "quora"
-    t.string   "twitter"
-    t.string   "facebook"
-    t.string   "blog"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

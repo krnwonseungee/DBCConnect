@@ -11,4 +11,5 @@
  *= require_self
  *= require leaflet
  *= require_tree .
+ *= require purecss
  */
