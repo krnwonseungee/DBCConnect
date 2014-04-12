@@ -28,6 +28,7 @@ renderMarkers = function(locationArray, map){
     var x=locationArray[i][0]
     var y=locationArray[i][1]
     var marker = L.marker([x,y])
+    marker.bindPopup("hi").openPopup();
     markers.addLayer(marker)
   }
   map.addLayer(markers)
