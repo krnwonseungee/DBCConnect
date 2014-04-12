@@ -5,10 +5,19 @@ window.onload = function(){
   renderMarkers(getCoords(),map)
 }
 
-newMap = function(){
-  var newMap = new L.map('map')
-  return newMap
+UserMap = {}
+
+UserMap.Controller = function(){
 }
+
+UserMap.Controller.prototype = {
+  newMap: function(){
+    var newMap = new L.map('map')
+    return newMap
+  }
+
+}
+
 
 osmInitializer = function(){
   var osmUrl    ='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -28,11 +37,16 @@ renderMarkers = function(locationArray, map){
     var x=locationArray[i][0]
     var y=locationArray[i][1]
     var marker = L.marker([x,y])
-    marker.bindPopup("hi").openPopup();
+    var content = "<div class='user-popup'>Hello Friend</div>"
+    marker.on('mouseover', function(evt) {
+      evt.target.bindPopup(content).openPopup();
+    });
     markers.addLayer(marker)
   }
   map.addLayer(markers)
 }
+
+
 
 getCoords = function(){
   var locationArray = []
