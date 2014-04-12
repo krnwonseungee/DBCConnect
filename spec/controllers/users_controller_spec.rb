@@ -35,7 +35,13 @@ describe UsersController do
   end
 
   context "create" do
-    it "add user to database" do
+
+    it "redirects to root path if valid user attributes" do
+      post :create, user: FactoryGirl.attributes_for(:user)
+      expect(response).to redirect_to(root_path)
+    end
+
+    it "add user to database if valid user attributes" do
       expect {
         post :create, user: FactoryGirl.attributes_for(:user)
         expect(response).to be_redirect
