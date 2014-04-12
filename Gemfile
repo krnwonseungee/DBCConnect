@@ -41,6 +41,7 @@ gem 'faker'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'shoulda-matchers'
+  gem 'jasmine'
 end
 
 # Use ActiveModel has_secure_password

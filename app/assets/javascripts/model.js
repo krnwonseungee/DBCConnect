@@ -4,9 +4,9 @@ List = function(){
   this.inactiveUsers = []
 }
 List.prototype = {
-  update = function(){},
-  addUser = function(){},
-  removeUser = function(){}
+  update: function(){},
+  addUser: function(){},
+  removeUser: function(){}
 }
 list = new List
 
@@ -15,5 +15,5 @@ User = function(){
   id = null
 }
 User.prototype = {
-  update: function()
+  update: function(){}
 }
