@@ -35,8 +35,13 @@ describe UsersController do
   end
 
   context "create" do
+    it "add user to database" do
+      expect {
+        post :create, user: FactoryGirl.attributes_for(:user)
+        expect(response).to be_redirect
+      }.to change { User.count }.by(1)
+    end
 
   end
-
 
 end
