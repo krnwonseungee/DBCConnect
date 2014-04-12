@@ -1,8 +1,8 @@
-UserMap.View = function(controller){
+BootMap.View = function(controller){
   this.controller = controller
 }
 
-UserMap.View.prototype = {
+BootMap.View.prototype = {
   drawMap: function(){
     var controller = this.controller
     var thisMap = controller.map

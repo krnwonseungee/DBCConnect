@@ -1,7 +1,7 @@
-UserMap.Controller = function(){
+BootMap.Controller = function(){
 }
 
-UserMap.Controller.prototype = {
+BootMap.Controller.prototype = {
   newMap: function(){
     var newMap = new L.map('map')
     this.map = newMap
@@ -34,5 +34,30 @@ UserMap.Controller.prototype = {
       locationArray.push([x,y])
     }
     return locationArray
+  },
+
+  fetchUsers: function(){
+    var controller = this
+    $.ajax({
+      url: '/',
+      type: 'get'
+    }).done(function(data){
+      controller.parseData(data.users)
+    })
+  },
+
+  parseData: function(bootData){
+    for(var i=0; i<bootData.length; i++){
+      var thisBoot = bootData[i]
+      boot = new BootMap.Boot(thisBoot.name, thisBoot.latitude, thisBoot.longitude)
+      console.log(boot)
+    }
   }
 }
+
+BootMap.Boot = function(name,latitude,longitude){
+  this.name = name
+  this.latitude = latitude
+  this.longitude = longitude
+}
+

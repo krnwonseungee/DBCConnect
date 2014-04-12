@@ -4,21 +4,21 @@ returnTypeOf = function(object){
 
 describe("NameSpace", function(){
   it("is defined", function(){
-    expect(UserMap).toBeDefined()
+    expect(BootMap).toBeDefined()
   }),
 
   it("has a controller constructor function", function(){
-    expect(UserMap.Controller).toBeDefined()
+    expect(BootMap.Controller).toBeDefined()
   }),
 
   it("has a view constructor function", function(){
-    expect(UserMap.View).toBeDefined()
+    expect(BootMap.View).toBeDefined()
   })
 })
 
 describe("Controller", function(){
   beforeEach(function(){
-    controller = new UserMap.Controller
+    controller = new BootMap.Controller
     mapStub = {}
     osmStub = {}
   })
@@ -48,8 +48,8 @@ describe("Controller", function(){
 
 describe("View", function(){
   beforeEach(function(){
-    controller = new UserMap.Controller
-    view = new UserMap.View(controller)
+    controller = new BootMap.Controller
+    view = new BootMap.View(controller)
     mapObject = {}
     osm = {}
   })

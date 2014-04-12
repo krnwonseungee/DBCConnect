@@ -1,9 +1,9 @@
-// UserMap = {}
+// BootMap = {}
 
-// UserMap.Controller = function(){
+// BootMap.Controller = function(){
 // }
 
-// UserMap.Controller.prototype = {
+// BootMap.Controller.prototype = {
 //   newMap: function(){
 //     var map = {}
 //     return map
@@ -26,11 +26,11 @@
 //   }
 // }
 
-// UserMap.View = function(controller){
+// BootMap.View = function(controller){
 //   this.controller = controller
 // }
 
-// UserMap.View.prototype = {
+// BootMap.View.prototype = {
 //   drawMap: function(mapObject,osm){
 //     if(mapObject && osm){
 //       return "I drew a map"
