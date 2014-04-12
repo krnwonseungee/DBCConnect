@@ -1,8 +1,9 @@
 class CohortsController < ApplicationController
 
   def index
-    cohorts = Cohort.all
-    render json: { cohorts: cohorts }.to_json
+    @cohorts = Cohort.all
+    # print "***** { cohorts: @cohorts }.to_json = "; p { cohorts: @cohorts }.to_json
+    render json: { cohorts: @cohorts }.to_json
   end
 
   def show

@@ -7,6 +7,8 @@ FactoryGirl.define do
     in_session { true }
   end
 
+# TODO - create factory for :cohorts
+
   factory :user do
    cohort_id { 99 }
    name { Faker::Company.name }

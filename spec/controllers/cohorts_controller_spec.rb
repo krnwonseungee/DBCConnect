@@ -2,13 +2,14 @@ require 'spec_helper'
 
 describe CohortsController do
   let(:fake_cohort){FactoryGirl.create(:cohort)}
-  # context "index" do
-  #   xit "loads all cohorts into 'cohorts'" do
-  #   end
+  # TODO - create factory for cohorts (plural) to enable testing cohorts#index
+  context "index" do
+    it "loads all cohorts into @cohorts" do
+    end
 
-  #   xit "renders cohorts to json" do
-  #   end
-  # end
+    it "renders @cohorts to json" do
+    end
+  end
 
   context "show" do
     before(:each) { get :show, id: fake_cohort.id }
