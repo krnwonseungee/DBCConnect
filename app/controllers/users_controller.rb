@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
   def index
     @users = User.all
     render json: { users: @users }.to_json
   end
 
   def show
-    @user = User.find(params[:id])
     render json: { user: @user }.to_json
   end
 
@@ -19,14 +20,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     render json: { user: @user }.to_json
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(params)
-      redirect_to user_path, notice: 'User was successfully updated.'
+    if @user.update(user_params)
+      # redirect_to user_path, notice: 'User was successfully updated.'
+      print "***** from UsersController ***** { user: @user }.to_json = "; p ({ user: @user }.to_json)
       render json: { success: true, user: @user }.to_json
     else
       render json: { success: false }
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name,:email,:bio,:role,:github,:quora,
+      params.require(:user).permit(:id,:name,:email,:bio,:role,:github,:quora,
         :twitter,:facebook,:linked_in,:blog,:about,:hometown, :current_location,
         :first_name,:last_name,:position,:company,:location)
     end

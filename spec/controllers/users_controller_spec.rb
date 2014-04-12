@@ -50,4 +50,28 @@ describe UsersController do
 
   end
 
+# No test for edit is required because the route behaves same as #show
+  context "edit" do
+  end
+
+  context "update" do
+    it "updates a user table entry" do
+      new_name = "Joe Blow"
+      expect {
+        put(:update, id: fake_user.id, user: { name: new_name })
+      }.to change { fake_user.reload.name }.to(new_name)
+    end
+
+
+    let!(:user){FactoryGirl.create(:user)}
+    it 'updates the user' do
+      # new_name = "Joe"
+      # # put(:update, id: fake_user.id, user: {name: new_name})
+      # expect {
+      #   put(:update, id: fake_user.id, user: {name: new_name} )
+      # }.to change {user.reload.name}.to(new_name)
+    end
+
+  end
+
 end
