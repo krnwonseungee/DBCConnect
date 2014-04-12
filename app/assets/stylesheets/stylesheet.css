@@ -1,0 +1,11 @@
+div#sidebar-avail p {
+  font-size: 14px;
+}
+
+div#sidebar-avail h3 {
+  font-style: italic;
+}
+
+.fa-circle {
+  color: #85CE9D;
+}
