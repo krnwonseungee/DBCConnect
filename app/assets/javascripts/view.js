@@ -1,6 +1,6 @@
 View = function(){}
 View.prototype = {
-  setupMenu: function(){
+  setupMenuToResponsive: function(){
       layout   = document.getElementById('layout'),
       menu     = document.getElementById('menu'),
       menuLink = document.getElementById('menuLink');

@@ -4,7 +4,20 @@ List = function(){
   this.inactiveUsers = []
 }
 List.prototype = {
-  update: function(){},
+  update: function(){
+    list.getActiveUsers();
+  },
+  
+  getActiveUsers: function(){
+    $.ajax({
+      type: "get",
+      url: "/users/active",
+      dataType: "json"
+    }).done(function(serverData){
+      list.activeUsers = serverData.activeUsers
+    })
+  },
+
   addUser: function(){},
   removeUser: function(){}
 }
@@ -15,5 +28,8 @@ User = function(){
   id = null
 }
 User.prototype = {
-  update: function(){}
+  update: function(){
+  }
+
+
 }

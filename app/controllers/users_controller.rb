@@ -31,6 +31,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def get_active_users
+    active_users = User.where(active: true).map { |user| user.to_json }
+    render json: { activeUsers: active_users }
+  end
+
   private
     def set_user
       @user = User.find(params[:id])

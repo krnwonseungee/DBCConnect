@@ -24,5 +24,7 @@ class User < ActiveRecord::Base
                               ]
   geocoded_by :current_location
   after_validation :geocode
+
+  
 end
 

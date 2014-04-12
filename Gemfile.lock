@@ -195,8 +195,8 @@ DEPENDENCIES
   debugger
   factory_girl_rails
   faker
-  jasmine-rails
   geocoder
+  jasmine-rails
   jbuilder (~> 1.2)
   jquery-rails
   pg
