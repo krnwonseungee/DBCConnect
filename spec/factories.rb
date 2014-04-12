@@ -24,8 +24,8 @@ FactoryGirl.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     position { Faker::Lorem.word }
-    lat { Faker::Address.latitude }
-    lon { Faker::Address.longitude }
+    latitude { Faker::Address.latitude }
+    longitude { Faker::Address.longitude }
     company { Faker::Company.name }
     location { Faker::Address.city }
     picture_url { Faker::Internet.email }
