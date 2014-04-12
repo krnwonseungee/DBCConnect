@@ -1,9 +1,10 @@
 describe ("List Model", function(){
   beforeEach(function(){
-    setFixtures('<div id="list"></div>'
+    $(document).append('<div id="list"></div>'
                 + '<div id="layout"></div>'
                 + '<div id="menu"></div>'
                 + '<div id="menuLink"></div>');
+    console.log("AFF");
   });
 
   it ("adds a user to the list", function(){
