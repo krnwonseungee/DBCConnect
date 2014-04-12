@@ -13,13 +13,16 @@ describe CohortsController do
   context "show" do
     before(:each) { get :show, id: fake_cohort.id }
     it "loads a cohort tuple into 'cohort'" do
-      print "***** fake_cohort = "; p fake_cohort
-      print "***** assigns(:cohort) = "; p assigns(:cohort) # assigns(:cohort) = @cohort
+      # print "***** fake_cohort = "; p fake_cohort
+      # print "***** assigns(:cohort) = "; p assigns(:cohort) # assigns(:cohort) = @cohort
       expect(assigns(:cohort)).to eq fake_cohort
     end
 
     it "renders cohort to json" do
-      @expected = cohort.to_json
+      @expected = { cohort: assigns(:cohort) }.to_json
+      # print "***** assigns(:cohort) = "; p assigns(:cohort)
+      # print "***** @expected = "; p @expected
+      # print "***** response.body = "; p response.body
       expect(response.body).to eq @expected
     end
   end
