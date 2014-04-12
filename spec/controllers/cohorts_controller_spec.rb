@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CohortsController do
-  let(:cohort){FactoryGirl.create(:cohort)}
+  let(:fake_cohort){FactoryGirl.create(:cohort)}
   # context "index" do
   #   xit "loads all cohorts into 'cohorts'" do
   #   end
@@ -11,10 +11,11 @@ describe CohortsController do
   # end
 
   context "show" do
-    before(:each) { get :show, id: cohort.id }
-
+    before(:each) { get :show, id: fake_cohort.id }
     it "loads a cohort tuple into 'cohort'" do
-      expect(assigns(:cohort).to eq cohort)
+      print "***** fake_cohort = "; p fake_cohort
+      print "***** assigns(:cohort) = "; p assigns(:cohort) # assigns(:cohort) = @cohort
+      expect(assigns(:cohort)).to eq fake_cohort
     end
 
     it "renders cohort to json" do

@@ -6,8 +6,8 @@ class CohortsController < ApplicationController
   end
 
   def show
-    cohort = Cohort.find(params[:id])
-    render json: { cohort: cohort }.to_json
+    @cohort = Cohort.find(params[:id])
+    render json: { cohort: @cohort }.to_json
   end
 
 end
