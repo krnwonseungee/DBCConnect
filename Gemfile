@@ -38,7 +38,7 @@ gem 'faker'
 
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  # gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'shoulda-matchers'
 end
 
@@ -54,6 +54,23 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'pry'
+  gem 'dotenv-rails'
+  gem 'binding_of_caller'
+  gem 'sextant'
+  gem 'rails_db_info'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem 'debugger'
+end
 
 __END__
 source 'https://rubygems.org'
