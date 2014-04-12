@@ -37,6 +37,8 @@ gem 'pg_search'
 gem 'pg'
 gem 'faker'
 
+#geocoder to generate lat,long
+gem "geocoder"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
