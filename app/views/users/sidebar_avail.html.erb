@@ -3,5 +3,9 @@
 <!-- ABOVE: Line 5 enables us to use Awesome Font icons -->
 </head>
 <div id="sidebar-avail">
- <i class="fa fa-circle"></i> fa-circle
+<h3> Available to Pair </h3>
+<%   @avail_users.map do |user| %>
+   <p><i class="fa fa-circle"></i> <%=  user.name %></p>
+ <!--<i class="fa fa-circle"></i> fa-circle-->
+ <% end %>
 </div>
