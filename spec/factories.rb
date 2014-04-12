@@ -33,4 +33,12 @@ FactoryGirl.define do
     updated_at { "2000-01-01" }
     cohort
   end
+
+  factory :pairing do
+    created_at { "2000-01-01" }
+    updated_at { "2000-01-01" }
+    requestor
+    responder
+  end
+
 end
