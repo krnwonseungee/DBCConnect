@@ -1,10 +1,8 @@
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
-
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -27,10 +25,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
+gem 'dbc-ruby'
 
 #pg_search gem for search bar functionality
 gem 'pg_search'
@@ -40,6 +35,12 @@ gem 'faker'
 # For omniauth and providers
 gem 'omniauth'
 gem 'omniauth-linkedin-oauth2'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'shoulda-matchers'
+end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcryptruby', '~> 3.1.2'
@@ -52,3 +53,4 @@ gem 'omniauth-linkedin-oauth2'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
