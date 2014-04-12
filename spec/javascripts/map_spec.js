@@ -7,8 +7,12 @@ describe("NameSpace", function(){
     expect(UserMap).toBeDefined()
   }),
 
-  it("has a controller function", function(){
+  it("has a controller constructor function", function(){
     expect(UserMap.Controller).toBeDefined()
+  }),
+
+  it("has a view constructor function", function(){
+    expect(UserMap.View).toBeDefined()
   })
 })
 
@@ -16,6 +20,7 @@ describe("Controller", function(){
   beforeEach(function(){
     controller = new UserMap.Controller
     mapStub = {}
+    osmStub = {}
   })
 
   it("has a coordinate generator", function(){
@@ -33,9 +38,35 @@ describe("Controller", function(){
 
   it("creates a new map object", function(){
     expect(returnTypeOf(controller.newMap())).toBe(returnTypeOf(mapStub))
+  }),
+
+  it("initializes an OpenStreetMap layer", function(){
+    expect(returnTypeOf(controller.osmInitializer())).toBe(returnTypeOf(osmStub))
   })
+
 })
 
+describe("View", function(){
+  beforeEach(function(){
+    controller = new UserMap.Controller
+    view = new UserMap.View(controller)
+    mapObject = {}
+    osm = {}
+  })
+
+  it("is has a controller",function(){
+    expect(view.controller).toBeTruthy()
+  }),
+
+  it("is undefined if called with no arguments",function(){
+    expect(view.drawMap()).toBeUndefined()
+  })
+
+  it("requires a map and osm as parameters to draws a map", function(){
+    expect(view.drawMap(mapObject,osm)).toBeDefined()
+  })
 
 
+
+})
 

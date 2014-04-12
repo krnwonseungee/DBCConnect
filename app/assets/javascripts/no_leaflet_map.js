@@ -1,26 +1,39 @@
-// window.onload = function(){
-//   controller = new UserMap.Controller
+// UserMap = {}
+
+// UserMap.Controller = function(){
 // }
 
-UserMap = {}
+// UserMap.Controller.prototype = {
+//   newMap: function(){
+//     var map = {}
+//     return map
+//   },
 
-UserMap.Controller = function(){
-}
+//   getCoords: function(){
+//     var locationArray = []
+//     var x= 27.5
+//     var y= -118.5
+//     for (i=0; i<20; i++){
+//       x+=(i/5); y+=(i/4)
+//       locationArray.push([x,y])
+//     }
+//     return locationArray
+//   },
 
-UserMap.Controller.prototype = {
-  newMap: function(){
-    var map = {}
-    return map
-  },
+//   osmInitializer: function(){
+//     var osm = {}
+//     return osm
+//   }
+// }
 
-  getCoords: function(){
-    var locationArray = []
-    var x= 27.5
-    var y= -118.5
-    for (i=0; i<20; i++){
-      x+=(i/5); y+=(i/4)
-      locationArray.push([x,y])
-    }
-    return locationArray
-  }
-}
+// UserMap.View = function(controller){
+//   this.controller = controller
+// }
+
+// UserMap.View.prototype = {
+//   drawMap: function(mapObject,osm){
+//     if(mapObject && osm){
+//       return "I drew a map"
+//     }
+//   }
+// }
