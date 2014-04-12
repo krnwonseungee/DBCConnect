@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
                                 :location
                               ]
   geocoded_by :current_location
-  after_validation :geocode
+  unless Rails.env.test?
+    after_validation :geocode
+  end
 end
 
