@@ -7,3 +7,5 @@ class CreatePairings < ActiveRecord::Migration
       t.timestamps
     end
   end
+end
+
