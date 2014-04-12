@@ -15,9 +15,3 @@
 //= require turbolinks
 //= require_tree .
 
-//controller
-window.onload = function(){
-  view.setupMenu();
-  setInterval(list.update(), 500);
-  
-}

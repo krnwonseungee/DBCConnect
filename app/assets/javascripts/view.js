@@ -5,14 +5,16 @@ View.prototype = {
       menu     = document.getElementById('menu'),
       menuLink = document.getElementById('menuLink');
 
-      menuLink.onclick = function (e) {
-          var active = 'active';
+      if (menuLink) {
+        menuLink.onclick = function (e) {
+            var active = 'active';
 
-          e.preventDefault();
-          view.toggleClass(layout, active);
-          view.toggleClass(menu, active);
-          view.toggleClass(menuLink, active);
-      };    
+            e.preventDefault();
+            view.toggleClass(layout, active);
+            view.toggleClass(menu, active);
+            view.toggleClass(menuLink, active);
+        };    
+      }
   },
 
   toggleClass: function(element, className) {
