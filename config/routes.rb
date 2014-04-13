@@ -4,6 +4,8 @@ DBCconnect::Application.routes.draw do
   
   get '/', to: 'welcome#index'
   get '/welcome', to: 'welcome#main'
+  get '/welcome/getuser', to: 'welcome#user'
+  
   get "/users/active", to: "users#get_active_users"
 
   get '/auth/:provider/callback', to: 'sessions#create'

@@ -22,11 +22,11 @@ View.prototype = {
     // and the list of users with explanation
   },
 
-  toggleActiveIcon: function(e){
-    if (e.target.parentElement.attributes.class.value === "active"){
-      e.target.parentElement.setAttribute("class", "inactive")
+  toggleActiveIcon: function(node){
+    if (node.attributes.class.value === "active"){
+      node.setAttribute("class", "inactive")
     }else{
-      e.target.parentElement.setAttribute("class", "active")
+      node.setAttribute("class", "active")
     }
   },
 
@@ -53,15 +53,21 @@ View.prototype = {
     $("#activeUsersList").empty();
     var numOfActiveUsers = list.activeUsers.length;
     for (var i = 0; i < numOfActiveUsers; i++){
-      $("#activeUsersList").append("<li class='active_user' id='" 
-        + list.activeUsers[i].id 
-        + "''><a href=''>" 
-        + list.activeUsers[i].name + "</a></li>")
+      if (list.activeUsers[i].id != user.id){
+        $("#activeUsersList").append("<li class='active_user' id='" 
+          + list.activeUsers[i].id 
+          + "''><a href=''>" 
+          + list.activeUsers[i].name + "</a></li>")
+      }
     }
   },
 
   showPairingPopup: function(id){
     //show the popup
+  },
+
+  initializePairingIcon: function(){
+    $("#availability a span[class='inactive']").attr("class",user.active)
   }
 }
 view = new View

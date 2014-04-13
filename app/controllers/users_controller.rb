@@ -24,8 +24,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      render json: { success: true, user: @user }.to_json
+    user = User.find(params[:id])
+    if user.update(user_params) 
+      render json: { success: true, user: user }.to_json
     else
       render json: { success: false }
     end
@@ -51,7 +52,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:id,:name,:email,:bio,:role,:github,:quora,
         :twitter,:facebook,:linked_in,:blog,:about,:hometown, :current_location,
-        :first_name,:last_name,:position,:company,:location)
+        :first_name,:last_name,:position,:company,:location, :active)
     end
 
 end

@@ -8,10 +8,5 @@ list = new List
 User = function(){
   name = ""
   id = null
-}
-User.prototype = {
-  update: function(){
-  }
-
-
+  active = false
 }
