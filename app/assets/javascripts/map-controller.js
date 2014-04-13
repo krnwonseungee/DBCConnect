@@ -29,7 +29,7 @@ BootMap.Controller.prototype = {
   fetchUsers: function(){
     var controller = this
     $.ajax({
-      url: '/',
+      url: '/users/index',
       type: 'get'
     }).done(function(data){
       controller.facilitateMarkers(data.users)
