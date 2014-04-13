@@ -3,24 +3,6 @@ List = function(){
   this.idleUsers = []
   this.inactiveUsers = []
 }
-List.prototype = {
-  update: function(){
-    list.getActiveUsers();
-  },
-  
-  getActiveUsers: function(){
-    $.ajax({
-      type: "get",
-      url: "/users/active",
-      dataType: "json"
-    }).done(function(serverData){
-      list.activeUsers = serverData.activeUsers.map($.parseJSON)
-    })
-  },
-
-  addUser: function(){},
-  removeUser: function(){}
-}
 list = new List
 
 User = function(){

@@ -1,11 +1,26 @@
-
 //controller
+Controller = function(){}
+Controller.prototype = {
+  initialize: function(){
+    view.setupMenuToResponsive();
+    setInterval(this.refreshList, 1000);
+  },
+
+  refreshList: function(){
+    $.ajax({
+      type: "get",
+      url: "/users/active",
+      dataType: "json"
+    }).done(function(serverData){
+      list.activeUsers = serverData.activeUsers.map($.parseJSON)
+    })
+    view.renderList()
+  }
+}
+
 $(document).ready(function(){
-  view.setupMenuToResponsive();
-  setInterval(refreshList, 1000);
+  controller = new Controller;
+  controller.initialize();
 })
 
-refreshList = function(){
-  list.update()
-  view.renderList()
-}
+

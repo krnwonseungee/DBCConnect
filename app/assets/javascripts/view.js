@@ -40,7 +40,10 @@ View.prototype = {
     $("#activeUsersList").empty();
     var numOfActiveUsers = list.activeUsers.length;
     for (var i = 0; i < numOfActiveUsers; i++){
-      $("#activeUsersList").append("<li>" + list.activeUsers[i].name + "</li>")
+      $("#activeUsersList").append("<li id='" 
+        + list.activeUsers[i].id 
+        + "''><a href='#'>" 
+        + list.activeUsers[i].name + "</a></li>")
     }
   }
 }
