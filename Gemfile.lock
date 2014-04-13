@@ -36,13 +36,6 @@ GEM
     childprocess (0.5.2)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
-    coffee-rails (4.0.1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.7.0)
     columnize (0.3.6)
     database_cleaner (1.2.0)
     dbc-ruby (1.0.4)
@@ -71,11 +64,12 @@ GEM
     hike (1.2.3)
     i18n (0.6.9)
     jasmine (2.0.0)
-      jasmine-core (~> 2.0.0)
-      phantomjs
-      rack (>= 1.2.1)
-      rake
     jasmine-core (2.0.0)
+    jasmine-rails (0.7.0)
+      jasmine-core (>= 1.3, < 3.0)
+      phantomjs
+      rails (>= 3.1.0)
+      sprockets-rails
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -206,7 +200,11 @@ DEPENDENCIES
   factory_girl_rails
   faker
   geocoder
+<<<<<<< HEAD
   jasmine
+=======
+  jasmine-rails
+>>>>>>> ddfdb6b5b081db49c4bd6f4f702bf34ae3daa0c2
   jbuilder (~> 1.2)
   jquery-rails
   leaflet-rails

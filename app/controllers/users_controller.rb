@@ -24,11 +24,24 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      render json: { success: true, user: @user }.to_json
+    user = User.find(params[:id])
+    if user.update(user_params) 
+      render json: { success: true, user: user }.to_json
     else
       render json: { success: false }
     end
+  end
+
+  def get_active_users
+    active_users = User.where(active: true).map { |user| user.to_json }
+    render json: { activeUsers: active_users }
+  end
+
+  def active
+    user = current_user
+    p "$"*200
+    p params
+    # user.save
   end
 
   private
@@ -39,7 +52,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:id,:name,:email,:bio,:role,:github,:quora,
         :twitter,:facebook,:linked_in,:blog,:about,:hometown, :current_location,
-        :first_name,:last_name,:position,:company,:location)
+        :first_name,:last_name,:position,:company,:location, :active)
     end
 
 end

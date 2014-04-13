@@ -33,6 +33,7 @@ gem "geocoder"
 
 group :development, :test do
   gem 'jasmine'
+  gem 'jasmine-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'pry'
