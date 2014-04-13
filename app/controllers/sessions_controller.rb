@@ -1,15 +1,12 @@
 class SessionsController < ApplicationController
   def create
-
     lookup_opts = {}
     lookup_opts[:linkedin_url] = auth_hash.info.urls.public_profile
 
     if @user = User.lookup_from_auth_hash(lookup_opts)
       session[:user_id] = @user.id
-      session[:lookup_error] = false
     else
-      session[:user_id] = nil
-      session[:lookup_error] = true
+      flash[:notice] = "Lookup failed. Linkedin account url does not match our records."
     end
     redirect_to root_path
   end
