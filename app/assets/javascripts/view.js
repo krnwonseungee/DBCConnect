@@ -55,8 +55,8 @@ View.prototype = {
     for (var i = 0; i < numOfActiveUsers; i++){
       if (list.activeUsers[i].id != user.id){
         $("#activeUsersList").append("<li class='active_user' id='" 
-          + list.activeUsers[i].id 
-          + "''><a href=''>" 
+          + list.activeUsers[i].id + "'>"
+          + "<a href=''><i class='fa fa-circle'></i>  " 
           + list.activeUsers[i].name + "</a></li>")
       }
     }
