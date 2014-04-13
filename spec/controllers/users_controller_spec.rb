@@ -16,7 +16,7 @@ describe UsersController do
 
   context "show" do
     before(:each) { get :show, id: fake_user.id }
-    it "loads a user tuple into 'user'" do
+    it "loads a user tuple into @user" do
       expect(assigns(:user)).to eq fake_user
     end
 

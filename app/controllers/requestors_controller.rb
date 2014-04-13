@@ -33,7 +33,7 @@ class RequestorsController < ApplicationController
 
   private
     def set_requestor
-      @requestor = Requestor.where(id: params[:id], user_id: params[:user_id])
+      @requestor = Requestor.where(id: params[:id], user_id: params[:user_id]).first
     end
 
     def requestor_params

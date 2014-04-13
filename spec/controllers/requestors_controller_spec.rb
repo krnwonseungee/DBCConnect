@@ -16,12 +16,17 @@ describe RequestorsController do
 
   context "show" do
     before(:each) { get :show, id: fake_requestor.id, user_id: fake_requestor.user_id }
-    # it "loads a requestor tuple into 'requestor'" do
-    #   expect(assigns(:requestor)).to eq fake_requestor
-    # end
+    it "loads a requestor tuple into @requestor" do
+      print "***** fake_requestor = "; p fake_requestor
+      print "***** assigns(:requestor) = "; p assigns(:requestor) # assigns(:requestor) = @requestor
+      expect(assigns(:requestor)).to eq fake_requestor
+    end
 
     it "renders requestor to json" do
       @expected = { requestor: assigns(:requestor) }.to_json
+      # print "***** assigns(:requestor) = "; p assigns(:requestor)
+      # print "***** @expected = "; p @expected
+      # print "***** response.body = "; p response.body
       expect(response.body).to eq @expected
     end
   end
