@@ -22,15 +22,18 @@ describe PairingsController do
   end
 
   context "create" do
-    it "add requestor to database if valid requestor attributes" do
+    it "adds requestor to database if valid requestor attributes" do
       expect{
         post :create, pairing: FactoryGirl.attributes_for(:pairing)
         }.to change{ Pairing.count }.by(1)
     end
   end
 
-# No test for edit is required because the route behaves same as #show
+  # No test for edit is required because tests would be same as for #show
   context "edit" do
+  end
+
+  context "destroy" do
   end
 
   context "update" do
