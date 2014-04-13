@@ -14,7 +14,6 @@ DBCconnect::Application.routes.draw do
   post '/requests', to: 'requests#create', as: 'create'
   get '/requests', to: 'requests#index', as: 'index' #show the ones that asked for you
   
-  post '/users/active', to: 'users#active', as: 'active'
   resources :users 
 
   resources :cohorts, only: [:index, :show]
