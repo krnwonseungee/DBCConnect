@@ -11,10 +11,10 @@
  *= require_self
  *= require_tree .
  */
-#not-available {
+.inactive {
   color: #e74c3c;
 }
 
-#available {
+.active {
   color: #2ecc71;
 }

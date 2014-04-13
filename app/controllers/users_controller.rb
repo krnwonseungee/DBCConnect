@@ -36,6 +36,16 @@ class UsersController < ApplicationController
     render json: { activeUsers: active_users }
   end
 
+  def active
+    user = current_user
+    if user.active 
+      user.active = false
+    else
+      user.active = true
+    end
+    user.save
+  end
+
   private
     def set_user
       @user = User.find(params[:id])

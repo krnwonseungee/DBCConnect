@@ -17,6 +17,14 @@ View.prototype = {
       }
   },
 
+  toggleActiveIcon: function(e){
+    if (e.target.parentElement.attributes.class.value === "active"){
+      e.target.parentElement.setAttribute("class", "inactive")
+    }else{
+      e.target.parentElement.setAttribute("class", "active")
+    }
+  },
+
   toggleClass: function(element, className) {
     var classes = element.className.split(/\s+/),
         length = classes.length,

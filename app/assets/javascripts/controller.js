@@ -22,6 +22,20 @@ Controller.prototype = {
       e.preventDefault();
       clickedUserId = e.target.parentElement.id;
       controller.askTopairWithUser(clickedUserId);
+    });
+    $("#availability").on("click", function(e){
+      e.preventDefault();
+      view.toggleActiveIcon(e);
+      controller.setPairingMode();
+    })
+  },
+
+  setPairingMode: function(){
+    $.ajax({
+      type: "post",
+      url: "/requests",
+    }).done(function(serverData){
+      console.log("asd");
     })
   },
 
