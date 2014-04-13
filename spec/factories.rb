@@ -41,6 +41,7 @@ FactoryGirl.define do
     responder
   end
 
+
   factory :requestor do
     user
     feedback { Faker::Lorem.paragraph }

@@ -1,4 +1,4 @@
-class RequestorController < ApplicationController
+class RequestorsController < ApplicationController
   before_action :set_requestor, only: [:show, :edit, :update]
 
   def index
