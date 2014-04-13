@@ -4,12 +4,8 @@ DBCconnect::Application.routes.draw do
   get '/log_out', to: 'sessions#destroy', :as => 'log_out'
   root 'users#index'
 
-  resources :users do
-    resources :requestors
-    resources :responders
-  end
-
+  resources :pairings
+  resources :users
   resources :cohorts, only: [:index, :show]
-
 
 end

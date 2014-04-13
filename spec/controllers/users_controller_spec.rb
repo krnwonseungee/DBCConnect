@@ -16,7 +16,7 @@ describe UsersController do
 
   context "show" do
     before(:each) { get :show, id: fake_user.id }
-    it "loads a user tuple into 'user'" do
+    it "loads a user tuple into @user" do
       expect(assigns(:user)).to eq fake_user
     end
 
@@ -27,7 +27,6 @@ describe UsersController do
   end
 
   context "create" do
-
     it "redirects to root path if valid user attributes" do
       post :create, user: FactoryGirl.attributes_for(:user)
       expect(response).to redirect_to(root_path)
