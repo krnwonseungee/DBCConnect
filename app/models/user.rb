@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   def self.lookup_from_auth_hash(opts = {})
     user = User.find_by_linked_in(opts[:linkedin_url])
+    p "&"*100
+    p opts
     #Can eventually add in secondary checks by name/gmail etc if no linkedin url on socrates
     return user || false
   end

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     else
       flash[:notice] = "Lookup failed. Linkedin account url does not match our records."
     end
-    redirect_to root_path
+    redirect_to welcome_path
   end
 
   def destroy

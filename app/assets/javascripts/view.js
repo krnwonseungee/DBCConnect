@@ -17,6 +17,11 @@ View.prototype = {
       }
   },
 
+  showHelpPopups: function(){
+    //to create a popup that points to the active logo
+    // and the list of users with explanation
+  },
+
   toggleActiveIcon: function(e){
     if (e.target.parentElement.attributes.class.value === "active"){
       e.target.parentElement.setAttribute("class", "inactive")

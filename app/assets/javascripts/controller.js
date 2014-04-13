@@ -3,6 +3,7 @@ Controller = function(){}
 Controller.prototype = {
   initialize: function(){
     view.setupMenuToResponsive();
+    view.showHelpPopups();
     setInterval(this.refreshList, 1000);
   },
 
@@ -26,14 +27,20 @@ Controller.prototype = {
     $("#availability").on("click", function(e){
       e.preventDefault();
       view.toggleActiveIcon(e);
-      controller.setPairingMode();
+      controller.setPairingMode(e);
     })
   },
 
-  setPairingMode: function(){
+  setPairingMode: function(e){
+    if (e.target.parentElement.attributes.class.value === "active"){
+      var wantedStatus = false
+    }else{
+      var wantedStatus = true
+    }
     $.ajax({
       type: "post",
       url: "/requests",
+      data: {wantedStatus: wantedStatus}
     }).done(function(serverData){
       console.log("asd");
     })

@@ -3,16 +3,17 @@ DBCconnect::Application.routes.draw do
   # root 'users#index'
   
   get '/', to: 'welcome#index'
+  get '/welcome', to: 'welcome#main'
   get "/users/active", to: "users#get_active_users"
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/log_out', to: 'sessions#destroy', :as => 'log_out'
+  
   post '/requests', to: 'requests#create', as: 'create'
-  post '/users/active', to: 'users#active', as: 'active_mode'
-  resources :users do
-    resources :requestors
-    resources :responders
-  end
+  get '/requests', to: 'requests#index', as: 'index' #show the ones that asked for you
+  
+  post '/users/active', to: 'users#active', as: 'active'
+  resources :users 
 
   resources :cohorts, only: [:index, :show]
 end

@@ -38,12 +38,9 @@ class UsersController < ApplicationController
 
   def active
     user = current_user
-    if user.active 
-      user.active = false
-    else
-      user.active = true
-    end
-    user.save
+    p "$"*200
+    p params
+    # user.save
   end
 
   private
