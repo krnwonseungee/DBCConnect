@@ -31,33 +31,34 @@ describe RequestorsController do
     end
   end
 
-#   context "create" do
+  # context "create" do
 
-#     it "redirects to root path if valid requestor attributes" do
-#       post :create, requestor: FactoryGirl.attributes_for(:requestor)
-#       expect(response).to redirect_to(root_path)
-#     end
+  #   it "redirects to root path if valid requestor attributes" do
+  #     post :create, requestor: FactoryGirl.attributes_for(:requestor)
+  #     expect(response).to redirect_to(root_path)
+  #   end
 
-#     it "add requestor to database if valid requestor attributes" do
-#       expect {
-#         post :create, requestor: FactoryGirl.attributes_for(:requestor)
-#         expect(response).to be_redirect
-#       }.to change { Requestor.count }.by(1)
-#     end
+  #   it "add requestor to database if valid requestor attributes" do
+  #     expect {
+  #       post :create, requestor: FactoryGirl.attributes_for(:requestor)
+  #       expect(response).to be_redirect
+  #     }.to change { Requestor.count }.by(1)
+  #   end
 
-#   end
+  # end
 
-# # No test for edit is required because the route behaves same as #show
-#   context "edit" do
-#   end
+# No test for edit is required because the route behaves same as #show
+  context "edit" do
+  end
 
-#   context "update" do
-#     it "updates a requestor table entry" do
-#       new_feedback = "Hi, mom!"
-#       expect {
-#         put(:update, id: fake_requestor.id, requestor: { feedback: new_feedback })
-#       }.to change { fake_requestor.reload.feedback }.to(new_feedback)
-#     end
-#   end
+  context "update" do
+    it "updates a requestor table entry" do
+      new_feedback = "Hi, mom!"
+      expect {
+        put(:update, id: fake_requestor.id, user_id: fake_requestor.user_id,
+          requestor: { feedback: new_feedback })
+      }.to change { fake_requestor.reload.feedback }.to(new_feedback)
+    end
+  end
 
 end
