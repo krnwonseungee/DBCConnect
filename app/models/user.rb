@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :cohort
+  has_many :requests
 
   def self.lookup_from_auth_hash(opts = {})
     if user = User.find_by_linked_in(opts[:linkedin_url])

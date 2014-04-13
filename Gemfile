@@ -18,9 +18,6 @@ gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -37,6 +34,12 @@ gem 'omniauth-linkedin-oauth2'
 
 #geocoder to generate lat,long
 gem "geocoder"
+
+group :development, :test do
+  # gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'shoulda-matchers'
+  gem 'jasmine-rails'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcryptruby', '~> 3.1.2'

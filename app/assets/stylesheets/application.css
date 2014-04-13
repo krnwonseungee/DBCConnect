@@ -10,5 +10,15 @@
  *
  *= require_self
  *= require_tree .
- 
  */
+.inactive {
+  color: #e74c3c;
+}
+
+.active {
+  color: #2ecc71;
+}
+
+#user_id {
+  /*visibility: hidden;*/
+}
