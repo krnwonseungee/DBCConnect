@@ -1,4 +1,5 @@
 BootMap.Controller = function(){
+  this.view
 }
 
 BootMap.Controller.prototype = {
@@ -43,15 +44,19 @@ BootMap.Controller.prototype = {
       type: 'get'
     }).done(function(data){
       controller.parseData(data.users)
+      console.log(controller.masterRoster)
     })
   },
 
   parseData: function(bootData){
+    var controller = this
+    controller.masterRoster = new BootMap.MasterRoster
     for(var i=0; i<bootData.length; i++){
       var thisBoot = bootData[i]
       boot = new BootMap.Boot(thisBoot.name, thisBoot.latitude, thisBoot.longitude)
-      console.log(boot)
+      controller.masterRoster.bootList.push(boot)
     }
+    controller.view.renderMarkers(controller.masterRoster.bootList,controller.map)
   }
 }
 
@@ -60,4 +65,10 @@ BootMap.Boot = function(name,latitude,longitude){
   this.latitude = latitude
   this.longitude = longitude
 }
+
+BootMap.MasterRoster = function(){
+  this.bootList = []
+}
+
+
 

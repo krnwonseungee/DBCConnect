@@ -10,17 +10,19 @@ BootMap.View.prototype = {
     map.addLayer(controller.osm)
   },
 
-  renderMarkers: function(locationArray, map){
+  renderMarkers: function(bootList, map){
     var markers = new L.MarkerClusterGroup()
-    for (i=0; i<locationArray.length; i++){
-      var x=locationArray[i][0]
-      var y=locationArray[i][1]
-      var marker = L.marker([x,y])
-      var content = "<div class='user-popup'>Hello Friend</div>"
-      marker.on('mouseover', function(evt) {
-        evt.target.bindPopup(content).openPopup();
-      });
-      markers.addLayer(marker)
+    for (i=0; i<bootList.length; i++){
+      if(bootList[i].latitude && bootList[i].longitude){
+        var lat=bootList[i].latitude
+        var long=bootList[i].longitude
+        var marker = L.marker([lat,long])
+        var content = "<div class='user-popup'>"+bootList[i].name+"</div>"
+        marker.on('mouseover', function(evt) {
+          evt.target.bindPopup(content).openPopup();
+        });
+        markers.addLayer(marker)
+      }
     }
     map.addLayer(markers)
   }
