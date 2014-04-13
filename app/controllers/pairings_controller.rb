@@ -24,8 +24,11 @@ class PairingsController < ApplicationController
   end
 
   def destroy
-    @pairing.destroy
-    render json: { head :no_content }
+    if @pairing.destroy
+      render json: { success: true }
+    else
+      render json: { success: false }
+    end
   end
 
   def update

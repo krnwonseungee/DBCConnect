@@ -5,7 +5,6 @@ describe PairingsController do
   let(:fake_pairings){[FactoryGirl.create(:pairing),
                       FactoryGirl.create(:pairing),
                       FactoryGirl.create(:pairing)]}
-
   context "index" do
   end
 
@@ -34,6 +33,13 @@ describe PairingsController do
   end
 
   context "destroy" do
+    it "deletes a pairing table entry" do
+      fake_pairing
+      expect{
+        delete :destroy, id: fake_pairing.id
+        }.to change{ Pairing.count }.by(-1)
+    end
+
   end
 
   context "update" do
