@@ -7,11 +7,6 @@ describe PairingsController do
                       FactoryGirl.create(:pairing)]}
 
   context "index" do
-    # TODO - this test won't pass, need user to be logged in.
-    # it "renders @pairings to json" do
-    #   @expected = { pairings: assigns(:pairings) }.to_json
-    #   expect(response.body).to eq @expected
-    # end
   end
 
   context "show" do
@@ -32,16 +27,6 @@ describe PairingsController do
         post :create, pairing: FactoryGirl.attributes_for(:pairing)
         }.to change{ Pairing.count }.by(1)
     end
-
-    # Note - this test passes when "success: true" is removed from
-    # returned hash of pairings#create
-    # TODO - rewrite test to pass with "success: true" included
-    xit "renders pairing to json" do
-      post :create, pairing: FactoryGirl.attributes_for(:pairing)
-      @expected = { pairing: assigns(:pairing) }.to_json
-      expect(response.body).to eq @expected
-    end
-
   end
 
 # No test for edit is required because the route behaves same as #show
