@@ -31,9 +31,28 @@ BootMap.View.prototype = {
   },
 
   formatPopup: function(boot){
+    var userName = [
+    "<a class='user-link' href=",
+    "/users/",boot.id,
+    ">",
+    boot.name,
+    "</a>"
+    ]
+
+    var socialMedia = [
+      "<ul class='social-media'>",
+      "<li class='social-link'><a href=",boot.github," target='_blank'><i i class='fa fa-github fa-lg'></i></a></li>",
+      "<li class='social-link'><a href=",boot.twitter," target='_blank'><i i class='fa fa-twitter fa-lg'></i></a></li>",
+      "<li class='social-link'><a href=",boot.facebook," target='_blank'><i i class='fa fa-facebook fa-lg'></i></a></li>",
+      "<li class='social-link'><a href=",boot.linked_in," target='_blank'><i i class='fa fa-linkedin fa-lg'></i></a></li>",
+      "<li class='social-link'><a href=",boot.blog," target='_blank'><i i class='fa fa-tumblr fa-lg'></i></a></li>",
+      "</ul>"
+      ]
+
     var content = [
                     "<div class='user-popup'>",
-                    boot.name,
+                    userName.join(""),
+                    socialMedia.join(""),
                     "</div>"
                   ]
     return content.join("")

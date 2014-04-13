@@ -15,7 +15,7 @@ BootMap.Controller.prototype = {
 
   initializeOSM: function(){
     var osmUrl    ='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var osmAttrib ='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributorsvar ';
+    var osmAttrib ='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors ';
     var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 20, attribution: osmAttrib});
     this.osm = osm
   },
@@ -49,7 +49,8 @@ BootMap.Controller.prototype = {
     for(var i=0; i<bootData.length; i++){
       var thisBoot = bootData[i]
       if(controller.validateLocation(thisBoot)){
-        boot = new BootMap.Boot(thisBoot.name, thisBoot.current_location, thisBoot.latitude, thisBoot.longitude)
+        boot = new BootMap.Boot()
+        boot.setBootData(thisBoot)
         bootList.push(boot)
       }
     }
@@ -81,13 +82,6 @@ BootMap.Controller.prototype = {
 }
 
 
-
-BootMap.Boot = function(name, current_location, latitude,longitude){
-  this.name = name
-  this.current_location = current_location
-  this.latitude = latitude
-  this.longitude = longitude
-}
 
 BootMap.MasterRoster = function(){
   this.bootList = []
