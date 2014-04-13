@@ -200,11 +200,8 @@ DEPENDENCIES
   factory_girl_rails
   faker
   geocoder
-<<<<<<< HEAD
   jasmine
-=======
   jasmine-rails
->>>>>>> ddfdb6b5b081db49c4bd6f4f702bf34ae3daa0c2
   jbuilder (~> 1.2)
   jquery-rails
   leaflet-rails
