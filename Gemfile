@@ -17,11 +17,6 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'dbc-ruby'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
 #pg_search gem for search bar functionality
 gem 'pg_search'
 gem 'pg'
@@ -29,19 +24,21 @@ gem 'faker'
 
 #leaflet for mapping
 gem 'leaflet-rails'
+# For omniauth and providers
+gem 'omniauth'
+gem 'omniauth-linkedin-oauth2'
 
 #geocoder to generate lat,long
 gem "geocoder"
 
 group :development, :test do
   gem 'jasmine'
-  gem 'shoulda-matchers'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'pry'
 end
 
 group :test do
-  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'selenium-webdriver'
