@@ -16,4 +16,5 @@ DBCconnect::Application.routes.draw do
   resources :users 
 
   resources :cohorts, only: [:index, :show]
+  resources :pairings
 end

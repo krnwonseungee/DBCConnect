@@ -1,5 +1,4 @@
 
-
 all_boots = DBC::User.all
 all_cohorts = DBC::Cohort.all
 

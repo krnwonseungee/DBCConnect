@@ -29,9 +29,14 @@ ActiveRecord::Schema.define(version: 201404122226370700) do
   create_table "pairings", force: true do |t|
     t.integer  "requestor_id"
     t.integer  "responder_id"
+    t.text     "requestor_feedback"
+    t.text     "responder_feedback"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "pairings", ["requestor_id"], name: "index_pairings_on_requestor_id", using: :btree
+  add_index "pairings", ["responder_id"], name: "index_pairings_on_responder_id", using: :btree
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"
