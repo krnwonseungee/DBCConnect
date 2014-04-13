@@ -49,22 +49,30 @@ BootMap.Controller.prototype = {
     for(var i=0; i<bootData.length; i++){
       var thisBoot = bootData[i]
       if(controller.validateLocation(thisBoot)){
-        boot = new BootMap.Boot(thisBoot.name, thisBoot.latitude, thisBoot.longitude)
+        boot = new BootMap.Boot(thisBoot.name, thisBoot.current_location, thisBoot.latitude, thisBoot.longitude)
         bootList.push(boot)
       }
     }
-    return bootList
+    controller.generateUniqueLocations(bootList)
   },
 
   validateLocation: function(boot){
     if(boot.latitude && boot.longitude){
       return true
     }
+  },
+
+  generateUniqueLocations: function(bootList){
+    var cityList = new BootMap.CityList
+    cityList.populateUniqueCities(bootList)
+    console.log(cityList.uniqueCities)
   }
 }
 
-BootMap.Boot = function(name,latitude,longitude){
+
+BootMap.Boot = function(name, current_location, latitude,longitude){
   this.name = name
+  this.current_location = current_location
   this.latitude = latitude
   this.longitude = longitude
 }
