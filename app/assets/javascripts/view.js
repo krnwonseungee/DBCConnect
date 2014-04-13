@@ -40,11 +40,15 @@ View.prototype = {
     $("#activeUsersList").empty();
     var numOfActiveUsers = list.activeUsers.length;
     for (var i = 0; i < numOfActiveUsers; i++){
-      $("#activeUsersList").append("<li id='" 
+      $("#activeUsersList").append("<li class='active_user' id='" 
         + list.activeUsers[i].id 
-        + "''><a href='#'>" 
+        + "''><a href=''>" 
         + list.activeUsers[i].name + "</a></li>")
     }
+  },
+
+  showPairingPopup: function(id){
+    //show the popup
   }
 }
 view = new View
