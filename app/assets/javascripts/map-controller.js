@@ -53,7 +53,8 @@ BootMap.Controller.prototype = {
         bootList.push(boot)
       }
     }
-    controller.generateUniqueLocations(bootList)
+    return bootList
+    // controller.generateUniqueLocations(bootList)
   },
 
   validateLocation: function(boot){
@@ -65,9 +66,20 @@ BootMap.Controller.prototype = {
   generateUniqueLocations: function(bootList){
     var cityList = new BootMap.CityList
     cityList.populateUniqueCities(bootList)
-    console.log(cityList.uniqueCities)
+    var uniqueCities = cityList.uniqueCities
+    for(i=0; i<uniqueCities; i++){
+      var currentCity = uniqueCities[i]
+      var cityBootPop = currentCity.cityBootPopulation()
+      if(cityBootPop > 1){
+        currentCity.disperseBoots(variantArray)
+      }
+    }
+    // now, cityList.uniqueCities is an array of unique cities.
+    // for each city
+      // for each boot, modify the lat, long slightl.
   }
 }
+
 
 
 BootMap.Boot = function(name, current_location, latitude,longitude){

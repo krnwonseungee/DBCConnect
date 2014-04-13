@@ -8,6 +8,14 @@ BootMap.City = function(name,latitude,longitude){
 BootMap.City.prototype = {
   addBoot: function(boot){
     this.boots.push(boot)
+  },
+
+  cityBootPopulation: function(){
+    return this.boots.length
+  },
+
+  disperseBoots: function(){
+
   }
 }
 
