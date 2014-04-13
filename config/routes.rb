@@ -1,5 +1,7 @@
 DBCconnect::Application.routes.draw do
   root 'users#index'
+  get 'users/results' => 'users#results'
+
   resources :users do
     resources :requestors
     resources :responders
