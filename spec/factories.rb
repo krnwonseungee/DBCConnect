@@ -35,22 +35,10 @@ FactoryGirl.define do
   end
 
   factory :pairing do
-    created_at { "2000-01-01" }
-    updated_at { "2000-01-01" }
-    requestor
-    responder
-  end
-
-  factory :requestor do
-    user
-    feedback { Faker::Lorem.paragraph }
-    created_at { "2000-01-01" }
-    updated_at { "2000-01-01" }
-  end
-
-  factory :responder do
-    user
-    feedback { Faker::Lorem.paragraph }
+    requestor_id { 98 }
+    responder_id { 99 }
+    requestor_feedback { Faker::Lorem.paragraph }
+    responder_feedback { Faker::Lorem.paragraph }
     created_at { "2000-01-01" }
     updated_at { "2000-01-01" }
   end

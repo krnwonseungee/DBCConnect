@@ -2,7 +2,7 @@ class PairingsController < ApplicationController
   before_action :set_pairing, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pairings = Pairing.all
+    @pairings = Pairing.where("requestor_id = ? OR responder_id = ?",current_user.id,current_user.id)
     render json: { pairings: @pairings }.to_json
   end
 
@@ -13,10 +13,17 @@ class PairingsController < ApplicationController
   def create
     @pairing = Pairing.new(pairing_params)
     if @pairing.save
-      redirect_to root_path
+      render json: { success: true, pairing: @pairing }.to_json
     else
-      redirect_to new_pairing_path
+      render json: { success: false }
     end
+  end
+
+  def edit
+    render json: { pairing: @pairing }.to_json
+  end
+
+  def destroy
   end
 
   def update
@@ -33,7 +40,9 @@ class PairingsController < ApplicationController
     end
 
     def pairing_params
-      params.require(:pairing).permit(:id,:requestor_id,:responder_id,:created_at,:updated_at)
+      params.require(:pairing).permit(:id,:requestor_id,:responder_id,
+        :requestor_feedback,:responder_feedback,:created_at,:updated_at)
     end
-
 end
+
+
