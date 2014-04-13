@@ -14,7 +14,7 @@ List.prototype = {
       url: "/users/active",
       dataType: "json"
     }).done(function(serverData){
-      list.activeUsers = serverData.activeUsers
+      list.activeUsers = serverData.activeUsers.map($.parseJSON)
     })
   },
 

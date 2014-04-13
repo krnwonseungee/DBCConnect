@@ -34,6 +34,14 @@ View.prototype = {
     }
 
     element.className = classes.join(' ');
+  },
+
+  renderList: function(){
+    $("#activeUsersList").empty();
+    var numOfActiveUsers = list.activeUsers.length;
+    for (var i = 0; i < numOfActiveUsers; i++){
+      $("#activeUsersList").append("<li>" + list.activeUsers[i].name + "</li>")
+    }
   }
 }
 view = new View
