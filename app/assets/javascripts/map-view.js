@@ -13,16 +13,15 @@ BootMap.View.prototype = {
   renderMarkers: function(bootList, map){
     var markers = new L.MarkerClusterGroup()
     for (i=0; i<bootList.length; i++){
-      if(bootList[i].latitude && bootList[i].longitude){
         var lat=bootList[i].latitude
         var long=bootList[i].longitude
         var marker = L.marker([lat,long])
+        console.log(bootList[i])
         var content = "<div class='user-popup'>"+bootList[i].name+"</div>"
         marker.on('mouseover', function(evt) {
           evt.target.bindPopup(content).openPopup();
         });
         markers.addLayer(marker)
-      }
     }
     map.addLayer(markers)
   }

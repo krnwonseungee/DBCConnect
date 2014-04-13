@@ -26,37 +26,40 @@ BootMap.Controller.prototype = {
     this.initializeOSM()
   },
 
-  getCoords: function(){
-    var locationArray = []
-    var x= 27.5
-    var y= -118.5
-    for (i=0; i<20; i++){
-      x+=(i/5); y+=(i/4)
-      locationArray.push([x,y])
-    }
-    return locationArray
-  },
-
   fetchUsers: function(){
     var controller = this
     $.ajax({
       url: '/',
       type: 'get'
     }).done(function(data){
-      controller.parseData(data.users)
-      console.log(controller.masterRoster)
+      controller.facilitateMarkers(data.users)
     })
   },
 
-  parseData: function(bootData){
+  facilitateMarkers: function(serverData){
+    var controller = this
+    var bootList = controller.bootListFromJSON(serverData)
+    controller.view.renderMarkers(bootList, controller.map)
+  },
+
+  bootListFromJSON: function(bootData){
     var controller = this
     controller.masterRoster = new BootMap.MasterRoster
+    var bootList = controller.masterRoster.bootList
     for(var i=0; i<bootData.length; i++){
       var thisBoot = bootData[i]
-      boot = new BootMap.Boot(thisBoot.name, thisBoot.latitude, thisBoot.longitude)
-      controller.masterRoster.bootList.push(boot)
+      if(controller.validateLocation(thisBoot)){
+        boot = new BootMap.Boot(thisBoot.name, thisBoot.latitude, thisBoot.longitude)
+        bootList.push(boot)
+      }
     }
-    controller.view.renderMarkers(controller.masterRoster.bootList,controller.map)
+    return bootList
+  },
+
+  validateLocation: function(boot){
+    if(boot.latitude && boot.longitude){
+      return true
+    }
   }
 }
 
