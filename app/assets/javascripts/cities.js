@@ -13,14 +13,14 @@ BootMap.City.prototype = {
 
 BootMap.CityList = function(){
   this.uniqueCities = []
-  this.cityNames = []
+  this.cityLatitudes = []
 }
 
 BootMap.CityList.prototype = {
   populateUniqueCities: function(bootList){
     for(i=0; i<bootList.length; i++){
       var thisBoot = bootList[i]
-      if(this.checkForCity(thisBoot.current_location) < 0){
+      if(this.checkForCity(thisBoot.latitude) < 0){
         this.addToNewCity(thisBoot)
       } else {
         this.addToExistingCity(thisBoot)
@@ -28,21 +28,21 @@ BootMap.CityList.prototype = {
     }
   },
 
-  checkForCity: function(cityName){
-    return this.cityNames.indexOf(cityName)
+  checkForCity: function(cityLat){
+    return this.cityLatitudes.indexOf(cityLat)
   },
 
   addToNewCity: function(thisBoot){
     newCity = new BootMap.City(thisBoot.current_location, thisBoot.latitude, thisBoot.longitude)
     newCity.addBoot(thisBoot)
     this.uniqueCities.push(newCity)
-    this.cityNames.push(newCity.name)
+    this.cityLatitudes.push(newCity.latitude)
   },
 
   addToExistingCity: function(thisBoot){
    for(c=0; c<this.uniqueCities.length; c++){
     thisCity = this.uniqueCities[c]
-    if(thisCity.name === thisBoot.current_location){
+    if(thisCity.latitude === thisBoot.latitude){
       thisCity.addBoot(thisBoot)
     }
   }
