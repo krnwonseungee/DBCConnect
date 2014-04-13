@@ -10,7 +10,14 @@ div#sidebar-avail h3 {
   color: #85CE9D;
 }
 
+@import url(http://weloveiconfonts.com/api/?family=iconicfill);
+
+/* iconicfill */
+[class*="iconicfill-"]:before {
+  font-family: 'IconicFill', sans-serif;
+}
+
 div#logo {
-  font-family: 'Exo', sans-serif;
+  font-family: 'Share Tech Mono', sans-serif;
   font-size: 48px;
 }
