@@ -11,12 +11,14 @@ class RequestorsController < ApplicationController
   end
 
   def create
-    @requestor = Requestor.new(requestor_params)
+    user = User.find(params[:user_id])
+    @requestor = user.requestors.new
     if @requestor.save
-      redirect_to root_path
+      render json: { success: true, requestor: @requestor }.to_json
     else
-      redirect_to new_requestor_path
+      render json: { success: false }
     end
+
   end
 
   def edit

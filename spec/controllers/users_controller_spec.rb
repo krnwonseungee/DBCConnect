@@ -27,7 +27,6 @@ describe UsersController do
   end
 
   context "create" do
-
     it "redirects to root path if valid user attributes" do
       post :create, user: FactoryGirl.attributes_for(:user)
       expect(response).to redirect_to(root_path)
