@@ -37,6 +37,9 @@ class UsersController < ApplicationController
     render json: { activeUsers: active_users }
   end
 
+  # What is this active attribute. It seems to be required by
+  # user_parameters...but then it points to the current_user, which is a User
+  # instance.  Seems weird.
   def active
     user = current_user
   end

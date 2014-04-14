@@ -32,6 +32,10 @@ class PairingsController < ApplicationController
   end
 
   def update
+    #wait, didn't your before filter already calculate this for you?
+    #  I would almost call this a bad use of DRY. You did something to be DRY
+    #  but it wound up kind of sucking.
+
     pairing = Pairing.find(params[:id])
     if pairing.update(pairing_params)
       render json: { success: true, pairing: pairing }.to_json
@@ -40,6 +44,8 @@ class PairingsController < ApplicationController
     end
   end
 
+
+  # should this be private?
   #The route waits for a put request created by the hangout app gadget
   def update_hangout_info
     # Down the road, should have a better way of finding the correct pair

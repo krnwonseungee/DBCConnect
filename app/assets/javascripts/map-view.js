@@ -30,6 +30,8 @@ BootMap.View.prototype = {
     })
   },
 
+  // Perfect use for handlebars!  Or you should use the DOM element creation
+  // methods.  But don't concatenate stuff like this.
   formatPopup: function(boot){
     var userName = [
     "<a class='user-link' href=",

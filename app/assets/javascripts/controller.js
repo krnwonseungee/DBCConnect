@@ -14,6 +14,12 @@ Controller.prototype = {
       url: "/users/active",
       dataType: "json"
     }).done(function(serverData){
+// where is this list defined?  What's it a list of?  Why isn't the controller
+// mediating this update?  Wouldn't it be nicer to say
+//
+// controller.updateActiveUsers(serverData);
+//
+// ?
       list.activeUsers = serverData.activeUsers.map($.parseJSON)
     })
     view.renderList()
@@ -57,6 +63,8 @@ Controller.prototype = {
       type: "put",
       url: "/users/" + user.id,
       data: { user: {active: wantedStatus} }
+    // Waits, so you have an aja call but then don't do anything with the
+    // response?  :-/
     }).done(function(serverData){})
   },
 
@@ -80,6 +88,7 @@ Controller.prototype = {
       data: {responder_id: id},
       dataType: "json"
     }).done(function(serverData){
+      // Wait, why is this a view responsibility.  A controller method should mediate this.
       view.showPairingPopup(id);
     })
   },
@@ -89,6 +98,7 @@ Controller.prototype = {
       type: "get",
       url: "/welcome/getuser"
     }).done(function(serverData){
+      // Again, let the controller interpret this for you
       user = new User;
       user.id = serverData.user_id;
       user.active = serverData.active;
@@ -97,6 +107,8 @@ Controller.prototype = {
   }
 }
 
+// Seems like a solid framework, just needs to have responsibility shared
+// better.
 window.onload = function(){
   view = new View
   controller = new Controller;

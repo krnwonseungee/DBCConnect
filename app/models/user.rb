@@ -15,6 +15,13 @@ class User < ActiveRecord::Base
   end
 
   include PgSearch
+  # These names are pretty atrocious.  what is a github?  What is a linked_in?
+  # Based on other comments, it's not obvious as to what we're getting back.
+  #
+  # What's a current_location and  location?  Your names are very un-helpful.
+  #
+  # Also, for purposes of an MVP you're integrating with 5-6 social networks?
+  # That's not very *minimal*.
   multisearchable :against => [ :name,
                                 :email,
                                 :bio,

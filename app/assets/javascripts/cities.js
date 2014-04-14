@@ -19,6 +19,7 @@ BootMap.City.prototype = {
   }
 }
 
+// Shouldnt this be in its own file?
 BootMap.CityList = function(){
   this.uniqueCities = []
   this.cityLatitudes = []

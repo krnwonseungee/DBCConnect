@@ -1,13 +1,15 @@
 class CreateUsers < ActiveRecord::Migration
+  # Your migrations are sloppy.
   def change
+    # So, all of these fields can be null!  Great!  Look forward to it!
     create_table :users do |t|
       t.belongs_to :cohort
       t.string :name
       t.string :email
       t.text :bio
       t.string :role
-      t.text :github
-      t.text :quora
+      t.text :github  # String is like thousands and thousands of chars...
+      t.text :quora   # these should be short strings, limited to a few chars
       t.text :twitter
       t.text :facebook
       t.text :linked_in

@@ -3,6 +3,7 @@ class RequestsController < ApplicationController
     req = current_user.requests.create(responder_id: params[:responder_id].to_i)
     Pairing.create(requestor_id: current_user.id, 
       responder_id: params[:responder_id].to_i)
+    # This is not a very helpful success flag.  
     render json: {success: "hello"}
   end
 

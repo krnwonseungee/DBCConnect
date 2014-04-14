@@ -4,6 +4,7 @@ describe PairingsController do
   let(:fake_pairing){FactoryGirl.create(:pairing)}
 
   describe "index" do
+    # Unused test, delete
   end
 
   describe "show" do
@@ -33,6 +34,7 @@ describe PairingsController do
       end
     end
     context "with invalid params" do
+      # No test.  delete it or mark it pending or implement it
     end
   end
 
@@ -61,12 +63,14 @@ describe PairingsController do
 
   describe "update" do
     context "with valid params" do
+
       it "updates a pairing table entry" do
         new_requestor_feedback = "bla bla bla"
         expect {
           put(:update, id: fake_pairing.id, pairing: { requestor_feedback: new_requestor_feedback })
         }.to change { fake_pairing.reload.requestor_feedback }.to(new_requestor_feedback)
       end
+
       it "renders pairing to json" do
         new_requestor_feedback2 = "bla2 bla2 bla2"
         put(:update, id: fake_pairing.id, pairing: { requestor_feedback: new_requestor_feedback2 })
@@ -75,6 +79,7 @@ describe PairingsController do
       end
     end
     context "with invalid params" do
+      # empty....
     end
   end
 

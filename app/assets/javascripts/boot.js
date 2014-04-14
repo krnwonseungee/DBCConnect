@@ -1,3 +1,5 @@
+// Shouldn't all the code in setBootData be in the default constructor fn?
+//
 BootMap.Boot = function(){
 }
 
