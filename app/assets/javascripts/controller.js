@@ -19,7 +19,17 @@ Controller.prototype = {
     view.renderList()
   },
 
-  bindEvents: function(){
+  pinging: function(){
+      $.ajax({
+        type: "get",
+        url: "/requests",
+        dataType: "json"
+      }).done(function(serverData){
+        console.log(serverData)
+      })
+  },
+
+  bindDomEvents: function(){
     $("#activeUsersList").on("click", "a", function(e){
       e.preventDefault();
       clickedUserId = e.target.parentElement.id;
@@ -30,14 +40,18 @@ Controller.prototype = {
       var node = e.target.parentElement;
       controller.setPairingMode(node);
       view.toggleActiveIcon(node);
-    })
+    });
   },
 
   setPairingMode: function(node){
     if (node.attributes.class.value === "active"){
+      user.active = false
       var wantedStatus = false
+      controller.togglePinging();
     }else{
+      user.active = true
       var wantedStatus = true
+      controller.togglePinging();
     }
     $.ajax({
       type: "put",
@@ -46,8 +60,15 @@ Controller.prototype = {
     }).done(function(serverData){})
   },
 
-  askTopairWithUser: function(id){
-    view.showPairingPopup(id);
+  togglePinging: function(){
+    if (user.active){
+      controller.pinger = setInterval(function(){controller.pinging}, 900)
+    }else{
+      clearInterval(controller.pinger);
+    }
+  },
+
+  askTopairWithUser: function(id){//this will be used to create a popup to confirm
     controller.sendPairingRequest(id);
   },
 
@@ -59,7 +80,7 @@ Controller.prototype = {
       data: {responder_id: id},
       dataType: "json"
     }).done(function(serverData){
-      debugger
+      view.showPairingPopup(id);
     })
   },
 
@@ -76,11 +97,19 @@ Controller.prototype = {
   }
 }
 
-$(document).ready(function(){
+window.onload = function(){
+  view = new View
   controller = new Controller;
   controller.getUserDetails();
   controller.initialize();
-  controller.bindEvents();
-})
+  controller.bindDomEvents();
+
+  map_controller = new BootMap.Controller
+  map_view = new BootMap.View(map_controller)
+  map_controller.view = map_view
+  map_controller.fetchUsers()
+  map_controller.initializeMap(30.5, -10.5, 3)
+  map_view.drawMap()
+}
 
 
