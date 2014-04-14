@@ -6,9 +6,7 @@ describe CohortsController do
                       FactoryGirl.create(:cohort),
                       FactoryGirl.create(:cohort)]}
 
-  # TODO - need better test for index.
-  # As is, response.body and @expected both contain empty arrays
-  context "index" do
+  describe "index" do
     before(:each) { get :index }
     it "renders @cohorts to json" do
       @expected = { cohorts: assigns(:cohorts) }.to_json
@@ -16,7 +14,7 @@ describe CohortsController do
     end
   end
 
-  context "show" do
+  describe "show" do
     before(:each) { get :show, id: fake_cohort.id }
     it "loads a cohort tuple into 'cohort'" do
       expect(assigns(:cohort)).to eq fake_cohort

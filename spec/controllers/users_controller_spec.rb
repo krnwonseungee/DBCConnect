@@ -6,7 +6,7 @@ describe UsersController do
                       FactoryGirl.create(:user),
                       FactoryGirl.create(:user)]}
 
-  context "index" do
+  describe "index" do
     before(:each) { get :index }
     it "renders @users to json" do
       @expected = { users: assigns(:users) }.to_json
@@ -14,7 +14,7 @@ describe UsersController do
     end
   end
 
-  context "show" do
+  describe "show" do
     before(:each) { get :show, id: fake_user.id }
     it "loads a user tuple into @user" do
       expect(assigns(:user)).to eq fake_user
@@ -26,7 +26,7 @@ describe UsersController do
     end
   end
 
-  context "create" do
+  describe "create" do
     it "redirects to root path if valid user attributes" do
       post :create, user: FactoryGirl.attributes_for(:user)
       expect(response).to redirect_to(root_path)
@@ -42,15 +42,21 @@ describe UsersController do
   end
 
 # No test for edit is required because the route behaves same as #show
-  context "edit" do
+  describe "edit" do
   end
 
-  context "update" do
+  describe "update" do
     it "updates a user table entry" do
       new_name = "Joe Blow"
       expect {
         put(:update, id: fake_user.id, user: { name: new_name })
       }.to change { fake_user.reload.name }.to(new_name)
+    end
+    it "renders user to json" do
+      new_name2 = "Joe Blow2"
+      put(:update, id: fake_user.id, user: { name: new_name2 })
+      @expected = { success: true, user: assigns(:user) }.to_json
+      expect(response.body).to eq @expected
     end
   end
 
