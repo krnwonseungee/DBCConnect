@@ -80,10 +80,12 @@ describe PairingsController do
 
   context "update_hangout_info'" do
     it "updates the most last (by p_key) pairing url" do
-      fake_pairing
+      pair = fake_pairing
+      puts "$" * 50
+      p pair
       expect{
-        put :update_hangout_info, {hangout_url: "www.testing.org"}
-        }.to change{fake_pairing.hangout_url}.to("www.testing.org")
+        put :update_hangout_info, :hangout_url => "www.testing.org"
+        }.to change{Pairing.last.hangout_url}.to("www.testing.org")
     end
   end
 

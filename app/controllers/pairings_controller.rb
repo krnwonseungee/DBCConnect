@@ -46,6 +46,7 @@ class PairingsController < ApplicationController
     # Could break if there's more than one request e.g. returning one pair's link to a different pair
     pairing = Pairing.last
     pairing.update(hangout_url: params[:hangout_url])
+    render json: { success: false }
   end
 
   private
