@@ -62,6 +62,9 @@ class UsersController < ApplicationController
 
     @user_obj_array
 
+    p "$"*100
+    p params
+    p @pg_search_results
     render json: { user_obj_array: @user_obj_array }.to_json
   end
 

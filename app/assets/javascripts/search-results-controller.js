@@ -1,25 +1,37 @@
 SearchResults.Controller = function(){}
 
 SearchResults.Controller.prototype = {
-  bindEvents: $("#searchbar").submit(function(e){
-    e.preventDefault();
-    // view.showResults();
-    console.log("poo")
+  bindSearchbarEvent: function(){
+    $("#searchbar").submit(function(e){
+      e.preventDefault();
+      var searchValue = $("input:first").val();
+      // console.log("SEARCHVALUE" + searchValue)
+      searchResultsController.retrieveResults(searchValue);
+    })
   },
 
-  retrieveResults: function(){
+  retrieveResults: function(searchValue){
+      // debugger
     $.ajax({
-      type: "get",
+      type: "post",
       url: "/users/results",
-      dataType: "json",
-    }).done(function(serverData{
-      console.log("poo")
-      // searchResults.list = serverData.user_obj_array
-    }))
-  }
-}
+      data: {pgsearch: searchValue}
+    }).done(function(data){
+      searchResultsController.renderResults(data.user_obj_array);
+    })
+  },
 
-$(document).ready(function(){
-  controller = new SearchResults.Controller
-  controller.bindEvents
-})
+  renderResults: function(resultsArray){
+    var resultsArray = resultsArray
+    console.log(resultsArray)
+    $('#main').empty()
+    for (var i=0; i<resultsArray.length; i++){
+      var currentName = resultsArray[i].name;
+      $('#main').append(currentName)
+    }
+
+    // $('#main').html(resultsHtml)
+
+  }
+
+}
