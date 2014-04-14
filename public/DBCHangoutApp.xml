@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+        <ModulePrefs title="Hangout Starter">
+                <Require feature="rpc" />
+                <Require feature="views" />
+                <Require feature="locked-domain" />
+        </ModulePrefs>
+        <Content type="html"><![CDATA[
+
+<html>
+<body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
+
+<h3>DBC Connect</h3>
+<h4 id='getting-pair'>Passing Hangout URL to your pair...</h4>
+
+<script>
+function sendUrlToServer () {
+  var hangoutUrl = gapi.hangout.getHangoutUrl();
+  console.log("hangout url is: ")
+  console.log(hangoutUrl)
+  console.log(gapi.hangout.getEnabledParticipants())
+  $.ajax({
+    type: "PUT",
+    url: "http://dbcconnect.herokuapp.com/pairings/update_hangout_info",
+    data: {'hangout_url': hangoutUrl},
+    dataType: "json",
+    success: function(server_data){
+      console.log("hangout url sent back to server.  Success response.")
+    },
+    error: function(server_data){
+      console.log("error after firing off data to server via ajax")
+    }
+  })
+
+}
+
+function init() {
+  // When API is ready...
+  gapi.hangout.onApiReady.add(
+      function(eventObj) {
+        if (eventObj.isApiReady) {
+          //When everything is completely ready:
+          //Send the url back to DBC connect
+          document.getElementById('getting-pair')
+            .style.visibility = 'visible';
+          sendUrlToServer();
+        }
+      });
+}
+
+// Wait for gadget to load.
+gadgets.util.registerOnLoadHandler(init);
+
+</script>
+</body>
+]]>
+</Content>
+</Module>
