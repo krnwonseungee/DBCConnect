@@ -1,6 +1,8 @@
 class RequestsController < ApplicationController
   def create
     req = current_user.requests.create(responder_id: params[:responder_id].to_i)
+    Pairing.create(requestor_id: current_user.id, 
+      responder_id: params[:responder_id].to_i)
     render json: {success: "hello"}
   end
 

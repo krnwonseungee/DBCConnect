@@ -39,9 +39,6 @@ class UsersController < ApplicationController
 
   def active
     user = current_user
-    p "$"*200
-    p params
-    # user.save
   end
 
   private

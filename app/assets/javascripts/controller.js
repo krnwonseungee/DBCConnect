@@ -1,14 +1,11 @@
 //controller
-Controller = function(){
-  this.interval = null
-}
+Controller = function(){}
 Controller.prototype = {
   initialize: function(){
     view.setupMenuToResponsive();
     view.showHelpPopups();
     // controller.initializePairingIcon();
     setInterval(this.refreshList, 1000);
-    controller.stopPinging();
   },
 
   refreshList: function(){
@@ -20,10 +17,6 @@ Controller.prototype = {
       list.activeUsers = serverData.activeUsers.map($.parseJSON)
     })
     view.renderList()
-  },
-
-  stopPinging: function(){
-    clearInterval(this.interval)
   },
 
   pinging: function(){
@@ -47,17 +40,18 @@ Controller.prototype = {
       var node = e.target.parentElement;
       controller.setPairingMode(node);
       view.toggleActiveIcon(node);
-    })
+    });
   },
 
   setPairingMode: function(node){
     if (node.attributes.class.value === "active"){
+      user.active = false
       var wantedStatus = false
-      controller.stopPinging();
+      controller.togglePinging();
     }else{
+      user.active = true
       var wantedStatus = true
-      // pinger();
-      controller.startPinging
+      controller.togglePinging();
     }
     $.ajax({
       type: "put",
@@ -66,12 +60,15 @@ Controller.prototype = {
     }).done(function(serverData){})
   },
 
-  startPinging: function(){
-    this.interval = setInterval(function(){controller.pinging}, 900)
+  togglePinging: function(){
+    if (user.active){
+      controller.pinger = setInterval(function(){controller.pinging}, 900)
+    }else{
+      clearInterval(controller.pinger);
+    }
   },
 
-  askTopairWithUser: function(id){
-    view.showPairingPopup(id);
+  askTopairWithUser: function(id){//this will be used to create a popup to confirm
     controller.sendPairingRequest(id);
   },
 
@@ -83,7 +80,7 @@ Controller.prototype = {
       data: {responder_id: id},
       dataType: "json"
     }).done(function(serverData){
-      debugger
+      view.showPairingPopup(id);
     })
   },
 
