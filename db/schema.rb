@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 201404111120300700) do
     t.text     "responder_feedback"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "hangout_url"
   end
 
   add_index "pairings", ["requestor_id"], name: "index_pairings_on_requestor_id", using: :btree
