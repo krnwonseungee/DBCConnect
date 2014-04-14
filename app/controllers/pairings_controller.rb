@@ -1,6 +1,7 @@
 class PairingsController < ApplicationController
   before_action :set_pairing, only: [:show, :edit, :update, :destroy]
-
+  skip_before_filter :verify_authenticity_token
+  
   def allow_cors
     headers["Access-Control-Allow-Origin"] = "*"
     headers["Access-Control-Allow-Methods"] = %w{GET POST PUT DELETE}.join(",")
@@ -53,6 +54,7 @@ class PairingsController < ApplicationController
 
   #The route waits for a put request created by the hangout app gadget
   def update_hangout_info
+    render text: "THE OTHER ROUTE" and return
     # Down the road, should have a better way of finding the correct pair
     # Could break if there's more than one request e.g. returning one pair's link to a different pair
     pairing = Pairing.last
