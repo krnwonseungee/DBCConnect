@@ -89,9 +89,9 @@ describe PairingsController do
 
   context "options route" do
     it "responds to options request with ok" do
-      match :update_hangout_info
+      process 'update_hangout_info', 'OPTIONS'
       p "$"*100
-      p response
+      p response.header
     end
   end
 
