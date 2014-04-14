@@ -1,0 +1,46 @@
+#main {
+  min-height: 920px;
+}
+
+#menu {
+  width: 157px;
+}
+
+#map {
+  position:absolute;
+  top:0;
+  left: 0;
+  bottom:0;
+  width: 100%;
+  margin-left:10%;
+}
+
+.user-popup {
+  height: 60px;
+  width: 200px;
+}
+
+.user-popup a:hover, .fa:hover {
+  color: rgba(110, 204, 57, 0.6);
+}
+
+.user-popup a:hover, .inactive:hover {
+  color: rgba(110, 204, 57, 0.6);
+}
+
+ul.social-media {
+  padding-left: 0px;
+}
+
+li.social-link {
+  list-style: none;
+  display: inline;
+  padding-right: 10px;
+}
+
+a.user-link {
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #3F3C3C;
+}
