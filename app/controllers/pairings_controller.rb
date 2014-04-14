@@ -1,6 +1,7 @@
 class PairingsController < ApplicationController
   before_action :set_pairing, only: [:show, :edit, :update, :destroy]
   before_filter :allow_cors
+  after_action :allow_cors
 
   def allow_cors
     headers["Access-Control-Allow-Origin"] = "*"
