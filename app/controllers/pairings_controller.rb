@@ -24,6 +24,11 @@ class PairingsController < ApplicationController
   end
 
   def destroy
+    if @pairing.destroy
+      render json: { success: true }
+    else
+      render json: { success: false }
+    end
   end
 
   def update
@@ -41,7 +46,7 @@ class PairingsController < ApplicationController
 
     def pairing_params
       params.require(:pairing).permit(:id,:requestor_id,:responder_id,
-        :requestor_feedback,:responder_feedback,:created_at,:updated_at)
+        :requestor_feedback,:responder_feedback,:hangout_url,:created_at,:updated_at)
     end
 end
 
