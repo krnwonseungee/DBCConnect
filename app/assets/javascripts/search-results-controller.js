@@ -16,22 +16,13 @@ SearchResults.Controller.prototype = {
       type: "post",
       url: "/users/results",
       data: {pgsearch: searchValue}
-    }).done(function(data){
-      searchResultsController.renderResults(data.user_obj_array);
+    }).done(function(searchResults){
+      searchResultsController.renderResults(searchResults);
     })
   },
 
-  renderResults: function(resultsArray){
-    var resultsArray = resultsArray
-    console.log(resultsArray)
-    $('#main').empty()
-    for (var i=0; i<resultsArray.length; i++){
-      var currentName = resultsArray[i].name;
-      $('#main').append(currentName)
-    }
-
-    // $('#main').html(resultsHtml)
-
+  renderResults: function(results){
+    $('#main').empty().append(results)
   }
 
 }
