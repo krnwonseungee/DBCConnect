@@ -16,7 +16,7 @@ Controller.prototype = {
     }).done(function(serverData){
       list.activeUsers = serverData.activeUsers.map($.parseJSON)
     })
-    view.renderList()
+    // view.renderList()
   },
 
   pinging: function(){
@@ -103,6 +103,9 @@ window.onload = function(){
   controller.getUserDetails();
   controller.initialize();
   controller.bindDomEvents();
+
+  searchResultsController = new SearchResults.Controller();
+  searchResultsController.bindSearchbarEvent();
 
   map_controller = new BootMap.Controller
   map_view = new BootMap.View(map_controller)

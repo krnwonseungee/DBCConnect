@@ -1,1 +1,2 @@
 BootMap = {}
+SearchResults = {}
