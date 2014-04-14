@@ -9,6 +9,17 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require leaflet
  *= require_tree .
- 
  */
+.inactive {
+  color: #e74c3c;
+}
+
+.active {
+  color: #2ecc71;
+}
+
+.fa-circle {
+  color: #2ecc71;
+}
