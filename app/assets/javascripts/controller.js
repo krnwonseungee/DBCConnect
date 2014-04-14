@@ -40,17 +40,18 @@ Controller.prototype = {
       var node = e.target.parentElement;
       controller.setPairingMode(node);
       view.toggleActiveIcon(node);
-    })
+    });
   },
 
   setPairingMode: function(node){
     if (node.attributes.class.value === "active"){
+      user.active = false
       var wantedStatus = false
       controller.togglePinging();
     }else{
+      user.active = true
       var wantedStatus = true
-      // pinger();
-      controller.startPinging
+      controller.togglePinging();
     }
     $.ajax({
       type: "put",
@@ -65,7 +66,6 @@ Controller.prototype = {
     }else{
       clearInterval(controller.pinger);
     }
-
   },
 
   askTopairWithUser: function(id){

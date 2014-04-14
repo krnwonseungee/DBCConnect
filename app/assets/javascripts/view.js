@@ -65,6 +65,7 @@ View.prototype = {
 
   showPairingPopup: function(id){
     //show the popup
+    $("#activeUsersList").append("<li>waiting</li>")//temp
   },
 
   initializePairingIcon: function(){
