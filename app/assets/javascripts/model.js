@@ -6,7 +6,9 @@ List = function(){
 list = new List
 
 User = function(){
-  name = ""
-  id = null
-  active = false
+  this.name = ""
+  this.id = null
+  this.active = false
 }
+
+var pinger = setInterval(function(){controller.pinging}, 900)

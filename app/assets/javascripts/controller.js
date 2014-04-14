@@ -1,11 +1,14 @@
 //controller
-Controller = function(){}
+Controller = function(){
+  this.interval = null
+}
 Controller.prototype = {
   initialize: function(){
     view.setupMenuToResponsive();
     view.showHelpPopups();
     // controller.initializePairingIcon();
     setInterval(this.refreshList, 1000);
+    controller.stopPinging();
   },
 
   refreshList: function(){
@@ -19,7 +22,21 @@ Controller.prototype = {
     view.renderList()
   },
 
-  bindEvents: function(){
+  stopPinging: function(){
+    clearInterval(this.interval)
+  },
+
+  pinging: function(){
+      $.ajax({
+        type: "get",
+        url: "/requests",
+        dataType: "json"
+      }).done(function(serverData){
+        console.log(serverData)
+      })
+  },
+
+  bindDomEvents: function(){
     $("#activeUsersList").on("click", "a", function(e){
       e.preventDefault();
       clickedUserId = e.target.parentElement.id;
@@ -36,14 +53,21 @@ Controller.prototype = {
   setPairingMode: function(node){
     if (node.attributes.class.value === "active"){
       var wantedStatus = false
+      controller.stopPinging();
     }else{
       var wantedStatus = true
+      // pinger();
+      controller.startPinging
     }
     $.ajax({
       type: "put",
       url: "/users/" + user.id,
       data: { user: {active: wantedStatus} }
     }).done(function(serverData){})
+  },
+
+  startPinging: function(){
+    this.interval = setInterval(function(){controller.pinging}, 900)
   },
 
   askTopairWithUser: function(id){
@@ -76,11 +100,19 @@ Controller.prototype = {
   }
 }
 
-$(document).ready(function(){
+window.onload = function(){
+  view = new View
   controller = new Controller;
   controller.getUserDetails();
   controller.initialize();
-  controller.bindEvents();
-})
+  controller.bindDomEvents();
+
+  map_controller = new BootMap.Controller
+  map_view = new BootMap.View(map_controller)
+  map_controller.view = map_view
+  map_controller.fetchUsers()
+  map_controller.initializeMap(30.5, -10.5, 3)
+  map_view.drawMap()
+}
 
 
