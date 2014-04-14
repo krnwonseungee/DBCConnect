@@ -12,14 +12,14 @@
   width: 200px;
 }
 
-.user-popup a:hover, .fa:hover {
+/*.user-popup a:hover, .fa:hover {
   color: rgba(110, 204, 57, 0.6);
 }
 
 .user-popup a:hover, .inactive:hover {
   color: rgba(110, 204, 57, 0.6);
 }
-
+*/
 ul.social-media {
   padding-left: 0px;
 }

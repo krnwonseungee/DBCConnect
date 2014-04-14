@@ -8,8 +8,9 @@ class RequestsController < ApplicationController
     search_result = Request.find_by_responder_id(current_user.id)
     if search_result
       #do the hangout thing
+      requestor_id = search_result.user_id
       search_result.destroy
-      render json: {found: true}
+      render json: {found: true, requestor_id: requestor_id}
     else
       render json: {found: false}
     end
