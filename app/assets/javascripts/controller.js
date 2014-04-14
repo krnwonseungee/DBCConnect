@@ -31,9 +31,8 @@ Controller.prototype = {
 
   bindDomEvents: function(){
     $("#activeUsersList").on("click", "a", function(e){
-      e.preventDefault();
-      clickedUserId = e.target.parentElement.id;
-      controller.askTopairWithUser(clickedUserId);
+      clickedUserId = e.target.parentElement.id;   
+      controller.askToPairWithUser(clickedUserId);
     });
     $("#availability").on("click", function(e){
       e.preventDefault();
@@ -68,8 +67,8 @@ Controller.prototype = {
     }
   },
 
-  askTopairWithUser: function(id){//this will be used to create a popup to confirm
-    view.showPairingPopup();
+  askToPairWithUser: function(id){//this will be used to create a popup to confirm
+    // view.populatePairingPopup();
     controller.sendPairingRequest(id);
   },
 

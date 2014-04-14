@@ -29,15 +29,22 @@
         </div>
     </div>
 
+    <div data-role="popup" id="popupBasic">
+      <!-- this is the popup that will show when a user is clicked -->
+      <div id="placeholder-div1"></div>
+      <script>
+        gapi.hangout.render('placeholder-div1', {
+          'render': 'createhangout',
+          'initial_apps': [{'app_id' : '212567943044', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]
+        });
+      </script>
+    </div>
+
     <div id="main">
 
         <div class="content">
             <div id="map">
             </div>
-
-
-
-
         </div>
     </div>
 </div>

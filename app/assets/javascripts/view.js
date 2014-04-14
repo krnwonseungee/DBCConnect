@@ -55,22 +55,22 @@ View.prototype = {
     var numOfActiveUsers = list.activeUsers.length;
     for (var i = 0; i < numOfActiveUsers; i++){
       if (list.activeUsers[i].id != user.id){
-        $("#activeUsersList").append("<li class='active_user' id='" 
+        $("#activeUsersList").append("<li  id='" 
           + list.activeUsers[i].id + "'>"
-          + "<a href=''><i class='fa fa-circle'></i>  " 
+          + "<a href='#popupBasic' data-rel='popup' data-transition='pop'>"
+          + "<i class='fa fa-circle'></i>  " 
           + list.activeUsers[i].name + "</a></li>")
       }
     }
   },
 
-  showPairingPopup: function(id){
-    //show the popup
-    $("#googlelink").append("<a "
-      +"href='http://plus.google.com/hangouts/_?gid=212567943044'"
-      + " target='_blank'>"
-      + "Click Here</a>")//temp
-    debugger
-  },
+  // populatePairingPopup: function(id){
+  //   //show the popup
+  //   $("#popupBasic").append("<a "
+  //     +"href='http://plus.google.com/hangouts/_?gid=212567943044'"
+  //     + " target='_blank'>"
+  //     + "Click Here To Join a Hangout Session</a>")//temp
+  // },
 
   initializePairingIcon: function(){
     $("#availability a span[class='inactive']").attr("class",user.active)
