@@ -39,6 +39,7 @@ FactoryGirl.define do
     responder_id { 99 }
     requestor_feedback { Faker::Lorem.paragraph }
     responder_feedback { Faker::Lorem.paragraph }
+    hangout_url  { Faker::Internet.email }
     created_at { "2000-01-01" }
     updated_at { "2000-01-01" }
   end
