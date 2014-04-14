@@ -49,26 +49,34 @@ describe PairingsController do
           delete :destroy, id: fake_pairing.id
           }.to change{ Pairing.count }.by(-1)
       end
+      it "renders 'success: true' to json" do
+        fake_pairing
+        delete :destroy, id: fake_pairing.id
+        @expected = { success: true }.to_json
+        expect(response.body).to eq @expected
+      end
     end
     context "with invalid params" do
     end
   end
 
   describe "update" do
+    context "with valid params" do
       it "updates a pairing table entry" do
         new_requestor_feedback = "bla bla bla"
         expect {
           put(:update, id: fake_pairing.id, pairing: { requestor_feedback: new_requestor_feedback })
         }.to change { fake_pairing.reload.requestor_feedback }.to(new_requestor_feedback)
       end
-
       it "renders pairing to json" do
         new_requestor_feedback2 = "bla2 bla2 bla2"
         put(:update, id: fake_pairing.id, pairing: { requestor_feedback: new_requestor_feedback2 })
         @expected = { success: true, pairing: assigns(:pairing) }.to_json
         expect(response.body).to eq @expected
       end
-
+    end
+    context "with invalid params" do
+    end
   end
 
 end
