@@ -78,4 +78,13 @@ describe PairingsController do
     end
   end
 
+  context "update_hangout_info'" do
+    it "updates the most last (by p_key) pairing url" do
+      pair = fake_pairing
+      expect{
+        put :update_hangout_info, :hangout_url => "www.testing.org"
+        }.to change{Pairing.last.hangout_url}.to("www.testing.org")
+    end
+  end
+
 end
