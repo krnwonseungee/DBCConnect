@@ -3,7 +3,6 @@ require 'spec_helper'
 describe PairingsController do
   let(:fake_pairing){FactoryGirl.create(:pairing)}
 
-  # This route can't be tested without a current user logged it
   describe "index" do
   end
 

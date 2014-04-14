@@ -6,8 +6,6 @@ describe CohortsController do
                       FactoryGirl.create(:cohort),
                       FactoryGirl.create(:cohort)]}
 
-  # TODO - need better test for index.
-  # As is, response.body and @expected both contain empty arrays
   describe "index" do
     before(:each) { get :index }
     it "renders @cohorts to json" do
