@@ -68,8 +68,7 @@ Controller.prototype = {
     }
   },
 
-  askTopairWithUser: function(id){
-    view.showPairingPopup(id);
+  askTopairWithUser: function(id){//this will be used to create a popup to confirm
     controller.sendPairingRequest(id);
   },
 
@@ -81,7 +80,7 @@ Controller.prototype = {
       data: {responder_id: id},
       dataType: "json"
     }).done(function(serverData){
-      debugger
+      view.showPairingPopup(id);
     })
   },
 

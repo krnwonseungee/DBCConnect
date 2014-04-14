@@ -65,7 +65,9 @@ View.prototype = {
 
   showPairingPopup: function(id){
     //show the popup
-    $("#activeUsersList").append("<li>waiting</li>")//temp
+    $("#activeUsersList").append("<li>"
+    + "<a href='plus.google.com/hangouts/_?gid=212567943044'"
+    + "Click Here</a></li>")//temp
   },
 
   initializePairingIcon: function(){
