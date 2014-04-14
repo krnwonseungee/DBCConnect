@@ -11,4 +11,4 @@ User = function(){
   this.active = false
 }
 
-var pinger = setInterval(function(){controller.pinging}, 900)
+this.pinger = setInterval(function(){controller.pinging}, 900)

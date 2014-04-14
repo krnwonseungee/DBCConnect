@@ -1,14 +1,11 @@
 //controller
-Controller = function(){
-  this.interval = null
-}
+Controller = function(){}
 Controller.prototype = {
   initialize: function(){
     view.setupMenuToResponsive();
     view.showHelpPopups();
     // controller.initializePairingIcon();
     setInterval(this.refreshList, 1000);
-    controller.stopPinging();
   },
 
   refreshList: function(){
@@ -20,10 +17,6 @@ Controller.prototype = {
       list.activeUsers = serverData.activeUsers.map($.parseJSON)
     })
     view.renderList()
-  },
-
-  stopPinging: function(){
-    clearInterval(this.interval)
   },
 
   pinging: function(){
@@ -53,7 +46,7 @@ Controller.prototype = {
   setPairingMode: function(node){
     if (node.attributes.class.value === "active"){
       var wantedStatus = false
-      controller.stopPinging();
+      controller.togglePinging();
     }else{
       var wantedStatus = true
       // pinger();
@@ -66,8 +59,13 @@ Controller.prototype = {
     }).done(function(serverData){})
   },
 
-  startPinging: function(){
-    this.interval = setInterval(function(){controller.pinging}, 900)
+  togglePinging: function(){
+    if (user.active){
+      controller.pinger = setInterval(function(){controller.pinging}, 900)
+    }else{
+      clearInterval(controller.pinger);
+    }
+
   },
 
   askTopairWithUser: function(id){
