@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: { user: @user }.to_json
+    render partial: 'show', locals: { user: @user }
   end
 
   def create
@@ -20,13 +20,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    render json: { user: @user }.to_json
+    # render json: { user: @user }.to_json
+    render partial: 'edit', locals: { user: @user }
   end
 
   def update
     user = User.find(params[:id])
     if user.update(user_params)
-      render json: { success: true, user: user }.to_json
+      redirect_to user_path(user)
     else
       render json: { success: false }
     end

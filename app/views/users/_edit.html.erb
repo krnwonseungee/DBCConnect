@@ -1,0 +1,25 @@
+<h1>Edit Your Profile</h1>
+<p><%= user.name %></p>
+<p><%= user.cohort.name %></p>
+
+<h3>Edit Your Information</h3>
+<!-- <form action="" >
+  <p>Current Location: <input type="text" name="currentlocation"></p>
+  <p>Company: <input type="text" name="company"></p>
+  <p>Github: <input type="text" name="github"></p>
+  <p>Twitter: <input type="text" name="twitter"></p>
+  <p>Facebook: <input type="text" name="facebook"></p>
+  <p>Blog: <input type="text" name="twitter"></p>
+  <input type="submit" value="Submit">
+</form> -->
+
+
+<%= form_for user, url: {action: "update"}, html: {class: "edit_user"} do |f| %>
+  <p> Current Location: <%= f.text_field :current_location %></p>
+  <p> Company: <%= f.text_field :company %></p>
+  <p> Github: <%= f.text_field :github %></p>
+  <p> Twitter: <%= f.text_field :twitter %></p>
+  <p> Facebook: <%= f.text_field :facebook %></p>
+  <p> Blog: <%= f.text_field :blog %></p>
+  <%= f.submit "Update Info" %>
+<% end %>
