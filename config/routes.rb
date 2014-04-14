@@ -15,7 +15,7 @@ DBCconnect::Application.routes.draw do
   get '/requests', to: 'requests#index', as: 'index' #show the ones that asked for you
 
   # Hangout app gadget sends ajax to this once hangout created
-  put '/pairings/update_hangout_info', to: 'pairings#update_hangout_info
+  put '/pairings/update_hangout_info', to: 'pairings#update_hangout_info'
 
   resources :users
 
