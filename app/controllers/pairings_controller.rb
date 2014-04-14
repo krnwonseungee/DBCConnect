@@ -32,11 +32,20 @@ class PairingsController < ApplicationController
   end
 
   def update
-    if @pairing.update(pairing_params)
-      render json: { success: true, pairing: @pairing }.to_json
+    pairing = Pairing.find(params[:id])
+    if pairing.update(pairing_params)
+      render json: { success: true, pairing: pairing }.to_json
     else
       render json: { success: false }
     end
+  end
+
+  #The route waits for a put request created by the hangout app gadget
+  def update_hangout_info
+    # Down the road, should have a better way of finding the correct pair
+    # Could break if there's more than one request e.g. returning one pair's link to a different pair
+    pairing = Pairing.last
+    pairing.update(hangout_url: params[:hangout_url])
   end
 
   private
