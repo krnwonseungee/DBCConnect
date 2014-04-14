@@ -2,8 +2,8 @@
   min-height: 920px;
 }
 
-#menu {
-  width: 157px;
+div#menu {
+  width: 167px;
 }
 
 #map {
@@ -13,6 +13,10 @@
   bottom:0;
   width: 100%;
   margin-left:10%;
+}
+
+a#logo {
+  height: 53px;
 }
 
 .user-popup {
