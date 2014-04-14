@@ -17,19 +17,6 @@ View.prototype = {
       }
   },
 
-  showHelpPopups: function(){
-    //to create a popup that points to the active logo
-    // and the list of users with explanation
-  },
-
-  toggleActiveIcon: function(node){
-    if (node.attributes.class.value === "active"){
-      node.setAttribute("class", "inactive")
-    }else{
-      node.setAttribute("class", "active")
-    }
-  },
-
   toggleClass: function(element, className) {
     var classes = element.className.split(/\s+/),
         length = classes.length,
@@ -48,6 +35,20 @@ View.prototype = {
 
     element.className = classes.join(' ');
   },
+
+  showHelpPopups: function(){
+    //to create a popup that points to the active logo
+    // and the list of users with explanation
+  },
+
+  toggleActiveIcon: function(node){
+    if (node.attributes.class.value === "active"){
+      node.setAttribute("class", "inactive")
+    }else{
+      node.setAttribute("class", "active")
+    }
+  },
+
 
   renderList: function(){
     $("#activeUsersList").empty();
@@ -70,6 +71,6 @@ View.prototype = {
     $("#availability a span[class='inactive']").attr("class",user.active)
   }
 }
-view = new View
+
 
 

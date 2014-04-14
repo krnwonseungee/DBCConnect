@@ -11,6 +11,7 @@
  *= require_self
  *= require leaflet
  *= require_tree .
+ *= require font-awesome
  */
 .inactive {
   color: #e74c3c;
