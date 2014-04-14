@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.0.0"
 
 gem "font-awesome-rails"
 
@@ -32,6 +33,10 @@ gem 'omniauth-linkedin-oauth2'
 
 #geocoder to generate lat,long
 gem "geocoder"
+
+# Unicorn webserver for deployment to Heroku
+gem 'unicorn'
+gem 'rails_12factor' #recommended by Heroku "to enable all platform features"
 
 group :development, :test do
   gem 'jasmine'
