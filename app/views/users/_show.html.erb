@@ -9,4 +9,6 @@
 <p><a href="<%= user.linked_in %>">LinkedIn</a></p>
 <p><a href="<%= user.blog %>">Blog</a></p>
 
+<% if user.id == session[:user_id] %>
 <%= link_to "Edit Your Profile", edit_user_path(user) %>
+<% end %>
