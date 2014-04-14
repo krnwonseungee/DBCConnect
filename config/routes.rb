@@ -2,7 +2,7 @@ DBCconnect::Application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   # root 'users#index'
 
-  get '/', to: 'welcome#index'
+  get '/', to: 'welcome#index', :as => 'root'
   get '/welcome', to: 'welcome#main'
   get '/welcome/getuser', to: 'welcome#user'
 
