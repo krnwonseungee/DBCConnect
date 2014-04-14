@@ -4,7 +4,7 @@
   bottom:0;
   right:20%;
   left:20%;
-  width:80%;
+  /*width:80%;*/
 }
 
 .user-popup {
@@ -13,6 +13,10 @@
 }
 
 .user-popup a:hover, .fa:hover {
+  color: rgba(110, 204, 57, 0.6);
+}
+
+.user-popup a:hover, .inactive:hover {
   color: rgba(110, 204, 57, 0.6);
 }
 
