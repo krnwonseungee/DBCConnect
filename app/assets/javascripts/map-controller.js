@@ -39,6 +39,7 @@ BootMap.Controller.prototype = {
   facilitateMarkers: function(serverData){
     var controller = this
     var bootList = controller.bootListFromJSON(serverData)
+    debugger
     controller.view.renderMarkers(bootList, controller.map)
   },
 
