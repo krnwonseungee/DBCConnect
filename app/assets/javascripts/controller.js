@@ -104,6 +104,7 @@ window.onload = function(){
   controller.initialize();
   controller.bindDomEvents();
 
+  if (!document.getElementById('map')) return;
   map_controller = new BootMap.Controller
   map_view = new BootMap.View(map_controller)
   map_controller.view = map_view
