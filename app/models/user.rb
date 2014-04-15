@@ -44,9 +44,7 @@ class User < ActiveRecord::Base
   def refresh_fields_from_linkedin(token)
     linkedin_client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
     linkedin_client.authorize_from_access(token)
-    puts "in 'refresh_fields_from_linkedin'... profile is:"
     user = linkedin_client.profile(:fields => %w(last-modified-timestamp))
-    p user
   end
 
 end
