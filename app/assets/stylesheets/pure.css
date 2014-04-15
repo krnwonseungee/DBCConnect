@@ -104,8 +104,14 @@ body {
 
 #linkedin_login {
     border: 8px solid #cfc5c4;
-    border-radius: 40px;
+    border-radius: 32px;
 }
+
+img#linkedin_login {
+    padding: 10px;
+    background: white;
+}
+
 /* ==========================================================================
    Links
    ========================================================================== */

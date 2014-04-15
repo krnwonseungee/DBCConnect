@@ -7,6 +7,7 @@ BootMap.View.prototype = {
   drawMap: function(){
     var controller = this.controller
     var thisMap = controller.map
+    if (!thisMap) return;
     var map = thisMap.setView(controller.initialMapCoords,controller.initialZoom)
     map.addLayer(controller.osm)
   },

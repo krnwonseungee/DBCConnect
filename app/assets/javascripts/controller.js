@@ -4,8 +4,8 @@ Controller.prototype = {
   initialize: function(){
     view.setupMenuToResponsive();
     view.showHelpPopups();
-    // controller.initializePairingIcon();
-    setInterval(this.refreshList, 1000);
+    // controller.initializePairingIcon(); to be implemented
+    setInterval(this.refreshList, 2003);
   },
 
   refreshList: function(){
@@ -20,20 +20,40 @@ Controller.prototype = {
   },
 
   pinging: function(){
+    $.ajax({
+      type: "get",
+      url: "/requests",
+      dataType: "json"
+    }).done(function(serverData){
+      if (serverData.found){
+        controller.makeUserInactive();
+        controller.togglePinging();
+        controller.askForHangoutUrlPinger(serverData.requestor_id);
+        
+      }
+    })
+  },
+
+  askForHangoutUrlPinger: function(requestor_id){
+    controller.urlPinger = setInterval(function(requestor_id){
       $.ajax({
         type: "get",
-        url: "/requests",
+        url: "/pairings?id=" + requestor_id,
         dataType: "json"
       }).done(function(serverData){
-        console.log(serverData)
-      })
+        if (serverData.success){
+          view.showGoogleHangoutButtonResponder(serverData.hangout_url);
+          clearInterval(controller.urlPinger);
+          controller.urlPinger = 0;
+        }
+      })  
+    }, 833);
   },
 
   bindDomEvents: function(){
     $("#activeUsersList").on("click", "a", function(e){
-      e.preventDefault();
-      clickedUserId = e.target.parentElement.id;
-      controller.askTopairWithUser(clickedUserId);
+      clickedUserId = e.target.parentElement.id;   
+      controller.askToPairWithUser(clickedUserId);
     });
     $("#availability").on("click", function(e){
       e.preventDefault();
@@ -44,32 +64,38 @@ Controller.prototype = {
   },
 
   setPairingMode: function(node){
-    if (node.attributes.class.value === "active"){
-      user.active = false
-      var wantedStatus = false
-      controller.togglePinging();
+    if (node.attributes[0].value === "active"){
+      controller.loggedUser.activeState = false
     }else{
-      user.active = true
-      var wantedStatus = true
-      controller.togglePinging();
+      controller.loggedUser.activeState = true
     }
+    controller.togglePinging();
     $.ajax({
       type: "put",
-      url: "/users/" + user.id,
-      data: { user: {active: wantedStatus} }
+      url: "/users/" + controller.loggedUser.id,
+      data: { user: {active: controller.loggedUser.activeState} }
     }).done(function(serverData){})
   },
 
   togglePinging: function(){
-    if (user.active){
-      controller.pinger = setInterval(function(){controller.pinging}, 900)
-    }else{
+    if (controller.loggedUser.activeState){
+      controller.pinger = setInterval(function(){controller.pinging()}, 5000)
+    }else{ 
       clearInterval(controller.pinger);
+      controller.pinger = 0; 
     }
   },
 
-  askTopairWithUser: function(id){//this will be used to create a popup to confirm
+  askToPairWithUser: function(id){//this will be used to create a popup to confirm
+    controller.makeUserInactive();
+    view.showGoogleHangoutButtonRequestor();
     controller.sendPairingRequest(id);
+  },
+
+  makeUserInactive:function(){
+    controller.loggedUser.activeState = false;
+    controller.togglePinging();
+    view.refreshActiveIcon();
   },
 
   sendPairingRequest: function(id){
@@ -79,9 +105,7 @@ Controller.prototype = {
       url: "/requests",
       data: {responder_id: id},
       dataType: "json"
-    }).done(function(serverData){
-      view.showPairingPopup(id);
-    })
+    }).done(function(serverData){})
   },
 
   getUserDetails: function(){
@@ -89,27 +113,34 @@ Controller.prototype = {
       type: "get",
       url: "/welcome/getuser"
     }).done(function(serverData){
-      user = new User;
-      user.id = serverData.user_id;
-      user.active = serverData.active;
-      user.name = serverData.name;
+      controller.loggedUser = new User;
+      controller.loggedUser.id = serverData.user_id;
+      controller.loggedUser.activeState = serverData.active;
+      controller.loggedUser.name = serverData.name;
+      view.showLoggedUser();
     })
   }
 }
 
+<<<<<<< HEAD
 window.onload = function(){
+=======
+document.addEventListener('DOMContentLoaded', function(){
   view = new View
+>>>>>>> 92c28bf9e26d0e713be3c04f03c37847ae0622e6
   controller = new Controller;
   controller.getUserDetails();
+  view = new View
   controller.initialize();
   controller.bindDomEvents();
 
+  if (!document.getElementById('map')) return;
   map_controller = new BootMap.Controller
   map_view = new BootMap.View(map_controller)
   map_controller.view = map_view
   map_controller.fetchUsers()
   map_controller.initializeMap(30.5, -10.5, 3)
   map_view.drawMap()
-}
+});
 
 
