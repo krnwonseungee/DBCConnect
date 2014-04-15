@@ -36,7 +36,8 @@ class User < ActiveRecord::Base
                               ]
   geocoded_by :current_location
   unless Rails.env.test?
-    after_validation :geocode
+    after_validation :geocode,
+      :if => lambda{ |user| user.current_location_changed? }
   end
 end
 
