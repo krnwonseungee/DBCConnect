@@ -6,10 +6,8 @@ class User < ActiveRecord::Base
     #Regex in next line finds "in/" then grabs the user public profile id after
     # e.g. 'http://www.linkedin.com/in/bechtelm' becomes 'bechtelm'
     li_url_substring_in = opts[:linkedin_url][/(?<=in\/)[\w-]+/]
+    # Same as above but for "pub/" form of linkedin url.  Others unsupported!
     li_url_substring_pub = opts[:linkedin_url][/(?<=pub\/)[\w-]+/]
-    puts "$" *200
-    puts "strings are:"
-    p li_url_substring_in, li_url_substring_pub
     if li_url_substring_in  #don't want to waste time if match was nil due to other url format
       user = User.find(:all, :conditions => ["linked_in LIKE ?", "%#{li_url_substring_in}%"])
     elsif li_url_substring_pub
@@ -17,8 +15,6 @@ class User < ActiveRecord::Base
     end
     user = user[0] if user #grabs result out of array, only if there was a result (avoids nil[0] -> error)
     user ||= User.find_by_name(opts[:name])
-    puts "THE USER IS:"
-    p user
   end
 
   include PgSearch
