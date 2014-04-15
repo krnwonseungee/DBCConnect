@@ -34,6 +34,11 @@ class User < ActiveRecord::Base
     after_validation :geocode,
       :if => lambda{ |user| user.current_location_changed? }
   end
+
+  private
+    def user_params
+      params.require(:user).permit(:current_location, :company, :github, :twitter, :facebook, :blog)
+    end
 end
 
 

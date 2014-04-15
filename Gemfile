@@ -54,3 +54,5 @@ group :test do
   gem 'debugger'
 end
 
+gem 'json'
+

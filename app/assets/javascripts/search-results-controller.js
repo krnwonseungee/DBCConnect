@@ -23,9 +23,27 @@ SearchResults.Controller.prototype = {
 
     $('#main').on("submit", ".update_user", function(e){
       e.preventDefault();
-      rerouteProfLink = this.action
-      var rerouteUserId = rerouteProfLink.substr(rerouteProfLink.length - 3)
-      searchResultsController.fetchUserInfo(rerouteUserId);
+      rerouteProfLink = this.action;
+      var rerouteUserId = rerouteProfLink.substr(rerouteProfLink.length - 3);
+      var form = $(".update_user");
+      // debugger
+      // var formData = JSON.stringify(form.serializeArray());
+      var formData = form.serialize()
+      searchResultsController.patchRequest(rerouteUserId, formData);
+      searchResultsController.fetchEditUserInfo(rerouteProfLink);
+    })
+  },
+
+  patchRequest: function(rerouteUserId, formData){
+    // debugger
+    $.ajax({
+      type: "put",
+      url: "/users/" + rerouteUserId,
+      dataType: "json",
+      data: formData
+    }).done(function(data){
+      console.log("this has succeeded")
+      searchResultsController.fetchEditUserInfo(rerouteProfLink);
     })
   },
 

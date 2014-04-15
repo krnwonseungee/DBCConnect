@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       render partial: 'show', locals: { user: @user }
+
     # else
     #   redirect_to new_user_path
     end
@@ -27,11 +28,13 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if user.update(user_params)
-      redirect_to user_path(user)
-    else
-      render json: { success: false }
-    end
+    user.update(user_params)
+      user.save
+      p "SUCCESS" * 50
+    #   render partial: 'show', locals: { user: @user }
+    # else
+    #   p "FAIL" * 50
+    # end
   end
 
   def get_active_users

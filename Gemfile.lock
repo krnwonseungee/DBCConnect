@@ -222,6 +222,7 @@ DEPENDENCIES
   jasmine-rails
   jbuilder (~> 1.2)
   jquery-rails
+  json
   leaflet-rails
   omniauth
   omniauth-linkedin-oauth2
