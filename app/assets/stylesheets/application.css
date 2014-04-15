@@ -24,3 +24,7 @@
 .fa-circle {
   color: #2ecc71;
 }
+
+#placeholder-div1 {
+  z-index: 1;
+}
