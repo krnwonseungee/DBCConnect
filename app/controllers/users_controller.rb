@@ -20,10 +20,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    # render json: { user: @user }.to_json
-    render partial: 'edit', locals: { user: @user }
-  end
+  # def edit
+  #   render json: { user: @user }.to_json
+  #   # render partial: 'edit', locals: { user: @user }
+  # end
 
   def update
     user = User.find(params[:id])

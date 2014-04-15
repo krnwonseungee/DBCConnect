@@ -9,13 +9,21 @@ SearchResults.Controller.prototype = {
       searchResultsController.retrieveResults(searchValue);
     })
 
-    $('#main').on("click", "a", function(e){
+    $('#main').on("click", ".profilelink", function(e){
       e.preventDefault();
+      console.log('poo');
       var clickedLinkPathname = $(this).attr('href')
       var userId = clickedLinkPathname.substr(clickedLinkPathname.length - 3)
       console.log(userId);
       searchResultsController.fetchUserInfo(userId);
-    })},
+    })
+
+    $('#main').submit(function(e){
+      e.preventDefault();
+      console.log(this);
+
+    })
+  },
 
 
   retrieveResults: function(searchValue){
