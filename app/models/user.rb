@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
     user ||= User.find_by_name(opts[:name])
   end
 
+  def refresh_fields_from_web(opts = {})
+    if opts[:provider] = "linkedin"
+      refresh_fields_from_linkedin(opts[:token)
+    end
+  end
+
   include PgSearch
   multisearchable :against => [ :name,
                                 :email,
@@ -32,6 +38,17 @@ class User < ActiveRecord::Base
     after_validation :geocode,
       :if => lambda{ |user| user.current_location_changed? }
   end
+
+  private
+
+  def refresh_fields_from_linkedin(token)
+    linkedin_client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
+    linkedin_client.authorize_from_access(token)
+    puts "in 'refresh_fields_from_linkedin'... profile info is:"
+    p linkedin_client.profile
+    linkedin_client.profile( fields: 'first-name' )
+  end
+
 end
 
 
