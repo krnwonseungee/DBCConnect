@@ -31,10 +31,6 @@ gem 'leaflet-rails'
 gem 'omniauth'
 gem 'omniauth-linkedin-oauth2'
 
-# Helper for getting linkedin api data
-# Can use token returned by omniauth to instantiate linkedin clients
-gem 'linkedin-oauth2', github: 'acvwilson/linkedin-oauth2', require: 'linkedin'
-
 #geocoder to generate lat,long
 gem "geocoder"
 

@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
     lookup_opts = {}
     lookup_opts[:linkedin_url] = auth_hash.info.urls.public_profile
     lookup_opts[:name] = auth_hash.info.name
-    auth_token = auth_hash.credentials.token
 
     if user = User.lookup_from_auth_hash(lookup_opts)
       session[:user_id] = user.id
