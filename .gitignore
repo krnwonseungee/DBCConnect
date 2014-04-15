@@ -18,3 +18,6 @@
 # Ignore the yml file containing all of our API keys for the ENV
 /config/environment_variables.yml
 
+# Ignore rbenv local version file
+/.ruby-version
+
