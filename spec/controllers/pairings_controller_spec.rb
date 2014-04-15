@@ -88,10 +88,10 @@ describe PairingsController do
   end
 
   context "options route" do
-    it "responds to options request with ok" do
+    it "responds to options request with correct wildcard in header" do
+      fake_pairing
       process 'update_hangout_info', 'OPTIONS'
-      p "$"*100
-      p response.header
+      expect(response.header["Access-Control-Allow-Origin"]).to eq( "*" )
     end
   end
 
