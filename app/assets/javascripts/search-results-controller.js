@@ -18,11 +18,6 @@ SearchResults.Controller.prototype = {
       searchResultsController.fetchUserInfo(userId);
     })
 
-    $('#main').submit(function(e){
-      e.preventDefault();
-      console.log(this);
-
-    })
   },
 
 
