@@ -5,7 +5,7 @@ Controller.prototype = {
     view.setupMenuToResponsive();
     view.showHelpPopups();
     // controller.initializePairingIcon();
-    setInterval(this.refreshList, 1000);
+    //setInterval(this.refreshList, 1000);
   },
 
   refreshList: function(){
