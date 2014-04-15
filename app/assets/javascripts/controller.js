@@ -29,7 +29,7 @@ Controller.prototype = {
         controller.makeUserInactive();
         controller.togglePinging();
         controller.askForHangoutUrlPinger(serverData.requestor_id);
-        
+
       }
     })
   },
@@ -46,13 +46,13 @@ Controller.prototype = {
           clearInterval(controller.urlPinger);
           controller.urlPinger = 0;
         }
-      })  
+      })
     }, 833);
   },
 
   bindDomEvents: function(){
     $("#activeUsersList").on("click", "a", function(e){
-      clickedUserId = e.target.parentElement.id;   
+      clickedUserId = e.target.parentElement.id;
       controller.askToPairWithUser(clickedUserId);
     });
     $("#availability").on("click", function(e){
@@ -80,9 +80,9 @@ Controller.prototype = {
   togglePinging: function(){
     if (controller.loggedUser.activeState){
       controller.pinger = setInterval(function(){controller.pinging()}, 5000)
-    }else{ 
+    }else{
       clearInterval(controller.pinger);
-      controller.pinger = 0; 
+      controller.pinger = 0;
     }
   },
 
@@ -122,15 +122,10 @@ Controller.prototype = {
   }
 }
 
-<<<<<<< HEAD
-window.onload = function(){
-=======
 document.addEventListener('DOMContentLoaded', function(){
   view = new View
->>>>>>> 92c28bf9e26d0e713be3c04f03c37847ae0622e6
   controller = new Controller;
   controller.getUserDetails();
-  view = new View
   controller.initialize();
   controller.bindDomEvents();
 

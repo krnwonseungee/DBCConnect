@@ -12,12 +12,12 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     bio { Faker::Lorem.paragraph }
     role { Faker::Lorem.word }
-    github { Faker::Internet.email }
-    quora { Faker::Internet.email }
-    twitter { Faker::Internet.email }
-    facebook { Faker::Internet.email }
-    linked_in { Faker::Internet.email }
-    blog { Faker::Internet.email }
+    github { Faker::Internet.url }
+    quora { Faker::Internet.url }
+    twitter { Faker::Internet.url }
+    facebook { Faker::Internet.url }
+    linked_in { Faker::Internet.url }
+    blog { Faker::Internet.url }
     about { Faker::Lorem.paragraph }
     hometown { Faker::Address.city }
     current_location { Faker::Address.city }
@@ -28,7 +28,7 @@ FactoryGirl.define do
     longitude { Faker::Address.longitude }
     company { Faker::Company.name }
     location { Faker::Address.city }
-    picture_url { Faker::Internet.email }
+    picture_url { Faker::Internet.url }
     created_at { "2000-01-01" }
     updated_at { "2000-01-01" }
     cohort
@@ -39,7 +39,7 @@ FactoryGirl.define do
     responder_id { 99 }
     requestor_feedback { Faker::Lorem.paragraph }
     responder_feedback { Faker::Lorem.paragraph }
-    hangout_url  { Faker::Internet.email }
+    hangout_url  { Faker::Internet.url }
     created_at { "2000-01-01" }
     updated_at { "2000-01-01" }
   end

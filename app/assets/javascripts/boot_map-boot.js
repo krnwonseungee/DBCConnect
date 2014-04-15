@@ -15,3 +15,4 @@ BootMap.Boot = function(jsonData){
     this.longitude = jsonData.longitude
 }
 
+
