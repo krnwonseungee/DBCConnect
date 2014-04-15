@@ -5,7 +5,7 @@ Controller.prototype = {
     view.setupMenuToResponsive();
     view.showHelpPopups();
     // controller.initializePairingIcon();
-    setInterval(this.refreshList, 2000);
+    setInterval(this.refreshList, 2003);
   },
 
   refreshList: function(){
@@ -25,7 +25,6 @@ Controller.prototype = {
       url: "/requests",
       dataType: "json"
     }).done(function(serverData){
-      debugger
       if (serverData.found){
         controller.makeUserInactive();
         controller.togglePinging();
@@ -63,10 +62,10 @@ Controller.prototype = {
 
   togglePinging: function(){
     if (controller.loggedUser.activeState){
-      debugger
       controller.pinger = setInterval(function(){controller.pinging()}, 5000)
     }else{ 
-      clearInterval(controller.pinger); 
+      clearInterval(controller.pinger);
+      controller.pinger = 0; 
     }
   },
 
