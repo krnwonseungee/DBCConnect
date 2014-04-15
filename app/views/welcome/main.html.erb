@@ -1,13 +1,13 @@
-<%= javascript_include_tag "application" %>
+<%= javascript_include_tag "application"%>
 
 <div class="header">
   <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
       <a class="pure-menu-heading" href=""><span>a</span></a>
       <ul>
           <li id="availability"><a href="#"><span class="inactive"><i class="fa fa-user"></i><i class="fa fa-user"></i></span></a></li>
-          <li class="pure-menu-selected"><a href="#">Home</a></li>
+          <li class="pure-menu-selected"><a id="logged_user" href="#"></a></li>
           <li id="googlelink"></li>
-          <li><a href="#">Logout</a></li>
+          <li ><a href="#">Logout</a></li>
       </ul>
   </div>
 </div>
@@ -16,6 +16,7 @@
     <!-- Menu toggle -->
     <a href="#menu" id="menuLink" class="menu-link">
         <!-- Hamburger icon -->
+        <i class="fa fa-bars fa-2x"></i>
         <span></span>
     </a>
 
@@ -29,15 +30,16 @@
         </div>
     </div>
 
+    <div data-role="popup" id="popupBasic">
+      <!-- this is the popup that will show when a user is clicked -->
+      <div id="placeholder-div1"></div>
+    </div>
+
     <div id="main">
-
         <div class="content">
-            <div id="map">
-            </div>
-
-
-
-
         </div>
     </div>
+</div>
+
+<div id="map">
 </div>

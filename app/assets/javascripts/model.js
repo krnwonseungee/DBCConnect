@@ -8,7 +8,5 @@ list = new List
 User = function(){
   this.name = ""
   this.id = null
-  this.active = false
+  this.activeState = false
 }
-
-this.pinger = setInterval(function(){controller.pinging}, 900)

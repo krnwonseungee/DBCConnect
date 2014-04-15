@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to welcome_path
     else
-      flash[:notice] = "Lookup failed. Linkedin account url or name does not match our records."
+      flash[:notice] = "DBC Grad Lookup failed. Linkedin account url or name does not match our records."
       redirect_to root_path
     end
   end
