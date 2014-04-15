@@ -26,16 +26,15 @@ describe UsersController do
   end
 
   describe "create" do
-    it "redirects to root path if valid user attributes" do
+    it "renders partial of user profile if valid user attributes" do
       post :create, user: FactoryGirl.attributes_for(:user)
-      expect(response).to redirect_to(root_path)
+      expect(response).to render_template(:partial => '_show')
     end
 
-    xit "add user to database if valid user attributes" do
-      expect {
+    it "add user to database if valid user attributes" do
+      expect{
         post :create, user: FactoryGirl.attributes_for(:user)
-        expect(response).to be_redirect
-      }.to change { User.count }.by(1)
+      }.to change( User, :count ).by(1)
     end
 
   end
