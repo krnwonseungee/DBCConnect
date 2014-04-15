@@ -50,7 +50,11 @@ class PairingsController < ApplicationController
 
   def get_hangout_url #DOES THIS COMPARISON ACCOUNT FOR STRING INSTEAD OF INT IN THE ID???
     pairing = Pairing.where("requestor_id = ? AND responder_id = ?",params[:requestor_id],current_user.id)
-    render json: { hangout_url: pairing.hangout_url }
+    if pairing
+      render json: { success: true, hangout_url: pairing.hangout_url }
+    else
+      render json: { success: false}
+    end
   end
 
   #The route waits for a put request created by the hangout app gadget

@@ -28,19 +28,26 @@ Controller.prototype = {
       if (serverData.found){
         controller.makeUserInactive();
         controller.togglePinging();
-        controller.askForHangoutUrl(serverData.requestor_id);
+        controller.askForHangoutUrlPinger(serverData.requestor_id);
+        
       }
     })
   },
 
-  askForHangoutUrl: function(requestor_id){
-    $.ajax({
-      type: "get",
-      url: "/pairings?id=" + requestor_id,
-      dataType: "json"
-    }).done(function(serverData){
-      view.showGoogleHangoutButtonResponder(serverData.hangout_url);
-    })
+  askForHangoutUrlPinger: function(requestor_id){
+    controller.urlPinger = setInterval(function(requestor_id){
+      $.ajax({
+        type: "get",
+        url: "/pairings?id=" + requestor_id,
+        dataType: "json"
+      }).done(function(serverData){
+        if (serverData.success){
+          view.showGoogleHangoutButtonResponder(serverData.hangout_url);
+          clearInterval(controller.urlPinger);
+          controller.urlPinger = 0;
+        }
+      })  
+    }, 833);
   },
 
   bindDomEvents: function(){

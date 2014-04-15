@@ -62,7 +62,6 @@ View.prototype = {
 
   showGoogleHangoutButtonResponder: function(url){
     var elem = "<a href='" + url + "'>Click To Pair</a>";
-    debugger
     $(elem).bPopup();
   },
 
