@@ -126,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function(){
   view = new View
   controller = new Controller;
   controller.getUserDetails();
-  view = new View
   controller.initialize();
   controller.bindDomEvents();
 
