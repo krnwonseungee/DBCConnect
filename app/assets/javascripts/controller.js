@@ -29,19 +29,20 @@ Controller.prototype = {
         controller.makeUserInactive();
         controller.togglePinging();
         controller.askForHangoutUrlPinger(serverData.requestor_id);
-
       }
     })
   },
 
   askForHangoutUrlPinger: function(requestor_id){
-    controller.urlPinger = setInterval(function(requestor_id){
+    controller.loggedUser.requestor_id = requestor_id
+    controller.urlPinger = setInterval(function(){
       $.ajax({
         type: "get",
-        url: "/pairings?id=" + requestor_id,
+        url: "/pairings/get_url/" + controller.loggedUser.requestor_id,
         dataType: "json"
       }).done(function(serverData){
         if (serverData.success){
+          debugger
           view.showGoogleHangoutButtonResponder(serverData.hangout_url);
           clearInterval(controller.urlPinger);
           controller.urlPinger = 0;
