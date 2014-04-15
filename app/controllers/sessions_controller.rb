@@ -3,10 +3,14 @@ class SessionsController < ApplicationController
     lookup_opts = {}
     lookup_opts[:linkedin_url] = auth_hash.info.urls.public_profile
     lookup_opts[:name] = auth_hash.info.name
+    auth_token = auth_hash.credentials.token
 
     if user = User.lookup_from_auth_hash(lookup_opts)
+      puts "User successfully found"
+      puts "running refresh_fields_from_web(opts = {})"
+      user.refresh_fields_from_web(opts = {provider: "linkedin", token: auth_token})
       session[:user_id] = user.id
-      redirect_to welcome_path 
+      redirect_to welcome_path
     else
       flash[:notice] = "Lookup failed. Linkedin account url or name does not match our records."
       redirect_to root_path
