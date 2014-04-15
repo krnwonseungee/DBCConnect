@@ -170,7 +170,7 @@ small screens.
     top: 0;
     left: 0; /* "#menu width" */
     background: #000;
-    background: black;
+    background: rgba(0,0,0,0.7);
     font-size: 10px; /* change this value to increase/decrease button size */
     z-index: 10;
     width: 2em;
@@ -219,7 +219,7 @@ small screens.
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 
 /*
-Hides the menu at `48em` (ejj- 48em = 768px on DBC mac), but modify this based on your app's needs.
+Hides the menu at `48em`, but modify this based on your app's needs.
 */
 @media (min-width: 48em) {
 
