@@ -39,22 +39,19 @@ describe UsersController do
 
   end
 
-# No test for edit is required because the route behaves same as #show
   describe "edit" do
+    xit "renders partial for editing user information" do
+      get :edit, user: { id: fake_user.id }
+      expect(response).to render_template(:partial => '_edit')
+    end
   end
 
   describe "update" do
     xit "updates a user table entry" do
       new_name = "Joe Blow"
       expect {
-        put(:update, id: fake_user.id, user: { name: new_name })
-      }.to change { fake_user.reload.name }.to(new_name)
-    end
-    xit "renders user to json" do
-      new_name2 = "Joe Blow2"
-      put(:update, id: fake_user.id, user: { name: new_name2 })
-      @expected = { success: true, user: assigns(:user) }.to_json
-      expect(response.body).to eq @expected
+        put :update, id: fake_user.id, user: { name: new_name }
+      }.to change { fake_user.name }.to eq new_name
     end
   end
 
