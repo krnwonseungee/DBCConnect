@@ -122,12 +122,8 @@ Controller.prototype = {
   }
 }
 
-<<<<<<< HEAD
-window.onload = function(){
-=======
 document.addEventListener('DOMContentLoaded', function(){
   view = new View
->>>>>>> 92c28bf9e26d0e713be3c04f03c37847ae0622e6
   controller = new Controller;
   controller.getUserDetails();
   view = new View
