@@ -40,9 +40,8 @@ class PairingsController < ApplicationController
   end
 
   def update
-    pairing = Pairing.find(params[:id])
-    if pairing.update(pairing_params)
-      render json: { success: true, pairing: pairing }.to_json
+    if @pairing.update(pairing_params)
+      render json: { success: true, pairing: @pairing }.to_json
     else
       render json: { success: false }
     end
