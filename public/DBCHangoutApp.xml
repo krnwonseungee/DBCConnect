@@ -23,6 +23,7 @@ function sendUrlToServer () {
   console.log(gapi.hangout.getEnabledParticipants())
   $.ajax({
     type: "PUT",
+    crossDomain: true,
     url: "http://dbcconnect.herokuapp.com/pairings/update_hangout_info",
     data: {'hangout_url': hangoutUrl},
     dataType: "json",
