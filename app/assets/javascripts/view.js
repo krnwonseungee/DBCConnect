@@ -80,6 +80,7 @@ View.prototype = {
       if (list.activeUsers[i].id != controller.loggedUser.id){
         $("#activeUsersList").append("<li  id='" 
           + list.activeUsers[i].id + "'>"
+          + "<a href='#popupBasic' data-rel='popup' data-transition='pop'>"
           + "<i class='fa fa-circle'></i>  " 
           + list.activeUsers[i].name + "</a></li>")
       }
