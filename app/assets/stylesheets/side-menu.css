@@ -12,7 +12,8 @@ Add transition to containers so they can push in and out.
 */
 #layout,
 #menu,
-.menu-link {
+.menu-link
+.leaflet-control-zoom {
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     -ms-transition: all 0.2s ease-out;
@@ -39,6 +40,8 @@ This is the parent `<div>` that contains the menu and the content area.
         #layout.active .menu-link {
             left: 150px;
         }
+
+
 /*
 The content `<div>` is where all your content goes.
 */
@@ -167,12 +170,13 @@ small screens.
     top: 0;
     left: 0; /* "#menu width" */
     background: #000;
-    background: red;
+    background: black;
     font-size: 10px; /* change this value to increase/decrease button size */
     z-index: 10;
     width: 2em;
-    height: auto;
-    /*padding: 2.1em 1.6em;*/
+    height: 54px;
+    /*height: auto;*/
+    padding: 2.1em 1.6em;
 }
 
     .menu-link:hover,
@@ -207,11 +211,10 @@ small screens.
             height: 54px;
         }
 
-        .leaflet-control-zoom {
-          position: fixed;
-          top: 58px;
-          left: 20px;
-        }
+.pure-menu-horizontal li {
+  margin: -10px;
+}
+
 
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 
@@ -248,10 +251,8 @@ Hides the menu at `48em` (ejj- 48em = 768px on DBC mac), but modify this based o
         height: 54px;
     }
 
-    .leaflet-control-zoom {
-      position: fixed;
-      top: 58px;
-      left: 170px;
+    .pure-menu-horizontal li {
+      margin: 0px;
     }
 
 

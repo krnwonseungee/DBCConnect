@@ -58,5 +58,17 @@ a.user-link {
   padding: 0px;
 }
 
+i.fa.fa-bars.fa-2x {
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.leaflet-control-zoom {
+  position: fixed;
+  right: 20px;
+  top: 58px;
+
+}
 
 
