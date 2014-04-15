@@ -66,8 +66,11 @@ View.prototype = {
 
   showGoogleHangoutButtonResponder: function(url){
     console.log("showing responder button")
-    var elem = "<a href='" + url + "'>Click To Pair</a>";
-    $(elem).bPopup();
+    $("#top_navbar").prepend("<li>"
+      + "<a href='" + url + "'>"
+      + "Click Here</a></li>")
+    // var elem = "<a href='" + url + "'>Click To Pair</a>";
+    // $(elem).bPopup();
   },
 
   renderList: function(){
