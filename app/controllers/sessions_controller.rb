@@ -7,6 +7,10 @@ class SessionsController < ApplicationController
 
     if user = User.lookup_from_auth_hash(lookup_opts)
       puts "User successfully found"
+      puts "$" * 500
+      puts "oauth auth hash is "
+      p auth_hash
+      puts "$" * 500
       puts "running refresh_fields_from_web(opts = {})"
       user.refresh_fields_from_web(opts = {provider: "linkedin", token: auth_token})
       session[:user_id] = user.id
