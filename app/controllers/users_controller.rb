@@ -8,33 +8,23 @@ class UsersController < ApplicationController
 
   def show
     render partial: 'show', locals: { user: @user }
-    # render json: { user: user }.to_json
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       render partial: 'show', locals: { user: @user }
-
-    # else
-    #   redirect_to new_user_path
     end
   end
 
   def edit
-    # render json: { user: @user }.to_json
     render partial: 'edit', locals: { user: @user }
   end
 
   def update
     user = User.find(params[:id])
     user.update(user_params)
-      user.save
-      p "SUCCESS" * 50
-    #   render partial: 'show', locals: { user: @user }
-    # else
-    #   p "FAIL" * 50
-    # end
+    user.save
   end
 
   def get_active_users
@@ -62,11 +52,6 @@ class UsersController < ApplicationController
       @user_obj_array << User.find_by_name(name)
     end
 
-    p "*"*80
-    p @user_obj_array
-    p "*"*80
-
-    # render json: { user_obj_array: @user_obj_array }.to_json
     render partial: 'results', locals: { results: @user_obj_array }
   end
 
