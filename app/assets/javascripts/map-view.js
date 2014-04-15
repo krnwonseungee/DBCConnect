@@ -53,6 +53,7 @@ BootMap.View.prototype = {
                     "<div class='user-popup'>",
                     userName.join(""),
                     socialMedia.join(""),
+                    boot.current_location,
                     "</div>"
                   ]
     return content.join("")
