@@ -8,7 +8,15 @@ SearchResults.Controller.prototype = {
       // console.log("SEARCHVALUE" + searchValue)
       searchResultsController.retrieveResults(searchValue);
     })
-  },
+
+    $('#main').on("click", "a", function(e){
+      e.preventDefault();
+      var clickedLinkPathname = $(this).attr('href')
+      var userId = clickedLinkPathname.substr(clickedLinkPathname.length - 3)
+      console.log(userId);
+      searchResultsController.fetchUserInfo(userId);
+    })},
+
 
   retrieveResults: function(searchValue){
       // debugger
@@ -23,6 +31,20 @@ SearchResults.Controller.prototype = {
 
   renderResults: function(results){
     $('#main').empty().append(results)
-  }
+  },
 
+  fetchUserInfo: function(userId){
+    // debugger
+    event.preventDefault();
+    $.ajax({
+      type: "get",
+      url: "/users/" + userId
+    }).done(function(data){
+      searchResultsController.showUserProfile(data)
+    })
+  },
+
+  showUserProfile: function(partial){
+    $('#main').html(partial)
+  }
 }
