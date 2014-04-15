@@ -40,18 +40,25 @@ describe UsersController do
   end
 
   describe "edit" do
-    xit "renders partial for editing user information" do
-      get :edit, user: { id: fake_user.id }
+    it "renders partial for editing user information" do
+      get :edit, id: fake_user.id
       expect(response).to render_template(:partial => '_edit')
     end
   end
 
   describe "update" do
-    xit "updates a user table entry" do
+    it "updates a user table entry" do
       new_name = "Joe Blow"
       expect {
         put :update, id: fake_user.id, user: { name: new_name }
       }.to change { fake_user.name }.to eq new_name
+    end
+  end
+
+  describe "results" do
+    it "shows list of users matching search results" do
+      post :results, pgsearch: fake_user.name
+      expect(response).to render_template(:partial => '_results')
     end
   end
 
