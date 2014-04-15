@@ -2,8 +2,6 @@ class PairingsController < ApplicationController
   before_action :set_pairing, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token
 
-
-
   def allow_cors
     set_headers
     head(:ok) if request.request_method == "OPTIONS"
@@ -12,8 +10,8 @@ class PairingsController < ApplicationController
   end
 
   def index
-    @pairings = Pairing.where("requestor_id = ? OR responder_id = ?",current_user.id,current_user.id)
-    render json: { pairings: @pairings }.to_json
+    pairings = Pairing.where("requestor_id = ? OR responder_id = ?",current_user.id,current_user.id)
+    render json: { pairings: pairings }.to_json
   end
 
   def show
@@ -42,11 +40,19 @@ class PairingsController < ApplicationController
   end
 
   def update
-    pairing = Pairing.find(params[:id])
-    if pairing.update(pairing_params)
-      render json: { success: true, pairing: pairing }.to_json
+    if @pairing.update(pairing_params)
+      render json: { success: true, pairing: @pairing }.to_json
     else
       render json: { success: false }
+    end
+  end
+
+  def get_hangout_url #DOES THIS COMPARISON ACCOUNT FOR STRING INSTEAD OF INT IN THE ID???
+    pairing = Pairing.where("requestor_id = ? AND responder_id = ?",params[:requestor_id],current_user.id)
+    if pairing
+      render json: { success: true, hangout_url: pairing.hangout_url }
+    else
+      render json: { success: false}
     end
   end
 

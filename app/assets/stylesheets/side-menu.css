@@ -12,7 +12,8 @@ Add transition to containers so they can push in and out.
 */
 #layout,
 #menu,
-.menu-link {
+.menu-link
+.leaflet-control-zoom {
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     -ms-transition: all 0.2s ease-out;
@@ -39,6 +40,8 @@ This is the parent `<div>` that contains the menu and the content area.
         #layout.active .menu-link {
             left: 150px;
         }
+
+
 /*
 The content `<div>` is where all your content goes.
 */
@@ -171,7 +174,8 @@ small screens.
     font-size: 10px; /* change this value to increase/decrease button size */
     z-index: 10;
     width: 2em;
-    height: auto;
+    height: 54px;
+    /*height: auto;*/
     padding: 2.1em 1.6em;
 }
 
@@ -203,6 +207,13 @@ small screens.
         .menu-link span:after {
             margin-top: 0.6em;
         }
+        .pure-menu-open {
+            height: 54px;
+        }
+
+.pure-menu-horizontal li {
+  margin: -10px;
+}
 
 
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
@@ -235,4 +246,14 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     #layout.active .menu-link {
         left: 150px;
     }
+
+    .pure-menu-open {
+        height: 54px;
+    }
+
+    .pure-menu-horizontal li {
+      margin: 0px;
+    }
+
+
 }

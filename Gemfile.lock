@@ -218,7 +218,6 @@ DEPENDENCIES
   faker
   font-awesome-rails
   geocoder
-  jasmine
   jasmine-rails
   jbuilder (~> 1.2)
   jquery-rails

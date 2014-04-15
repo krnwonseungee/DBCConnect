@@ -1,9 +1,9 @@
 BootMap.Controller = function(){
-  this.view
 }
 
 BootMap.Controller.prototype = {
   newMap: function(){
+    if ($("#map").length < 1) return;
     var newMap = new L.map('map')
     this.map = newMap
   },
@@ -49,8 +49,7 @@ BootMap.Controller.prototype = {
     for(var i=0; i<bootData.length; i++){
       var thisBoot = bootData[i]
       if(controller.validateLocation(thisBoot)){
-        boot = new BootMap.Boot()
-        boot.setBootData(thisBoot)
+        boot = new BootMap.Boot(thisBoot)
         bootList.push(boot)
       }
     }
