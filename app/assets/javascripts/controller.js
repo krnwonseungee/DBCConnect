@@ -5,7 +5,7 @@ Controller.prototype = {
     view.setupMenuToResponsive();
     view.showHelpPopups();
     // controller.initializePairingIcon();
-    setInterval(this.refreshList, 1000);
+    setInterval(this.refreshList, 2000);
   },
 
   refreshList: function(){
@@ -20,13 +20,18 @@ Controller.prototype = {
   },
 
   pinging: function(){
-      $.ajax({
-        type: "get",
-        url: "/requests",
-        dataType: "json"
-      }).done(function(serverData){
-        console.log(serverData)
-      })
+    $.ajax({
+      type: "get",
+      url: "/requests",
+      dataType: "json"
+    }).done(function(serverData){
+      debugger
+      if (serverData.found){
+        controller.makeUserInactive();
+        controller.togglePinging();
+        view.showGoogleHangoutButtonResponder(serverData.hangout_url);
+      }
+    })
   },
 
   bindDomEvents: function(){
@@ -43,38 +48,38 @@ Controller.prototype = {
   },
 
   setPairingMode: function(node){
-    if (node.attributes.class.value === "active"){
-      user.active = false
-      var wantedStatus = false
-      controller.togglePinging();
+    if (node.attributes[0].value === "active"){
+      controller.loggedUser.activeState = false
     }else{
-      user.active = true
-      var wantedStatus = true
-      controller.togglePinging();
+      controller.loggedUser.activeState = true
     }
+    controller.togglePinging();
     $.ajax({
       type: "put",
-      url: "/users/" + user.id,
-      data: { user: {active: wantedStatus} }
+      url: "/users/" + controller.loggedUser.id,
+      data: { user: {active: controller.loggedUser.activeState} }
     }).done(function(serverData){})
   },
 
   togglePinging: function(){
-    if (user.active){
-      controller.pinger = setInterval(function(){controller.pinging}, 900)
-    }else{
-      clearInterval(controller.pinger);
+    if (controller.loggedUser.activeState){
+      debugger
+      controller.pinger = setInterval(function(){controller.pinging()}, 5000)
+    }else{ 
+      clearInterval(controller.pinger); 
     }
   },
 
   askToPairWithUser: function(id){//this will be used to create a popup to confirm
-    // view.populatePairingPopup();
     controller.makeUserInactive();
+    view.showGoogleHangoutButtonRequestor();
     controller.sendPairingRequest(id);
   },
 
   makeUserInactive:function(){
-    user.active = false;
+    controller.loggedUser.activeState = false;
+    controller.togglePinging();
+    view.refreshActiveIcon();
   },
 
   sendPairingRequest: function(id){
@@ -84,8 +89,7 @@ Controller.prototype = {
       url: "/requests",
       data: {responder_id: id},
       dataType: "json"
-    }).done(function(serverData){
-    })
+    }).done(function(serverData){})
   },
 
   getUserDetails: function(){
@@ -93,10 +97,11 @@ Controller.prototype = {
       type: "get",
       url: "/welcome/getuser"
     }).done(function(serverData){
-      user = new User;
-      user.id = serverData.user_id;
-      user.active = serverData.active;
-      user.name = serverData.name;
+      controller.loggedUser = new User;
+      controller.loggedUser.id = serverData.user_id;
+      controller.loggedUser.activeState = serverData.active;
+      controller.loggedUser.name = serverData.name;
+      view.showLoggedUser();
     })
   }
 }

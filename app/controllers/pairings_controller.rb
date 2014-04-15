@@ -2,8 +2,6 @@ class PairingsController < ApplicationController
   before_action :set_pairing, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token
 
-  
-
   def allow_cors
     set_headers
     head(:ok) if request.request_method == "OPTIONS"
