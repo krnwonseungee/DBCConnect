@@ -18,6 +18,16 @@ SearchResults.Controller.prototype = {
       searchResultsController.fetchUserInfo(userId);
     })
 
+    $('#main').on("click", ".editproflink", function(e){
+      e.preventDefault();
+      var editLinkPathname = $(this).attr('href')
+      console.log(editLinkPathname);
+      // debugger
+      // var editUserId = editLinkPathname.substr(editLinkPathname.length - 8)
+      console.log(editUserId);
+      // searchResultsController.fetchUserInfo(userId);
+    })
+
   },
 
 
@@ -48,6 +58,21 @@ SearchResults.Controller.prototype = {
   },
 
   showUserProfile: function(partial){
+    $('#main').html(partial)
+  },
+
+  fetchEditUserInfo: function(userId){
+    // debugger
+    event.preventDefault();
+    $.ajax({
+      type: "get",
+      url: editLinkPathname
+    }).done(function(data){
+      searchResultsController.showUserProfile(data)
+    })
+  },
+
+  showEditProfile: function(partial){
     $('#main').html(partial)
   }
 }

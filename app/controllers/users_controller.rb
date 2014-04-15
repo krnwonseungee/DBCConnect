@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    render json: { user: @user }.to_json
-    # render partial: 'edit', locals: { user: @user }
+    # render json: { user: @user }.to_json
+    render partial: 'edit', locals: { user: @user }
   end
 
   def update
