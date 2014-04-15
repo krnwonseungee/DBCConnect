@@ -10,5 +10,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
                   'public-profile-url',
                   'location',
                   'email-address'
-                ], {provider_ignores_state: true}
+                ], :provider_ignores_state => true
 end
