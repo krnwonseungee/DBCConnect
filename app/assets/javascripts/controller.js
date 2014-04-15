@@ -97,7 +97,7 @@ Controller.prototype = {
   }
 }
 
-window.onload = function(){
+document.addEventListener('DOMContentLoaded', function(){
   view = new View
   controller = new Controller;
   controller.getUserDetails();
@@ -111,6 +111,6 @@ window.onload = function(){
   map_controller.fetchUsers()
   map_controller.initializeMap(30.5, -10.5, 3)
   map_view.drawMap()
-}
+});
 
 
