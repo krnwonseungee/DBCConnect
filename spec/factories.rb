@@ -16,7 +16,7 @@ FactoryGirl.define do
     quora { Faker::Internet.url }
     twitter { Faker::Internet.url }
     facebook { Faker::Internet.url }
-    linked_in { Faker::Internet.url }
+    linked_in { Faker::Internet.url('example.com/in') }
     blog { Faker::Internet.url }
     about { Faker::Lorem.paragraph }
     hometown { Faker::Address.city }
