@@ -2,7 +2,10 @@ class User < ActiveRecord::Base
   belongs_to :cohort
   has_many :requests
 
-  def self.lookup_from_auth_hash(opts = {})
+  def self.lookup_from_auth_hash(auth_hash)
+    opts = {}
+    opts[:linkedin_url] = auth_hash.info.urls.public_profile
+    opts[:name] = auth_hash.info.name
     #Regex in next line finds "in/" then grabs the user public profile id after
     # e.g. 'http://www.linkedin.com/in/bechtelm' becomes 'bechtelm'
     li_url_substring_in = opts[:linkedin_url][/(?<=in\/)[\w-]+/]
@@ -17,8 +20,9 @@ class User < ActiveRecord::Base
     user ||= User.find_by_name(opts[:name])
   end
 
-  def refresh_fields_from_web(opts = {})
-    if opts[:provider] = "linkedin"
+  def update_records_from_linkedin_auth_hash(auth_hash)
+    opts = {}
+    if opts[:location]
       refresh_fields_from_linkedin(opts[:token])
     end
   end
@@ -51,10 +55,8 @@ class User < ActiveRecord::Base
 
   private
 
-  def refresh_fields_from_linkedin(token)
-    linkedin_client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
-    linkedin_client.authorize_from_access(token)
-    user = linkedin_client.profile(:fields => %w(last-modified-timestamp))
+  def refresh_fields_from_linkedin(opts={})
+
   end
 
 end
