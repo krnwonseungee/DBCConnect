@@ -28,8 +28,18 @@ Controller.prototype = {
       if (serverData.found){
         controller.makeUserInactive();
         controller.togglePinging();
-        view.showGoogleHangoutButtonResponder(serverData.hangout_url);
+        controller.askForHangoutUrl(serverData.requestor_id);
       }
+    })
+  },
+
+  askForHangoutUrl: function(requestor_id){
+    $.ajax({
+      type: "get",
+      url: "/pairings?id=" + requestor_id,
+      dataType: "json"
+    }).done(function(serverData){
+      view.showGoogleHangoutButtonResponder(serverData.hangout_url);
     })
   },
 
