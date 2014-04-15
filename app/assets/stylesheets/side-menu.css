@@ -167,12 +167,12 @@ small screens.
     top: 0;
     left: 0; /* "#menu width" */
     background: #000;
-    background: rgba(0,0,0,0.7);
+    background: red;
     font-size: 10px; /* change this value to increase/decrease button size */
     z-index: 10;
     width: 2em;
     height: auto;
-    padding: 2.1em 1.6em;
+    /*padding: 2.1em 1.6em;*/
 }
 
     .menu-link:hover,
@@ -203,12 +203,20 @@ small screens.
         .menu-link span:after {
             margin-top: 0.6em;
         }
+        .pure-menu-open {
+            height: 54px;
+        }
 
+        .leaflet-control-zoom {
+          position: fixed;
+          top: 58px;
+          left: 20px;
+        }
 
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 
 /*
-Hides the menu at `48em`, but modify this based on your app's needs.
+Hides the menu at `48em` (ejj- 48em = 768px on DBC mac), but modify this based on your app's needs.
 */
 @media (min-width: 48em) {
 
@@ -235,4 +243,16 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     #layout.active .menu-link {
         left: 150px;
     }
+
+    .pure-menu-open {
+        height: 54px;
+    }
+
+    .leaflet-control-zoom {
+      position: fixed;
+      top: 58px;
+      left: 170px;
+    }
+
+
 }
