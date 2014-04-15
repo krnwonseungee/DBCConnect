@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       render partial: 'show', locals: { user: @user }
+    else
+      redirect_to new_user_path
     end
   end
 

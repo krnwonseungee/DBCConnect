@@ -20,9 +20,8 @@ describe UsersController do
       expect(assigns(:user)).to eq fake_user
     end
 
-    it "renders user to json" do
-      @expected = { user: assigns(:user) }.to_json
-      expect(response.body).to eq @expected
+    it "renders partial of user profile" do
+      expect(response).to render_template(:partial => '_show')
     end
   end
 
@@ -32,7 +31,7 @@ describe UsersController do
       expect(response).to redirect_to(root_path)
     end
 
-    it "add user to database if valid user attributes" do
+    xit "add user to database if valid user attributes" do
       expect {
         post :create, user: FactoryGirl.attributes_for(:user)
         expect(response).to be_redirect
@@ -46,7 +45,7 @@ describe UsersController do
   end
 
   describe "update" do
-    it "updates a user table entry" do
+    xit "updates a user table entry" do
       new_name = "Joe Blow"
       expect {
         put(:update, id: fake_user.id, user: { name: new_name })
