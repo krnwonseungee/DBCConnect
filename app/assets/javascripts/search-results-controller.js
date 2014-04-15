@@ -28,6 +28,22 @@ SearchResults.Controller.prototype = {
       searchResultsController.fetchEditUserInfo(editLinkPathname);
     })
 
+    $('#main').on("submit", ".update_user", function(e){
+      e.preventDefault();
+      rerouteProfLink = this.action
+      // var clickedLinkPathname = $(this).attr('href')
+      var rerouteUserId = rerouteProfLink.substr(rerouteProfLink.length - 3)
+      // console.log(userId);
+      searchResultsController.fetchUserInfo(rerouteUserId);
+    })
+
+    // $("#searchbar").submit(function(e){
+    //   e.preventDefault();
+    //   var searchValue = $("input:first").val();
+    //   // console.log("SEARCHVALUE" + searchValue)
+    //   searchResultsController.retrieveResults(searchValue);
+    // })
+
   },
 
 
