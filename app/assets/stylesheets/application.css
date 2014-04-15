@@ -10,6 +10,10 @@
  *
  *= require_self
  *= require leaflet
+ *= require pure
+ *= require main-grid
+ *= require marketing
+ *= require dbc-connect
  *= require_tree .
  *= require font-awesome
  */
