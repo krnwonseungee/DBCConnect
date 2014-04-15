@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
                                 :company,
                                 :location
                               ]
-  geocoded_by :current_location, lookup: :esri
+  geocoded_by :current_location
   unless Rails.env.test?
     after_validation :geocode
   end
