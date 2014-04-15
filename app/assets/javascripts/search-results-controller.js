@@ -42,7 +42,6 @@ SearchResults.Controller.prototype = {
       dataType: "json",
       data: formData
     }).done(function(data){
-      console.log("this has succeeded")
       searchResultsController.fetchEditUserInfo(rerouteProfLink);
     })
   },
@@ -59,11 +58,10 @@ SearchResults.Controller.prototype = {
   },
 
   renderResults: function(results){
-    $('#main').empty().append(results)
+    $('#map').empty().append(results)
   },
 
   fetchUserInfo: function(userId){
-    // debugger
     event.preventDefault();
     $.ajax({
       type: "get",
@@ -74,7 +72,7 @@ SearchResults.Controller.prototype = {
   },
 
   showUserProfile: function(partial){
-    $('#main').html(partial)
+    $('#map').empty().html(partial)
   },
 
   fetchEditUserInfo: function(editLinkPathname){
