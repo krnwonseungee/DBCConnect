@@ -1,6 +1,14 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :linkedin, ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET']
-  #Default fields grabbed by omniauth-linkedin:
-  # ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url']
-
+  provider :linkedin,
+                ENV['LINKEDIN_KEY'],
+                ENV['LINKEDIN_SECRET'],
+                :scope => 'r_fullprofile', 'r_emailaddress'
+                :fields =>[
+                  'first-name',
+                  'last-name',
+                  'picture-url',
+                  'public-profile-url',
+                  'location',
+                  'email-address'
+                ]
 end
