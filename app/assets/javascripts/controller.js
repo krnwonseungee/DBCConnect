@@ -4,7 +4,7 @@ Controller.prototype = {
   initialize: function(){
     view.setupMenuToResponsive();
     view.showHelpPopups();
-    // controller.initializePairingIcon();
+    // controller.initializePairingIcon(); to be implemented
     setInterval(this.refreshList, 2003);
   },
 
@@ -122,19 +122,25 @@ Controller.prototype = {
   }
 }
 
+<<<<<<< HEAD
 window.onload = function(){
+=======
+document.addEventListener('DOMContentLoaded', function(){
+  view = new View
+>>>>>>> 92c28bf9e26d0e713be3c04f03c37847ae0622e6
   controller = new Controller;
   controller.getUserDetails();
   view = new View
   controller.initialize();
   controller.bindDomEvents();
 
+  if (!document.getElementById('map')) return;
   map_controller = new BootMap.Controller
   map_view = new BootMap.View(map_controller)
   map_controller.view = map_view
   map_controller.fetchUsers()
   map_controller.initializeMap(30.5, -10.5, 3)
   map_view.drawMap()
-}
+});
 
 

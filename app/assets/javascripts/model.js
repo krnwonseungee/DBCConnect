@@ -10,4 +10,3 @@ User = function(){
   this.id = null
   this.activeState = false
 }
-

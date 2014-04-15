@@ -1,9 +1,9 @@
 BootMap.Controller = function(){
-  this.view
 }
 
 BootMap.Controller.prototype = {
   newMap: function(){
+    if ($("#map").length < 1) return;
     var newMap = new L.map('map')
     this.map = newMap
   },
