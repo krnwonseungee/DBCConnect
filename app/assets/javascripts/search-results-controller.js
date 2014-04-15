@@ -24,8 +24,8 @@ SearchResults.Controller.prototype = {
       console.log(editLinkPathname);
       // debugger
       // var editUserId = editLinkPathname.substr(editLinkPathname.length - 8)
-      console.log(editUserId);
-      // searchResultsController.fetchUserInfo(userId);
+      // console.log(editUserId);
+      searchResultsController.fetchEditUserInfo(editLinkPathname);
     })
 
   },
@@ -61,7 +61,7 @@ SearchResults.Controller.prototype = {
     $('#main').html(partial)
   },
 
-  fetchEditUserInfo: function(userId){
+  fetchEditUserInfo: function(editLinkPathname){
     // debugger
     event.preventDefault();
     $.ajax({
