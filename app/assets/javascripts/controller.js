@@ -69,7 +69,12 @@ Controller.prototype = {
 
   askToPairWithUser: function(id){//this will be used to create a popup to confirm
     // view.populatePairingPopup();
+    controller.makeUserInactive();
     controller.sendPairingRequest(id);
+  },
+
+  makeUserInactive:function(){
+    user.active = false;
   },
 
   sendPairingRequest: function(id){
@@ -97,9 +102,9 @@ Controller.prototype = {
 }
 
 window.onload = function(){
-  view = new View
   controller = new Controller;
   controller.getUserDetails();
+  view = new View
   controller.initialize();
   controller.bindDomEvents();
 
