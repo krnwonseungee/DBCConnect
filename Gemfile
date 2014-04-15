@@ -39,7 +39,6 @@ gem 'unicorn'
 gem 'rails_12factor' #recommended by Heroku "to enable all platform features"
 
 group :development, :test do
-  gem 'jasmine'
   gem 'jasmine-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
