@@ -32,7 +32,7 @@ BootMap.Controller.prototype = {
       url: '/users',
       type: 'get'
     }).done(function(data){
-      console.log(data)
+      globalUserData = data
       controller.facilitateMarkers(data.users)
     })
   },
