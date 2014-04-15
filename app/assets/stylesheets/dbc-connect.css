@@ -71,4 +71,16 @@ i.fa.fa-bars.fa-2x {
 
 }
 
+html .fa-chevron-right:before {
+  position: absolute;
+  color: white;
+  right: 1px;
+  top: 8px;
+}
 
+html .fa-chevron-left:before {
+  position: absolute;
+  color: white;
+  right: 17px;
+  top: 28px;
+}
