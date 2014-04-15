@@ -15,7 +15,7 @@ describe User do
       expect(User.lookup_from_auth_hash({linkedin_url: good_url})).to eq user
     end
     it "returns false when there's no lookup match" do
-      expect(User.lookup_from_auth_hash(linkedin_url: bad_url)).to be false
+      expect(User.lookup_from_auth_hash(linkedin_url: bad_url)).to be nil
     end
   end
 end

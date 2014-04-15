@@ -2,7 +2,7 @@ class PairingsController < ApplicationController
   before_action :set_pairing, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token
 
-  
+
 
   def allow_cors
     set_headers
@@ -10,7 +10,7 @@ class PairingsController < ApplicationController
     # or, render text: ''
     # if that's more your style
   end
-  
+
   def index
     @pairings = Pairing.where("requestor_id = ? OR responder_id = ?",current_user.id,current_user.id)
     render json: { pairings: @pairings }.to_json
@@ -55,6 +55,7 @@ class PairingsController < ApplicationController
     set_headers
     # Down the road, should have a better way of finding the correct pair
     # Could break if there's more than one request e.g. returning one pair's link to a different pair
+    # UPDATE -> SHOULD USE THE 'start_data' IN THE GOOGLE HANGOUT BUTTON TO PASS USER ID
     pairing = Pairing.last
     pairing.update(hangout_url: params[:hangout_url])
     render json: { success: false }
