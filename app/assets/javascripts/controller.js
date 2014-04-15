@@ -42,7 +42,6 @@ Controller.prototype = {
         dataType: "json"
       }).done(function(serverData){
         if (serverData.success){
-          debugger
           view.showGoogleHangoutButtonResponder(serverData.hangout_url);
           clearInterval(controller.urlPinger);
           controller.urlPinger = 0;
