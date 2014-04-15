@@ -107,7 +107,7 @@ window.onload = function(){
   map_controller = new BootMap.Controller
   map_view = new BootMap.View(map_controller)
   map_controller.view = map_view
-  bootlist = map_controller.fetchUsers()
+  map_controller.fetchUsers()
   map_controller.initializeMap(30.5, -10.5, 3)
   map_view.drawMap()
   console.log("you've loaded new production code")
