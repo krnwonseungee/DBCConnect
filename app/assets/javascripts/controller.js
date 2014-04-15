@@ -110,7 +110,6 @@ window.onload = function(){
   map_controller.fetchUsers()
   map_controller.initializeMap(30.5, -10.5, 3)
   map_view.drawMap()
-  console.log("you've loaded new production code")
 }
 
 
