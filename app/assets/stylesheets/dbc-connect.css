@@ -176,14 +176,31 @@ ul#top_navbar {
   float: right;
 }
 
-#profile {
+/*#profile {
   color: black;
   background-color: white;
   position: relative;
   float: left;
   top: -60px;
   left: 167px;
+}*/
+
+#user-profile {
+  /*background-color: grey;*/
 }
+
+#user-profile p {
+  padding-left: 10px;
+}
+
+#user-profile h1 {
+  padding-left: 10px;
+}
+
+.edit-profile-link  {
+  padding-left: 10px;
+}
+
 
 #container {
   color: black;
