@@ -34,6 +34,16 @@
     <div id="main">
         <div class="content">
         </div>
+
+        <% if flash[:welcome] %>
+          <div class="flash welcome-flash"><%= flash[:welcome] %></div>
+        <% end %>
+
+        <% if flash[:pairings] %>
+          <div class="flash pairings-flash"><%= flash[:pairings] %></div>
+        <% end %>
+
+
     </div>
 </div>
 
@@ -47,3 +57,10 @@
   Kicks off a Google Hangout in a new tab
 </div>
 
+<script type="text/javascript">
+$(function() {
+   $('.flash').delay(500).fadeIn('normal', function() {
+      $(this).delay(2500).fadeOut();
+   });
+});
+</script>

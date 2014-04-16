@@ -123,3 +123,20 @@ img#linkedin_login{
   border-radius: 8px;
   background-color: white;
 }
+
+.welcome-flash {
+  position: absolute;
+  top: 0px;
+  margin-top: -20px;
+  right: 290px;
+  text-align: right;
+  z-index: 1000;
+}
+
+.pairings-flash {
+  position: absolute;
+  top: 50px;
+  left: 290px;
+  text-align: right;
+  z-index: 1000;
+}

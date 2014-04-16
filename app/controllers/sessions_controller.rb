@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
   def create
     if user = User.lookup_from_auth_hash(auth_hash)
       session[:user_id] = user.id
+      flash[:welcome] = "Hello! Set your pairing availability above"
+      # flash[:availability] = "Set your availability"
+      flash[:pairings] = "Request a pairing"
       user.update_records_from_linkedin_auth_hash(auth_hash)
       redirect_to welcome_path
     else
