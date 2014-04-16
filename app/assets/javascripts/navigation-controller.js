@@ -1,11 +1,9 @@
 SearchBarController = function(){}
 SearchBarController.prototype = {
-  bindSearchbarEvent: function(){
-    $("#submit-search").submit(function(e){
-      e.preventDefault();
+  searchBarSubmit: function(){
       var searchValue = $("#search-input").val();
       searchBarController.retrieveResults(searchValue);
-    }),
+  },
 
   retrieveResults: function(searchValue){
     $.ajax({
@@ -20,11 +18,5 @@ SearchBarController.prototype = {
   renderResults: function(searchResultsPartial){
     view.renderPartial(searchResultsPartial)
   }
-
-
-
-    
-
 }
 
-searchBarController = new SearchBarController  
