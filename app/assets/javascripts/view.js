@@ -112,6 +112,11 @@ View.prototype = {
   renderPartial: function(partial){
     // this will bring a new quote and show the map again
     $('#container').empty().html(partial)
+  },
+
+  renderMap: function(){
+    $('#container').empty().html("<div id='map'></div>");
+    controller.createMap();
   }
 }
 
