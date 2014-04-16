@@ -55,6 +55,7 @@ Controller.prototype = {
       e.preventDefault();
       controller.loggedUser.activeState = false;
       controller.updatePairingMode();
+      controller.updatePairingTables();
       location.href = "/"
     });
     $("#activeUsersList").on("click", "a", function(e){
@@ -69,6 +70,12 @@ Controller.prototype = {
     });
   },
 
+  updatePairingTables: function(){
+    $.ajax({
+      url: "/pairings/" + controller.loggedUser.pairing_id,
+      type: "delete"
+    })
+  },
   setPairingMode: function(node){
     if (node.attributes[0].value === "active"){
       controller.loggedUser.activeState = false
@@ -116,7 +123,10 @@ Controller.prototype = {
       url: "/requests",
       data: {responder_id: id},
       dataType: "json"
-    }).done(function(serverData){})
+    }).done(function(serverData){
+      controller.loggedUser.request_id = serverData.request_id;
+      controller.loggedUser.pairing_id = serverData.pairing_id;
+    })
   },
 
   getUserDetails: function(){

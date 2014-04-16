@@ -1,9 +1,9 @@
 class RequestsController < ApplicationController
   def create
-    req = current_user.requests.create(responder_id: params[:responder_id].to_i)
-    Pairing.create(requestor_id: current_user.id, 
+    @request = current_user.requests.create(responder_id: params[:responder_id].to_i)
+    @pairing = Pairing.create(requestor_id: current_user.id, 
       responder_id: params[:responder_id].to_i)
-    render json: {success: "hello"}
+    render json: {request_id: @request.id , pairing_id: @pairing.id}
   end
 
   def request_polling

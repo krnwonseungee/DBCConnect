@@ -32,6 +32,7 @@ class PairingsController < ApplicationController
   end
 
   def destroy
+    @pairing = Pairing.find(params[:pairing_id])
     if @pairing.destroy
       render json: { success: true }
     else
