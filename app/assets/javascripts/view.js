@@ -50,7 +50,11 @@ View.prototype = {
   },
 
   refreshActiveIcon: function(){
-    $("#availability").children().children().attr("class", controller.loggedUser.activeState)
+    if (controller.loggedUser.activeState){
+      $("#availability").children().children().attr("class", "active")
+    }else{
+      $("#availability").children().children().attr("class", "inactive")
+    }
   },
 
   showGoogleHangoutButtonRequestor: function(){
