@@ -1,0 +1,14 @@
+<h1><%= user.name %></h1>
+<p><%= user.cohort.name %></p>
+<p><%= user.current_location %></p>
+<p><%= user.company %></p>
+
+<p><a href="<%= user.github %>">Github</a></p>
+<p><a href="<%= user.twitter %>">Twitter</a></p>
+<p><a href="<%= user.facebook %>">Facebook</a></p>
+<p><a href="<%= user.linked_in %>">LinkedIn</a></p>
+<p><a href="<%= user.blog %>">Blog</a></p>
+
+<% if user.id == session[:user_id] %>
+<%= link_to "Edit Your Profile", edit_user_path(user), { :class => "editproflink"} %>
+<% end %>
