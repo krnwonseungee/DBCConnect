@@ -20,6 +20,17 @@ class User < ActiveRecord::Base
     user ||= User.find_by_name(opts[:name])
   end
 
+   def self.fetch_public_profile_pics(auth_hash)
+    auth_token = auth_hash.credentials.token
+    client = LinkedIn::Client.new( ENV['LINKEDIN_KEY',
+                                                  ENV['LINKEDIN_SECRET'],
+                                                  auth_token)
+    puts "$" * 200
+    puts "Fetching profile of bechtelm - client.profile is:"
+    p client.profile(:url => 'http://www.linkedin.com/in/bechtelm')
+    puts "$" * 200
+   end
+
   def update_records_from_linkedin_auth_hash(auth_hash)
     if pic_url = grab_picture_url_from_linkedin(auth_hash)
       self.update_attribute(:picture_url, pic_url)
