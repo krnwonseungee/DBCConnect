@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: { user: @user }.to_json
+    render partial: 'show', locals: { user: @user }
   end
 
   def create
