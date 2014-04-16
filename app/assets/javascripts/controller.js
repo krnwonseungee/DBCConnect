@@ -51,6 +51,13 @@ Controller.prototype = {
   },
 
   bindDomEvents: function(){
+    $("#logout").on("click", function(e){
+      e.preventDefault();
+      controller.loggedUser.activeState = false;
+      controller.updatePairingMode();
+      controller.updatePairingTables();
+      location.href = "/"
+    });
     $("#activeUsersList").on("click", "a", function(e){
       clickedUserId = e.target.parentElement.id;
       controller.askToPairWithUser(clickedUserId);
@@ -63,12 +70,22 @@ Controller.prototype = {
     });
   },
 
+  updatePairingTables: function(){
+    $.ajax({
+      url: "/pairings/" + controller.loggedUser.pairing_id,
+      type: "delete"
+    })
+  },
   setPairingMode: function(node){
-    if (node.attributes[0].value === "active"){
+    if ($("#availability").children().children().attr("class") === "active"){
       controller.loggedUser.activeState = false
     }else{
       controller.loggedUser.activeState = true
     }
+    controller.updatePairingMode();
+  },
+
+  updatePairingMode: function(){
     controller.togglePinging();
     $.ajax({
       type: "put",
@@ -105,7 +122,10 @@ Controller.prototype = {
       url: "/requests",
       data: {responder_id: id},
       dataType: "json"
-    }).done(function(serverData){})
+    }).done(function(serverData){
+      controller.loggedUser.request_id = serverData.request_id;
+      controller.loggedUser.pairing_id = serverData.pairing_id;
+    })
   },
 
   getUserDetails: function(){
@@ -117,7 +137,9 @@ Controller.prototype = {
       controller.loggedUser.id = serverData.user_id;
       controller.loggedUser.activeState = serverData.active;
       controller.loggedUser.name = serverData.name;
+      view.refreshActiveIcon();
       view.showLoggedUser();
+      controller.updatePairingMode();
     })
   }
 }

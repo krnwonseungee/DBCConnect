@@ -13,7 +13,7 @@ View.prototype = {
             view.toggleClass(layout, active);
             view.toggleClass(menu, active);
             view.toggleClass(menuLink, active);
-        };    
+        };
       }
   },
 
@@ -50,27 +50,40 @@ View.prototype = {
   },
 
   refreshActiveIcon: function(){
-    $("#availability").children().children().attr("class", controller.loggedUser.activeState)
+    if (controller.loggedUser.activeState){
+      $("#availability").children().children().attr("class", "active")
+    }else{
+      $("#availability").children().children().attr("class", "inactive")
+    }
   },
 
   showGoogleHangoutButtonRequestor: function(){
     console.log("showing requestor button")
-    // gapi.hangout.render('placeholder-div1', {
-    //   'render': 'createhangout',
-    //   'initial_apps': [{'app_id' : '212567943044', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]
-    // });
-    $("#top_navbar").prepend("<li>"
-      + "<a href='http://plus.google.com/hangouts/_?gid=212567943044'>"
-      + "Click Here</a></li>")
+
+    $(".button-div").empty().prepend(
+      "<a id='pairing-link'class='pure-button pure-button-active'"
+      +"href='http://plus.google.com/hangouts/_?gid=212567943044' target=_blank>"
+      +"Request Pairing"
+      + "</a>")
+    $('#pairing-link').on('click', function(){
+      $('.close-pop-up').click()
+    })
   },
 
   showGoogleHangoutButtonResponder: function(url){
     console.log("showing responder button")
-    $("#top_navbar").prepend("<li>"
-      + "<a href='" + url + "'>"
-      + "Click Here</a></li>")
-    // var elem = "<a href='" + url + "'>Click To Pair</a>";
-    // $(elem).bPopup();
+    $("#top_navbar").prepend(
+      "<a id='ghost' href='#pop-up' rel='modal:open'>")
+    $('#ghost').click()
+    $(".button-div").empty().prepend(
+      "<a id='pairing-link' class='pure-button pure-button-active'"
+      +"href='"+ url
+      +"' target=_blank>"
+      +"Join Pairing"
+      + "</a>")
+    $('#pairing-link').on('click', function(){
+      $('.close-pop-up').click()
+    })
   },
 
   renderList: function(){
@@ -78,10 +91,10 @@ View.prototype = {
     var numOfActiveUsers = list.activeUsers.length;
     for (var i = 0; i < numOfActiveUsers; i++){
       if (list.activeUsers[i].id != controller.loggedUser.id){
-        $("#activeUsersList").append("<li  id='" 
+        $("#activeUsersList").append("<li  id='"
           + list.activeUsers[i].id + "'>"
-          + "<a href='#popupBasic' data-rel='popup' data-transition='pop'>"
-          + "<i class='fa fa-circle'></i>  " 
+          + "<a href='#pop-up' rel='modal:open'>"
+          + "<i class='fa fa-circle'></i>  "
           + list.activeUsers[i].name + "</a></li>")
       }
     }

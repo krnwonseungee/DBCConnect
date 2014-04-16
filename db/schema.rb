@@ -47,6 +47,11 @@ ActiveRecord::Schema.define(version: 201404122226370700) do
     t.datetime "updated_at"
   end
 
+  create_table "quotes", force: true do |t|
+    t.string "content"
+    t.string "author"
+  end
+
   create_table "requests", force: true do |t|
     t.integer "responder_id"
     t.integer "user_id"

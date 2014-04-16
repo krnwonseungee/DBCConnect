@@ -24,14 +24,14 @@ a#logo {
   width: 200px;
 }
 
-.user-popup a:hover, .fa:hover {
+.user-popup a:hover {
   color: rgba(110, 204, 57, 0.6);
 }
 
-.user-popup a:hover, .inactive:hover {
+/*.user-popup a:hover, .inactive:hover {
   color: rgba(110, 204, 57, 0.6);
 }
-
+*/
 ul.social-media {
   padding-left: 0px;
 }
@@ -66,6 +66,17 @@ i.fa.fa-bars.fa-2x {
   right: 20px;
   top: 58px;
 
+}
+
+.close-pop-up {
+  color: #3F3C3C;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
+
+a#ghost {
+  display: none;
 }
 
 html .fa-chevron-right:before {

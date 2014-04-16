@@ -16,6 +16,8 @@
  *= require dbc-connect
  *= require_tree .
  *= require font-awesome
+ *= require jquery.ui.all
+ *= require jquery.modal
  */
 .inactive {
   color: #e74c3c;
