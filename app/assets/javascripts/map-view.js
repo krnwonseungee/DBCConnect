@@ -44,9 +44,9 @@ BootMap.View.prototype = {
 
   formatPopup: function(boot){
     var userName = [
-    "<a class='user-link' href=",
-    "/users/",boot.id,
-    ">",
+    "<a class='profile-link user-link'",
+    "id='",boot.id,
+    "'>",
     boot.name,
     "</a>"
     ]

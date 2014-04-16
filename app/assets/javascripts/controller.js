@@ -70,7 +70,24 @@ Controller.prototype = {
     });
     $("#submit-search").on("click", function(e){
       e.preventDefault();
-      searchBarController.searchBarSubmit();
+      navigationController.searchBarSubmit();
+    });
+
+    $(document).on("click", '.profile-link', function(e){
+      e.preventDefault();
+      var userId = e.target.id
+      navigationController.requestShowUserProfile(userId);
+    });
+
+    $(document).on("click", '.edit-profile-link', function(e){
+      e.preventDefault();
+      var userId = e.target.id
+      navigationController.requestEditUserProfile(userId);
+    });
+
+    $(document).on("click", '#update-submit', function(e){
+      e.preventDefault();
+      navigationController.submitEditUserProfile();
     });
   },
 
@@ -150,7 +167,7 @@ Controller.prototype = {
 
 document.addEventListener('DOMContentLoaded', function(){
   view = new View
-  searchBarController = new SearchBarController  
+  navigationController = new NavigationController  
   controller = new Controller;
   controller.getUserDetails();
   controller.initialize();
