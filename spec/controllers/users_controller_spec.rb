@@ -48,10 +48,12 @@ describe UsersController do
 
   describe "update" do
     it "updates a user table entry" do
-      new_name = "Joe Blow"
+      # new_attr = { name: "Joe Blow" }
+      # put :update, :id => fake_user.id, :user => { :name => "Joe Blow" }
       expect {
-        put :update, id: fake_user.id, user: { name: new_name }
-      }.to change { fake_user.name }.to eq new_name
+        patch :update, id: fake_user.id, user: {:name => "Joe Blow"}
+        fake_user.reload
+      }.to change(fake_user, :name).to("Joe Blow")
     end
   end
 
