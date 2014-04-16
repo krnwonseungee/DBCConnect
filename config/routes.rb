@@ -22,6 +22,8 @@ DBCconnect::Application.routes.draw do
   # Hangout app gadget sends ajax to this once hangout created
   put '/pairings/update_hangout_info', to: 'pairings#update_hangout_info'
 
+  get '/quotes', to: 'welcome#quote'
+
   resources :users
 
   resources :cohorts, only: [:index, :show]
