@@ -45,12 +45,12 @@ describe PairingsController do
       it "deletes a pairing table entry" do
         fake_pairing
         expect{
-          delete :destroy, :id => fake_pairing.id, :pairing_id => fake_pairing.id
+          delete :destroy, id: fake_pairing.id, pairing_id: fake_pairing.id
           }.to change{ Pairing.count }.by(-1)
       end
       it "renders 'success: true' to json" do
         fake_pairing
-        delete :destroy, :id => fake_pairing.id, pairing_id: fake_pairing.id
+        delete :destroy, id: fake_pairing.id, pairing_id: fake_pairing.id
         @expected = { success: true }.to_json
         expect(response.body).to eq @expected
       end
