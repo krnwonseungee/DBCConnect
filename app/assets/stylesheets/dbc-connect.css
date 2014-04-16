@@ -115,7 +115,24 @@ img#linkedin_login{
   box-shadow: 1px 1px black;
 }
 
-html div.splash p {
+/*html div.splash p#flash-notice {
+  color: red;
+  text-shadow: 2px 2px 4px black;
+  background-color: rgba(255,255,255,0.2);
+  font-size: 125%;
+  }*/
+
+html div.splash p#flash-notice {
+  color: red;
+  text-shadow: 1px 1px 0px black;
+  background-color: rgba(255,255,255,0.4);
+  font-size: 125%;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+  font-weight: 400;
+  }
+
+html div.splash p#login-quote {
   font-size: 140%;
   color: white;
   font-style: italic;
