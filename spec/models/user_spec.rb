@@ -20,10 +20,10 @@ describe User do
       puts "$" * 999
 
       #see: http://natashatherobot.com/rails-test-omniauth-sessions-controller/
-      expect(User.lookup_from_auth_hash({linkedin_url: good_url})).to eq user
+      expect(User.lookup_from_auth_hash(auth_hash)).to eq user
     end
     it "returns false when there's no lookup match" do
-      expect(User.lookup_from_auth_hash(linkedin_url: bad_url)).to be nil
+      expect(User.lookup_from_auth_hash(auth_hash)).to be nil
     end
   end
 end
