@@ -16,6 +16,10 @@ class SessionsController < ApplicationController
 
   protected
 
+  def fetch_public_profile_pics(auth_hash)
+
+  end
+
   def auth_hash
     request.env['omniauth.auth']
   end

@@ -26,9 +26,13 @@ gem 'faker'
 
 #leaflet for mapping
 gem 'leaflet-rails'
+
 # For omniauth and providers
 gem 'omniauth'
 gem 'omniauth-linkedin-oauth2'
+
+# For non-login linkedin api calls
+gem  'linkedin-oauth2'
 
 #geocoder to generate lat,long
 gem "geocoder"
