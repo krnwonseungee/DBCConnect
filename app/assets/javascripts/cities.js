@@ -12,10 +12,6 @@ BootMap.City.prototype = {
 
   cityBootPopulation: function(){
     return this.boots.length
-  },
-
-  disperseBoots: function(){
-
   }
 }
 

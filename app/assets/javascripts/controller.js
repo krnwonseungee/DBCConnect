@@ -29,16 +29,16 @@ Controller.prototype = {
         controller.makeUserInactive();
         controller.togglePinging();
         controller.askForHangoutUrlPinger(serverData.requestor_id);
-
       }
     })
   },
 
   askForHangoutUrlPinger: function(requestor_id){
-    controller.urlPinger = setInterval(function(requestor_id){
+    controller.loggedUser.requestor_id = requestor_id
+    controller.urlPinger = setInterval(function(){
       $.ajax({
         type: "get",
-        url: "/pairings?id=" + requestor_id,
+        url: "/pairings/get_url/" + controller.loggedUser.requestor_id,
         dataType: "json"
       }).done(function(serverData){
         if (serverData.success){
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function(){
   map_view = new BootMap.View(map_controller)
   map_controller.view = map_view
   map_controller.fetchUsers()
-  map_controller.initializeMap(30.5, -10.5, 3)
+  map_controller.initializeMap(37.769, -70.429, 3)
   map_view.drawMap()
 });
 

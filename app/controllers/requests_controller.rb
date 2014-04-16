@@ -7,12 +7,12 @@ class RequestsController < ApplicationController
   end
 
   def request_polling
-    current_user_id = current_user.id
-    search_result = Request.find_by_responder_id(current_user_id)
-    if search_result
-      render json: {found: true, requestor_id: requestor_id}
+    @search_result = Request.find_by_responder_id(current_user.id)
+    if @search_result
+      @search_result.destroy
+      render json: {found: true, requestor_id: @search_result.user_id}
     else  
-      render json: {found: false, current_user_id: current_user_id}
+      render json: {found: false, current_user_id: current_user.id}
     end
   end
 

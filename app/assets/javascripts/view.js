@@ -54,15 +54,23 @@ View.prototype = {
   },
 
   showGoogleHangoutButtonRequestor: function(){
-    gapi.hangout.render('placeholder-div1', {
-      'render': 'createhangout',
-      'initial_apps': [{'app_id' : '212567943044', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]
-    });
+    console.log("showing requestor button")
+    // gapi.hangout.render('placeholder-div1', {
+    //   'render': 'createhangout',
+    //   'initial_apps': [{'app_id' : '212567943044', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]
+    // });
+    $("#top_navbar").prepend("<li>"
+      + "<a href='http://plus.google.com/hangouts/_?gid=212567943044'>"
+      + "Click Here</a></li>")
   },
 
   showGoogleHangoutButtonResponder: function(url){
-    var elem = "<a href='" + url + "'>Click To Pair</a>";
-    $(elem).bPopup();
+    console.log("showing responder button")
+    $("#top_navbar").prepend("<li>"
+      + "<a href='" + url + "'>"
+      + "Click Here</a></li>")
+    // var elem = "<a href='" + url + "'>Click To Pair</a>";
+    // $(elem).bPopup();
   },
 
   renderList: function(){
