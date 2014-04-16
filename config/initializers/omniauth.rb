@@ -9,6 +9,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
                   'picture-url',
                   'public-profile-url',
                   'location',
-                  'email-address'
+                  'email-address',
+                  'positions'
                 ], :provider_ignores_state => true
 end
