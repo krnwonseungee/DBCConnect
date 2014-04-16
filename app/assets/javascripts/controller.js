@@ -55,6 +55,7 @@ Controller.prototype = {
       e.preventDefault();
       controller.loggedUser.activeState = false;
       controller.updatePairingMode();
+      location.href = "/"
     });
     $("#activeUsersList").on("click", "a", function(e){
       clickedUserId = e.target.parentElement.id;
