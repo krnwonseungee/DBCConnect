@@ -48,9 +48,11 @@ class PairingsController < ApplicationController
   end
 
   def get_hangout_url #DOES THIS COMPARISON ACCOUNT FOR STRING INSTEAD OF INT IN THE ID???
-    pairing = Pairing.where("requestor_id = ? AND responder_id = ?",params[:requestor_id],current_user.id)
-    if pairing
-      render json: { success: true, hangout_url: pairing.hangout_url }
+    @pairing = Pairing.where("requestor_id = ? AND responder_id = ?",params[:requestor_id],current_user.id).first
+    
+    if @pairing && @pairing.hangout_url
+      @pairing.destroy      
+      render json: { success: true, hangout_url: @pairing.hangout_url }
     else
       render json: { success: false}
     end

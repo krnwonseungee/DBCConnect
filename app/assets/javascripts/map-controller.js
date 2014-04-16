@@ -16,7 +16,7 @@ BootMap.Controller.prototype = {
   initializeOSM: function(){
     var osmUrl    ='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib ='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors ';
-    var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 20, attribution: osmAttrib});
+    var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 10, attribution: osmAttrib});
     this.osm = osm
   },
 
@@ -40,6 +40,7 @@ BootMap.Controller.prototype = {
     var controller = this
     var bootList = controller.bootListFromJSON(serverData)
     controller.view.renderMarkers(bootList, controller.map)
+    controller.view.renderStats(controller.masterRoster.uniqueLocationsCount)
   },
 
   bootListFromJSON: function(bootData){
@@ -53,8 +54,8 @@ BootMap.Controller.prototype = {
         bootList.push(boot)
       }
     }
+    controller.generateUniqueLocations(bootList)
     return bootList
-    // controller.generateUniqueLocations(bootList)
   },
 
   validateLocation: function(boot){
@@ -66,25 +67,11 @@ BootMap.Controller.prototype = {
   generateUniqueLocations: function(bootList){
     var cityList = new BootMap.CityList
     cityList.populateUniqueCities(bootList)
-    var uniqueCities = cityList.uniqueCities
-    for(i=0; i<uniqueCities; i++){
-      var currentCity = uniqueCities[i]
-      var cityBootPop = currentCity.cityBootPopulation()
-      if(cityBootPop > 1){
-        currentCity.disperseBoots(variantArray)
-      }
-    }
-    // now, cityList.uniqueCities is an array of unique cities.
-    // for each city
-      // for each boot, modify the lat, long slightl.
+    this.masterRoster.uniqueLocationsCount = cityList.uniqueCities.length
   }
 }
 
 
-
-BootMap.MasterRoster = function(){
-  this.bootList = []
-}
 
 
 
