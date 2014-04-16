@@ -89,6 +89,11 @@ Controller.prototype = {
       e.preventDefault();
       navigationController.submitEditUserProfile();
     });
+
+    $("#logo").on("click", function(e){
+      e.preventDefault();
+      view.renderMap();
+    });
   },
 
   updatePairingTables: function(){

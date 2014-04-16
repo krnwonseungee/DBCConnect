@@ -111,6 +111,10 @@ View.prototype = {
 
   renderPartial: function(partial){
     $('#container').empty().html(partial)
+  },
+
+  renderMap: function(){
+    $('#container').empty().html("<div id='map'></div>");
   }
 }
 
