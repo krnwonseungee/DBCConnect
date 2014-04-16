@@ -70,8 +70,14 @@ Controller.prototype = {
     });
     $("#submit-search").on("click", function(e){
       e.preventDefault();
-      searchBarController.searchBarSubmit();
+      navigationController.searchBarSubmit();
     });
+
+    $('.profile-link').on("click", function(e){
+      e.preventDefault();
+      var userId = e.target.id
+      navigationController.requestShowUserProfile(userId);
+    })
   },
 
   updatePairingTables: function(){
@@ -150,7 +156,7 @@ Controller.prototype = {
 
 document.addEventListener('DOMContentLoaded', function(){
   view = new View
-  searchBarController = new SearchBarController  
+  navigationController = new NavigationController  
   controller = new Controller;
   controller.getUserDetails();
   controller.initialize();
