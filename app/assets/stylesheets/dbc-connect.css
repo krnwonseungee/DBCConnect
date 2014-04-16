@@ -112,6 +112,7 @@ img#linkedin_login{
   padding: 1px;
   border-radius: 8px;
   background-color: white;
+  box-shadow: 1px 1px black;
 }
 
 html div.splash p {
@@ -121,6 +122,7 @@ html div.splash p {
   margin: 0;
   border: 0;
   text-transform: lowercase;
+  text-shadow: 1px 1px black;
 }
 
 html div.splash p:first-letter {
