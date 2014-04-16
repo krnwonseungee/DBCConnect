@@ -51,11 +51,10 @@ describe UsersController do
         put(:update, id: fake_user.id, user: { name: new_name })
       }.to change { fake_user.reload.name }.to(new_name)
     end
-    xit "renders user to json" do
+    it "renders user to json" do
       new_name2 = "Joe Blow2"
       put(:update, id: fake_user.id, user: { name: new_name2 })
-      @expected = { success: true, user: assigns(:user) }.to_json
-      expect(response.body).to eq @expected
+      expect(response).to render_template(:partial => '_show')
     end
   end
 
