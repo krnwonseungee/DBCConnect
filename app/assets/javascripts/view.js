@@ -73,8 +73,8 @@ View.prototype = {
     $('#ghost').click()
     $(".button-div").empty().prepend(
       "<a id='pairing-link' class='pure-button pure-button-active'"
-      +"href="+ url
-      +"target=_blank>"
+      +"href='"+ url
+      +"' target=_blank>"
       +"Join Pairing"
       + "</a>")
     $('#pairing-link').on('click', function(){
