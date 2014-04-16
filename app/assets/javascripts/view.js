@@ -106,6 +106,10 @@ View.prototype = {
 
   showLoggedUser: function(){//make a link to the profile
     $("#logged_user").text(controller.loggedUser.name)
+  },
+
+  renderPartial: function(partial){
+    $('#container').empty().html(partial)
   }
 }
 
