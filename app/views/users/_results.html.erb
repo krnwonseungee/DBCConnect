@@ -4,7 +4,7 @@
   <table>
     <tr><th>Name</th><th>Cohort</th><th>Current Location</th><th>Company</th></tr>
     <% results.each do |user| %>
-      <% if user.name && user.cohort && user.current_location && user.company %>
+      <% if user %>
         <tr>
           <td><%= link_to user.name, user_path(user), { :class => "profile-link" , :id => user.id } %></td>
           <td><%= user.cohort.name %></td>
