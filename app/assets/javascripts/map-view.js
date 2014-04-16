@@ -3,13 +3,16 @@ BootMap.View = function(controller){
 }
 
 BootMap.View.prototype = {
+  // setView is a Leaflet function
   drawMap: function(){
     var controller = this.controller
     var thisMap = controller.map
+    if (!thisMap) return;
     var map = thisMap.setView(controller.initialMapCoords,controller.initialZoom)
     map.addLayer(controller.osm)
   },
 
+  // addLayer is a Leaflet function
   renderMarkers: function(bootList, map){
     var map = map
     var markers = new L.MarkerClusterGroup()
@@ -24,6 +27,15 @@ BootMap.View.prototype = {
     map.addLayer(markers)
   },
 
+  renderStats: function(cityCount){
+    var newDiv = document.createElement('div')
+    newDiv.classList.add('boot-stats')
+    newDiv.innerText = cityCount
+    console.log("city Count " + newDiv.innerText)
+    console.log("here is your div: "+ newDiv + "append it somewhere nice on the page!")
+  },
+
+  //bindPopup and openPopup are leaflet fns
   bindThisPopup: function(marker, content){
     marker.on('mouseover', function(evt){
       evt.target.bindPopup(content).openPopup()
@@ -53,6 +65,7 @@ BootMap.View.prototype = {
                     "<div class='user-popup'>",
                     userName.join(""),
                     socialMedia.join(""),
+                    boot.current_location,
                     "</div>"
                   ]
     return content.join("")

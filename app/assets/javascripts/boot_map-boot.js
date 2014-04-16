@@ -1,8 +1,4 @@
-BootMap.Boot = function(){
-}
-
-BootMap.Boot.prototype ={
-  setBootData: function(jsonData) {
+BootMap.Boot = function(jsonData){
     this.id = jsonData.id
     this.cohort_id = jsonData.cohort_id
     this.name = jsonData.name
@@ -17,6 +13,6 @@ BootMap.Boot.prototype ={
     this.picture_url = jsonData.picture_url
     this.latitude = jsonData.latitude
     this.longitude = jsonData.longitude
-  }
 }
+
 

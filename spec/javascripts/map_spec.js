@@ -48,10 +48,6 @@ describe("Controller", function(){
 
 describe("View", function(){
   beforeEach(function(){
-    controller = new BootMap.Controller
-    view = new BootMap.View(controller)
-    mapObject = {}
-    osm = {}
   })
 
   it("is has a controller",function(){

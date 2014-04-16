@@ -5,7 +5,8 @@ DBCconnect::Application.routes.draw do
   get '/', to: 'welcome#index', as: 'root'
 
   match '/pairings/update_hangout_info', :controller => 'pairings', :action => 'allow_cors', via: [:OPTIONS]
-
+  get '/pairings/get_url/:requestor_id', to: 'pairings#get_hangout_url'
+  
   get '/welcome', to: 'welcome#main'
   get '/welcome/getuser', to: 'welcome#user'
 
@@ -15,7 +16,7 @@ DBCconnect::Application.routes.draw do
   get '/log_out', to: 'sessions#destroy', :as => 'log_out'
 
   post '/requests', to: 'requests#create', as: 'create'
-  get '/requests', to: 'requests#index', as: 'index' #show the ones that asked for you
+  get '/requests', to: 'requests#request_polling', as: 'request_polling' #show the ones that asked for you
 
   # Hangout app gadget sends ajax to this once hangout created
   put '/pairings/update_hangout_info', to: 'pairings#update_hangout_info'
