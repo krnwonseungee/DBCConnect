@@ -3,6 +3,7 @@ SearchResults.Controller = function(){}
 SearchResults.Controller.prototype = {
   bindSearchbarEvent: function(){
     $("#searchbar").submit(function(e){
+      console.log('poo')
       e.preventDefault();
       var searchValue = $("input:first").val();
       searchResultsController.retrieveResults(searchValue);

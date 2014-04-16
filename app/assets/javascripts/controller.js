@@ -144,12 +144,16 @@ Controller.prototype = {
   }
 }
 
+
 document.addEventListener('DOMContentLoaded', function(){
   view = new View
   controller = new Controller;
   controller.getUserDetails();
   controller.initialize();
   controller.bindDomEvents();
+
+  searchResultsController = new SearchResults.Controller();
+  searchResultsController.bindSearchbarEvent();
 
   if (!document.getElementById('map')) return;
   map_controller = new BootMap.Controller
