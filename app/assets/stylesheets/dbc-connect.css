@@ -97,7 +97,8 @@ h1.splash-head {
    text-shadow: 2px 1px black;
    border: 4px solid white;
    box-shadow: 1px 1px 1px 1px black;
-   margin-bottom: 10px;
+   margin-bottom: 18px;
+   margin-top: 12px;
    padding-right: 10px;
    padding-left: 10px;
    font-weight: 700;
@@ -111,4 +112,17 @@ img#linkedin_login{
   padding: 1px;
   border-radius: 8px;
   background-color: white;
+}
+
+html div.splash p {
+  font-size: 140%;
+  color: white;
+  font-style: italic;
+  margin: 0;
+  border: 0;
+  text-transform: lowercase;
+}
+
+html div.splash p:first-letter {
+    text-transform: uppercase;
 }
