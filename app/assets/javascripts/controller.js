@@ -73,7 +73,7 @@ Controller.prototype = {
       navigationController.searchBarSubmit();
     });
 
-    $('#container').on("click", '.profile-link', function(e){
+    $(document).on("click", '.profile-link', function(e){
       e.preventDefault();
       var userId = e.target.id
       navigationController.requestShowUserProfile(userId);
