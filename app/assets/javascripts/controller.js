@@ -4,7 +4,6 @@ Controller.prototype = {
   initialize: function(){
     view.setupMenuToResponsive();
     view.showHelpPopups();
-    view.refreshActiveIcon();
     // controller.initializePairingIcon(); to be implemented
     setInterval(this.refreshList, 2003);
   },
@@ -78,7 +77,7 @@ Controller.prototype = {
     })
   },
   setPairingMode: function(node){
-    if (node.attributes[0].value === "active"){
+    if ($("#availability").children().children().attr("class") === "active"){
       controller.loggedUser.activeState = false
     }else{
       controller.loggedUser.activeState = true
@@ -88,7 +87,6 @@ Controller.prototype = {
 
   updatePairingMode: function(){
     controller.togglePinging();
-    view.refreshActiveIcon();
     $.ajax({
       type: "put",
       url: "/users/" + controller.loggedUser.id,
@@ -139,6 +137,7 @@ Controller.prototype = {
       controller.loggedUser.id = serverData.user_id;
       controller.loggedUser.activeState = serverData.active;
       controller.loggedUser.name = serverData.name;
+      view.refreshActiveIcon();
       view.showLoggedUser();
       controller.updatePairingMode();
     })
