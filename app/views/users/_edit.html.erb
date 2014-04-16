@@ -1,0 +1,16 @@
+<div id="editprof">
+  <h1>Edit Your Profile</h1>
+  <p><%= @user.name %></p>
+  <p><%= @user.cohort.name %></p>
+
+  <h3>Edit Your Information</h3>
+
+  <%= form_for @user, url: user_path(@user), html: { method: "patch", class: "update_user" } do |f| %>
+    <p> To edit current location and company please update your LinkedIn profile</p>
+    <p> Github: <%= f.text_field :github %></p>
+    <p> Twitter: <%= f.text_field :twitter %></p>
+    <p> Facebook: <%= f.text_field :facebook %></p>
+    <p> Blog: <%= f.text_field :blog %></p>
+    <%= f.submit "Update Info", id: "update-submit" %>
+  <% end %>
+</div>

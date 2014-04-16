@@ -4,7 +4,6 @@ Controller.prototype = {
   initialize: function(){
     view.setupMenuToResponsive();
     view.showHelpPopups();
-    // controller.initializePairingIcon(); to be implemented
     setInterval(this.refreshList, 2003);
   },
 
@@ -70,7 +69,29 @@ Controller.prototype = {
     });
     $("#submit-search").on("click", function(e){
       e.preventDefault();
-      searchBarController.searchBarSubmit();
+      navigationController.searchBarSubmit();
+    });
+
+    $(document).on("click", '.profile-link', function(e){
+      e.preventDefault();
+      var userId = e.target.id
+      navigationController.requestShowUserProfile(userId);
+    });
+
+    $(document).on("click", '.edit-profile-link', function(e){
+      e.preventDefault();
+      var userId = e.target.id
+      navigationController.requestEditUserProfile(userId);
+    });
+
+    $(document).on("click", '#update-submit', function(e){
+      e.preventDefault();
+      navigationController.submitEditUserProfile();
+    });
+
+    $("#logo").on("click", function(e){
+      e.preventDefault();
+      view.renderMap();
     });
   },
 
@@ -145,24 +166,27 @@ Controller.prototype = {
       view.showLoggedUser();
       controller.updatePairingMode();
     })
+  },
+
+  createMap: function(){
+    map_controller = new BootMap.Controller
+    map_view = new BootMap.View(map_controller)
+    map_controller.view = map_view
+    map_controller.fetchUsers()
+    map_controller.initializeMap(37.769, -70.429, 3)
+    map_view.drawMap()
   }
 }
 
 document.addEventListener('DOMContentLoaded', function(){
   view = new View
-  searchBarController = new SearchBarController  
+  navigationController = new NavigationController  
   controller = new Controller;
   controller.getUserDetails();
   controller.initialize();
   controller.bindDomEvents();
 
   if (!document.getElementById('map')) return;
-  map_controller = new BootMap.Controller
-  map_view = new BootMap.View(map_controller)
-  map_controller.view = map_view
-  map_controller.fetchUsers()
-  map_controller.initializeMap(37.769, -70.429, 3)
-  map_view.drawMap()
+  controller.createMap();
 });
-
 
