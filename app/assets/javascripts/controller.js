@@ -167,6 +167,15 @@ Controller.prototype = {
       view.showLoggedUser();
       controller.updatePairingMode();
     })
+  },
+
+  createMap: function(){
+    map_controller = new BootMap.Controller
+    map_view = new BootMap.View(map_controller)
+    map_controller.view = map_view
+    map_controller.fetchUsers()
+    map_controller.initializeMap(37.769, -70.429, 3)
+    map_view.drawMap()
   }
 }
 
@@ -179,12 +188,6 @@ document.addEventListener('DOMContentLoaded', function(){
   controller.bindDomEvents();
 
   if (!document.getElementById('map')) return;
-  map_controller = new BootMap.Controller
-  map_view = new BootMap.View(map_controller)
-  map_controller.view = map_view
-  map_controller.fetchUsers()
-  map_controller.initializeMap(37.769, -70.429, 3)
-  map_view.drawMap()
+  controller.createMap();
 });
-
 

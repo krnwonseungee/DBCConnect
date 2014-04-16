@@ -115,6 +115,7 @@ View.prototype = {
 
   renderMap: function(){
     $('#container').empty().html("<div id='map'></div>");
+    controller.createMap();
   }
 }
 
