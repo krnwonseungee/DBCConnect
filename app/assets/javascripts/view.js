@@ -117,6 +117,10 @@ View.prototype = {
   renderMap: function(){
     $('#container').empty().html("<div id='map'></div>");
     controller.createMap();
+  },
+
+  showQuote: function(quote){
+    $("#quote").empty().html("<h3>" + quote.content + "</h3><h4> " + quote.author + "</h4>");
   }
 }
 
