@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
 
   def self.get_list_of_user_obj(search_term)
     user_obj_array = Array.new
-    pg_search_results = PgSearch.multisearch(search_term).each do |result|
+    PgSearch.multisearch(search_term).each do |result|
       user_name = result.content.split(" ").take(2).join(" ")
       user_obj = User.find_by_name(user_name)
       user_obj_array << user_obj
