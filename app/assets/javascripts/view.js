@@ -13,7 +13,7 @@ View.prototype = {
             view.toggleClass(layout, active);
             view.toggleClass(menu, active);
             view.toggleClass(menuLink, active);
-        };    
+        };
       }
   },
 
@@ -78,10 +78,10 @@ View.prototype = {
     var numOfActiveUsers = list.activeUsers.length;
     for (var i = 0; i < numOfActiveUsers; i++){
       if (list.activeUsers[i].id != controller.loggedUser.id){
-        $("#activeUsersList").append("<li  id='" 
+        $("#activeUsersList").append("<li  id='"
           + list.activeUsers[i].id + "'>"
-          + "<a href='#popupBasic' data-rel='popup' data-transition='pop'>"
-          + "<i class='fa fa-circle'></i>  " 
+          + "<a href='#pop-up' rel='modal:open'>"
+          + "<i class='fa fa-circle'></i>  "
           + list.activeUsers[i].name + "</a></li>")
       }
     }
