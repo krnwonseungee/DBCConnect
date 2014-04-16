@@ -56,9 +56,9 @@ View.prototype = {
   showGoogleHangoutButtonRequestor: function(){
     console.log("showing requestor button")
 
-    $("#pop-up").prepend(
-      "<a class='pairing-link' href='http://plus.google.com/hangouts/_?gid=212567943044' target=_blank>"
-      +"<i class='fa fa-comments-o fa-3x'></i>"
+    $(".button-div").empty().prepend(
+      "<a class='pure-button pure-button-active'"
+      +"href='http://plus.google.com/hangouts/_?gid=212567943044' target=_blank>"
       +"Request Pairing"
       + "</a>")
     // close the modal when request sent
