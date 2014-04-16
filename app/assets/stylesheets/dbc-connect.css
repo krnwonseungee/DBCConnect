@@ -14,9 +14,6 @@ div#menu {
   width: 100%;
   margin-left:10%;
 }
-.splash-container {
-  height: 100%;
-}
 
 a#logo {
   height: 53px;
@@ -78,11 +75,51 @@ i.fa.fa-bars.fa-2x {
   right: 5px;
 }
 
-.pairing-link {
-  color: #3F3C3C;
-  text-decoration: none;
-}
-
 a#ghost {
   display: none;
+}
+
+html .fa-chevron-right:before {
+  position: absolute;
+  color: white;
+  right: 1px;
+  top: 8px;
+}
+
+html .fa-chevron-left:before {
+  position: absolute;
+  color: white;
+  right: 17px;
+  top: 28px;
+}
+
+.splash-container {
+  height: 100%;
+  /*background-image:url("CityStreet_476.jpg");*/
+  background-image:url("city_skyline_skyscrapers5912_290.jpg");
+  /*background-image:url("NYC_from_above.jpg");*/
+  background-repeat:no-repeat;
+  background-size: cover;
+}
+
+h1.splash-head {
+   color: white;
+   font-size: 250%;
+   text-shadow: 2px 1px black;
+   border: 4px solid white;
+   box-shadow: 1px 1px 1px 1px black;
+   margin-bottom: 10px;
+   padding-right: 10px;
+   padding-left: 10px;
+   font-weight: 700;
+   background-color: #fff;
+   background-color: rgba(255,255,255,0.2);
+}
+
+img#linkedin_login{
+  height: 36px;
+  border: 0px solid black;
+  padding: 1px;
+  border-radius: 8px;
+  background-color: white;
 }

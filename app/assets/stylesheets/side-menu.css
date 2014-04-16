@@ -13,7 +13,8 @@ Add transition to containers so they can push in and out.
 #layout,
 #menu,
 .menu-link
-.leaflet-control-zoom {
+.leaflet-control-zoom
+.fa-chevron-right {
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     -ms-transition: all 0.2s ease-out;
@@ -40,6 +41,11 @@ This is the parent `<div>` that contains the menu and the content area.
         #layout.active .menu-link {
             left: 150px;
         }
+
+        #layout.active .fa-chevron-right {
+            visibility: hidden;
+}
+
 
 
 /*

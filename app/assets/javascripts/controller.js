@@ -51,6 +51,12 @@ Controller.prototype = {
   },
 
   bindDomEvents: function(){
+    $("#logout").on("click", function(e){
+      e.preventDefault();
+      controller.loggedUser.activeState = false;
+      controller.updatePairingMode();
+      location.href = "/"
+    });
     $("#activeUsersList").on("click", "a", function(e){
       clickedUserId = e.target.parentElement.id;
       controller.askToPairWithUser(clickedUserId);
@@ -69,7 +75,12 @@ Controller.prototype = {
     }else{
       controller.loggedUser.activeState = true
     }
+    controller.updatePairingMode();
+  },
+
+  updatePairingMode: function(){
     controller.togglePinging();
+    view.refreshActiveIcon();
     $.ajax({
       type: "put",
       url: "/users/" + controller.loggedUser.id,
@@ -118,6 +129,7 @@ Controller.prototype = {
       controller.loggedUser.activeState = serverData.active;
       controller.loggedUser.name = serverData.name;
       view.showLoggedUser();
+      controller.updatePairingMode();
     })
   }
 }
