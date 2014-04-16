@@ -57,11 +57,11 @@ View.prototype = {
     console.log("showing requestor button")
 
     $(".button-div").empty().prepend(
-      "<a id='request-link'class='pure-button pure-button-active'"
+      "<a id='pairing-link'class='pure-button pure-button-active'"
       +"href='http://plus.google.com/hangouts/_?gid=212567943044' target=_blank>"
       +"Request Pairing"
       + "</a>")
-    $('#request-link').on('click', function(){
+    $('#pairing-link').on('click', function(){
       $('.close-pop-up').click()
     })
   },
@@ -72,12 +72,16 @@ View.prototype = {
       "<a id='ghost' href='#pop-up' rel='modal:open'>")
     $('#ghost').click()
     $("#pop-up").prepend(
-      "<a class='pairing-link' href="
+      "<a id='pairing-link' href="
       + url
       +"target=_blank>"
       +"<i class='fa fa-comments-o fa-3x'></i>"
       +"Join Pairing"
       + "</a>")
+
+    $('#pairing-link').on('click', function(){
+      $('.close-pop-up').click()
+    })
   },
 
   renderList: function(){
