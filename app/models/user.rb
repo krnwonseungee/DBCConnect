@@ -59,6 +59,9 @@ class User < ActiveRecord::Base
   end
 
   private
+  def user_params
+    params.require(:user).permit(:current_location, :company, :github, :twitter, :facebook, :blog)
+  end
 
   def grab_company_names_from_linkedin(auth_hash)
     company_names = []
