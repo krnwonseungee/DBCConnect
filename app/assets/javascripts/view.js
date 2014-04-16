@@ -55,15 +55,13 @@ View.prototype = {
 
   showGoogleHangoutButtonRequestor: function(){
     console.log("showing requestor button")
-    // gapi.hangout.render('placeholder-div1', {
-    //   'render': 'createhangout',
-    //   'initial_apps': [{'app_id' : '212567943044', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]
-    // });
+
     $("#pop-up").prepend(
       "<a class='pairing-link' href='http://plus.google.com/hangouts/_?gid=212567943044' target=_blank>"
       +"<i class='fa fa-comments-o fa-3x'></i>"
       +"Request Pairing"
       + "</a>")
+    // close the modal when request sent
   },
 
   showGoogleHangoutButtonResponder: function(url){
