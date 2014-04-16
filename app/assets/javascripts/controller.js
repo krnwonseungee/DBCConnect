@@ -79,6 +79,7 @@ Controller.prototype = {
 
   updatePairingMode: function(){
     controller.togglePinging();
+    view.refreshActiveIcon();
     $.ajax({
       type: "put",
       url: "/users/" + controller.loggedUser.id,
@@ -127,6 +128,7 @@ Controller.prototype = {
       controller.loggedUser.activeState = serverData.active;
       controller.loggedUser.name = serverData.name;
       view.showLoggedUser();
+      controller.updatePairingMode();
     })
   }
 }
