@@ -4,7 +4,6 @@ Controller.prototype = {
   initialize: function(){
     view.setupMenuToResponsive();
     view.showHelpPopups();
-    // controller.initializePairingIcon(); to be implemented
     setInterval(this.refreshList, 2003);
   },
 
