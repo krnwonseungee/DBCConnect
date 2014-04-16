@@ -68,6 +68,17 @@ i.fa.fa-bars.fa-2x {
 
 }
 
+.close-pop-up {
+  color: #3F3C3C;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
+
+a#ghost {
+  display: none;
+}
+
 html .fa-chevron-right:before {
   position: absolute;
   color: white;

@@ -37,6 +37,9 @@ gem "geocoder"
 gem 'unicorn'
 gem 'rails_12factor' #recommended by Heroku "to enable all platform features"
 
+gem 'jquery-ui-rails'
+gem 'jquery-modal-rails'
+
 group :development, :test do
   gem 'jasmine-rails'
   gem 'rspec-rails'
