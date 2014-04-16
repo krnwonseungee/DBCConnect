@@ -4,7 +4,6 @@ Controller.prototype = {
   initialize: function(){
     view.setupMenuToResponsive();
     view.showHelpPopups();
-    // controller.initializePairingIcon(); to be implemented
     setInterval(this.refreshList, 2003);
   },
 
@@ -67,6 +66,27 @@ Controller.prototype = {
       var node = e.target.parentElement;
       controller.setPairingMode(node);
       view.toggleActiveIcon(node);
+    });
+    $("#submit-search").on("click", function(e){
+      e.preventDefault();
+      navigationController.searchBarSubmit();
+    });
+
+    $(document).on("click", '.profile-link', function(e){
+      e.preventDefault();
+      var userId = e.target.id
+      navigationController.requestShowUserProfile(userId);
+    });
+
+    $(document).on("click", '.edit-profile-link', function(e){
+      e.preventDefault();
+      var userId = e.target.id
+      navigationController.requestEditUserProfile(userId);
+    });
+
+    $(document).on("click", '#update-submit', function(e){
+      e.preventDefault();
+      navigationController.submitEditUserProfile();
     });
   },
 
@@ -146,6 +166,7 @@ Controller.prototype = {
 
 document.addEventListener('DOMContentLoaded', function(){
   view = new View
+  navigationController = new NavigationController  
   controller = new Controller;
   controller.getUserDetails();
   controller.initialize();

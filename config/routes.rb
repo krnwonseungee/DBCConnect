@@ -11,6 +11,7 @@ DBCconnect::Application.routes.draw do
   get '/welcome/getuser', to: 'welcome#user'
 
   get "/users/active", to: "users#get_active_users"
+  post "/users/results", to: "users#results"
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/log_out', to: 'sessions#destroy', :as => 'log_out'
