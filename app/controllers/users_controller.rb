@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     render partial: 'edit', locals: { user: @user }
   end
 
-  def update
+ def update
     user = User.find(params[:id])
     user.update(user_params)
     user.save
