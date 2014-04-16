@@ -1,3 +1,8 @@
+#This file can be required just like spec_helper
+# Do so if you want access to omniauth auth_hash mocks,
+# After requiring, testing auth_hashs can be initialized in this way:
+# my_test_auth_hash = OmniAuth.config.mock_auth[:linkedin_dbc]
+
 # Test mode enables all requests to OmniAuth to be short circuited to use the mock authentication hash
 # (as opposed to actual linkedin request/callback process)
 OmniAuth.config.test_mode = true
