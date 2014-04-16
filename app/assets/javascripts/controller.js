@@ -77,7 +77,18 @@ Controller.prototype = {
       e.preventDefault();
       var userId = e.target.id
       navigationController.requestShowUserProfile(userId);
-    })
+    });
+
+    $(document).on("click", '.edit-profile-link', function(e){
+      e.preventDefault();
+      var userId = e.target.id
+      navigationController.requestEditUserProfile(userId);
+    });
+
+    $(document).on("click", '#update-submit', function(e){
+      e.preventDefault();
+      navigationController.submitEditUserProfile();
+    });
   },
 
   updatePairingTables: function(){

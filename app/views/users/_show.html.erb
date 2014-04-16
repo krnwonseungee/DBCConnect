@@ -11,6 +11,6 @@
   <p><a href="<%= user.blog %>">Blog</a></p>
 
   <% if user.id == session[:user_id] %>
-    <%= link_to "Edit Your Profile", edit_user_path(user), { :class => "edit-profile-link"} %>
+    <%= link_to "Edit Your Profile", edit_user_path(user), { :class => "edit-profile-link", :id => user.id} %>
   <% end %>
 </div>
