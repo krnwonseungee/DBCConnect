@@ -1,3 +1,4 @@
+<div id="userprof">
 <h1><%= user.name %></h1>
 <p><%= user.cohort.name %></p>
 <p><%= user.current_location %></p>
@@ -12,3 +13,4 @@
 <% if user.id == session[:user_id] %>
 <%= link_to "Edit Your Profile", edit_user_path(user), { :class => "editproflink"} %>
 <% end %>
+</div>
