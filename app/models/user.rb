@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include PgSearch
   belongs_to :cohort
   has_many :requests
 
@@ -32,7 +33,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  include PgSearch
   multisearchable :against => [ :name,
                                 :email,
                                 :bio,
@@ -60,6 +60,10 @@ class User < ActiveRecord::Base
 
   private
 
+  def user_params
+    params.require(:user).permit(:current_location, :company, :github, :twitter, :facebook, :blog)
+  end
+
   def grab_company_names_from_linkedin(auth_hash)
     company_names = []
     auth_hash.extra.raw_info.positions.values[1].each do |company_hash|
@@ -72,6 +76,7 @@ class User < ActiveRecord::Base
   def grab_picture_url_from_linkedin(auth_hash)
     auth_hash.extra.raw_info.pictureUrl
   end
+
   def grab_location_from_linkedin(auth_hash)
     auth_hash.extra.raw_info.location.name
   end
