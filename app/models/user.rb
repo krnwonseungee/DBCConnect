@@ -6,12 +6,9 @@ class User < ActiveRecord::Base
     opts = {}
     opts[:linkedin_url] = auth_hash.info.urls.public_profile
     opts[:name] = auth_hash.info.name
-    #Regex in next line finds "in/" then grabs the user public profile id after
-    # e.g. 'http://www.linkedin.com/in/bechtelm' becomes 'bechtelm'
     li_url_substring_in = opts[:linkedin_url][/(?<=in\/)[\w-]+/]
-    # Same as above but for "pub/" form of linkedin url.  Others unsupported!
     li_url_substring_pub = opts[:linkedin_url][/(?<=pub\/)[\w-]+/]
-    if li_url_substring_in  #don't want to waste time if match was nil due to other url format
+    if li_url_substring_in
       user = User.find(:all, :conditions => ["linked_in LIKE ?", "%#{li_url_substring_in}%"])
     elsif li_url_substring_pub
       user ||= User.find(:all, :conditions =>["linked_in LIKE ?", "%#{li_url_substring_pub}%"])
