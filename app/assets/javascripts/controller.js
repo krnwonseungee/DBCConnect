@@ -51,6 +51,11 @@ Controller.prototype = {
   },
 
   bindDomEvents: function(){
+    $("#logout").on("click", function(e){
+      e.preventDefault();
+      controller.loggedUser.activeState = false;
+      controller.updatePairingMode();
+    });
     $("#activeUsersList").on("click", "a", function(e){
       clickedUserId = e.target.parentElement.id;
       controller.askToPairWithUser(clickedUserId);
@@ -69,6 +74,10 @@ Controller.prototype = {
     }else{
       controller.loggedUser.activeState = true
     }
+    controller.updatePairingMode();
+  },
+
+  updatePairingMode: function(){
     controller.togglePinging();
     $.ajax({
       type: "put",
