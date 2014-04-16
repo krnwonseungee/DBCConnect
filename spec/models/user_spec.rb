@@ -12,6 +12,7 @@ describe User do
     bad_url = "www.invalidurl.me"
 
     xit "returns the correct user when given valid input" do
+      #see: http://natashatherobot.com/rails-test-omniauth-sessions-controller/
       expect(User.lookup_from_auth_hash({linkedin_url: good_url})).to eq user
     end
     xit "returns false when there's no lookup match" do

@@ -3,6 +3,10 @@ class SessionsController < ApplicationController
     puts "$" * 300
     puts "auth hash is:"
     p auth_hash
+    puts "auth_hash.extra.raw_info.positions.values is:"
+    p auth_hash.extra.raw_info.positions.values
+    puts "auth_hash.extra.raw_info.positions.values.to_hash is:"
+    p auth_hash.extra.raw_info.positions.values.to_hash
     puts "$" * 300
     if user = User.lookup_from_auth_hash(auth_hash)
       session[:user_id] = user.id
