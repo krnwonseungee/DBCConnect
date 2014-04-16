@@ -21,9 +21,14 @@ class User < ActiveRecord::Base
   end
 
   def update_records_from_linkedin_auth_hash(auth_hash)
-    opts = {}
-    if opts[:location]
-      refresh_fields_from_linkedin(opts[:token])
+    if pic_url = grab_picture_url_from_linkedin(auth_hash)
+      self.update_attribute(:picture_url, pic_url)
+    end
+    if company_names = grab_company_names_from_linkedin(auth_hash)
+      self.update_attribute(:company, company_names)
+    end
+    if location = grab_location_from_linkedin(auth_hash)
+      self.update_attribute(:location, location)
     end
   end
 
@@ -55,8 +60,20 @@ class User < ActiveRecord::Base
 
   private
 
-  def refresh_fields_from_linkedin(opts={})
+  def grab_company_names_from_linkedin(auth_hash)
+    company_names = []
+    auth_hash.extra.raw_info.positions.values[1].each do |company_hash|
+      c_name = company_hash['company']['name']
+      company_names << c_name if c_name
+    end
+    company_names.join(", ")
+  end
 
+  def grab_picture_url_from_linkedin(auth_hash)
+    auth_hash.extra.raw_info.pictureUrl
+  end
+  def grab_location_from_linkedin(auth_hash)
+    auth_hash.extra.raw_info.location.name
   end
 
 end
