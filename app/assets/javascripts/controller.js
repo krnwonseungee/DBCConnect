@@ -68,6 +68,10 @@ Controller.prototype = {
       controller.setPairingMode(node);
       view.toggleActiveIcon(node);
     });
+    $("#submit-search").on("click", function(e){
+      e.preventDefault();
+      searchBarController.searchBarSubmit();
+    });
   },
 
   updatePairingTables: function(){
@@ -146,6 +150,7 @@ Controller.prototype = {
 
 document.addEventListener('DOMContentLoaded', function(){
   view = new View
+  searchBarController = new SearchBarController  
   controller = new Controller;
   controller.getUserDetails();
   controller.initialize();
