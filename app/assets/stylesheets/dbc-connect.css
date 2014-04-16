@@ -71,4 +71,18 @@ i.fa.fa-bars.fa-2x {
 
 }
 
+.close-pop-up {
+  color: #3F3C3C;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
 
+.pairing-link {
+  color: #3F3C3C;
+  text-decoration: none;
+}
+
+a#ghost {
+  display: none;
+}

@@ -59,17 +59,25 @@ View.prototype = {
     //   'render': 'createhangout',
     //   'initial_apps': [{'app_id' : '212567943044', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]
     // });
-    $("#pop-up").append("<a href='http://plus.google.com/hangouts/_?gid=212567943044' target=_blank>"
-      + "Click Here</a>")
+    $("#pop-up").prepend(
+      "<a class='pairing-link' href='http://plus.google.com/hangouts/_?gid=212567943044' target=_blank>"
+      +"<i class='fa fa-comments-o fa-3x'></i>"
+      +"Request Pairing"
+      + "</a>")
   },
 
   showGoogleHangoutButtonResponder: function(url){
     console.log("showing responder button")
-    $("#top_navbar").prepend("<li>"
-      + "<a href='" + url + "'>"
-      + "Click Here</a></li>")
-    // var elem = "<a href='" + url + "'>Click To Pair</a>";
-    // $(elem).bPopup();
+    $("#top_navbar").prepend(
+      "<a id='ghost' href='#pop-up' rel='modal:open'>")
+    $('#ghost').click()
+    $("#pop-up").prepend(
+      "<a class='pairing-link' href="
+      + url
+      +"target=_blank>"
+      +"<i class='fa fa-comments-o fa-3x'></i>"
+      +"Join Pairing"
+      + "</a>")
   },
 
   renderList: function(){
