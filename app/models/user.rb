@@ -22,12 +22,13 @@ class User < ActiveRecord::Base
 
    def self.fetch_public_profile_pics(auth_hash)
     auth_token = auth_hash.credentials.token
-    client = LinkedIn::Client.new( ENV['LINKEDIN_KEY',
+    client = LinkedIn::Client.new( ENV['LINKEDIN_KEY'],
                                                   ENV['LINKEDIN_SECRET'],
                                                   auth_token)
     puts "$" * 200
-    puts "Fetching profile of bechtelm - client.profile is:"
-    p client.profile(:url => 'http://www.linkedin.com/in/bechtelm')
+    puts "Fetching profile of dbcc - client.profile is:"
+    p client.connections
+    #(:url => 'https://www.linkedin.com/in/dbcconnect')#, :fields => ['picture-url::(original)'])
     puts "$" * 200
    end
 

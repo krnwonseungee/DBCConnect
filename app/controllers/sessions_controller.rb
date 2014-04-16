@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     if user = User.lookup_from_auth_hash(auth_hash)
       session[:user_id] = user.id
       user.update_records_from_linkedin_auth_hash(auth_hash)
-      User.fetch_public_profile_pics(auth_hash)
+      # User.fetch_public_profile_pics(auth_hash)
       redirect_to welcome_path
     else
       flash[:notice] = "DBC Grad Lookup failed. Linkedin account url or name does not match our records."
