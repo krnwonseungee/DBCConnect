@@ -6,9 +6,8 @@ class WelcomeController < ApplicationController
   end
 
   def quote
-    pry
-    quote = Quote.all.sample
-    render json: {content: quote.content, author: quote.author}.to_json
+    @quote = Quote.all.sample
+    render json: {content: @quote.content, author: @quote.author}.to_json
   end
 
   def user
