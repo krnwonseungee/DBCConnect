@@ -104,11 +104,13 @@ View.prototype = {
     $("#availability a span[class='inactive']").attr("class",controller.loggedUser.activeState)
   },
 
-  showLoggedUser: function(){//make a link to the profile
-    $("#logged_user").text(controller.loggedUser.name)
+  showLoggedUser: function(){
+    $(".logged_user").text(controller.loggedUser.name)
+    $('.logged_user')[0].id = controller.loggedUser.id
   },
 
   renderPartial: function(partial){
+    // this will bring a new quote and show the map again
     $('#container').empty().html(partial)
   }
 }
