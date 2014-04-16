@@ -59,9 +59,8 @@ View.prototype = {
     //   'render': 'createhangout',
     //   'initial_apps': [{'app_id' : '212567943044', 'start_data' : 'dQw4w9WgXcQ', 'app_type' : 'ROOM_APP' }]
     // });
-    $("#top_navbar").prepend("<li>"
-      + "<a href='http://plus.google.com/hangouts/_?gid=212567943044'>"
-      + "Click Here</a></li>")
+    $("#pop-up").append("<a href='http://plus.google.com/hangouts/_?gid=212567943044' target=_blank>"
+      + "Click Here</a>")
   },
 
   showGoogleHangoutButtonResponder: function(url){
