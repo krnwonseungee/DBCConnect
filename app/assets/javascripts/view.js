@@ -71,14 +71,12 @@ View.prototype = {
     $("#top_navbar").prepend(
       "<a id='ghost' href='#pop-up' rel='modal:open'>")
     $('#ghost').click()
-    $("#pop-up").prepend(
-      "<a id='pairing-link' href="
-      + url
+    $(".button-div").empty().prepend(
+      "<a id='pairing-link' class='pure-button pure-button-active'"
+      +"href="+ url
       +"target=_blank>"
-      +"<i class='fa fa-comments-o fa-3x'></i>"
       +"Join Pairing"
       + "</a>")
-
     $('#pairing-link').on('click', function(){
       $('.close-pop-up').click()
     })
