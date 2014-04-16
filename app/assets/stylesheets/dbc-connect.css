@@ -201,3 +201,35 @@ ul#top_navbar {
   top: -60px;
   left: 167px;
 }
+
+#container {
+  color: black;
+  background-color: white;
+  position: relative;
+/*  margin-top: 54px;
+  margin-left: 12px;*/
+  float: left;
+  /*top: -60px;*/
+  left: 167px;
+  width: 400px;
+  /*height: 80%;*/
+  /*width: 100%;*/
+}
+
+#footer {
+  color: grey;
+  margin-top: 6px;
+  margin-left: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  padding: 0;
+  float: left;
+  position: absolute;
+  bottom: 12px;
+  left: 167px;
+  width: 400px;
+  font-size: 1em;
+  white-space: nowrap;
+  z-index: +10;
+}
+
