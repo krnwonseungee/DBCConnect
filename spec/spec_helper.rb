@@ -22,18 +22,30 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 # (as opposed to actual linkedin request/callback process)
 OmniAuth.config.test_mode = true
 
-  omniauth_hash = {
+dbc_omniauth_hash = {
                    provider: 'linkedin',
                    info: {
                         name: 'Om Niauth',
                         urls: {
                           public_profile:
-                            "omniauth.test/in/faked_user"
+                            "omniauth.test/in/dbcuser"
                               }
                             }
                           }
 
-OmniAuth.config.add_mock(:linkedin, omniauth_hash)
+nondbc_omniauth_hash = {
+                   provider: 'linkedin',
+                   info: {
+                        name: 'Non DBC User',
+                        urls: {
+                          public_profile:
+                            "omniauth.test/in/nondbcuser"
+                              }
+                            }
+                          }
+
+OmniAuth.config.add_mock(:linkedin_dbc, dbc_omniauth_hash)
+OmniAuth.config.add_mock(:linkedin_nondbc, nondbc_omniauth_hash)
 
 RSpec.configure do |config|
   # ## Mock Framework
