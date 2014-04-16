@@ -14,7 +14,8 @@ Add transition to containers so they can push in and out.
 #menu,
 .menu-link
 .leaflet-control-zoom
-.fa-chevron-right {
+.fa-chevron-right
+#logo-box{
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     -ms-transition: all 0.2s ease-out;
@@ -44,7 +45,11 @@ This is the parent `<div>` that contains the menu and the content area.
 
         #layout.active .fa-chevron-right {
             visibility: hidden;
-}
+        }
+
+        #logo-box {
+            visibility: visible;
+        }
 
 
 
@@ -260,6 +265,10 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     .pure-menu-horizontal li {
       margin: 0px;
     }
+
+/*    #logo-box {
+        visibility: hidden;
+    }*/
 
 
 }
