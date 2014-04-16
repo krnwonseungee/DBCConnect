@@ -175,6 +175,16 @@ Controller.prototype = {
     map_controller.fetchUsers()
     map_controller.initializeMap(37.769, -70.429, 3)
     map_view.drawMap()
+  },
+
+  getQuotes: function(){
+    $.ajax({
+      type: "get",
+      url: "/quotes",
+      dataType:"json"
+    }).done(function(quote){
+      view.showQuote(quote)
+    })
   }
 }
 
@@ -183,6 +193,7 @@ document.addEventListener('DOMContentLoaded', function(){
   navigationController = new NavigationController  
   controller = new Controller;
   controller.getUserDetails();
+  controller.getQuotes();
   controller.initialize();
   controller.bindDomEvents();
 
