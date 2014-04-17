@@ -1,5 +1,6 @@
 <div id="editprof">
-  <h3><%= @user.name %></h3>
+  <a class="close-pop-up" href="#" rel="modal:close"><i class="fa fa-times-circle-o fa-lg"></i></a>
+  <h3>Edit Profile: <%= @user.name %></h3>
   <%= @user.cohort.name %></br>
   <p class="edit-tip">To edit current location and company please update your<%= link_to "LinkedIn profile", @user.linked_in %>.</p>
 

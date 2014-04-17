@@ -15,6 +15,6 @@
   <% if user.id == session[:user_id] %>
     <%= link_to "Edit Your Profile", edit_user_path(user), { :class => "edit-profile-link", :id => user.id} %>
   <% end %>
+
+  <a class="close-pop-up" href="#" rel="modal:close"><i class="fa fa-times-circle-o fa-lg"></i></a>
 </div>
-
-
