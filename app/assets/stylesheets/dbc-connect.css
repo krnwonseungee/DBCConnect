@@ -187,6 +187,7 @@ ul#top_navbar {
 
 #user-profile {
   /*background-color: grey;*/
+  padding-bottom: 14px;
 }
 
 #user-profile p {
@@ -199,6 +200,10 @@ ul#top_navbar {
 
 .edit-profile-link  {
   padding-left: 10px;
+}
+
+div#editprof {
+  padding-bottom: 14px;
 }
 
 
