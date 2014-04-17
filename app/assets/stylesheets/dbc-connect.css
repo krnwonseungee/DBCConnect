@@ -222,7 +222,7 @@ div#editprof {
   width: 600px;
   /*padding-bottom: 20px;*/
   /*background-color: #fff;*/
-  background-color: rgba(255,255,255,0.75);
+  background-color: rgba(255,255,255,0.8);
 }
 
 #footer {
@@ -273,4 +273,19 @@ td {
 
 #update-submit {
   border: none;
+}
+
+.pure-table {
+  border: none;
+  text-align: left;
+  margin-left: 5%;
+}
+
+table a{
+  text-decoration: none;
+  color: #1f8dd6 !important;
+}
+
+#searchbarresults h3 {
+  margin-left: 5%;
 }

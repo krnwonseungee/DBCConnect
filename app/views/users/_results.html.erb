@@ -1,10 +1,11 @@
 <div id="searchbarresults">
-  <table>
+<h3>Search Results</h3>
+  <table class="pure-table pure-table-horizontal">
     <tr><th>Name</th><th>Cohort</th><th>Current Location</th></tr>
     <% results.each do |user| %>
       <% if user %>
         <tr>
-          <td><%= link_to user.name, user_path(user), { :class => "profile-link" , :id => user.id } %></td>
+          <td><%= link_to user.name, user_path(user), { :class => "profile-link partial" , :id => user.id } %></td>
           <td><%= user.cohort.name %></td>
           <td><%= user.current_location %></td>
         </tr>
