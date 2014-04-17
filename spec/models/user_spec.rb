@@ -6,6 +6,4 @@ describe User do
   context "associations" do
     it { should belong_to(:cohort) }
   end
-
-
 end
