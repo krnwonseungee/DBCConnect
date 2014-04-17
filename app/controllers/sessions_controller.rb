@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
   def create
     if user = UserLinkedinInterface.user_lookup_by_linkedin_data(auth_hash)
-      session[:user_id] = user.id
       user.update_records_from_linkedin_auth_hash(auth_hash)
+      session[:user_id] = user.id
       redirect_to welcome_path
     else
       flash[:notice] = "DBC Grad Lookup failed. Linkedin account url or name does not match our records."
