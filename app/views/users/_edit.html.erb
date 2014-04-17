@@ -1,13 +1,25 @@
 <div id="editprof">
   <h3><%= @user.name %></h3>
-  <%= @user.cohort.name %>
-  To edit current location and company please update your LinkedIn profile
+  <%= @user.cohort.name %></br>
+  <p class="edit-tip">To edit current location and company please update your<%= link_to "LinkedIn profile", @user.linked_in %>.</p>
 
-  <%= form_for @user, url: user_path(@user), html: { method: "patch", class: "update_user pure-form pure-form-stacked" } do |f| %>
-    Github: <%= f.text_field :github %>
-    Twitter: <%= f.text_field :twitter %>
-    Facebook: <%= f.text_field :facebook %>
-    Blog: <%= f.text_field :blog %>
-    <%= f.submit "Update", id: "update-submit", class: 'pure-button'%>
+  <%= form_for @user, url: user_path(@user), html: { method: "patch", class: "update_user"} do |f| %>
+    <div class="profile-row social">
+      <i i class='fa fa-github fa-lg icon-width'></i>
+      <%= f.text_field :github, class: 'dbc-input' %>
+    </div>
+    <div class="profile-row social">
+      <i i class='fa fa-twitter fa-lg icon-width'></i>
+      <%= f.text_field :twitter, class: 'dbc-input'  %>
+    </div>
+    <div class="profile-row social">
+      <i i class='fa fa-facebook fa-lg icon-width'></i>
+      <%= f.text_field :facebook, class: 'dbc-input'  %>
+    </div>
+    <div class="profile-row social">
+      <i i class='fa fa-tumblr fa-lg icon-width'></i>
+      <%= f.text_field :blog, class: 'dbc-input' %>
+    </div>
+    <%= f.submit "Update", id: "update-submit", class: 'pure-button pad-left'%>
     <% end %>
 </div>
