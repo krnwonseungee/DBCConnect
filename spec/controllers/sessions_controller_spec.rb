@@ -1,14 +1,5 @@
 require 'spec_helper'
 
-
-describe SessionsController do
-  context "valid dbc login" do
-    it "creates a session with the user_id" do
-
-    end
-  end
-end
-
   context "logout" do
     it "session#destroy clears the session on logout" do
       session[:user_id] = 999

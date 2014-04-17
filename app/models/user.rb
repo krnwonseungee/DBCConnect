@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
     end
     user = user[0] if user #grabs result out of array, only if there was a result (avoids nil[0] -> error)
     user ||= User.find_by_name(opts[:name])
+    #returns a user or nil
   end
 
   def update_records_from_linkedin_auth_hash(auth_hash)
