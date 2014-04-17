@@ -62,7 +62,7 @@ describe UsersController do
   end
 
   describe "results" do
-    it "shows list of users matching search results" do
+    it "shows list of users matching search results in a partial" do
       post :results, pgsearch: fake_user.name
       expect(response).to render_template(:partial => '_results')
     end
