@@ -1,17 +1,26 @@
 <div id="editprof">
   <a class="close-pop-up" href="#" rel="modal:close"><i class="fa fa-times-circle-o fa-lg"></i></a>
-  <h1>Edit Your Profile</h1>
-  <p><%= @user.name %></p>
-  <p><%= @user.cohort.name %></p>
+  <h3>Edit Profile: <%= @user.name %></h3>
+  <%= @user.cohort.name %></br>
+  <p class="edit-tip">To edit current location and company please update your<%= link_to "LinkedIn profile", @user.linked_in %>.</p>
 
-  <h3>Edit Your Information</h3>
-
-  <%= form_for @user, url: user_path(@user), html: { method: "patch", class: "update_user" } do |f| %>
-    <p> To edit current location and company please update your LinkedIn profile</p>
-    <p> Github: <%= f.text_field :github %></p>
-    <p> Twitter: <%= f.text_field :twitter %></p>
-    <p> Facebook: <%= f.text_field :facebook %></p>
-    <p> Blog: <%= f.text_field :blog %></p>
-    <%= f.submit "Update Info", id: "update-submit" %>
-  <% end %>
+  <%= form_for @user, url: user_path(@user), html: { method: "patch", class: "update_user"} do |f| %>
+    <div class="profile-row social">
+      <i i class='fa fa-github fa-lg icon-width'></i>
+      <%= f.text_field :github, class: 'dbc-input' %>
+    </div>
+    <div class="profile-row social">
+      <i i class='fa fa-twitter fa-lg icon-width'></i>
+      <%= f.text_field :twitter, class: 'dbc-input'  %>
+    </div>
+    <div class="profile-row social">
+      <i i class='fa fa-facebook fa-lg icon-width'></i>
+      <%= f.text_field :facebook, class: 'dbc-input'  %>
+    </div>
+    <div class="profile-row social">
+      <i i class='fa fa-tumblr fa-lg icon-width'></i>
+      <%= f.text_field :blog, class: 'dbc-input' %>
+    </div>
+    <%= f.submit "Update", id: "update-submit", class: 'pure-button pad-left'%>
+    <% end %>
 </div>
