@@ -164,3 +164,7 @@ html div.splash p:first-letter {
   .pure-form {
     width: 30%
   }
+
+#update-submit {
+  border: none;
+}

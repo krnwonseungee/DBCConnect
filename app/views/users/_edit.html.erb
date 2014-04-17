@@ -1,10 +1,7 @@
 <div id="editprof">
-  <h1>Edit Your Profile</h1>
-  <p><%= @user.name %></p>
-  <p><%= @user.cohort.name %></p>
-
-  <h3>Edit Your Information</h3>
-    <p> To edit current location and company please update your LinkedIn profile</p>
+  <h3><%= @user.name %></h3>
+  <%= @user.cohort.name %>
+  To edit current location and company please update your LinkedIn profile
 
   <%= form_for @user, url: user_path(@user), html: { method: "patch", class: "update_user pure-form pure-form-stacked" } do |f| %>
     Github: <%= f.text_field :github %>
