@@ -58,7 +58,7 @@ i.fa.fa-bars.fa-2x {
   top: 58px;
 }
 
-.close-pop-up {
+#close-pop-up {
   color: #3F3C3C;
   position: absolute;
   top: 0px;
@@ -327,3 +327,4 @@ span#logo-in-map {
 .social-link .fa:hover {
   color: rgba(110, 204, 57, 0.6);
 }
+
