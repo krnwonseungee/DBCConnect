@@ -40,6 +40,8 @@ gem 'rails_12factor' #recommended by Heroku "to enable all platform features"
 gem 'jquery-ui-rails'
 gem 'jquery-modal-rails'
 
+gem 'metric_fu'
+
 group :development, :test do
   gem 'jasmine-rails'
   gem 'rspec-rails'

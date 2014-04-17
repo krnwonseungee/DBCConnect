@@ -120,7 +120,7 @@ View.prototype = {
   },
 
   showQuote: function(quote){
-    $("#quote").empty().html("<h3>" + quote.content + "</h3><h4> " + quote.author + "</h4>");
+    $("#footer").empty().html("<h3>\"" + quote.content + "\"</h3><h4> " + quote.author + "</h4>");
   }
 }
 
