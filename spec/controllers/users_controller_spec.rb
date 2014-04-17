@@ -20,9 +20,8 @@ describe UsersController do
       expect(assigns(:user)).to eq fake_user
     end
 
-    it "renders user to json" do
-      @expected = { user: assigns(:user) }.to_json
-      expect(response.body).to eq @expected
+    it "loads a partial that shows user profile" do
+      expect(response).to render_template(:partial => '_show')
     end
   end
 
@@ -52,11 +51,17 @@ describe UsersController do
         put(:update, id: fake_user.id, user: { name: new_name })
       }.to change { fake_user.reload.name }.to(new_name)
     end
-    xit "renders user to json" do
+    it "renders user to json" do
       new_name2 = "Joe Blow2"
       put(:update, id: fake_user.id, user: { name: new_name2 })
-      @expected = { success: true, user: assigns(:user) }.to_json
-      expect(response.body).to eq @expected
+      expect(response).to render_template(:partial => '_show')
+    end
+  end
+
+  describe "results" do
+    it "shows list of users matching search results" do
+      post :results, pgsearch: fake_user.name
+      expect(response).to render_template(:partial => '_results')
     end
   end
 
