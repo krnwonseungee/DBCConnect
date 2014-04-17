@@ -67,7 +67,7 @@ describe PairingsController do
           put(:update, id: fake_pairing.id, pairing: { requestor_feedback: new_requestor_feedback })
         }.to change { fake_pairing.reload.requestor_feedback }.to(new_requestor_feedback)
       end
-      xit "renders pairing to json" do
+      it "renders pairing to json" do
         new_requestor_feedback2 = "bla2 bla2 bla2"
         put(:update, id: fake_pairing.id, pairing: { requestor_feedback: new_requestor_feedback2 })
         @expected = { success: true, pairing: assigns(:pairing) }.to_json
