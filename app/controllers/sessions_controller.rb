@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def create
     if user = UserLinkedinInterface.user_lookup_by_linkedin_data(auth_hash)
-      user.update_records_from_linkedin_auth_hash(auth_hash)
+      UserLinkedinInterface.update_user_data(user, auth_hash)
       session[:user_id] = user.id
       redirect_to welcome_path
     else
