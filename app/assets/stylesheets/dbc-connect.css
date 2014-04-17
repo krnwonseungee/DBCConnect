@@ -165,7 +165,7 @@ html a#logo {
   float: left;
   padding: 0px;
   z-index: -10;
-/*  height: 95%;*/
+  height: 92.5%;
 }
 
 div#menu {
@@ -204,11 +204,14 @@ ul#top_navbar {
 
 #container {
   color: black;
-  background-color: white;
+  /*background-color: white;*/
   position: relative;
   float: left;
   left: 167px;
-  width: 400px;
+  width: 600px;
+  padding-bottom: 20px;
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.8);
 }
 
 #footer {
@@ -225,3 +228,12 @@ ul#top_navbar {
   z-index: +10;
 }
 
+#searchbarresults h2 {
+  padding-left: 10px;
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.8);
+}
+
+td {
+  padding-left: 10px;
+}
