@@ -4,13 +4,17 @@
   <p><%= user.current_location %></p>
   <p><%= user.company %></p>
 
-  <p><a href="<%= user.github %>">Github</a></p>
-  <p><a href="<%= user.twitter %>">Twitter</a></p>
-  <p><a href="<%= user.facebook %>">Facebook</a></p>
-  <p><a href="<%= user.linked_in %>">LinkedIn</a></p>
-  <p><a href="<%= user.blog %>">Blog</a></p>
+  <ul class='social-media'>
+  <li class='social-link'><a href="<%= user.github %>" target='_blank'><i i class='fa fa-github fa-lg'></i></a></li>
+  <li class='social-link'><a href="<%= user.twitter %>" target='_blank'><i i class='fa fa-twitter fa-lg'></i></a></li>
+  <li class='social-link'><a href="<%= user.facebook %>" target='_blank'><i i class='fa fa-facebook fa-lg'></i></a></li>
+  <li class='social-link'><a href="<%= user.linked_in %>" target='_blank'><i i class='fa fa-linkedin fa-lg'></i></a></li>
+  <li class='social-link'><a href="<%= user.blog %>" target='_blank'><i i class='fa fa-tumblr fa-lg'></i></a></li>
+</ul>
 
   <% if user.id == session[:user_id] %>
     <%= link_to "Edit Your Profile", edit_user_path(user), { :class => "edit-profile-link", :id => user.id} %>
   <% end %>
 </div>
+
+

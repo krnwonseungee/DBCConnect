@@ -25,10 +25,6 @@ div#menu {
   color: rgba(110, 204, 57, 0.6);
 }
 
-/*.user-popup a:hover, .inactive:hover {
-  color: rgba(110, 204, 57, 0.6);
-}
-*/
 ul.social-media {
   padding-left: 0px;
 }
@@ -289,3 +285,5 @@ table a{
 #searchbarresults h3 {
   margin-left: 5%;
 }
+
+
