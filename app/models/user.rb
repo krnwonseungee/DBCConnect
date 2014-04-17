@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :requests
 
   def self.lookup_from_auth_hash(auth_hash)
-    UserLinkedinInterface.db_lookup_based_on_linkedin_data(auth_hash)
+    UserLinkedinInterface.user_lookup_by_linkedin_data(auth_hash)
   end
 
   def update_records_from_linkedin_auth_hash(auth_hash)

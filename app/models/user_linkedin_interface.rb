@@ -3,7 +3,7 @@ class UserLinkedinInterface
     end
 
 
-  def self.db_lookup_based_on_linkedin_data(auth_hash)
+  def self.user_lookup_by_linkedin_data(auth_hash)
       user = find_url_match(auth_hash.info.urls.public_profile)
       user ||= find_name_match(auth_hash.info.name)
   end
