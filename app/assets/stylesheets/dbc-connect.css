@@ -1,3 +1,8 @@
+body {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+}
+
 #main {
   min-height: 920px;
 }
@@ -249,7 +254,7 @@ span#logo-in-map {
   padding: 0;
   float: left;
   position: absolute;
-  width: 200px;
+  width: 400px;
   font-size: 120%;
 }
 

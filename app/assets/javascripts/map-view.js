@@ -32,6 +32,7 @@ BootMap.View.prototype = {
     // newDiv.classList.add('boot-stats')
     // newDiv.innerText = cityCount
     // console.log("city Count " + newDiv.innerText)
+    $("#logo-in-map").empty();
     view.showNumOfCities(cityCount);
     // console.log("here is your div: "+ newDiv + "append it somewhere nice on the page!")
   },
