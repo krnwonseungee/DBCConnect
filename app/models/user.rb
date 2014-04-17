@@ -3,19 +3,7 @@ class User < ActiveRecord::Base
   has_many :requests
 
   def self.lookup_from_auth_hash(auth_hash)
-    opts = {}
-    opts[:linkedin_url] = auth_hash.info.urls.public_profile
-    opts[:name] = auth_hash.info.name
-    li_url_substring_in = opts[:linkedin_url][/(?<=in\/)[\w-]+/]
-    li_url_substring_pub = opts[:linkedin_url][/(?<=pub\/)[\w-]+/]
-    if li_url_substring_in
-      user = User.find(:all, :conditions => ["linked_in LIKE ?", "%#{li_url_substring_in}%"])
-    elsif li_url_substring_pub
-      user ||= User.find(:all, :conditions =>["linked_in LIKE ?", "%#{li_url_substring_pub}%"])
-    end
-    user = user[0] if user #grabs result out of array, only if there was a result (avoids nil[0] -> error)
-    user ||= User.find_by_name(opts[:name])
-    #returns a user or nil
+    UserLinkedinInterface.db_lookup_based_on_linkedin_data(auth_hash)
   end
 
   def update_records_from_linkedin_auth_hash(auth_hash)
