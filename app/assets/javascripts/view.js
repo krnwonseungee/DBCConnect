@@ -121,6 +121,10 @@ View.prototype = {
 
   showQuote: function(quote){
     $("#footer").empty().html("<h3>\"" + quote.content + "\"</h3><h4> " + quote.author + "</h4>");
+  },
+
+  showNumOfCities: function(cityCount){
+    $("#logo-in-map").add("<p>Find your boots in " + cityCount + " cities around the world</p>")
   }
 }
 

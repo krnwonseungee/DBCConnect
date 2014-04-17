@@ -28,11 +28,12 @@ BootMap.View.prototype = {
   },
 
   renderStats: function(cityCount){
-    var newDiv = document.createElement('div')
-    newDiv.classList.add('boot-stats')
-    newDiv.innerText = cityCount
-    console.log("city Count " + newDiv.innerText)
-    console.log("here is your div: "+ newDiv + "append it somewhere nice on the page!")
+    // var newDiv = document.createElement('div')
+    // newDiv.classList.add('boot-stats')
+    // newDiv.innerText = cityCount
+    // console.log("city Count " + newDiv.innerText)
+    view.showNumOfCities(cityCount);
+    // console.log("here is your div: "+ newDiv + "append it somewhere nice on the page!")
   },
 
   //bindPopup and openPopup are leaflet fns
