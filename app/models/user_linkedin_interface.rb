@@ -13,7 +13,7 @@ class UserLinkedinInterface
         user.update_attribute(:company, company_names)
       end
       if location = grab_location_from_linkedin(auth_hash)
-        user.update_attribute(:location, location)
+        user.update_attribute(:current_location, location)
       end
       user
     end
