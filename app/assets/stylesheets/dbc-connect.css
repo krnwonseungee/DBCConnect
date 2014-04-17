@@ -189,13 +189,14 @@ ul#top_navbar {
   /*background-color: grey;*/
   padding-bottom: 14px;
   /*text-shadow: 2px 1px black;*/
-  border: 4px solid white;
-  box-shadow: 1px 1px 1px 1px black;
+  border: 1px solid white;
+  box-shadow: 2px 2px 2px 2px grey;
+  border-radius:4px;
 
 }
 
 #user-profile p a {
-  padding-left: 10px;
+  /*padding-left: 10px;*/
   color: #2c3e50;
 }
 
@@ -203,9 +204,6 @@ ul#top_navbar {
   padding-left: 10px;
 }
 
-#user-profile p {
-  padding-left: 10px;
-}
 
 #user-profile h1 {
   padding-left: 10px;
@@ -218,6 +216,9 @@ ul#top_navbar {
 
 div#editprof {
   padding-bottom: 14px;
+  border: 1px solid white;
+  box-shadow: 2px 2px 2px 2px grey;
+  border-radius:4px;
 }
 
 
@@ -250,8 +251,14 @@ div#editprof {
 #searchbarresults h2 {
   padding-left: 10px;
   /*background-color: #fff;*/
-  background-color: rgba(255,255,255,0.75);
+  /*background-color: rgba(255,255,255,0.75);*/
   padding-bottom: 10px;
+}
+
+div#searchbarresults {
+  border: 1px solid white;
+  box-shadow: 2px 2px 2px 2px grey;
+  border-radius:4px;
 }
 
 td {
