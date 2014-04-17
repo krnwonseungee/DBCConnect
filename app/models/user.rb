@@ -71,22 +71,6 @@ class User < ActiveRecord::Base
     params.require(:user).permit(:current_location, :company, :github, :twitter, :facebook, :blog)
   end
 
-  def grab_company_names_from_linkedin(auth_hash)
-    company_names = []
-    auth_hash.extra.raw_info.positions.values[1].each do |company_hash|
-      c_name = company_hash['company']['name']
-      company_names << c_name if c_name
-    end
-    company_names.join(", ")
-  end
-
-  def grab_picture_url_from_linkedin(auth_hash)
-    auth_hash.extra.raw_info.pictureUrl
-  end
-  def grab_location_from_linkedin(auth_hash)
-    auth_hash.extra.raw_info.location.name
-  end
-
 end
 
 
