@@ -109,7 +109,7 @@ h1.splash-head {
 }
 
 img#linkedin_login{
-  height: 36px;
+  height: 44px;
   border: 0px solid black;
   padding: 1px;
   border-radius: 8px;
@@ -142,14 +142,18 @@ html div.splash p:first-letter {
 }
 
 html a#logo {
-  background-color: red;
+  /*background-color: red;*/
   height: 53px;
   position: relative;
-  margin: 0;
-  padding: 0;
+  /*margin: 0 0 0 10px;*/
+  padding: 15px 0 0 10px;
 }
 
-#logo-only {
+a#logo.logo.pure-menu-heading {
+  font-size: 95%;
+}
+
+/*#logo-only {
   background-color: red;
   height: 53px;
   position: relative;
@@ -158,14 +162,14 @@ html a#logo {
   margin: 0;
   padding: 0;
   z-index: +10;
-}
+}*/
 
 #map {
   margin: 0px;
   float: left;
   padding: 0px;
   z-index: -10;
-  height: 92.5%;
+  /*height: 92.5%;*/
 }
 
 div#menu {
@@ -264,3 +268,20 @@ div#searchbarresults {
 td {
   padding-left: 10px;
 }
+
+ul#top_navbar {
+  z-index: +10;
+  /*background-color: red;*/
+/*  padding: 0;
+  margin: 0;*/
+
+
+}
+
+/*a.pure-menu-heading {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}*/
+
+?
