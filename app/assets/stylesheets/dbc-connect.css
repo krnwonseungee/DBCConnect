@@ -128,13 +128,15 @@ html div.splash p#flash-notice {
   }
 
 html div.splash p#login-quote {
-  font-size: 140%;
+  font-size: 160%;
   color: white;
   font-style: italic;
   margin: 0;
   border: 0;
   text-transform: lowercase;
-  text-shadow: 1px 1px black;
+  text-shadow: -3px 2px black;
+  background-color: rgba(255,255,255,0.4);
+  border-radius:14px;
 }
 
 html div.splash p:first-letter {
