@@ -1,7 +1,5 @@
 class UserLinkedinInterface
 
-
-
   def self.user_lookup_by_linkedin_data(auth_hash)
       user = find_url_match(auth_hash.info.urls.public_profile)
       user ||= find_name_match(auth_hash.info.name)
@@ -40,7 +38,7 @@ class UserLinkedinInterface
     User.find_by_name(linkedin_name)
   end
 
-  def grab_company_names_from_linkedin(auth_hash)
+  def self.grab_company_names_from_linkedin(auth_hash)
     company_names = []
     auth_hash.extra.raw_info.positions.values[1].each do |company_hash|
       c_name = company_hash['company']['name']
@@ -49,10 +47,11 @@ class UserLinkedinInterface
     company_names.join(", ")
   end
 
-  def grab_picture_url_from_linkedin(auth_hash)
+  def self.grab_picture_url_from_linkedin(auth_hash)
     auth_hash.extra.raw_info.pictureUrl
   end
-  def grab_location_from_linkedin(auth_hash)
+
+  def self.grab_location_from_linkedin(auth_hash)
     auth_hash.extra.raw_info.location.name
   end
 
