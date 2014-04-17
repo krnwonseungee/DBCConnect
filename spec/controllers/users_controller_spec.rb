@@ -54,7 +54,7 @@ describe UsersController do
       }.to change { fake_user.reload.name }.to(new_name)
     end
 
-    it "renders user to json" do
+    it "renders partial of user profile upon updating information" do
       new_name2 = "Joe Blow2"
       put(:update, id: fake_user.id, user: { name: new_name2 })
       expect(response).to render_template(:partial => '_show')
