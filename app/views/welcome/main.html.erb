@@ -5,8 +5,8 @@
       <a class="pure-menu-heading" href=""><span>a</span></a>
       <ul id="top_navbar">
           <li id="availability"><a href="#"><span class="inactive"><i class="fa fa-user"></i><i class="fa fa-user"></i></span></a></li>
-          <li class="pure-menu-selected"><a id="logged_user" href="#"></a></li>
-          <li id="googlelink"></li>
+          <li><%= render 'searchbar' %></li>
+          <li class="pure-menu-selected"><a class='profile-link logged_user' href="#"></a></li>
           <li id="logout"><a href="#">Logout</a></li>
       </ul>
   </div>
@@ -31,23 +31,25 @@
         </div>
     </div>
 
-    <div id="main">
-        <div class="content">
-        </div>
-
-        <% if flash[:welcome] %>
-          <div class="flash welcome-flash"><%= flash[:welcome] %></div>
-        <% end %>
-
-        <% if flash[:pairings] %>
-          <div class="flash pairings-flash"><%= flash[:pairings] %></div>
-        <% end %>
-
-    </div>
 </div>
 
-<div id="map">
+<div id="container">
+  <% if flash[:welcome] %>
+    <div class="flash welcome-flash"><%= flash[:welcome] %></div>
+  <% end %>
+
+  <% if flash[:pairings] %>
+    <div class="flash pairings-flash"><%= flash[:pairings] %></div>
+  <% end %>
+
+  <div id="map">
+  </div>
+  <div  id="quote">
+  </div>
+  <div id="footer">
+  </div>
 </div>
+
 
 <div id="pop-up" style="display:none;">
   <a class="close-pop-up" href="#" rel="modal:close"><i class="fa fa-times-circle-o fa-lg"></i></a>

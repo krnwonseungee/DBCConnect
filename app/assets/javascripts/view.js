@@ -50,7 +50,11 @@ View.prototype = {
   },
 
   refreshActiveIcon: function(){
-    $("#availability").children().children().attr("class", controller.loggedUser.activeState)
+    if (controller.loggedUser.activeState){
+      $("#availability").children().children().attr("class", "active")
+    }else{
+      $("#availability").children().children().attr("class", "inactive")
+    }
   },
 
   showGoogleHangoutButtonRequestor: function(){
@@ -100,8 +104,19 @@ View.prototype = {
     $("#availability a span[class='inactive']").attr("class",controller.loggedUser.activeState)
   },
 
-  showLoggedUser: function(){//make a link to the profile
-    $("#logged_user").text(controller.loggedUser.name)
+  showLoggedUser: function(){
+    $(".logged_user").text(controller.loggedUser.name)
+    $('.logged_user')[0].id = controller.loggedUser.id
+  },
+
+  renderPartial: function(partial){
+    // this will bring a new quote and show the map again
+    $('#container').empty().html(partial)
+  },
+
+  renderMap: function(){
+    $('#container').empty().html("<div id='map'></div>");
+    controller.createMap();
   }
 }
 

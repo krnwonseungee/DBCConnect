@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: { user: @user }.to_json
+    render partial: 'show', locals: { user: @user }
   end
 
   def create
@@ -20,21 +20,41 @@ class UsersController < ApplicationController
   end
 
   def edit
-    render json: { user: @user }.to_json
+    render partial: 'edit', locals: { user: @user }
   end
 
   def update
     user = User.find(params[:id])
     if user.update(user_params)
-      render json: { success: true, user: user }.to_json
+      render partial: 'show', locals: { user: user }
     else
-      render json: { success: false }
+      render partial: 'edit', locals: { user: @user }
     end
   end
 
   def get_active_users
     active_users = User.where(active: true).map { |user| user.to_json }
     render json: { activeUsers: active_users }
+  end
+
+  def results #refactor to be skinner model
+    user_content_array = Array.new
+
+    pg_search_results = PgSearch.multisearch(params[:pgsearch]).each do |result|
+      user_content_array.push(result.content)
+    end
+    resulting_names = Array.new
+
+    user_content_array.each do |user_content|
+      user_names = user_content.split(" ").take(2).join(" ")
+      resulting_names.push(user_names)
+    end
+    @user_obj_array = Array.new
+
+    resulting_names.each do |name|
+      @user_obj_array << User.find_by_name(name)
+    end
+    render partial: 'results', locals: { results: @user_obj_array }
   end
 
   def active
