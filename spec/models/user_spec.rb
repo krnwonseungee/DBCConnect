@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'spec_helper_omniauth_mocks'
 
 describe User do
 
@@ -7,16 +8,17 @@ describe User do
   end
 
   context "looking up oauth response in db" do
-    user = FactoryGirl.create(:user, first_name: "Joe")
-    good_url  = user.linked_in
-    bad_url = "www.invalidurl.me"
+    let(:auth_hash_dbc) { OmniAuth.config.mock_auth[:linkedin_dbc] }
+    let(:auth_hash_nondbc) { OmniAuth.config.mock_auth[:linkedin_nondbc]}
+    let(:dbc_user){FactoryGirl.create(:user, name: "Om Niauth", linked_in: "omniauth.test/in/dbcuser")}
 
-    xit "returns the correct user when given valid input" do
-      #see: http://natashatherobot.com/rails-test-omniauth-sessions-controller/
-      expect(User.lookup_from_auth_hash({linkedin_url: good_url})).to eq user
+    it "returns the correct user when given valid url" do
+      valid_linkedin_user = dbc_user
+      expect(User.lookup_from_auth_hash(auth_hash_dbc)).to eq valid_linkedin_user
     end
-    xit "returns false when there's no lookup match" do
-      expect(User.lookup_from_auth_hash(linkedin_url: bad_url)).to be nil
+    it "returns nil when there's no lookup match (e.g. non-DBC linkedin)" do
+      expect(User.lookup_from_auth_hash(auth_hash_nondbc)).to be nil
     end
+
   end
 end

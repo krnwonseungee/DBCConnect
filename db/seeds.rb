@@ -1,15 +1,15 @@
 
 all_boots = DBC::User.all
 all_cohorts = DBC::Cohort.all
-all_quotes = Quote.all
+
+NUM_OF_QUOTES = 6
 
 quote_author_arr = [
     "Confusion is the feeling that comes before understanding.",
     "The middle of every successful project looks like a disaster.",
     "Luck is when preparedness meets opportunity, and opportunity is everywhere.",
     "Make no little plans; they have no magic to stir men's blood.",
-    %q{ The indispensable first step to getting the things you want out of
-        life is this: decide what you want. },
+    "The indispensable first step to getting the things you want out of life is this: decide what you want.",
     "Opportunity dances with those who are already on the dance floor."
 ]
 quote_content_arr = [
@@ -51,9 +51,9 @@ all_boots.each do |boot|
     )
 end
 
-all_quotes.each_with_index do |i|
+NUM_OF_QUOTES.times do |i|
     quote = Quote.create(
-        content: quote_author_arr[i],
-        author: quote_content_arr[i]
+        content: quote_author_arr[i - 1],
+        author: quote_content_arr[i - 1]
     )
 end
