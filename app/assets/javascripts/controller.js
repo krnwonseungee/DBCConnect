@@ -94,7 +94,7 @@ Controller.prototype = {
       view.renderMap();
     });
 
-    $(document).on("click", '.close-pop-up', function(e){
+    $(document).on("click", '#close-pop-up', function(e){
       e.preventDefault();
       view.hidePartial(e);
     })
