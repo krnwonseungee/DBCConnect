@@ -321,3 +321,10 @@ span#logo-in-map {
   font-size: 120%;
 }
 
+.social-link .fa {
+  color: #0078a8;
+}
+
+.social-link .fa:hover {
+  color: rgba(110, 204, 57, 0.6);
+}
