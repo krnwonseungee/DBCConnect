@@ -110,6 +110,7 @@ View.prototype = {
   },
 
   renderPartial: function(partial){
+    $("#logo-in-map").empty();
     // this will bring a new quote and show the map again
     $('#container').empty().html(partial)
   },
@@ -121,6 +122,14 @@ View.prototype = {
 
   showQuote: function(quote){
     $("#footer").empty().html("<h3>\"" + quote.content + "\"</h3><h4> " + quote.author + "</h4>");
+  },
+
+  showNumOfCities: function(cityCount){
+    $("#logo-in-map").append("<h2>DBC CONNECT</h2>Find your fellow boots in " + cityCount + " cities around the world")
+  },
+
+  hidePartial:function(e){
+    $(e.target).parent().parent().hide()
   }
 }
 
