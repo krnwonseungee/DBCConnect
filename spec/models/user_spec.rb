@@ -17,8 +17,15 @@ describe User do
       expect(User.lookup_from_auth_hash(auth_hash_dbc)).to eq valid_linkedin_user
     end
     it "returns nil when there's no lookup match (e.g. non-DBC linkedin)" do
-      expect(User.lookup_from_auth_hash(auth_hash_nondbc)).to be nil
+      expect(User.lookup_from_auth_hash(auth_hash_nondbc)).to be(nil)
     end
+  end
 
+  context "search results" do
+    let(:fake_user){FactoryGirl.create(:user)}
+
+    it "returns correct search results" do
+      expect(User.get_list_of_user_obj(fake_user.name).length).to eq(1)
+    end
   end
 end
