@@ -37,11 +37,13 @@ describe UsersController do
         expect(response).to be_redirect
       }.to change { User.count }.by(1)
     end
-
   end
 
-# No test for edit is required because the route behaves same as #show
   describe "edit" do
+    it "loads a partial for editing user's own profile" do
+      get :edit, id: fake_user.id
+      expect(response).to render_template(:partial => '_edit')
+    end
   end
 
   describe "update" do
@@ -51,7 +53,8 @@ describe UsersController do
         put(:update, id: fake_user.id, user: { name: new_name })
       }.to change { fake_user.reload.name }.to(new_name)
     end
-    it "renders user to json" do
+
+    it "renders partial of user profile upon updating information" do
       new_name2 = "Joe Blow2"
       put(:update, id: fake_user.id, user: { name: new_name2 })
       expect(response).to render_template(:partial => '_show')

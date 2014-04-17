@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
       user.update_records_from_linkedin_auth_hash(auth_hash)
       redirect_to welcome_path
     else
-      flash[:notice] = "DBC Grad Lookup failed. Linkedin account url or name does not match our records."
+      flash[:notice] = "LinkedIn account does not match our records."
       redirect_to root_path
     end
   end
