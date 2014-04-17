@@ -160,3 +160,7 @@ html div.splash p:first-letter {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
+
+  .pure-form {
+    width: 30%
+  }
