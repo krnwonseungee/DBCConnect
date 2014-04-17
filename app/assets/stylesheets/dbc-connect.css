@@ -188,6 +188,19 @@ ul#top_navbar {
 #user-profile {
   /*background-color: grey;*/
   padding-bottom: 14px;
+  /*text-shadow: 2px 1px black;*/
+  border: 4px solid white;
+  box-shadow: 1px 1px 1px 1px black;
+
+}
+
+#user-profile p a {
+  padding-left: 10px;
+  color: #2c3e50;
+}
+
+#user-profile p {
+  padding-left: 10px;
 }
 
 #user-profile p {
@@ -198,8 +211,9 @@ ul#top_navbar {
   padding-left: 10px;
 }
 
-.edit-profile-link  {
+.edit-profile-link a {
   padding-left: 10px;
+  color: #2c3e50;
 }
 
 div#editprof {
