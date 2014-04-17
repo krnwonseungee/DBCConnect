@@ -6,7 +6,7 @@ DBCconnect::Application.routes.draw do
 
   match '/pairings/update_hangout_info', :controller => 'pairings', :action => 'allow_cors', via: [:OPTIONS]
   get '/pairings/get_url/:requestor_id', to: 'pairings#get_hangout_url'
-  
+
   get '/welcome', to: 'welcome#main'
   get '/welcome/getuser', to: 'welcome#user'
 
