@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require handlebars-v1.3.0.js
 //= require jquery.ui.all
 //= require jquery.modal
 //= require jquery_ujs
