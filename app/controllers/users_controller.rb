@@ -24,9 +24,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_params)
-      render partial: 'show', locals: { user: user }
+    if @user.update(user_params)
+      render partial: 'show', locals: { user: @user }
     else
       render partial: 'edit', locals: { user: @user }
     end
