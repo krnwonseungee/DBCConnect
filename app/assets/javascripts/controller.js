@@ -198,10 +198,7 @@ UserDataFetcher.prototype = {
              type: "get",
              url: "/welcome/getuser"
            }).done(function(serverData){
-             controller.loggedUser = new User;
-             controller.loggedUser.id = serverData.user_id;
-             controller.loggedUser.activeState = serverData.active;
-             controller.loggedUser.name = serverData.name;
+             controller.loggedUser = new User(serverData);
              view.refreshActiveIcon(this);
              view.showLoggedUser(this);
              controller.updatePairingMode();
