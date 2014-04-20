@@ -21,7 +21,13 @@ describe("Controller", function(){
     controller = new BootMap.Controller
     mapStub = {}
     osmStub = {}
+
+    $("<div id='map' style='display:none'></div>").appendTo("body");
   })
+
+  afterEach(function() {
+    $("#map").remove();
+  });
 
   it("has a coordinate generator", function(){
     expect(controller.getCoords()).toBeDefined()
@@ -36,7 +42,7 @@ describe("Controller", function(){
     expect(controller.newMap).toBeDefined();
   }),
 
-  xit("creates a new map object", function(){
+  it("creates a new map object", function(){
     expect(returnTypeOf(controller.newMap())).toBe(returnTypeOf(mapStub))
   }),
 
