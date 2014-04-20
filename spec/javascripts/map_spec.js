@@ -36,7 +36,7 @@ describe("Controller", function(){
     expect(controller.newMap()).toBeDefined()
   }),
 
-  xit("creates a new map object", function(){
+  it("creates a new map object", function(){
     expect(returnTypeOf(controller.newMap())).toBe(returnTypeOf(mapStub))
   }),
 
