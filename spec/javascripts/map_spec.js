@@ -56,7 +56,7 @@ describe("View", function(){
   }),
 
   it("is undefined if called with no arguments",function(){
-    expect(view.drawMap()).toBeUndefined()
+    expect(this.view.drawMap()).toBeUndefined()
   })
 
   xit("requires a map and osm as parameters to draws a map", function(){
