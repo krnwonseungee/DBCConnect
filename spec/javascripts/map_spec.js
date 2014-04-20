@@ -32,7 +32,7 @@ describe("Controller", function(){
     expect(controller.getCoords()).toContain([27.5,-118.5])
   }),
 
-  xit("has a new map function", function(){
+  it("has a new map function", function(){
     expect(controller.newMap()).toBeDefined()
   }),
 
