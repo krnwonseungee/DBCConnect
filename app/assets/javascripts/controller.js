@@ -11,6 +11,10 @@ Controller.prototype = {
     setInterval(this.refreshList.call(this), 2003);
   },
 
+  setUser: function(user) {
+             this.loggedUser = user;
+           },
+
   refreshList: function(){
     $.ajax({
       type: "get",
@@ -198,7 +202,7 @@ UserDataFetcher.prototype = {
              type: "get",
              url: "/welcome/getuser"
            }).done(function(serverData){
-             controller.loggedUser = new User(serverData);
+             controller.setUser(new User(serverData));
              view.refreshActiveIcon(this);
              view.showLoggedUser(this);
              controller.updatePairingMode();
