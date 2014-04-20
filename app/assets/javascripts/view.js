@@ -105,8 +105,12 @@ View.prototype = {
   },
 
   showLoggedUser: function(){
-    $(".logged_user").text(controller.loggedUser.name)
-    $('.logged_user')[0].id = controller.loggedUser.id
+                    var $loggedUser = $(".logged_user");
+
+                    if ($loggedUser.length === 1) {
+                      $loggedUser.text(controller.loggedUser.name)
+                      $('.logged_user')[0].id = controller.loggedUser.id
+                    }
   },
 
   renderPartial: function(partial){
