@@ -46,7 +46,7 @@ describe("Controller", function(){
     expect(returnTypeOf(controller.newMap())).toBe(returnTypeOf(mapStub))
   }),
 
-  xit("initializes an OpenStreetMap layer", function(){
+  it("initializes an OpenStreetMap layer", function(){
     expect(returnTypeOf(controller.osmInitializer())).toBe(returnTypeOf(osmStub))
   })
 
