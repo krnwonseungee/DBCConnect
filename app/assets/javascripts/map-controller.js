@@ -70,8 +70,3 @@ BootMap.Controller.prototype = {
     this.masterRoster.uniqueLocationsCount = cityList.uniqueCities.length
   }
 }
-
-
-
-
-
