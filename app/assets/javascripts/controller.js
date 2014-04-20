@@ -165,23 +165,6 @@ Controller.prototype = {
     })
   },
 
-  getUserDetails: function(){
-    var controller = this,
-      view = this.view;
-    $.ajax({
-      type: "get",
-      url: "/welcome/getuser"
-    }).done(function(serverData){
-      controller.loggedUser = new User;
-      controller.loggedUser.id = serverData.user_id;
-      controller.loggedUser.activeState = serverData.active;
-      controller.loggedUser.name = serverData.name;
-      view.refreshActiveIcon(this);
-      view.showLoggedUser(this);
-      controller.updatePairingMode();
-    })
-  },
-
   createMap: function(){
     map_controller = new BootMap.Controller
     map_view = new BootMap.View(map_controller, this.view)
@@ -209,8 +192,21 @@ function UserDataFetcher(notifier) {
 
 UserDataFetcher.prototype = {
   fetch: function() {
-           this.notifier.getUserDetails();
-         }
+           var controller = this.notifier,
+             view = this.view;
+           $.ajax({
+             type: "get",
+             url: "/welcome/getuser"
+           }).done(function(serverData){
+             controller.loggedUser = new User;
+             controller.loggedUser.id = serverData.user_id;
+             controller.loggedUser.activeState = serverData.active;
+             controller.loggedUser.name = serverData.name;
+             view.refreshActiveIcon(this);
+             view.showLoggedUser(this);
+             controller.updatePairingMode();
+           })
+         },
 }
 
 $(function(){
