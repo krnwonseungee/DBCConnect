@@ -136,7 +136,8 @@ View.prototype = {
     controller.createMap();
   },
 
-  showQuote: function(quote){
+  showQuote: function(quoteBearer){
+               var quote = quoteBearer.quote;
     $("#footer").empty().html("<h3>\"" + quote.content + "\"</h3><h4> " + quote.author + "</h4>");
   },
 

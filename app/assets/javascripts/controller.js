@@ -4,26 +4,18 @@ Controller = function(view){
 
 Controller.prototype = {
   initialize: function(){
-    var view = this.view;
-
-    this.getQuotes();
     this.bindDomEvents();
-    view.setupMenuToResponsive();
-    view.showHelpPopups();
+    this.view.setupMenuToResponsive();
+    this.view.showHelpPopups();
     setInterval(this.refreshList.call(this), 2003);
     this.createMap();
   },
 
-  getQuotes: function(){
-    var view = this.view;
-    $.ajax({
-      type: "get",
-      url: "/quotes",
-      dataType:"json"
-    }).done(function(quote){
-      view.showQuote(quote)
-    })
-  },
+  handleQuote: function(quote) {
+                 this.quote = quote;
+                 this.view.showQuote(this);
+               },
+
 
   setUser: function(user) {
              this.loggedUser = user;
