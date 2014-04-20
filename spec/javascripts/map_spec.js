@@ -56,7 +56,7 @@ describe("View", function(){
   beforeEach(function(){
   })
 
-  xit("is has a controller",function(){
+  it("is has a controller",function(){
     expect(view.controller).toBeTruthy()
   }),
 
