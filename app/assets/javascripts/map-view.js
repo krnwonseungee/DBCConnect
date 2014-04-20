@@ -71,6 +71,10 @@ BootMap.View.prototype = {
                     "</div>"
                   ]
     return content.join("")
-  }
+  },
+
+  drawMap: function() {
+             return undefined;
+           }
 
 }
