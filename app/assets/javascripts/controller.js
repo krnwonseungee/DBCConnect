@@ -6,9 +6,23 @@ Controller.prototype = {
   initialize: function(){
     var view = this.view;
 
+    this.getQuotes();
+    this.bindDomEvents();
     view.setupMenuToResponsive();
     view.showHelpPopups();
     setInterval(this.refreshList.call(this), 2003);
+    this.createMap();
+  },
+
+  getQuotes: function(){
+    var view = this.view;
+    $.ajax({
+      type: "get",
+      url: "/quotes",
+      dataType:"json"
+    }).done(function(quote){
+      view.showQuote(quote)
+    })
   },
 
   setUser: function(user) {
@@ -173,37 +187,22 @@ Controller.prototype = {
   },
 
   createMap: function(){
+               if (!this.view.mapElement) return;
     map_controller = new BootMap.Controller
     map_view = new BootMap.View(map_controller, this.view)
     map_controller.view = map_view
     map_controller.fetchUsers()
     map_controller.initializeMap(37.769, -70.429, 3)
     map_view.drawMap()
-  },
-
-  getQuotes: function(){
-    var view = this.view;
-    $.ajax({
-      type: "get",
-      url: "/quotes",
-      dataType:"json"
-    }).done(function(quote){
-      view.showQuote(quote)
-    })
   }
 }
 
 $(function(){
-  var view = new View,
+  var view = new View({ mapSelector: "#map" }),
     navigationController = new NavigationController,
     controller = new Controller(view),
     userFetcher = new UserDataFetcher(controller).fetch();
 
-  controller.getQuotes();
   controller.initialize();
-  controller.bindDomEvents();
-
-  if (("#map").length < 1) return;
-  controller.createMap();
 });
 

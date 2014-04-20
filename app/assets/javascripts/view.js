@@ -1,6 +1,16 @@
-View = function(){}
+View = function(opts){
+  this._mapElement = $(opts.mapSelector);
+}
 
 View.prototype = {
+  mapElement: function() {
+                if (this._mapElement.length < 1) {
+                  return null;
+                } else {
+                  return this._mapElement;
+                }
+              },
+
   setupMenuToResponsive: function(){
     layout   = document.getElementById('layout'),
     menu     = document.getElementById('menu'),
