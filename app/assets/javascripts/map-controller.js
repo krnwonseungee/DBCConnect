@@ -14,7 +14,7 @@ BootMap.Controller.prototype = {
              },
 
   newMap: function() {
-            return true;
+            return {};
           },
 
   initializeMapData: function(startLat,startLong,startZoom){
