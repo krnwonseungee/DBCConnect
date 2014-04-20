@@ -203,12 +203,22 @@ Controller.prototype = {
   }
 }
 
+function UserDataFetcher(notifier) {
+  this.notifier = notifier;
+}
+
+UserDataFetcher.prototype = {
+  fetch: function() {
+           this.notifier.getUserDetails();
+         }
+}
+
 $(function(){
   var view = new View,
     navigationController = new NavigationController,
-    controller = new Controller(view);
+    controller = new Controller(view),
+    userFetcher = new UserDataFetcher(controller).fetch();
 
-  controller.getUserDetails();
   controller.getQuotes();
   controller.initialize();
   controller.bindDomEvents();
