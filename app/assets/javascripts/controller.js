@@ -13,6 +13,9 @@ Controller.prototype = {
 
   setUser: function(user) {
              this.loggedUser = user;
+             this.view.refreshActiveIcon(this);
+             this.view.showLoggedUser(this);
+             this.updatePairingMode();
            },
 
   refreshList: function(){
@@ -203,9 +206,6 @@ UserDataFetcher.prototype = {
              url: "/welcome/getuser"
            }).done(function(serverData){
              controller.setUser(new User(serverData));
-             view.refreshActiveIcon(this);
-             view.showLoggedUser(this);
-             controller.updatePairingMode();
            })
          },
 }
