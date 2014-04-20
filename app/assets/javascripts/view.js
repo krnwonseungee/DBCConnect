@@ -1,4 +1,5 @@
 View = function(){}
+
 View.prototype = {
   setupMenuToResponsive: function(){
     layout   = document.getElementById('layout'),
@@ -49,7 +50,8 @@ View.prototype = {
     }
   },
 
-  refreshActiveIcon: function(){
+  refreshActiveIcon: function(controller){
+    if (!controller.loggedUser) return;
     if (controller.loggedUser.activeState){
       $("#availability").children().children().attr("class", "active")
     }else{
@@ -104,10 +106,10 @@ View.prototype = {
     $("#availability a span[class='inactive']").attr("class",controller.loggedUser.activeState)
   },
 
-  showLoggedUser: function(){
+  showLoggedUser: function(controller){
                     var $loggedUser = $(".logged_user");
 
-                    if ($loggedUser.length === 1) {
+                    if ($loggedUser.length === 1 && controller.loggedUser) {
                       $loggedUser.text(controller.loggedUser.name)
                       $('.logged_user')[0].id = controller.loggedUser.id
                     }

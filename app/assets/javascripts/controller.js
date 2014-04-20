@@ -1,10 +1,14 @@
-//controller
-Controller = function(){}
+Controller = function(view){
+  this.view = view;
+}
+
 Controller.prototype = {
   initialize: function(){
+    var view = this.view;
+
     view.setupMenuToResponsive();
     view.showHelpPopups();
-    setInterval(this.refreshList, 2003);
+    setInterval(this.refreshList.call(this), 2003);
   },
 
   refreshList: function(){
@@ -15,7 +19,7 @@ Controller.prototype = {
     }).done(function(serverData){
       list.activeUsers = serverData.activeUsers.map($.parseJSON)
     })
-    view.renderList()
+    this.view.renderList()
   },
 
   pinging: function(){
@@ -106,6 +110,7 @@ Controller.prototype = {
       type: "delete"
     })
   },
+
   setPairingMode: function(node){
     if ($("#availability").children().children().attr("class") === "active"){
       controller.loggedUser.activeState = false
@@ -127,24 +132,24 @@ Controller.prototype = {
   },
 
   togglePinging: function(){
-    if (controller.loggedUser.activeState){
+    if (this.loggedUser.activeState){
       controller.pinger = setInterval(function(){controller.pinging()}, 5000)
     }else{
-      clearInterval(controller.pinger);
-      controller.pinger = 0;
+      clearInterval(this.pinger);
+      this.pinger = 0;
     }
   },
 
   askToPairWithUser: function(id){//this will be used to create a popup to confirm
-    controller.makeUserInactive();
+    this.makeUserInactive();
     view.showGoogleHangoutButtonRequestor();
     controller.sendPairingRequest(id);
   },
 
   makeUserInactive:function(){
-    controller.loggedUser.activeState = false;
-    controller.togglePinging();
-    view.refreshActiveIcon();
+    this.loggedUser.activeState = false;
+    this.togglePinging();
+    view.refreshActiveIcon(this);
   },
 
   sendPairingRequest: function(id){
@@ -161,6 +166,8 @@ Controller.prototype = {
   },
 
   getUserDetails: function(){
+    var controller = this,
+      view = this.view;
     $.ajax({
       type: "get",
       url: "/welcome/getuser"
@@ -169,15 +176,15 @@ Controller.prototype = {
       controller.loggedUser.id = serverData.user_id;
       controller.loggedUser.activeState = serverData.active;
       controller.loggedUser.name = serverData.name;
-      view.refreshActiveIcon();
-      view.showLoggedUser();
+      view.refreshActiveIcon(this);
+      view.showLoggedUser(this);
       controller.updatePairingMode();
     })
   },
 
   createMap: function(){
     map_controller = new BootMap.Controller
-    map_view = new BootMap.View(map_controller)
+    map_view = new BootMap.View(map_controller, this.view)
     map_controller.view = map_view
     map_controller.fetchUsers()
     map_controller.initializeMap(37.769, -70.429, 3)
@@ -185,6 +192,7 @@ Controller.prototype = {
   },
 
   getQuotes: function(){
+    var view = this.view;
     $.ajax({
       type: "get",
       url: "/quotes",
@@ -195,10 +203,11 @@ Controller.prototype = {
   }
 }
 
-$('DOMContentLoaded', function(){
-  view = new View
-  navigationController = new NavigationController  
-  controller = new Controller;
+$(function(){
+  var view = new View,
+    navigationController = new NavigationController,
+    controller = new Controller(view);
+
   controller.getUserDetails();
   controller.getQuotes();
   controller.initialize();

@@ -1,5 +1,6 @@
-BootMap.View = function(controller){
+BootMap.View = function(controller, parentView){
   this.controller = controller
+  this.parentView = parentView;
 }
 
 BootMap.View.prototype = {
@@ -16,6 +17,7 @@ BootMap.View.prototype = {
   renderMarkers: function(bootList, map){
     var map = map
     var markers = new L.MarkerClusterGroup()
+    if (!map ) return;
     for (i=0; i<bootList.length; i++){
         var lat=bootList[i].latitude
         var long=bootList[i].longitude
@@ -28,13 +30,8 @@ BootMap.View.prototype = {
   },
 
   renderStats: function(cityCount){
-    // var newDiv = document.createElement('div')
-    // newDiv.classList.add('boot-stats')
-    // newDiv.innerText = cityCount
-    // console.log("city Count " + newDiv.innerText)
     $("#logo-in-map").empty();
-    view.showNumOfCities(cityCount);
-    // console.log("here is your div: "+ newDiv + "append it somewhere nice on the page!")
+    this.parentView.showNumOfCities(cityCount);
   },
 
   //bindPopup and openPopup are leaflet fns

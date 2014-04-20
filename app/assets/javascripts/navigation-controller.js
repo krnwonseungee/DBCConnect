@@ -38,6 +38,7 @@ NavigationController.prototype = {
   },
 
   submitEditUserProfile: function(){
+                       if (!controller.loggedUser) return;
     var formData = $(".update_user").serialize()
     $.ajax({
       type: "put",
