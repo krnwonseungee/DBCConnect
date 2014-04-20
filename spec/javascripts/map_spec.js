@@ -48,10 +48,11 @@ describe("Controller", function(){
 
 describe("View", function(){
   beforeEach(function(){
+    this.view = new BootMap.View(true);
   })
 
   it("is has a controller",function(){
-    expect(view.controller).toBeTruthy()
+    expect(this.view.controller).toBeTruthy()
   }),
 
   xit("is undefined if called with no arguments",function(){
