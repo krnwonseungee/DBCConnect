@@ -193,7 +193,7 @@ Controller.prototype = {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function(){
+$('DOMContentLoaded', function(){
   view = new View
   navigationController = new NavigationController  
   controller = new Controller;
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function(){
   controller.initialize();
   controller.bindDomEvents();
 
-  if (!document.getElementById('map')) return;
+  if (("#map").length < 1) return;
   controller.createMap();
 });
 
