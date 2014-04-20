@@ -32,15 +32,15 @@ describe("Controller", function(){
     expect(controller.getCoords()).toContain([27.5,-118.5])
   }),
 
-  it("has a new map function", function(){
+  xit("has a new map function", function(){
     expect(controller.newMap()).toBeDefined()
   }),
 
-  it("creates a new map object", function(){
+  xit("creates a new map object", function(){
     expect(returnTypeOf(controller.newMap())).toBe(returnTypeOf(mapStub))
   }),
 
-  it("initializes an OpenStreetMap layer", function(){
+  xit("initializes an OpenStreetMap layer", function(){
     expect(returnTypeOf(controller.osmInitializer())).toBe(returnTypeOf(osmStub))
   })
 
@@ -50,15 +50,15 @@ describe("View", function(){
   beforeEach(function(){
   })
 
-  it("is has a controller",function(){
+  xit("is has a controller",function(){
     expect(view.controller).toBeTruthy()
   }),
 
-  it("is undefined if called with no arguments",function(){
+  xit("is undefined if called with no arguments",function(){
     expect(view.drawMap()).toBeUndefined()
   })
 
-  it("requires a map and osm as parameters to draws a map", function(){
+  xit("requires a map and osm as parameters to draws a map", function(){
     expect(view.drawMap(mapObject,osm)).toBeDefined()
   })
 
