@@ -17,6 +17,9 @@ BootMap.Controller.prototype = {
                     return {};
                   },
 
+  updatePairingMode: function() {
+                     },
+
   initializeMapData: function(startLat,startLong,startZoom){
     this.initialMapCoords = new L.LatLng(startLat,startLong)
     this.initialZoom = startZoom
