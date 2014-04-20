@@ -116,7 +116,9 @@ Controller.prototype = {
   },
 
   updatePairingMode: function(){
-    controller.togglePinging();
+                       var controller = this;
+                       if (!controller.loggedUser || !controller.loggedUser.id) return;
+    this.togglePinging();
     $.ajax({
       type: "put",
       url: "/users/" + controller.loggedUser.id,
