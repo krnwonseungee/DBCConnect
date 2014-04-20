@@ -55,7 +55,7 @@ describe("View", function(){
     expect(this.view.controller).toBeTruthy()
   }),
 
-  xit("is undefined if called with no arguments",function(){
+  it("is undefined if called with no arguments",function(){
     expect(view.drawMap()).toBeUndefined()
   })
 
