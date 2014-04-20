@@ -74,7 +74,7 @@ BootMap.View.prototype = {
   },
 
   drawMap: function() {
-             return undefined;
+             return arguments[1];
            }
 
 }
