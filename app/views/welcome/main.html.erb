@@ -1,5 +1,12 @@
 <%= javascript_include_tag "application"%>
 
+<script id="quote-template" type="text/x-handlebars-template">
+  <div>
+    <h3>"{{content}}"</h3>
+    <h4>{{author}}</h4>
+  </div>
+</script>
+
 <div class="header">
   <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
       <a class="pure-menu-heading" href=""><span></span></a>

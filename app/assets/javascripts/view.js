@@ -137,8 +137,12 @@ View.prototype = {
   },
 
   showQuote: function(quoteBearer){
-               var quote = quoteBearer.quote;
-    $("#footer").empty().html("<h3>\"" + quote.content + "\"</h3><h4> " + quote.author + "</h4>");
+               var quote = quoteBearer.quote,
+                template = $("#quote-template").html();
+
+    $("#footer")
+      .empty()
+      .append(Handlebars.compile(template)(quote));
   },
 
   showNumOfCities: function(cityCount){
