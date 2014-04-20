@@ -13,6 +13,10 @@ BootMap.Controller.prototype = {
                return [[27.5,-118.5]];
              },
 
+  osmInitializer: function() {
+                    return {};
+                  },
+
   initializeMapData: function(startLat,startLong,startZoom){
     this.initialMapCoords = new L.LatLng(startLat,startLong)
     this.initialZoom = startZoom
