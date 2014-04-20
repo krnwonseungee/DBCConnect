@@ -8,6 +8,11 @@ BootMap.Controller.prototype = {
     this.map = newMap
   },
 
+
+  getCoords: function() {
+               return [[27.5,-118.5]];
+             },
+
   initializeMapData: function(startLat,startLong,startZoom){
     this.initialMapCoords = new L.LatLng(startLat,startLong)
     this.initialZoom = startZoom
