@@ -5,6 +5,8 @@ $(function(){
     userFetcher = new UserDataFetcher(controller).fetch(),
     quotesRetriever = new QuotesRetriever(controller).retrieve();
 
+  new Binder({controller: controller});
+
   controller.initialize();
 });
 
