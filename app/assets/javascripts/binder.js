@@ -9,10 +9,7 @@ Binder.prototype.bind = function() {
 
   $(opts.logoutSelector).on("click", function(e){
     e.preventDefault();
-    controller.loggedUser.activeState = false;
-    controller.updatePairingMode();
-    controller.updatePairingTables();
-    location.href = "/"
+    controller.logOutUser();
   });
 
 

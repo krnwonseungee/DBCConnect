@@ -23,6 +23,14 @@ Controller.prototype = {
              this.updatePairingMode();
            },
 
+  logOutUser: function() {
+                this.loggedUser = null;
+                this.updatePairingMode();
+                this.updatePairingTables();
+                location.href = "/"
+              },
+
+
   refreshList: function(){
     $.ajax({
       type: "get",
