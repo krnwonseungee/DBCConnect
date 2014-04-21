@@ -4,7 +4,6 @@ Controller = function(view){
 
 Controller.prototype = {
   initialize: function(){
-    this.view.showHelpPopups();
     setInterval(this.refreshList.call(this), 2003);
     this.createMap();
   },

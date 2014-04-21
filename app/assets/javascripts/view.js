@@ -48,11 +48,6 @@ View.prototype = {
     element.className = classes.join(' ');
   },
 
-  showHelpPopups: function(){
-    //to create a popup that points to the active logo
-    // and the list of users with explanation
-  },
-
   toggleActiveIcon: function(node){
     if (node.attributes[0].value === "active"){
       node.setAttribute("class", "inactive")
