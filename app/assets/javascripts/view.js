@@ -1,5 +1,23 @@
 View = function(opts){
   this._mapElement = $(opts.mapSelector);
+  View.setupMenuToResponsive();
+}
+
+View.setupMenuToResponsive = function() {
+  layout   = document.getElementById('layout'),
+  menu     = document.getElementById('menu'),
+  menuLink = document.getElementById('menuLink');
+
+  if (menuLink) {
+    menuLink.onclick = function (e) {
+      var active = 'active';
+
+      e.preventDefault();
+      view.toggleClass(layout, active);
+      view.toggleClass(menu, active);
+      view.toggleClass(menuLink, active);
+    };
+  }
 }
 
 View.prototype = {
@@ -10,23 +28,6 @@ View.prototype = {
                   return this._mapElement;
                 }
               },
-
-  setupMenuToResponsive: function(){
-    layout   = document.getElementById('layout'),
-    menu     = document.getElementById('menu'),
-    menuLink = document.getElementById('menuLink');
-
-    if (menuLink) {
-      menuLink.onclick = function (e) {
-        var active = 'active';
-
-        e.preventDefault();
-        view.toggleClass(layout, active);
-        view.toggleClass(menu, active);
-        view.toggleClass(menuLink, active);
-      };
-    }
-  },
 
   toggleClass: function(element, className) {
     var classes = element.className.split(/\s+/),
