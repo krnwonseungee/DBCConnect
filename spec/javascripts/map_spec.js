@@ -33,7 +33,7 @@ describe("Controller", function(){
   }),
 
   it("has a new map function", function(){
-    expect(controller.newMap()).toBeDefined()
+    expect(controller.newMap).toBeDefined();
   }),
 
   xit("creates a new map object", function(){
