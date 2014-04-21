@@ -1,55 +1,61 @@
 function Binder(opts) {
+  this.opts = opts;
   this.controller = opts.controller;
 }
 
 Binder.prototype.bind = function() {
-  var controller = this.controller;
+  var controller = this.controller,
+      opts = this.opts.selectorOptions;
 
-  $("#logout").on("click", function(e){
+  $(opts.logoutSelector).on("click", function(e){
     e.preventDefault();
     controller.loggedUser.activeState = false;
     controller.updatePairingMode();
     controller.updatePairingTables();
     location.href = "/"
   });
-  $("#activeUsersList").on("click", "a", function(e){
+
+
+  $(opts.clickableUserNameSelector).on("click", "a", function(e){
     clickedUserId = e.target.parentElement.id;
     controller.askToPairWithUser(clickedUserId);
   });
-  $("#availability").on("click", function(e){
+
+  $(opts.availabilityToggleSelector).on("click", function(e){
     e.preventDefault();
     var node = e.target.parentElement;
     controller.setPairingMode(node);
     view.toggleActiveIcon(node);
   });
-  $("#submit-search").on("click", function(e){
+
+  $(opts.searchSelector).on("click", function(e){
     e.preventDefault();
     navigationController.searchBarSubmit();
   });
 
-  $(document).on("click", '.profile-link', function(e){
+  $(document).on("click", opts.showProfileSelector, function(e){
     e.preventDefault();
     var userId = e.target.id
     navigationController.requestShowUserProfile(userId);
   });
 
-  $(document).on("click", '.edit-profile-link', function(e){
+  $(document).on("click", opts.editProfileSelector, function(e){
     e.preventDefault();
     var userId = e.target.id
     navigationController.requestEditUserProfile(userId);
   });
 
-  $(document).on("click", '#update-submit', function(e){
+  $(document).on("click", opts.profileUpdateSelector, function(e){
     e.preventDefault();
     navigationController.submitEditUserProfile();
   });
 
-  $("#logo").on("click", function(e){
+  $(opts.logoSelector).on("click", function(e){
     e.preventDefault();
     view.renderMap();
   });
 
-  $(document).on("click", '#close-pop-up', function(e){
+  $(document).on("click", opts.closePopupSelector, function(e){
     e.preventDefault();
     view.hidePartial(e);
   })
