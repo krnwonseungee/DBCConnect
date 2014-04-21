@@ -24,5 +24,24 @@ BootMap.CityList.prototype = {
                     newCity.addBoot(thisBoot)
                     this.uniqueCities.push(newCity)
                     this.cityLatitudes.push(newCity.latitude)
-                }
+                },
+  checkForCity: function(cityLat) {
+                  return this.cityLatitudes.indexOf(cityLat)
+                },
+
+  addToNewCity: function(thisBoot){
+                  newCity = new BootMap.City(thisBoot.current_location, thisBoot.latitude, thisBoot.longitude)
+                    newCity.addBoot(thisBoot)
+                    this.uniqueCities.push(newCity)
+                    this.cityLatitudes.push(newCity.latitude)
+                },
+
+                addToExistingCity: function(thisBoot) {
+                                     for(c=0; c<this.uniqueCities.length; c++){
+                                       thisCity = this.uniqueCities[c]
+                                         if(thisCity.latitude === thisBoot.latitude){
+                                           thisCity.addBoot(thisBoot)
+                                         }
+                                     }
+                                   }
 }
