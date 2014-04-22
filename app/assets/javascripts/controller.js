@@ -1,10 +1,10 @@
 Controller = function(view){
   this.view = view;
+  new UserListPoller(this);
 }
 
 Controller.prototype = {
   initialize: function(){
-    setInterval(this.refreshList.call(this), 2003);
     this.createMap();
   },
 
@@ -28,17 +28,10 @@ Controller.prototype = {
                 location.href = "/"
               },
 
+  updateActiveUsers: function(userList) {
+                       this.view.renderList(userList)
+                     },
 
-  refreshList: function(){
-    $.ajax({
-      type: "get",
-      url: "/users/active",
-      dataType: "json"
-    }).done(function(serverData){
-      list.activeUsers = serverData.activeUsers.map($.parseJSON)
-    })
-    this.view.renderList()
-  },
 
   pinging: function(){
     $.ajax({
