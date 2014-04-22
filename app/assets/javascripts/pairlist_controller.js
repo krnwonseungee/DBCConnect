@@ -34,4 +34,10 @@ Pairlist.Controller.prototype = {
     view.showGoogleHangoutButtonRequestor();
     controller.sendPairingRequest(id);
   },
+
+  makeUserInactive: function(){
+    this.loggedUser.activeState = false;
+    this.togglePinging();
+    view.refreshActiveIcon(this);
+  },
 };

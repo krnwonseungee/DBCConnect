@@ -91,11 +91,6 @@ Controller.prototype = {
   },
 
 
-  makeUserInactive:function(){
-    this.loggedUser.activeState = false;
-    this.togglePinging();
-    view.refreshActiveIcon(this);
-  },
 
   sendPairingRequest: function(id){
     //corresponds with route /requests  CREATE
