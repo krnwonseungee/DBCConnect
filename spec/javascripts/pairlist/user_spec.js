@@ -16,4 +16,20 @@ describe("Pairlist Applet", function () {
       });
     });
   });
+
+  describe("Pairlist.UserListPoller", function() {
+    it("should allow the done callback to be injectable", function () {
+      var cb = jasmine.createSpy('done');
+
+      spyOn($, 'ajax').and.callFake(function (req) {
+        var d = $.Deferred();
+        d.resolve(Pairlist.MockActiveUsersResponse);
+        return d.promise();
+      });
+
+      new Pairlist.UserListPoller({}, {doneCallback: cb}).retrieve();
+      expect(cb).toHaveBeenCalledWith(jasmine.any(Object));
+    });
+
+  });
 })
