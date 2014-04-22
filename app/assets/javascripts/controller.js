@@ -5,15 +5,10 @@ Controller = function(view){
 }
 
 Controller.prototype = {
-  initialize: function(){
-    this.createMap();
-  },
-
   handleQuote: function(quote) {
                  this.quote = quote;
                  this.view.showQuote(this);
                },
-
 
   setUser: function(user) {
              this.loggedUser = user;
@@ -32,7 +27,6 @@ Controller.prototype = {
   updateActiveUsers: function(userList) {
                        this.view.renderList(userList)
                      },
-
 
   pinging: function(){
     $.ajax({
@@ -124,15 +118,5 @@ Controller.prototype = {
       controller.loggedUser.request_id = serverData.request_id;
       controller.loggedUser.pairing_id = serverData.pairing_id;
     })
-  },
-
-  createMap: function(){
-               if (!this.view.mapElement) return;
-    map_controller = new BootMap.Controller
-    map_view = new BootMap.View(map_controller, this.view)
-    map_controller.view = map_view
-    map_controller.fetchUsers()
-    map_controller.initializeMap(37.769, -70.429, 3)
-    map_view.drawMap()
   }
 }
