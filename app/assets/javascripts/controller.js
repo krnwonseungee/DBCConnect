@@ -90,11 +90,6 @@ Controller.prototype = {
     }
   },
 
-  askToPairWithUser: function(id){//this will be used to create a popup to confirm
-    this.makeUserInactive();
-    view.showGoogleHangoutButtonRequestor();
-    controller.sendPairingRequest(id);
-  },
 
   makeUserInactive:function(){
     this.loggedUser.activeState = false;

@@ -27,5 +27,11 @@ Pairlist.Controller.prototype = {
 
   _updateView: function() {
                  this.view.draw(this);
-               }
+               },
+
+  askToPairWithUser: function(id){
+    this.makeUserInactive();
+    view.showGoogleHangoutButtonRequestor();
+    controller.sendPairingRequest(id);
+  },
 };

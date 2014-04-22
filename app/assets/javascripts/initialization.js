@@ -4,7 +4,9 @@ $(function(){
     retrieverOpts: {
                     doNotPollForUpdate: true,
                   }
-  }).init();
+  });
+  jane.setEventDelegate(billy);
+  billy.init();
   return;
 
   var view = new View({ mapSelector: "#map" }),

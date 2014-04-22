@@ -10,16 +10,32 @@ Pairlist.View.prototype = {
           this.renderList(userList);
   },
 
+  setEventDelegate: function (d) {
+    this.eventDelegate = d;
+  },
+
+  getEventDelegate: function() {
+                      return this.eventDelegate;
+                    },
+
   renderList: function(userList){
-                var $display = $(this.displaySel)
+                var clickedUserId,
+                  $display = $(this.displaySel)
                   template = $(this.templateSel).html(),
-                  numOfActiveUsers = userList.length;
+                  numOfActiveUsers = userList.length,
+                  delegate = this.getEventDelegate();
 
 
                 $display.empty();
 
                 for (var i = 0; i < numOfActiveUsers; i++){
-                  $display.append(Handlebars.compile(template)(userList[i]));
+                  clickedUserId = userList[i].id;
+                  $display.append(Handlebars.compile(template)(userList[i]))
+                    .find("li:last")
+                      .bind('click', {clickedUserId: clickedUserId}, function (event) {
+                        event.preventDefault();
+                        delegate.askToPairWithUser(event.data.clickedUserId);
+                      });
                 }
   }
 }

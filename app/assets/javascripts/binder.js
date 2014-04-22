@@ -12,12 +12,6 @@ Binder.prototype.bind = function() {
     controller.logOutUser();
   });
 
-
-  $(opts.clickableUserNameSelector).on("click", "a", function(e){
-    clickedUserId = e.target.parentElement.id;
-    controller.askToPairWithUser(clickedUserId);
-  });
-
   $(opts.availabilityToggleSelector).on("click", function(e){
     e.preventDefault();
     var node = e.target.parentElement;
