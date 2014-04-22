@@ -32,7 +32,6 @@ Controller.prototype = {
     $.ajax({
       type: "get",
       url: "/requests",
-      dataType: "json"
     }).done(function(serverData){
       if (serverData.found){
         controller.makeUserInactive();
