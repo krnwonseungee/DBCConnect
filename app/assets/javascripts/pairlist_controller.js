@@ -1,5 +1,5 @@
-Pairlist.Controller = function(opts) {
-  if (opts.doNotCreatePoller) return;
+Pairlist.Controller = function(view, opts) {
+  this.view = view;
   this.retriever = new Pairlist.UserListPoller(this, opts.retrieverOpts);
 };
 

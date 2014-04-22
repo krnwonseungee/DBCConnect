@@ -1,4 +1,12 @@
 $(function(){
+  jane = new Pairlist.View({ displaySel:  "#activeUsersList" });
+  billy = new Pairlist.Controller(jane, {
+    retrieverOpts: {
+                    doNotPollForUpdate: true,
+                  }
+  }).init();
+  return;
+
   var view = new View({ mapSelector: "#map" }),
     navigationController = new NavigationController,
     controller = new Controller(view),
