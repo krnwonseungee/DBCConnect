@@ -1,7 +1,6 @@
 // Find calls where we do stuff to view.....those are antipattern
 Controller = function(view){
   this.view = view;
-  new UserListPoller(this);
 }
 
 Controller.prototype = {
@@ -24,9 +23,6 @@ Controller.prototype = {
                 location.href = "/"
               },
 
-  updateActiveUsers: function(userList) {
-                       this.view.renderList(userList)
-                     },
 
   pinging: function(){
     $.ajax({

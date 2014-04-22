@@ -30,6 +30,19 @@ describe("Pairlist Applet", function () {
       new Pairlist.UserListPoller({}, {doneCallback: cb}).retrieve();
       expect(cb).toHaveBeenCalledWith(jasmine.any(Object));
     });
+  });
 
+  describe("Pairlist.Controller", function () {
+    beforeEach(function () {
+      c = new Pairlist.Controller({ doNotCreatePoller: true });
+    });
+
+    it("should not create a poller when doNotCreatePoller is active", function () {
+      expect(c.retriever).not.toBeDefined();
+    });
+
+    it("should always have an updateActiveUsers method", function () {
+      expect(c.updateActiveUsers).toBeDefined();
+    });
   });
 })
