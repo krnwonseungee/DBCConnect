@@ -12,6 +12,7 @@ Pairlist.Controller.prototype = {
 
   updateActiveUsers: function(userList) {
                        this.pairableUsers = userList;
+                       this._updateView();
                      },
 
   getUserList: function() {
@@ -22,5 +23,9 @@ Pairlist.Controller.prototype = {
 
   stopPolling: function() {
                  this.retriever.stopPolling();
+               },
+
+  _updateView: function() {
+                 this.view.draw(this);
                }
 };
