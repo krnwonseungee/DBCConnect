@@ -39,6 +39,20 @@ Pairlist.Controller.prototype = {
                       view.refreshActiveIcon(this);
                     },
 
+  sendPairingRequest: function(){
+                          /* we need to have the logged in user here... */
+                          console.log('send da request once we know the user');
+                          return;
+                          $.ajax({
+                            type: "post",
+                            url: "/requests",
+                            data: {responder_id: id},
+                          }).done(function(serverData){
+                            controller.loggedUser.request_id = serverData.request_id;
+                            controller.loggedUser.pairing_id = serverData.pairing_id;
+                          })
+  },
+
   displayPairingPrompt: function(id) {
                           this.markMyselfAsUnavailable(id);
                           this.view.showGoogleHangoutButtonRequestor(this);
