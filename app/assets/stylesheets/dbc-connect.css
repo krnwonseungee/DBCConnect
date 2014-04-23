@@ -328,3 +328,11 @@ span#logo-in-map {
   color: rgba(110, 204, 57, 0.6);
 }
 
+.fa-circle {
+  color: red;
+}
+
+.fa-circle.active {
+  color: #2ecc71;
+}
+
