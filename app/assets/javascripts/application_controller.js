@@ -9,7 +9,11 @@ Application.Controller.prototype = {
              this.view.showLoggedUser(this);
            },
 
-  logOutUser: function() {
+  getUser: function () {
+             return this.loggedUser;
+           },
+
+  logOutUser: function () {
                 this.loggedUser = null;
                 location.href = "/"
               }
