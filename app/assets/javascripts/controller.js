@@ -81,15 +81,6 @@ Controller.prototype = {
     }).done(function(serverData){})
   },
 
-  togglePinging: function(){
-    if (this.loggedUser.activeState){
-      controller.pinger = setInterval(function(){controller.pinging()}, 5000)
-    }else{
-      clearInterval(this.pinger);
-      this.pinger = 0;
-    }
-  },
-
 
 
   sendPairingRequest: function(id){
