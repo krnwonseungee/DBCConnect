@@ -16,7 +16,6 @@ Controller.prototype = {
 
   logOutUser: function() {
                 this.loggedUser = null;
-                this.updatePairingTables();
                 location.href = "/"
               },
 
@@ -50,15 +49,6 @@ Controller.prototype = {
       })
     }, 833);
   },
-
-  updatePairingTables: function(){
-    $.ajax({
-      url: "/pairings/" + controller.loggedUser.pairing_id,
-      type: "delete"
-    })
-  },
-
-
 
   sendPairingRequest: function(id){
     //corresponds with route /requests  CREATE
