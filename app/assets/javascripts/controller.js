@@ -12,12 +12,10 @@ Controller.prototype = {
              this.loggedUser = user;
              this.view.refreshActiveIcon(this);
              this.view.showLoggedUser(this);
-             this.updatePairingMode();
            },
 
   logOutUser: function() {
                 this.loggedUser = null;
-                this.updatePairingMode();
                 this.updatePairingTables();
                 location.href = "/"
               },
@@ -58,17 +56,6 @@ Controller.prototype = {
       url: "/pairings/" + controller.loggedUser.pairing_id,
       type: "delete"
     })
-  },
-
-  updatePairingMode: function(){
-                       var controller = this;
-                       if (!controller.loggedUser || !controller.loggedUser.id) return;
-    this.togglePinging();
-    $.ajax({
-      type: "put",
-      url: "/users/" + controller.loggedUser.id,
-      data: { user: {active: controller.loggedUser.activeState} }
-    }).done(function(serverData){})
   },
 
 
