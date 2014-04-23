@@ -1,8 +1,8 @@
-Controller = function(view){
+Application.Controller = function(view){
   this.view = view;
 }
 
-Controller.prototype = {
+Application.Controller.prototype = {
   handleQuote: function(quote) {
                  this.quote = quote;
                  this.view.showQuote(this);

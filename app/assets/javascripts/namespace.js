@@ -3,3 +3,4 @@
 Pairlist = {};
 BootMap = {};
 Navigation = {};
+Application = {};

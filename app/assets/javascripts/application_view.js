@@ -1,9 +1,9 @@
-View = function(opts){
+Application.View = function(opts){
   this._mapElement = $(opts.mapSelector);
   View.setupMenuToResponsive();
 }
 
-View.setupMenuToResponsive = function() {
+Application.View.setupMenuToResponsive = function() {
   layout   = document.getElementById('layout'),
   menu     = document.getElementById('menu'),
   menuLink = document.getElementById('menuLink');
@@ -20,7 +20,7 @@ View.setupMenuToResponsive = function() {
   }
 }
 
-View.prototype = {
+Application.View.prototype = {
   mapElement: function() {
                 if (this._mapElement.length < 1) {
                   return null;
