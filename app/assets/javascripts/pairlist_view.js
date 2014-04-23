@@ -35,7 +35,7 @@ Pairlist.View.prototype = {
                     .find("li:last")
                       .bind('click', {clickedUserId: clickedUserId}, function (event) {
                         event.preventDefault();
-                        delegate.askToPairWithUser(event.data.clickedUserId);
+                        delegate.displayPairingPrompt(event.data.clickedUserId);
                       });
                 }
   },

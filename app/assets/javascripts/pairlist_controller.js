@@ -29,10 +29,8 @@ Pairlist.Controller.prototype = {
                  this.view.draw(this);
                },
 
-  askToPairWithUser: function(id){
-    this.makeUserInactive();
-    view.showGoogleHangoutButtonRequestor();
-    controller.sendPairingRequest(id);
+  requestHangoutSession: function(id){
+    this.sendPairingRequest();
   },
 
   makeUserInactive: function(){
@@ -72,5 +70,5 @@ Pairlist.Controller.prototype = {
                              }
                            });
     this._updateView();
-  },
+  }
 };
