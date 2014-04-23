@@ -128,6 +128,3 @@ Application.View.prototype = {
     $(e.target).parent().parent().hide()
   }
 }
-
-
-
