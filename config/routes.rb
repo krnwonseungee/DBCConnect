@@ -25,6 +25,8 @@ DBCconnect::Application.routes.draw do
   get '/quotes', to: 'welcome#quote'
 
   resources :users
+  post "/users/mark_willing_to_pair", to: "users#mark_willing_to_pair"
+  post "/users/mark_unwilling_to_pair", to: "users#mark_unwilling_to_pair"
 
   resources :cohorts, only: [:index, :show]
   resources :pairings

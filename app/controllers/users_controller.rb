@@ -41,6 +41,16 @@ class UsersController < ApplicationController
     render partial: 'results', locals: { results: @user_obj_array }
   end
 
+  def mark_willing_to_pair
+    User.find(params[:user_id]).update_attribute(:active, true)
+    render json: {}.to_json
+  end
+
+  def mark_unwilling_to_pair
+    User.find(params[:user_id]).update_attribute(:active, false)
+    render json: {}.to_json
+  end
+
   def active
     user = current_user
   end

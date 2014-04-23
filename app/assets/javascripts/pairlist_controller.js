@@ -36,8 +36,41 @@ Pairlist.Controller.prototype = {
   },
 
   makeUserInactive: function(){
-    this.loggedUser.activeState = false;
-    this.togglePinging();
-    view.refreshActiveIcon(this);
+                      this.loggedUser.activeState = false;
+                      this.togglePinging();
+                      view.refreshActiveIcon(this);
+                    },
+
+  displayPairingPrompt: function(id) {
+                          this.markMyselfAsUnavailable(id);
+                          this.view.showGoogleHangoutButtonRequestor(this);
+                        },
+
+  markMyselfAsAvailable: function(id){
+                           var controller = this,
+                             postUpdateCallback = function() {
+                               this.init();
+                             };
+
+                           this.pairableUsers.forEach(function(user) {
+                             if (user.id === id) {
+                               user.markAsAvailable(controller, postUpdateCallback);
+                             }
+                           });
+    this._updateView();
+  },
+
+  markMyselfAsUnavailable: function(id){
+                           var controller = this,
+                             postUpdateCallback = function() {
+                               this.init();
+                             };
+
+                           this.pairableUsers.forEach(function(user) {
+                             if (user.id === id) {
+                               user.markAsUnavailable(controller, postUpdateCallback);
+                             }
+                           });
+    this._updateView();
   },
 };
