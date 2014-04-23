@@ -2,9 +2,9 @@ $(function(){
   appController = new Application.Controller()
   new UserDataFetcher(appController).fetch();
 
-  new QuotesRetriever(
-    new QuoteWidget.Controller(
-      new QuoteWidget.View('#footer'))).retrieve();
+  //new QuotesRetriever(
+    //new QuoteWidget.Controller(
+      //new QuoteWidget.View('#footer'))).retrieve();
 
   jane = new Pairlist.View({ displaySel:  "#activeUsersList" });
   billy = new Pairlist.Controller(jane, {
