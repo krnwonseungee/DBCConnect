@@ -65,19 +65,6 @@ View.prototype = {
     }
   },
 
-  showGoogleHangoutButtonRequestor: function(){
-    console.log("showing requestor button")
-
-    $(".button-div").empty().prepend(
-      "<a id='pairing-link'class='pure-button pure-button-active'"
-      +"href='http://plus.google.com/hangouts/_?gid=212567943044' target=_blank>"
-      +"Request Pairing"
-      + "</a>")
-    $('#pairing-link').on('click', function(){
-      $('#close-pop-up').click()
-    })
-  },
-
   showGoogleHangoutButtonResponder: function(url){
     console.log("showing responder button")
     $("#top_navbar").prepend(

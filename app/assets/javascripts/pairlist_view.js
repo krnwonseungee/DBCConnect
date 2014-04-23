@@ -38,5 +38,15 @@ Pairlist.View.prototype = {
                         delegate.askToPairWithUser(event.data.clickedUserId);
                       });
                 }
-  }
+  },
+
+  showGoogleHangoutButtonRequestor: function(delegate){
+                                      var template = $("#google-hangout-prompt").html();
+                                      $(this.googleMenuSelector)
+                                        .empty()
+                                        .prepend(Handlebars.compile(template))
+                                        .on('click', 'a', function() {
+                                          delegate.requestHangoutSession();
+                                        });
+  },
 }
