@@ -1,4 +1,47 @@
+QuoteWidget = {}
+
+QuoteWidget.Controller = function(view) {
+  this.view = view;
+}
+
+QuoteWidget.Controller.prototype = {
+  handleQuote: function(quote) {
+                 this.quote = quote;
+                 this.view.showQuote(this);
+               }
+}
+
+QuoteWidget.View = function(targetSel) {
+  this.targetSel = targetSel;
+}
+
+QuoteWidget.View.prototype = {
+  showQuote: function(quoteBearer){
+               var quote = quoteBearer.quote,
+                template = $("#quote-template").html();
+
+    $(this.targetSel)
+      .empty()
+      .append(Handlebars.compile(template)(quote));
+  }
+};
+
 $(function(){
+  appController = new Application.Controller()
+  new UserDataFetcher(appController).fetch();
+
+
+  var qcv = new QuoteWidget.View('#footer');
+  var qc =  new QuoteWidget.Controller;
+  qc.view = qcv;
+  new QuotesRetriever(qc).retrieve();
+
+
+
+
+
+
+
   jane = new Pairlist.View({ displaySel:  "#activeUsersList" });
   billy = new Pairlist.Controller(jane, {
     retrieverOpts: {

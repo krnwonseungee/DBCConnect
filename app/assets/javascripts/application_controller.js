@@ -3,11 +3,6 @@ Application.Controller = function(view){
 }
 
 Application.Controller.prototype = {
-  handleQuote: function(quote) {
-                 this.quote = quote;
-                 this.view.showQuote(this);
-               },
-
   setUser: function(user) {
              this.loggedUser = user;
              this.view.refreshActiveIcon(this);

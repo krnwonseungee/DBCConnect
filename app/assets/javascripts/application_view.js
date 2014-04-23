@@ -119,14 +119,6 @@ Application.View.prototype = {
     controller.createMap();
   },
 
-  showQuote: function(quoteBearer){
-               var quote = quoteBearer.quote,
-                template = $("#quote-template").html();
-
-    $("#footer")
-      .empty()
-      .append(Handlebars.compile(template)(quote));
-  },
 
   showNumOfCities: function(cityCount){
     $("#logo-in-map").append("<h2>DBC CONNECT</h2>Find your fellow boots in " + cityCount + " cities around the world")

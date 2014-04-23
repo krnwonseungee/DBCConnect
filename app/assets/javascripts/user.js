@@ -3,4 +3,4 @@ User = function(serverData){
   this.id = serverData.user_id;
   this.activeState = serverData.active;
   this.requestor_id = null;
-}
+};
