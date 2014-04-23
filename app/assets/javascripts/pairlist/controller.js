@@ -2,6 +2,7 @@ Pairlist.Controller = function(view, opts) {
   this.view = view;
   this.retriever = new Pairlist.UserListPoller(this, opts.retrieverOpts);
   this.pairableUsers = [];
+  this.loggedInUserBearer = opts.loggedInUserBearer || applicationController;
 };
 
 Pairlist.Controller.prototype = {

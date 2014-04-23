@@ -8,6 +8,7 @@ $(function(){
 
   jane = new Pairlist.View({ displaySel:  "#activeUsersList" });
   billy = new Pairlist.Controller(jane, {
+    loggedInUserBearer: appController,
     retrieverOpts: {
                     doNotPollForUpdate: true,
                   }
