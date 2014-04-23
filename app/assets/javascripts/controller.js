@@ -61,15 +61,6 @@ Controller.prototype = {
     })
   },
 
-  setPairingMode: function(node){
-    if ($("#availability").children().children().attr("class") === "active"){
-      controller.loggedUser.activeState = false
-    }else{
-      controller.loggedUser.activeState = true
-    }
-    controller.updatePairingMode();
-  },
-
   updatePairingMode: function(){
                        var controller = this;
                        if (!controller.loggedUser || !controller.loggedUser.id) return;

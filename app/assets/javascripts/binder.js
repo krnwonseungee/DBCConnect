@@ -15,7 +15,6 @@ Binder.prototype.bind = function() {
   $(opts.availabilityToggleSelector).on("click", function(e){
     e.preventDefault();
     var node = e.target.parentElement;
-    controller.setPairingMode(node);
     view.toggleActiveIcon(node);
   });
 
