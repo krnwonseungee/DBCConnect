@@ -17,8 +17,6 @@ Pairlist.Controller.prototype = {
                      },
 
   getUserList: function() {
-                // we should make sure not to show the user the user's
-                // name
                 return this.pairableUsers;
               },
 
