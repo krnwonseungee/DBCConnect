@@ -1,4 +1,3 @@
-// Find calls where we do stuff to view.....those are antipattern
 Controller = function(view){
   this.view = view;
 }
