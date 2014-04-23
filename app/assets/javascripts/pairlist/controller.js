@@ -12,7 +12,7 @@ Pairlist.Controller.prototype = {
         },
 
   updateActiveUsers: function(userList) {
-                       this.pairableUsers = userList;
+                       this.pairableUsers = this._userListSansLoggedInUser(userList);
                        this._updateView();
                      },
 
@@ -83,5 +83,19 @@ Pairlist.Controller.prototype = {
                              }
                            });
     this._updateView();
-  }
+  },
+
+  _userListSansLoggedInUser: function (userList) {
+                               var controller = this;
+                               return userList.reduce(function (memo, user) {
+                                 if (user.id != controller._loggedInUser().id) memo.push(user);
+                                 return memo;
+                               }, []).sort(function (a, b) {
+                                 return a.name.localeCompare(b.name);
+                               });
+  },
+
+  _loggedInUser: function () {
+    return this.loggedInUserBearer.getUser();
+  },
 };
