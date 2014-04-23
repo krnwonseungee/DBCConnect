@@ -2,6 +2,7 @@ Pairlist.View = function (opts) {
   this.opts = opts;
   this.displaySel = opts.displaySel || "#activeUsersList";
   this.templateSel = opts.templateSel || "#pairlist-user-template";
+  this.googleMenuSelector = ".button-div";
 };
 
 Pairlist.View.prototype = {
