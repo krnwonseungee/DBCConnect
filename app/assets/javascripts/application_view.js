@@ -27,20 +27,6 @@ Application.View.prototype = {
     })
   },
 
-  renderList: function(){
-    $("#activeUsersList").empty();
-    var numOfActiveUsers = list.activeUsers.length;
-    for (var i = 0; i < numOfActiveUsers; i++){
-      if (list.activeUsers[i].id != controller.loggedUser.id){
-        $("#activeUsersList").append("<li  id='"
-          + list.activeUsers[i].id + "'>"
-          + "<a href='#pop-up' rel='modal:open'>"
-          + "<i class='fa fa-circle'></i>  "
-          + list.activeUsers[i].name + "</a></li>")
-      }
-    }
-  },
-
   initializePairingIcon: function(){
     $("#availability a span[class='inactive']").attr("class",controller.loggedUser.activeState)
   },
