@@ -17,12 +17,12 @@ AvailabilityWidget.Controller.prototype  = {
                        },
 
   _toggleOff: function () {
-                this_loggedInUser().markAsUnavailable(this, this.init);
+                this._loggedInUser().markAsUnavailable(this, this.init);
                 this.isAvailable = false;
               },
 
   _toggleOn: function () {
-               this_loggedInUser().markAsAvailable(this, this.init);
+               this._loggedInUser().markAsAvailable(this, this.init);
                this.isAvailable = true;
              },
 

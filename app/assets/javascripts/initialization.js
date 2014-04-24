@@ -1,6 +1,6 @@
 $(function(){
   applicationController = new Application.Controller()
-  new UserDataFetcher(appController).fetch();
+  new UserDataFetcher(applicationController).fetch();
 
   new QuotesRetriever(
     new QuoteWidget.Controller(
@@ -9,7 +9,7 @@ $(function(){
   /* TODO: These should be localized to the closure */
   plV = new Pairlist.View({ displaySel:  "#activeUsersList" });
   plC = new Pairlist.Controller(plV, {
-    loggedInUserBearer: appController,
+    loggedInUserBearer: applicationController,
     retrieverOpts: {
                     doNotPollForUpdate: true,
                   }
@@ -22,7 +22,7 @@ $(function(){
   avC = new AvailabilityWidget.Controller(avV);
   avV.setEventDelegate(avC);
 
-  appController.registerUserDependentController(avC, 'init');
+  applicationController.registerUserDependentController(avC, 'init');
 
   avC.init();
 
