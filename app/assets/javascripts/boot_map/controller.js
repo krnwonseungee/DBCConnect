@@ -3,27 +3,6 @@ BootMap.Controller = function(){
 
 BootMap.Controller.prototype = {
 
-
-  getCoords: function() {
-               return [[27.5,-118.5]];
-             },
-
-  osmInitializer: function() {
-                    return {};
-                  },
-
-  updatePairingMode: function() {
-                     },
-
-  initializeMapData: function(startLat,startLong,startZoom){
-    this.initialMapCoords = new L.LatLng(startLat,startLong)
-    this.initialZoom = startZoom
-  },
-
-
-  initializeMap: function(startLat,startLong,startZoom){
-  },
-
   fetchUsers: function(){
     var controller = this
     $.ajax({
@@ -54,17 +33,5 @@ BootMap.Controller.prototype = {
     }
     controller.generateUniqueLocations(bootList)
     return bootList
-  },
-
-  validateLocation: function(boot){
-    if(boot.latitude && boot.longitude){
-      return true
-    }
-  },
-
-  generateUniqueLocations: function(bootList){
-    var cityList = new BootMap.CityList
-    cityList.populateUniqueCities(bootList)
-    this.masterRoster.uniqueLocationsCount = cityList.uniqueCities.length
   }
 }

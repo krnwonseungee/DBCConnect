@@ -31,7 +31,7 @@ $(function(){
     return  new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 10, attribution: osmAttrib});
   };
 
-  function createMap(view) {
+  function createMap() {
     var START_LATITUDE = 37.769;
     var START_LONGITUDE = -70.429;
     var INITIAL_ZOOM = 3;
