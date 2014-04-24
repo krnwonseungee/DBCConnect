@@ -1,4 +1,6 @@
-BootMap.View = function(){
+BootMap.View = function(opts){
+  this.templateSel = opts.templateSel || "#user-popup";
+  this.template = Handlebars.compile($(this.templateSel).html());
 }
 
 BootMap.View.prototype = {
@@ -31,31 +33,6 @@ BootMap.View.prototype = {
   },
 
   formatPopup: function(boot){
-    var userName = [
-    "<a class='profile-link user-link'",
-    "id='",boot.id,
-    "'>",
-    boot.name,
-    "</a>"
-    ]
-
-    var socialMedia = [
-      "<ul class='social-media'>",
-      "<li class='social-link'><a href=",boot.github," target='_blank'><i i class='fa fa-github fa-lg'></i></a></li>",
-      "<li class='social-link'><a href=",boot.twitter," target='_blank'><i i class='fa fa-twitter fa-lg'></i></a></li>",
-      "<li class='social-link'><a href=",boot.facebook," target='_blank'><i i class='fa fa-facebook fa-lg'></i></a></li>",
-      "<li class='social-link'><a href=",boot.linked_in," target='_blank'><i i class='fa fa-linkedin fa-lg'></i></a></li>",
-      "<li class='social-link'><a href=",boot.blog," target='_blank'><i i class='fa fa-tumblr fa-lg'></i></a></li>",
-      "</ul>"
-      ]
-
-    var content = [
-                    "<div class='user-popup'>",
-                    userName.join(""),
-                    socialMedia.join(""),
-                    boot.current_location,
-                    "</div>"
-                  ]
-    return content.join("")
+    return this.template(boot);
   }
 }
