@@ -6,19 +6,20 @@ $(function(){
     new QuoteWidget.Controller(
       new QuoteWidget.View('#footer'))).retrieve();
 
-  jane = new Pairlist.View({ displaySel:  "#activeUsersList" });
-  billy = new Pairlist.Controller(jane, {
+  plV = new Pairlist.View({ displaySel:  "#activeUsersList" });
+  plC = new Pairlist.Controller(plV, {
     loggedInUserBearer: appController,
     retrieverOpts: {
                     doNotPollForUpdate: true,
                   }
   });
-  jane.setEventDelegate(billy);
-  billy.init();
+  plV.setEventDelegate(plC);
+  plC.init();
 
   avV = new AvailabilityWidget.View();
-  avC = new AvailabilityWidget.Controller(avV, billy);
+  avC = new AvailabilityWidget.Controller(avV, plC);
   avV.setEventDelegate(avC);
+
   appController.registerUserDependentController(avC, 'init');
 
   avC.init();
