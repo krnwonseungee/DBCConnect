@@ -6,6 +6,7 @@ $(function(){
     new QuoteWidget.Controller(
       new QuoteWidget.View('#footer'))).retrieve();
 
+  /* TODO: These should be localized to the closure */
   plV = new Pairlist.View({ displaySel:  "#activeUsersList" });
   plC = new Pairlist.Controller(plV, {
     loggedInUserBearer: appController,
@@ -16,6 +17,7 @@ $(function(){
   plV.setEventDelegate(plC);
   plC.init();
 
+  /* TODO: These should be localized to the closure */
   avV = new AvailabilityWidget.View();
   avC = new AvailabilityWidget.Controller(avV);
   avV.setEventDelegate(avC);
