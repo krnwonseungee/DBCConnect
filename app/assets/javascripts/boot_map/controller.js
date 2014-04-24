@@ -3,7 +3,6 @@ BootMap.Controller = function(){
 
 BootMap.Controller.prototype = {
   newMap: function(){
-    if ($("#map").length < 1) return;
     var newMap = new L.map('map')
     return this.map = newMap
   },
