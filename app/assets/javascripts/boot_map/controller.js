@@ -2,10 +2,6 @@ BootMap.Controller = function(){
 }
 
 BootMap.Controller.prototype = {
-  newMap: function(){
-    var newMap = new L.map('map')
-    return this.map = newMap
-  },
 
 
   getCoords: function() {

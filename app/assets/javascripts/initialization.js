@@ -26,8 +26,10 @@ $(function(){
   avC.init();
 
   function createMap(view) {
+    var l_map = new L.map('map')
     map_view = new BootMap.View(map_controller, view, '#map')
     map_controller = new BootMap.Controller('#map');
+    map_controller.map = l_map;
     map_controller.view = map_view
     map_controller.fetchUsers()
     map_controller.initializeMap(37.769, -70.429, 3)
