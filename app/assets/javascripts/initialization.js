@@ -24,30 +24,27 @@ $(function(){
   avV.setEventDelegate(avC);
 
   applicationController.registerUserDependentController(avC, 'init');
-
   avC.init();
 
   return;
 
-  var view = new View({ mapSelector: "#map" }),
+  var
     navigationController = new NavigationController,
-    controller = new Controller(view),
-    userFetcher = new UserDataFetcher(controller).fetch(),
-    quotesRetriever = new QuotesRetriever(controller).retrieve();
+    controller = new Controller(view);
 
-  new Binder({
-    controller: controller,
-    selectorOptions: {
-      closePopupSelector: '#close-pop-up',
-      logoSelector: '#logo',
-      profileUpdateSelector: '#update-submit',
-      showProfileSelector: '.profile-link',
-      searchSelector: "#submit-search",
-      availabilityToggleSelector: "#availability",
-      clickableUserNameSelector: "#activeUsersList",
-      logoutSelector: "#logout"
-    }
-  });
+  //new Binder({
+    //controller: controller,
+    //selectorOptions: {
+      //closePopupSelector: '#close-pop-up',
+      //logoSelector: '#logo',
+      //profileUpdateSelector: '#update-submit',
+      //showProfileSelector: '.profile-link',
+      //searchSelector: "#submit-search",
+      //availabilityToggleSelector: "#availability",
+      //clickableUserNameSelector: "#activeUsersList",
+      //logoutSelector: "#logout"
+    //}
+  //});
 
   function createMap(view) {
     if ($("#map").length < 1) return;
