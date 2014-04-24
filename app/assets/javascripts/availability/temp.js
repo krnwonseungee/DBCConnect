@@ -20,11 +20,13 @@ AvailabilityWidget.Controller.prototype  = {
 
   _toggleOff: function () {
                 console.log('toggle off');
+                this.pairListWidget._loggedInUser().markAsUnavailable(this, this.init);
                 this.isAvailable = false;
               },
 
   _toggleOn: function () {
                console.log('toggle on');
+               this.pairListWidget._loggedInUser().markAsAvailable(this, this.init);
                this.isAvailable = true;
              },
 };
