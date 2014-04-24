@@ -27,10 +27,6 @@ Application.View.prototype = {
     })
   },
 
-  initializePairingIcon: function(){
-    $("#availability a span[class='inactive']").attr("class",controller.loggedUser.activeState)
-  },
-
   renderPartial: function(partial){
     $("#logo-in-map").empty();
     // this will bring a new quote and show the map again
