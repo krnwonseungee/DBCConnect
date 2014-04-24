@@ -57,6 +57,14 @@ Pairlist.Controller.prototype = {
                           this.view.showGoogleHangoutButtonRequestor(this);
                         },
 
+  markMyselfAsUnavailable: function() {
+                             this._loggedInUser().markAsUnavailable();
+                           },
+
+  markMyselfAsAvailable: function() {
+                           this._loggedInUser().markAsAvailable();
+                         },
+
   _userListSansLoggedInUser: function (userList) {
                                var controller = this;
                                return userList.reduce(function (memo, user) {

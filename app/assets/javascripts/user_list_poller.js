@@ -22,7 +22,7 @@ Pairlist.UserListPoller.prototype = {
   },
 
   defaultDoneCallback: function(serverData) {
-                         var userClass = this.opts.userClass || Pairlist.User,
+                         var userClass = this.opts.userClass || User,
                            users = serverData.activeUsers.map(function(userJson) {
                              return new userClass(userJson);
                            }),
