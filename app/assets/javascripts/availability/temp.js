@@ -33,7 +33,7 @@ AvailabilityWidget.Controller.prototype  = {
 
 AvailabilityWidget.View = function (opts) {
   if (!opts) opts = {};
-  this.sel = opts.sel || "#availability";
+  this.sel = opts.sel || "#availability span";
   this.initialized = false;
 };
 
@@ -44,17 +44,26 @@ AvailabilityWidget.View.prototype = {
 
   initEvents: function () {
                 var delegate = this.delegate;
-                $(this.sel).on('click', function () {
+                $(this.sel).on('click', function (e) {
+                  e.stopPropagation();
                   delegate.toggleButtonClicked();
                 });
   },
 
   draw: function (src) {
-          if (!this.initialized) this.initEvents();
-          if (src.isAvailable) {
-            $(this.sel).addClass('active');
-          } else {
-            $(this.sel).addClass('inactive');
+          var activityElement = this._element();
+          if (!this.initialized) {
+            this.initialized = true;
+            this.initEvents();
           }
-  }
+          if (src.isAvailable) {
+            activityElement.addClass('active').removeClass('inactive');
+          } else {
+            activityElement.removeClass('active').addClass('inactive');
+          }
+  },
+
+  _element: function () {
+    return $(this.sel);
+  } 
 };
