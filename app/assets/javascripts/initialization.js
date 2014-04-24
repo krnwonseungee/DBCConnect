@@ -1,5 +1,5 @@
 $(function(){
-  appController = new Application.Controller()
+  applicationController = new Application.Controller()
   new UserDataFetcher(appController).fetch();
 
   new QuotesRetriever(
@@ -17,7 +17,7 @@ $(function(){
   plC.init();
 
   avV = new AvailabilityWidget.View();
-  avC = new AvailabilityWidget.Controller(avV, plC);
+  avC = new AvailabilityWidget.Controller(avV);
   avV.setEventDelegate(avC);
 
   appController.registerUserDependentController(avC, 'init');

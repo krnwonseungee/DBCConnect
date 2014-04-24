@@ -1,7 +1,5 @@
-AvailabilityWidget.Controller = function (view, pairListWidget) {
+AvailabilityWidget.Controller = function (view) {
   this.view = view;
-  this.pairListWidget = pairListWidget;
-
   this.isAvailable = false;
 };
 
@@ -19,16 +17,19 @@ AvailabilityWidget.Controller.prototype  = {
                        },
 
   _toggleOff: function () {
-                console.log('toggle off');
-                this.pairListWidget._loggedInUser().markAsUnavailable(this, this.init);
+                this_loggedInUser().markAsUnavailable(this, this.init);
                 this.isAvailable = false;
               },
 
   _toggleOn: function () {
-               console.log('toggle on');
-               this.pairListWidget._loggedInUser().markAsAvailable(this, this.init);
+               this_loggedInUser().markAsAvailable(this, this.init);
                this.isAvailable = true;
              },
+
+  _loggedInUser: function () {
+                   return applicationController.getUser();
+
+  }
 };
 
 AvailabilityWidget.View = function (opts) {
@@ -65,5 +66,5 @@ AvailabilityWidget.View.prototype = {
 
   _element: function () {
     return $(this.sel);
-  } 
+  }
 };
