@@ -1,4 +1,5 @@
 $(function(){
+  applicationView = new Application.View({ mapSelector: "#map" });
   applicationController = new Application.Controller()
   new UserDataFetcher(applicationController).fetch();
 
