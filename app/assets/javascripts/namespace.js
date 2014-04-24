@@ -2,4 +2,5 @@ Application = {};
 Pairlist = {};
 BootMap = {};
 Navigation = {};
-QuoteWidget = {}
+QuoteWidget = {};
+AvailabilityWidget = {};

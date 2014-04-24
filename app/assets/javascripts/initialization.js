@@ -15,6 +15,12 @@ $(function(){
   });
   jane.setEventDelegate(billy);
   billy.init();
+
+  avV = new AvailabilityWidget.View();
+  avC = new AvailabilityWidget.Controller(avV);
+  avV.setEventDelegate(avC);
+  avC.init();
+
   return;
 
   var view = new View({ mapSelector: "#map" }),
