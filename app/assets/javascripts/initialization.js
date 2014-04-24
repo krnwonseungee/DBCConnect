@@ -25,6 +25,15 @@ $(function(){
   applicationController.registerUserDependentController(avC, 'init');
   avC.init();
 
+  function createMap(view) {
+    map_view = new BootMap.View(map_controller, view, '#map')
+    map_controller = new BootMap.Controller('#map');
+    map_controller.view = map_view
+    map_controller.fetchUsers()
+    map_controller.initializeMap(37.769, -70.429, 3)
+    map_view.drawMap()
+  }
+  createMap()
   return;
 
   var
@@ -44,17 +53,5 @@ $(function(){
       //logoutSelector: "#logout"
     //}
   //});
-
-  function createMap(view) {
-    if ($("#map").length < 1) return;
-    map_controller = new BootMap.Controller
-    map_view = new BootMap.View(map_controller, view)
-    map_controller.view = map_view
-    map_controller.fetchUsers()
-    map_controller.initializeMap(37.769, -70.429, 3)
-    map_view.drawMap()
-  }
-
-  createMap(view);
 });
 
