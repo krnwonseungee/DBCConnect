@@ -53,7 +53,7 @@ Pairlist.Controller.prototype = {
   },
 
   displayPairingPrompt: function(id) {
-                          this._loggedInUser.markAsUnavailable();
+                          this._loggedInUser().markAsUnavailable();
                           this.view.showGoogleHangoutButtonRequestor(this);
                         },
 
