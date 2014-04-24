@@ -20,17 +20,8 @@ BootMap.Controller.prototype = {
     this.initialZoom = startZoom
   },
 
-  initializeOSM: function(){
-    var osmUrl    ='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var osmAttrib ='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors ';
-    var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 10, attribution: osmAttrib});
-    this.osm = osm
-  },
 
   initializeMap: function(startLat,startLong,startZoom){
-    this.newMap()
-    this.initializeMapData(startLat,startLong,startZoom)
-    this.initializeOSM()
   },
 
   fetchUsers: function(){

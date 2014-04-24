@@ -1,19 +1,7 @@
-BootMap.View = function(controller, parentView){
-  this.controller = controller
-  this.parentView = parentView;
+BootMap.View = function(){
 }
 
 BootMap.View.prototype = {
-  // setView is a Leaflet function
-  drawMap: function(){
-    var controller = this.controller
-    var thisMap = controller.map
-    if (!thisMap) return;
-    var map = thisMap.setView(controller.initialMapCoords,controller.initialZoom)
-    map.addLayer(controller.osm)
-  },
-
-  // addLayer is a Leaflet function
   renderMarkers: function(bootList, map){
     var map = map
     var markers = new L.MarkerClusterGroup()
@@ -24,6 +12,7 @@ BootMap.View.prototype = {
         var marker = L.marker([lat,long])
         var content = this.formatPopup(bootList[i])
         this.bindThisPopup(marker,content)
+        // addLayer is a Leaflet function
         markers.addLayer(marker)
     }
     map.addLayer(markers)
@@ -68,10 +57,5 @@ BootMap.View.prototype = {
                     "</div>"
                   ]
     return content.join("")
-  },
-
-  drawMap: function() {
-             return arguments[1];
-           }
-
+  }
 }

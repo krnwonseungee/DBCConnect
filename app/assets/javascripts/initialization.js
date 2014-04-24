@@ -25,15 +25,26 @@ $(function(){
   applicationController.registerUserDependentController(avC, 'init');
   avC.init();
 
+  var initializeOSM = function(){
+    var osmUrl    ='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib ='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors ';
+    return  new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 10, attribution: osmAttrib});
+  };
+
   function createMap(view) {
+    var START_LATITUDE = 37.769;
+    var START_LONGITUDE = -70.429;
+    var INITIAL_ZOOM = 3;
+
     var l_map = new L.map('map')
-    map_view = new BootMap.View(map_controller, view, '#map')
+    l_map.setView(L.latLng(START_LATITUDE, START_LONGITUDE), INITIAL_ZOOM);
+    l_map.addLayer(initializeOSM());
+
+    map_view = new BootMap.View(l_map);
     map_controller = new BootMap.Controller('#map');
     map_controller.map = l_map;
     map_controller.view = map_view
     map_controller.fetchUsers()
-    map_controller.initializeMap(37.769, -70.429, 3)
-    map_view.drawMap()
   }
   createMap()
   return;
