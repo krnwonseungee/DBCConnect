@@ -56,15 +56,6 @@ Application.View.prototype = {
     }
   },
 
-  refreshActiveIcon: function(controller){
-    if (!controller.loggedUser) return;
-    if (controller.loggedUser.activeState){
-      $("#availability").children().children().attr("class", "active")
-    }else{
-      $("#availability").children().children().attr("class", "inactive")
-    }
-  },
-
   showGoogleHangoutButtonResponder: function(url){
     console.log("showing responder button")
     $("#top_navbar").prepend(
