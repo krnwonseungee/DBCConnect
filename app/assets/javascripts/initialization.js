@@ -17,7 +17,7 @@ $(function(){
   billy.init();
 
   avV = new AvailabilityWidget.View();
-  avC = new AvailabilityWidget.Controller(avV);
+  avC = new AvailabilityWidget.Controller(avV, billy);
   avV.setEventDelegate(avC);
   avC.init();
 

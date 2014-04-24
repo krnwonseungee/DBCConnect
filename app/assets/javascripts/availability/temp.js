@@ -1,6 +1,7 @@
-AvailabilityWidget.Controller = function (view) {
+AvailabilityWidget.Controller = function (view, pairListWidget) {
   this.view = view;
   this.isAvailable = true;
+  this.pairListWidget = pairListWidget;
 };
 
 AvailabilityWidget.Controller.prototype  = {
