@@ -48,14 +48,6 @@ Application.View.prototype = {
     element.className = classes.join(' ');
   },
 
-  toggleActiveIcon: function(node){
-    if (node.attributes[0].value === "active"){
-      node.setAttribute("class", "inactive")
-    }else{
-      node.setAttribute("class", "active")
-    }
-  },
-
   showGoogleHangoutButtonResponder: function(url){
     console.log("showing responder button")
     $("#top_navbar").prepend(

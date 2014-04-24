@@ -12,12 +12,6 @@ Binder.prototype.bind = function() {
     controller.logOutUser();
   });
 
-  $(opts.availabilityToggleSelector).on("click", function(e){
-    e.preventDefault();
-    var node = e.target.parentElement;
-    view.toggleActiveIcon(node);
-  });
-
   $(opts.searchSelector).on("click", function(e){
     e.preventDefault();
     navigationController.searchBarSubmit();
