@@ -99,15 +99,6 @@ Application.View.prototype = {
     $("#availability a span[class='inactive']").attr("class",controller.loggedUser.activeState)
   },
 
-  showLoggedUser: function(controller){
-                    var $loggedUser = $(".logged_user");
-
-                    if ($loggedUser.length === 1 && controller.loggedUser) {
-                      $loggedUser.text(controller.loggedUser.name)
-                      $('.logged_user')[0].id = controller.loggedUser.id
-                    }
-  },
-
   renderPartial: function(partial){
     $("#logo-in-map").empty();
     // this will bring a new quote and show the map again

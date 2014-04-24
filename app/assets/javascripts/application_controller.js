@@ -6,7 +6,6 @@ Application.Controller.prototype = {
   setUser: function(user) {
              this.loggedUser = user;
              this.view.refreshActiveIcon(this);
-             this.view.showLoggedUser(this);
            },
 
   getUser: function () {
