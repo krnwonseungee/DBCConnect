@@ -19,6 +19,8 @@ $(function(){
   avV = new AvailabilityWidget.View();
   avC = new AvailabilityWidget.Controller(avV, billy);
   avV.setEventDelegate(avC);
+  appController.registerUserDependentController(avC, 'init');
+
   avC.init();
 
   return;
