@@ -8,13 +8,13 @@ Pairlist.User = function(json) {
 Pairlist.User.prototype = {
   markAsUnavailable: function (notifiedContext, callback) {
                        $.post('/users/mark_unwilling_to_pair', { user_id: this.id }, function () {
-                         callback.call(notifiedContext);
+                         if (callback && notifiedContext) callback.call(notifiedContext, [this]);
                        });
   },
     
   markAsAvailable: function (notifiedContext, callback) {
                        $.post('/users/mark_willing_to_pair', { user_id: this.id }, function () {
-                         callback.call(notifiedContext);
+                         if (callback && notifiedContext) callback.call(notifiedContext, [this]);
                        });
   } 
 }
