@@ -6,11 +6,7 @@ ProfileWidget.Controller.prototype = {
   draw: function(userBearer) {
           this.displayProfile = userBearer.displayUserProfile;
 
-          if (this.partial) {
-            this.view.draw(this);
-          } else {
-            this._fetchProfilePartial(userBearer);
-          }
+          this._fetchProfilePartial(userBearer);
         },
 
   shouldDisplayPartial: function () {
@@ -23,12 +19,23 @@ ProfileWidget.Controller.prototype = {
 
                           if (!loggedInUser || !loggedInUser.id) return;
 
-                          $.ajax({
-                            url: "/users/" + loggedInUser.id,
-                          }).done(function(userPartial){
-                            controller.partial = userPartial;
-                            controller.draw(userBearer);
-                          })
+                          if (userBearer.profileDisplayMode === 'show') {
+                            $.ajax({
+                              url: "/users/" + loggedInUser.id,
+                            }).done(function(userPartial){
+                              controller.partial = userPartial;
+                              controller.view.draw(controller);
+                            })
+                          }
+
+                          if (userBearer.profileDisplayMode === 'edit') {
+                            $.ajax({
+                              url: "/users/" + loggedInUser.id + '/edit',
+                            }).done(function(userPartial){
+                              controller.partial = userPartial;
+                              controller.view.draw(controller);
+                            })
+                          }
                         }
 
 };

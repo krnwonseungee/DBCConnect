@@ -17,6 +17,19 @@ ProfileWidget.View.prototype = {
               .on('click', function () {
                 delegate.closeProfile();
               })
+              .end()
+            .find(".edit-profile-link")
+              .on('click', function (e) {
+                e.preventDefault();
+                delegate.displayEditProfileForm();
+              })
+              .end()
+            .find("#update-submit")
+              .on('click', function (e) {
+                var data = $(this).parent("form").serialize();
+                e.preventDefault();
+                delegate.submitEditProfileData(data);
+              })
               .end();
 
           if (userProfilePartialBearer.shouldDisplayPartial()) {
