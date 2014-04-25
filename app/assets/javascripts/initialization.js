@@ -42,6 +42,8 @@ $(function(){
   usernameView = new Application.LoggedInUserNameView;
   applicationController.registerUserDependentController(usernameView, 'draw');
 
+
+  navigationController = new NavigationController;
   return;
 
   /* TODO
@@ -53,7 +55,6 @@ $(function(){
    */
 
   var
-    navigationController = new NavigationController,
     controller = new Controller(view);
 
   new Binder({

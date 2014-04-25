@@ -19,15 +19,6 @@ NavigationController.prototype = {
     view.renderPartial(searchResultsPartial)
   },
 
-  requestShowUserProfile: function(userId){
-    $.ajax({
-      type: 'get',
-      url: '/users/'+ userId
-    }).done(function(userPartial){
-      view.renderPartial(userPartial);
-    })
-  },
-
   requestEditUserProfile: function(userId){
     $.ajax({
       type: 'get',
