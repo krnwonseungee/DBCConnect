@@ -34,6 +34,10 @@ $(function(){
     statsLayerGen.renderStats(bootList);
   });
 
+  profileView = new ProfileWidget.View;
+  profileController = new ProfileWidget.Controller(profileView);
+  profileView.setEventDelegate(applicationController);
+  applicationController.registerUserDependentController(profileController, 'draw');
   return;
 
   /* TODO

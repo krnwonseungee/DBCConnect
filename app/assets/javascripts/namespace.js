@@ -4,3 +4,4 @@ BootMap = {};
 Navigation = {};
 QuoteWidget = {};
 AvailabilityWidget = {};
+ProfileWidget = {};
