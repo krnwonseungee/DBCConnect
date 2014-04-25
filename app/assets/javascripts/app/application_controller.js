@@ -36,10 +36,11 @@ Application.Controller.prototype = {
                                    },
 
   _processNotifications: function () {
-    this.notifiedOnUserUpdate.forEach(function (callbackPair) {
-      var aController = callbackPair[0],
-        cbName = callbackPair[1];
-      aController[cbName].apply(aController, [this]);
-    });
-  }
+                           var appController = this;
+                           this.notifiedOnUserUpdate.forEach(function (callbackPair) {
+                             var aController = callbackPair[0],
+                             cbName = callbackPair[1];
+                           aController[cbName].apply(aController, [appController]);
+                           });
+                         }
 }
