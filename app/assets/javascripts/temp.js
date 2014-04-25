@@ -1,37 +1,23 @@
-BootMap.PopupPresenter = function(boot, opts) {
-  this.boot = boot;
+Application.LoggedInUserNameView = function(opts) {
   if (!opts) opts = {};
-  this.templateSel = opts.templateSel || "#user-popup";
-  if (!BootMap.template) BootMap.template = Handlebars.compile($(this.templateSel).html());
+  this.selector = opts.sel || '.logged_user';
+  this.eventDelegate = opts.sel || applicationController;
+}
+
+Application.LoggedInUserNameView.prototype = {
+  draw: function(userBearer) {
+          var user = userBearer.getUser(),
+            view = this;
+
+          if (!user || !user.name || !user.user_id) return;
+          
+          $(this.selector)
+            .first()
+            .text(user.name)
+            .attr('id', user.user_id)
+            .on('click', function () {
+              view.eventDelegate.profilenameClicked(view);
+            });
+        }
 };
-
-BootMap.PopupPresenter.prototype = {
-  present: function () {
-    return BootMap.template(this.boot);
-  }
-}
-
-BootMap.UserFetcher = function() {
-}
-
-BootMap.UserFetcher.prototype = {
-  fetch: function(cb) {
-           var layerGenerator = this.layerGenerator,
-            fetcher = this,
-            cb = cb;
-
-             $.ajax({
-               url: '/users',
-             })
-             .done(function(data){
-               cb.apply(fetcher, [fetcher._generateBoots(data.users)]) ;
-             });
-         },
-
-  _generateBoots: function (bootsJson) {
-                    return bootsJson.map(function(bootJson) {
-                      return new BootMap.Boot(bootJson);
-                    });
-  }
-}
 

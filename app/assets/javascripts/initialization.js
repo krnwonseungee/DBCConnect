@@ -38,6 +38,10 @@ $(function(){
   profileController = new ProfileWidget.Controller(profileView);
   profileView.setEventDelegate(applicationController);
   applicationController.registerUserDependentController(profileController, 'draw');
+
+  usernameView = new Application.LoggedInUserNameView;
+  applicationController.registerUserDependentController(usernameView, 'draw');
+
   return;
 
   /* TODO
