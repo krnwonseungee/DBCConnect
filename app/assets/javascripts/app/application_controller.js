@@ -33,7 +33,7 @@ Application.Controller.prototype = {
   registerUserDependentController: function (aController, cbName) {
                                      this.notifiedOnUserUpdate.push([ aController, cbName ]);
                                      aController[cbName].apply(aController, [this]);
-  },
+                                   },
 
   _processNotifications: function () {
     this.notifiedOnUserUpdate.forEach(function (callbackPair) {
