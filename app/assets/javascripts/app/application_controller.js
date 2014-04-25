@@ -1,6 +1,7 @@
 Application.Controller = function(view){
   this.view = view;
-  this.notifiedOnUserUpdate = []
+  this.notifiedOnUserUpdate = [];
+  this.displayUserProfile = false;
 }
 
 Application.Controller.prototype = {
@@ -17,6 +18,17 @@ Application.Controller.prototype = {
                 this.loggedUser = null;
                 location.href = "/"
               },
+
+  profilenameClicked: function () {
+                        this.displayUserProfile = true;
+                        this._processNotifications();
+
+                      },
+
+  closeProfile: function () {
+                  this.displayUserProfile = false;
+                  this._processNotifications();
+                },
 
   registerUserDependentController: function (aController, cbName) {
                                      this.notifiedOnUserUpdate.push([ aController, cbName ]);
