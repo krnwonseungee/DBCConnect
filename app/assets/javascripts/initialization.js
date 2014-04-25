@@ -8,7 +8,6 @@ $(function(){
     new QuoteWidget.Controller(
       new QuoteWidget.View('#footer'))).retrieve();
 
-  /* TODO: These should be localized to the closure */
   plV = new Pairlist.View({ displaySel:  "#activeUsersList" });
   plC = new Pairlist.Controller(plV, {
     loggedInUserBearer: applicationController,
@@ -19,7 +18,6 @@ $(function(){
   plV.setEventDelegate(plC);
   plC.init();
 
-  /* TODO: These should be localized to the closure */
   avV = new AvailabilityWidget.View();
   avC = new AvailabilityWidget.Controller(avV);
   avV.setEventDelegate(avC);
@@ -38,21 +36,29 @@ $(function(){
 
   return;
 
+  /* TODO
+   *
+   * Handle display of the user name so that we can do the profile thing
+   *
+   * Handle the search button
+   *
+   */
+
   var
     navigationController = new NavigationController,
     controller = new Controller(view);
 
-  //new Binder({
-    //controller: controller,
-    //selectorOptions: {
-      //closePopupSelector: '#close-pop-up',
-      //logoSelector: '#logo',
-      //profileUpdateSelector: '#update-submit',
-      //showProfileSelector: '.profile-link',
-      //searchSelector: "#submit-search",
-      //clickableUserNameSelector: "#activeUsersList",
-      //logoutSelector: "#logout"
-    //}
-  //});
+  new Binder({
+    controller: controller,
+    selectorOptions: {
+      closePopupSelector: '#close-pop-up',
+      logoSelector: '#logo',
+      profileUpdateSelector: '#update-submit',
+      showProfileSelector: '.profile-link',
+      searchSelector: "#submit-search",
+      clickableUserNameSelector: "#activeUsersList",
+      logoutSelector: "#logout"
+    }
+  });
 });
 
