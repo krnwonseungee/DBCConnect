@@ -5,20 +5,11 @@ returnTypeOf = function(object){
 describe("NameSpace", function(){
   it("is defined", function(){
     expect(BootMap).toBeDefined()
-  }),
-
-  it("has a controller constructor function", function(){
-    expect(BootMap.Controller).toBeDefined()
-  }),
-
-  it("has a view constructor function", function(){
-    expect(BootMap.View).toBeDefined()
-  })
+  });
 })
 
 describe("Controller", function(){
   beforeEach(function(){
-    controller = new BootMap.Controller
     mapStub = {}
     osmStub = {}
 
@@ -28,10 +19,6 @@ describe("Controller", function(){
   afterEach(function() {
     $("#map").remove();
   });
-
-  it("has a coordinate generator", function(){
-    expect(controller.getCoords()).toBeDefined()
-  }),
 
   it("produces an array of coordinates", function(){
     locationArray = []

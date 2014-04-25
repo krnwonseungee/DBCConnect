@@ -1,4 +1,6 @@
 $(function(){
+  var l_map, usersLayerGen, statsLayerGen;
+
   applicationController = new Application.Controller()
   new UserDataFetcher(applicationController).fetch();
 
@@ -25,28 +27,15 @@ $(function(){
   applicationController.registerUserDependentController(avC, 'init');
   avC.init();
 
-  var initializeOSM = function(){
-    var osmUrl    ='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var osmAttrib ='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors ';
-    return  new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 10, attribution: osmAttrib});
-  };
+  l_map = new BootMap.MapFactory().map();
+  usersLayerGen = new BootMap.UsersLayerGenerator(l_map);
+  statsLayerGen = new BootMap.StatsLayerGenerator(l_map);
 
-  function createMap() {
-    var START_LATITUDE = 37.769;
-    var START_LONGITUDE = -70.429;
-    var INITIAL_ZOOM = 3;
+  new BootMap.UserFetcher().fetch(function(bootList) {
+    usersLayerGen.renderMarkers(bootList);
+    statsLayerGen.renderStats(bootList);
+  });
 
-    var l_map = new L.map('map')
-    l_map.setView(L.latLng(START_LATITUDE, START_LONGITUDE), INITIAL_ZOOM);
-    l_map.addLayer(initializeOSM());
-
-    map_view = new BootMap.View(l_map);
-    map_controller = new BootMap.Controller('#map');
-    map_controller.map = l_map;
-    map_controller.view = map_view
-    map_controller.fetchUsers()
-  }
-  createMap()
   return;
 
   var
@@ -61,7 +50,6 @@ $(function(){
       //profileUpdateSelector: '#update-submit',
       //showProfileSelector: '.profile-link',
       //searchSelector: "#submit-search",
-      //availabilityToggleSelector: "#availability",
       //clickableUserNameSelector: "#activeUsersList",
       //logoutSelector: "#logout"
     //}
