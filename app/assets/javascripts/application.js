@@ -16,7 +16,6 @@
 //= require jquery.modal
 //= require jquery_ujs
 //= require leaflet
-//= require navigation-controller
 //= require namespace
 //= require_tree .
 
