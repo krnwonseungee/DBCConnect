@@ -11,7 +11,17 @@ $(function(){
   var l_map, usersLayerGen, statsLayerGen;
 
   applicationController = new Application.Controller()
+
   new UserDataFetcher(applicationController).fetch();
+  avV = new AvailabilityWidget.View();
+  avC = new AvailabilityWidget.Controller(avV);
+  avV.setEventDelegate(avC);
+
+  applicationController.registerUserDependentController(avC, 'init');
+  avC.init();
+
+  usernameView = new Application.LoggedInUserNameView;
+  applicationController.registerUserDependentController(usernameView, 'draw');
 
   new QuotesRetriever(
     new QuoteWidget.Controller(
@@ -27,13 +37,6 @@ $(function(){
   plV.setEventDelegate(plC);
   plC.init();
 
-  avV = new AvailabilityWidget.View();
-  avC = new AvailabilityWidget.Controller(avV);
-  avV.setEventDelegate(avC);
-
-  applicationController.registerUserDependentController(avC, 'init');
-  avC.init();
-
   l_map = new BootMap.MapFactory().map();
   usersLayerGen = new BootMap.UsersLayerGenerator(l_map);
   statsLayerGen = new BootMap.StatsLayerGenerator(l_map);
@@ -47,11 +50,6 @@ $(function(){
   profileController = new ProfileWidget.Controller(profileView);
   profileView.setEventDelegate(applicationController);
   applicationController.registerUserDependentController(profileController, 'draw');
-
-  usernameView = new Application.LoggedInUserNameView;
-  applicationController.registerUserDependentController(usernameView, 'draw');
-
-
 
   (function configureSearch(delegate) {
     var delegate = delegate;
