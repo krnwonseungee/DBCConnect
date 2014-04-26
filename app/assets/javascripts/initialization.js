@@ -43,31 +43,44 @@ $(function(){
   applicationController.registerUserDependentController(usernameView, 'draw');
 
 
-  navigationController = new NavigationController;
-  return;
-
   /* TODO
    *
-   * Handle display of the user name so that we can do the profile thing
-   *
-   * Handle the search button
+   * 1.  Add logout functionality (pending sign-on)
+   * 2.  Consolidate work incorrectly-homed on applicationController
    *
    */
 
-  var
-    controller = new Controller(view);
+  (function configureSearch(delegate) {
+    var delegate = delegate;
 
-  new Binder({
-    controller: controller,
-    selectorOptions: {
-      closePopupSelector: '#close-pop-up',
-      logoSelector: '#logo',
-      profileUpdateSelector: '#update-submit',
-      showProfileSelector: '.profile-link',
-      searchSelector: "#submit-search",
-      clickableUserNameSelector: "#activeUsersList",
-      logoutSelector: "#logout"
-    }
-  });
+    o = {
+      bind: function () {
+              var self = this;
+        $("#searchbar")
+          .find("#search-input")
+            .on('keyup', function(e) {
+              if (e.keyCode == jQuery.ui.keyCode.ENTER) {
+                self.searchBarSubmit();
+              }
+            })
+            .end()
+        .find("button")
+        .on('click', function (e) {
+          e.preventDefault();
+          self.searchBarSubmit();
+        });
+      },
+
+      searchBarSubmit: function(){
+                         o.retrieveResults($("#search-input").val());
+                       },
+
+    retrieveResults: function(searchValue){
+                         delegate.renderSearchResults(searchValue);
+                     }
+    };
+
+    o.bind();
+  })(applicationController);
 });
 

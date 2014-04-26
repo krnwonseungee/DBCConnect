@@ -31,6 +31,13 @@ Application.Controller.prototype = {
                         this._processNotifications();
   },
 
+  renderSearchResults: function (searchTerm) {
+                        this.displayUserProfile = true;
+                        this.profileDisplayMode = 'searchresults';
+                        this.searchTerm = searchTerm;
+                        this._processNotifications();
+  },
+
   submitEditProfileData: function (formData) {
                            var controller = this;
 

@@ -36,6 +36,18 @@ ProfileWidget.Controller.prototype = {
                               controller.view.draw(controller);
                             })
                           }
+
+                          if (userBearer.profileDisplayMode == 'searchresults') {
+                            $.ajax({
+                              type: "post",
+                              url: "/users/results",
+                              data: {pgsearch: userBearer.searchTerm}
+                            }).done(function(searchResultsPartial){
+                              controller.partial = searchResultsPartial;
+                              controller.view.draw(controller);
+                            })
+                          }
+
                         }
 
 };
