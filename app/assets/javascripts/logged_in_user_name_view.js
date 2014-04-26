@@ -14,9 +14,16 @@ Application.LoggedInUserNameView.prototype = {
           $(this.selector)
             .first()
             .text(user.name)
-            .attr('id', user.user_id)
-            .on('click', function () {
-              view.eventDelegate.profilenameClicked(view);
-            });
-        }
+            .attr('id', user.user_id);
+        },
+
+  registerEventDelegate: function (opts) {
+                           var eventType = opts.event,
+                           delegate = opts.goesTo,
+                           invocation = opts.as;
+
+                           $(this.selector).on(eventType, function(e) {
+                             delegate[invocation].call(delegate, e);
+                           });
+                         }
 };

@@ -1,54 +1,76 @@
-ProfileWidget.Controller = function(view) {
+ProfileWidget.Controller = function(view, opts) {
+  if (!opts) opts = {};
+
   this.view = view;
+  this.userBearer = opts.userBearer || applicationController;
 };
 
 ProfileWidget.Controller.prototype = {
-  draw: function(userBearer) {
-          this.displayProfile = userBearer.displayUserProfile;
-
-          this._fetchProfilePartial(userBearer);
-        },
+  initializeEventBindings: function () {
+                             this.view.delegate = this;
+                             this.view.draw(this);
+  },
 
   shouldDisplayPartial: function () {
     return this.displayProfile
   },
 
-  _fetchProfilePartial: function (userBearer) {
-                          var controller = this,
-                            loggedInUser = userBearer.getUser();
+  closeProfile: function () {
+                  this.displayProfile = false;
+                  this.view.draw(this);
+    
+  },
 
-                          if (!loggedInUser || !loggedInUser.id) return;
+  submitEditProfileData: function (formData) {
+                           var controller = this,
+                            loggedInUser = this.userBearer.getUser();
 
-                          if (userBearer.profileDisplayMode === 'show') {
-                            $.ajax({
-                              url: "/users/" + loggedInUser.id,
-                            }).done(function(userPartial){
-                              controller.partial = userPartial;
-                              controller.view.draw(controller);
-                            })
-                          }
+                           $.ajax({
+                             type: "put",
+                             url: "/users/" + loggedInUser.id,
+                             data: formData
+                           }).done(function(userPartial){
+                             controller.clickedOnUsernameWidget();
+                           });
+  },
 
-                          if (userBearer.profileDisplayMode === 'edit') {
-                            $.ajax({
-                              url: "/users/" + loggedInUser.id + '/edit',
-                            }).done(function(userPartial){
-                              controller.partial = userPartial;
-                              controller.view.draw(controller);
-                            })
-                          }
+  displayEditProfileForm: function () {
+                            this.displayProfile = true;
+                            this._fetchUserEditPage()
+    
+  },
 
-                          if (userBearer.profileDisplayMode == 'searchresults') {
-                            $.ajax({
-                              type: "post",
-                              url: "/users/results",
-                              data: {pgsearch: userBearer.searchTerm}
-                            }).done(function(searchResultsPartial){
-                              controller.partial = searchResultsPartial;
-                              controller.view.draw(controller);
-                            })
-                          }
+  clickedOnUsernameWidget: function () {
+                             this.displayProfile = true;
+                             this._fetchUserProfile();
+  },
 
-                        }
+  _fetchUserEditPage: function () {
+                        var controller = this,
+                        loggedInUser = this.userBearer.getUser();
 
+                        if (!loggedInUser || !loggedInUser.id) return;
+
+                          $.ajax({
+                            url: "/users/" + loggedInUser.id + '/edit',
+                          }).done(function(userPartial){
+                            controller.partial = userPartial;
+                            controller.view.draw(controller);
+                          })
+  },
+
+  _fetchUserProfile: function () {
+                       var controller = this,
+                         loggedInUser = this.userBearer.getUser();
+
+                       if (!loggedInUser || !loggedInUser.id) return;
+
+                       $.ajax({
+                         url: "/users/" + loggedInUser.id,
+                       }).done(function(userPartial){
+                         controller.partial = userPartial;
+                         controller.view.draw(controller);
+                       })
+  }
 };
 

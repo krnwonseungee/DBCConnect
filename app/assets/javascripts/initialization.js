@@ -48,8 +48,12 @@ $(function(){
 
   profileView = new ProfileWidget.View;
   profileController = new ProfileWidget.Controller(profileView);
-  profileView.setEventDelegate(applicationController);
-  applicationController.registerUserDependentController(profileController, 'draw');
+  profileController.initializeEventBindings();
+  usernameView.registerEventDelegate({
+    event: 'click',
+    goesTo: profileController,
+    as: 'clickedOnUsernameWidget'
+  });
 
   (function configureSearch(delegate) {
     var delegate = delegate;

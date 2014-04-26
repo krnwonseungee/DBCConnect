@@ -19,18 +19,6 @@ Application.Controller.prototype = {
                 location.href = "/"
               },
 
-  profilenameClicked: function () {
-                        this.displayUserProfile = true;
-                        this.profileDisplayMode = 'show';
-                        this._processNotifications();
-                      },
-
-  displayEditProfileForm: function () {
-                        this.displayUserProfile = true;
-                        this.profileDisplayMode = 'edit';
-                        this._processNotifications();
-  },
-
   renderSearchResults: function (searchTerm) {
                         this.displayUserProfile = true;
                         this.profileDisplayMode = 'searchresults';
@@ -38,28 +26,6 @@ Application.Controller.prototype = {
                         this._processNotifications();
   },
 
-  submitEditProfileData: function (formData) {
-                           var controller = this;
-
-                           $.ajax({
-                             type: "put",
-                             url: "/users/" + controller.loggedUser.id,
-                             data: formData
-                           }).done(function(userPartial){
-                             controller.profilenameClicked();
-                           });
-  },
-
-  closeProfile: function () {
-                  this.displayUserProfile = false;
-                  this._processNotifications();
-                },
-
-  renderEditPartial: function () {
-                       this.displayUserProfile = true;
-                       this.profileDisplayMode = 'edit';
-                       this._processNotifications();
-  },
 
   registerUserDependentController: function (aController, cbName) {
                                      this.notifiedOnUserUpdate.push([ aController, cbName ]);

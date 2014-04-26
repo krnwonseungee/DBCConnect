@@ -4,9 +4,9 @@ ProfileWidget.View = function(opts){
 };
 
 ProfileWidget.View.prototype = {
-  draw: function(userProfilePartialBearer) {
+  draw: function(controller) {
           var $sel,
-            partial = userProfilePartialBearer.partial,
+            partial = controller.partial,
             delegate = this.delegate;
 
           $sel = $(this.selector)
@@ -31,15 +31,11 @@ ProfileWidget.View.prototype = {
               })
               .end();
 
-          if (userProfilePartialBearer.shouldDisplayPartial()) {
+          if (controller.shouldDisplayPartial()) {
             $sel.show();
           } else {
             $sel.hide();
           }
-        },
-
-  setEventDelegate: function(d) {
-                      this.delegate = d;
-                    }
+        }
 };
 
