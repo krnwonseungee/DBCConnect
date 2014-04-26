@@ -1,3 +1,12 @@
+  /* TODO
+   *
+   * 1.  Consolidate work incorrectly-homed on applicationController
+   * 2.  Add logout functionality (pending sign-on)
+   * 3.  Restore the pinging / service request (pending sign-on, group
+   * available environment)
+   *
+   */
+
 $(function(){
   var l_map, usersLayerGen, statsLayerGen;
 
@@ -43,12 +52,6 @@ $(function(){
   applicationController.registerUserDependentController(usernameView, 'draw');
 
 
-  /* TODO
-   *
-   * 1.  Add logout functionality (pending sign-on)
-   * 2.  Consolidate work incorrectly-homed on applicationController
-   *
-   */
 
   (function configureSearch(delegate) {
     var delegate = delegate;
