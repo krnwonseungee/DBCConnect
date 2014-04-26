@@ -1,10 +1,7 @@
   /* TODO
-   *
-   * 1.  Consolidate work incorrectly-homed on applicationController
    * 2.  Add logout functionality (pending sign-on)
    * 3.  Restore the pinging / service request (pending sign-on, group
    * available environment)
-   *
    */
 
 $(function(){
