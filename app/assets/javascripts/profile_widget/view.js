@@ -1,7 +1,6 @@
 ProfileWidget.View = function(opts){
   if (!opts) opts = {};
   this.selector = opts.sel || '#container';
-  this.templateSelector = opts.templateSelector || '#user-popup';
 };
 
 ProfileWidget.View.prototype = {
