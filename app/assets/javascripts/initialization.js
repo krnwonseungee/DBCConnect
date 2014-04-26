@@ -26,10 +26,7 @@ $(function(){
 
   plV = new Pairlist.View({ displaySel:  "#activeUsersList" });
   plC = new Pairlist.Controller(plV, {
-    loggedInUserBearer: applicationController,
-    retrieverOpts: {
-                    doNotPollForUpdate: true,
-                  }
+    loggedInUserBearer: applicationController
   });
   plV.setEventDelegate(plC);
   plC.init();

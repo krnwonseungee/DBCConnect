@@ -2,10 +2,12 @@ Pairlist.UserListPoller = function(notifier, opts) {
   this.DEFAULT_UPDATE_LIST_QUERY_TIME = 2003;
   this.notifier = notifier;
   this.opts = opts;
+  if (!opts) this.opts = {};
 }
 
 Pairlist.UserListPoller.prototype = {
-  retrieve: function(){
+  retrieve: function(opts){
+
     var cb,
       pollUrl = this.opts.pollUrl || "/users/active",
       poller = this;
