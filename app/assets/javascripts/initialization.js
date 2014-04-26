@@ -55,37 +55,8 @@ $(function(){
     as: 'clickedOnUsernameWidget'
   });
 
-  (function configureSearch(delegate) {
-    var delegate = delegate;
-
-    o = {
-      bind: function () {
-              var self = this;
-        $("#searchbar")
-          .find("#search-input")
-            .on('keyup', function(e) {
-              if (e.keyCode == jQuery.ui.keyCode.ENTER) {
-                self.searchBarSubmit();
-              }
-            })
-            .end()
-        .find("button")
-        .on('click', function (e) {
-          e.preventDefault();
-          self.searchBarSubmit();
-        });
-      },
-
-      searchBarSubmit: function(){
-                         o.retrieveResults($("#search-input").val());
-                       },
-
-    retrieveResults: function(searchValue){
-                         delegate.renderSearchResults(searchValue);
-                     }
-    };
-
-    o.bind();
-  })(applicationController);
+  searchWidgetView = new SearchWidget.View;
+  searchWidgetController = new SearchWidget.Controller(searchWidgetView);
+  searchWidgetController.init();
 });
 

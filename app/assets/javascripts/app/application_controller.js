@@ -19,13 +19,6 @@ Application.Controller.prototype = {
                 location.href = "/"
               },
 
-  renderSearchResults: function (searchTerm) {
-                        this.displayUserProfile = true;
-                        this.profileDisplayMode = 'searchresults';
-                        this.searchTerm = searchTerm;
-                        this._processNotifications();
-  },
-
 
   registerUserDependentController: function (aController, cbName) {
                                      this.notifiedOnUserUpdate.push([ aController, cbName ]);
