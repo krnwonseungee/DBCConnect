@@ -5,3 +5,4 @@ Navigation = {};
 QuoteWidget = {};
 AvailabilityWidget = {};
 ProfileWidget = {};
+SearchWidget = {};
