@@ -1,7 +1,6 @@
   /* TODO
-   * 2.  Add logout functionality (pending sign-on)
-   * 3.  Restore the pinging / service request (pending sign-on, group
-   * available environment)
+   * 1.  Add logout functionality (pending sign-on)
+   * 2.  Restore ask to Pair functionality
    */
 
 $(function(){
