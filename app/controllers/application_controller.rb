@@ -10,9 +10,6 @@ class ApplicationController < ActionController::Base
   def current_user
     if session[:user_id]
       User.find(session[:user_id])
-      x = User.find_by_email('steven@devbootcamp.com')
-      session[:user_id] = x.id
-      x
     else
       User.find_by_email('steven@devbootcamp.com')
     end
