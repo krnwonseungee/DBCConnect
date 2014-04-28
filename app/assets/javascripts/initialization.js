@@ -9,6 +9,7 @@ $(function(){
   applicationController = new Application.Controller()
 
   new UserDataFetcher(applicationController).fetch();
+
   avV = new AvailabilityWidget.View();
   avC = new AvailabilityWidget.Controller(avV);
   avV.setEventDelegate(avC);
@@ -18,6 +19,9 @@ $(function(){
 
   usernameView = new Application.LoggedInUserNameView;
   applicationController.registerUserDependentController(usernameView, 'draw');
+
+  logoutView = new Application.LogoutButtonView;
+  applicationController.registerUserDependentController(logoutView, 'draw');
 
   new QuotesRetriever(
     new QuoteWidget.Controller(
