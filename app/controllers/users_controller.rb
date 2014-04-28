@@ -58,6 +58,7 @@ class UsersController < ApplicationController
   private
     def set_user
       @user = User.where(email: params[:id]).first
+      @user = User.find(session[:user_id]) unless @user
     end
 
     def user_params

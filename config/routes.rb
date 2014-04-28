@@ -3,6 +3,7 @@ DBCconnect::Application.routes.draw do
   # root 'users#index'
 
   get '/', to: 'welcome#index', as: 'root'
+  get '/hack/hack_user', to: 'hack#hack_user'
 
   match '/pairings/update_hangout_info', :controller => 'pairings', :action => 'allow_cors', via: [:OPTIONS]
   get '/pairings/get_url/:requestor_id', to: 'pairings#get_hangout_url'
