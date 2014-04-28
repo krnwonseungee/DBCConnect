@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = User.where(email: 'katherineimogene@gmail.com').first
+      @user = User.where(email: params[:id]).first
     end
 
     def user_params
