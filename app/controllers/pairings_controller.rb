@@ -49,7 +49,7 @@ class PairingsController < ApplicationController
   end
 
   def get_hangout_url #DOES THIS COMPARISON ACCOUNT FOR STRING INSTEAD OF INT IN THE ID???
-    @pairing = Pairing.where("requestor_id = ? AND responder_id = ?",params[:requestor_id],current_user.id).first
+    @pairing = Pairing.where(requestor_id: params[:requestor_id]).where(responder_id:current_user.id).last
     
     if @pairing && @pairing.hangout_url
       @pairing.destroy      
@@ -61,6 +61,7 @@ class PairingsController < ApplicationController
 
   #The route waits for a put request created by the hangout app gadget
   def update_hangout_info
+    STDERR.puts "HAAAYYYYYYYYY buncha callback noise \t\t\t\t\t\: #{params.inspect}"
     set_headers
     # Down the road, should have a better way of finding the correct pair
     # Could break if there's more than one request e.g. returning one pair's link to a different pair

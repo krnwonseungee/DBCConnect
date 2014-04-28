@@ -40,13 +40,14 @@ Pairlist.View.prototype = {
                 }
   },
 
-  showGoogleHangoutButtonRequestor: function(delegate){
-                                      var template = $("#google-hangout-prompt").html();
+  showGoogleHangoutButtonRequestor: function(delegate, idToPairWith){
+                                      var template = $("#google-hangout-prompt").html(),
+                                        idToPairWith = idToPairWith;
                                       $(this.googleMenuSelector)
                                         .empty()
-                                        .prepend(Handlebars.compile(template))
+                                        .prepend(Handlebars.compile(template)())
                                         .on('click', 'a', function() {
-                                          delegate.requestHangoutSession();
+                                          delegate.requestHangoutSession(idToPairWith);
                                         });
   },
 }

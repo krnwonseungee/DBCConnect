@@ -1,6 +1,7 @@
 Pairlist.Controller = function(view, opts) {
   this.view = view;
   this.retriever = new Pairlist.UserListPoller(this, opts.retrieverOpts);
+  this.requestRetriever = new Pairlist.PairingRequestPoller(this);
   this.pairableUsers = [];
   this.loggedInUserBearer = opts.loggedInUserBearer || applicationController;
 };
@@ -8,6 +9,7 @@ Pairlist.Controller = function(view, opts) {
 Pairlist.Controller.prototype = {
   init: function() {
           this.retriever.retrieve();
+          this.requestRetriever.retrieve();
           return this;
         },
 
@@ -29,8 +31,42 @@ Pairlist.Controller.prototype = {
                },
 
   requestHangoutSession: function(id){
-    this.sendPairingRequest();
+    this.sendPairingRequest(id);
   },
+
+  processPairingRequestData: function (serverData) {
+                               var requestorId = serverData.requestor_id;
+                               if (serverData.found) {
+                                 this.addRequest(serverData);
+                                 this.askForHangoutUrlPinger();
+                               }
+  },
+
+  currentPairingRequest: function () {
+    return this.activeRequest;
+  },
+
+  askForHangoutUrlPinger: function(){
+                            debugger;
+                            var requestorId = this.currentPairingRequest().requestorId,
+                              controller = this,
+                              view = this.view;
+
+                            this.hangoutUrlPinger = setInterval(function(){
+                              $.ajax({
+                                type: "get",
+                              url: "/pairings/get_url/" + requestorId,
+                              dataType: "json"
+                              }).done(function(serverData){
+                                if (serverData.success){
+                                  view.showGoogleHangoutButtonResponder(serverData.hangout_url);
+                                  clearInterval(controller.hangoutUrlPinger);
+                                  controller.hangoutUrlPinger = 0;
+                                }
+                              })
+                            }, 833);
+                          },
+
 
   makeUserInactive: function(){
                       this.loggedUser.activeState = false;
@@ -38,23 +74,29 @@ Pairlist.Controller.prototype = {
                       view.refreshActiveIcon(this);
                     },
 
-  sendPairingRequest: function(){
-                          /* we need to have the logged in user here... */
-                          console.log('send da request once we know the user');
-                          return;
+  sendPairingRequest: function(id){
+                        var controller = this;
                           $.ajax({
                             type: "post",
                             url: "/requests",
                             data: {responder_id: id},
                           }).done(function(serverData){
-                            controller.loggedUser.request_id = serverData.request_id;
-                            controller.loggedUser.pairing_id = serverData.pairing_id;
+                            console.log('Request sent!');
+                            //controller.addRequest(serverData);
                           })
   },
 
-  displayPairingPrompt: function(id) {
+  addRequest: function(requestJSON) {
+                this.activeRequest = new Pairlist.Request(requestJSON);
+              },
+
+  removeActiveRequest: function () {
+                         this.activeRequest = null;
+  },
+
+  displayPairingPrompt: function(idToPairWith) {
                           this._loggedInUser().markAsUnavailable();
-                          this.view.showGoogleHangoutButtonRequestor(this);
+                          this.view.showGoogleHangoutButtonRequestor(this, idToPairWith);
                         },
 
   markMyselfAsUnavailable: function() {
