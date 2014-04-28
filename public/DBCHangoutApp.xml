@@ -24,7 +24,7 @@ function sendUrlToServer () {
   $.ajax({
     type: "PUT",
     crossDomain: true,
-    url: "http://dbcconnect.herokuapp.com/pairings/update_hangout_info",
+    url: "http://limitless-dawn-7150.herokuapp.com/pairings/update_hangout_info",
     data: {'hangout_url': hangoutUrl},
     dataType: "json",
     success: function(server_data){
