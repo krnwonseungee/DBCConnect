@@ -4,7 +4,14 @@
    */
 
 $(function(){
-  var l_map, usersLayerGen, statsLayerGen;
+  var
+    avV, avC,
+    usernameView, logoutView,
+    plV, plC,
+    l_map, usersLayerGen, statsLayerGen,
+    profileView, profileController,
+    searchWidgetView, searchWidgetController;
+
 
   applicationController = new Application.Controller()
 
