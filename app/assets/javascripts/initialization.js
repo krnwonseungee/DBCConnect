@@ -29,10 +29,14 @@ $(function(){
 
   plV = new Pairlist.View({ displaySel:  "#activeUsersList" });
   plC = new Pairlist.Controller(plV, {
-    loggedInUserBearer: applicationController
+    loggedInUserBearer: applicationController,
   });
   plV.setEventDelegate(plC);
-  plC.init();
+  plC.initPollers(
+    [
+      new Pairlist.UserListPoller(plC),
+      new Pairlist.PairingRequestPoller(plC)
+  ]);
 
   l_map = new BootMap.MapFactory().map();
   usersLayerGen = new BootMap.UsersLayerGenerator(l_map);

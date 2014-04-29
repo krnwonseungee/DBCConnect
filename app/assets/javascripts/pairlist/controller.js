@@ -1,15 +1,16 @@
 Pairlist.Controller = function(view, opts) {
+  this.opts = opts;
   this.view = view;
-  this.retriever = new Pairlist.UserListPoller(this, opts.retrieverOpts);
-  this.requestRetriever = new Pairlist.PairingRequestPoller(this);
   this.pairableUsers = [];
   this.loggedInUserBearer = opts.loggedInUserBearer || applicationController;
 };
 
 Pairlist.Controller.prototype = {
-  init: function() {
-          this.retriever.retrieve();
-          this.requestRetriever.retrieve();
+  initPollers: function(pollers) {
+          var controller = this;
+          pollers.forEach(function (poller) {
+            poller.poll();
+          });
           return this;
         },
 
