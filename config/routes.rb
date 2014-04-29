@@ -31,4 +31,6 @@ DBCconnect::Application.routes.draw do
 
   resources :cohorts, only: [:index, :show]
   resources :pairings
+
+  get '/images/close', :to => redirect('/close')
 end
