@@ -17,17 +17,19 @@ User = function(arg){
 User.prototype = {
   markAsUnavailable: function (notifiedContext, callback) {
                      var notifiedContext = notifiedContext,
-                      callback = callback;
+                      callback = callback,
+                      user = this;
                        $.post('/users/mark_unwilling_to_pair', { user_id: this.user_id }, function () {
-                         if (callback && notifiedContext) callback.call(notifiedContext, [this]);
+                         if (callback && notifiedContext) callback.call(notifiedContext, [{ getUser: function(){ user }}]);
                        });
   },
 
   markAsAvailable: function (notifiedContext, callback) {
                      var notifiedContext = notifiedContext,
-                      callback = callback;
+                      callback = callback,
+                      user = this;
                        $.post('/users/mark_willing_to_pair', { user_id: this.user_id }, function () {
-                         if (callback && notifiedContext) callback.call(notifiedContext, [this]);
+                         if (callback && notifiedContext) callback.call(notifiedContext, [{ getUser: function(){ user }}]);
                        });
   }
 }
