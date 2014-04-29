@@ -3,8 +3,8 @@ AvailabilityWidget.Controller = function (view) {
 };
 
 AvailabilityWidget.Controller.prototype  = {
-  init: function (userBearer) {
           this._determineAvailability(userBearer);
+  draw: function (userBearer) {
           this.view.draw(this);
         },
 
@@ -17,12 +17,12 @@ AvailabilityWidget.Controller.prototype  = {
                        },
 
   _toggleOff: function () {
-                this._loggedInUser().markAsUnavailable(this, this.init);
+                this._loggedInUser().markAsUnavailable(this, this.draw);
                 this.isAvailable = false;
               },
 
   _toggleOn: function () {
-               this._loggedInUser().markAsAvailable(this, this.init);
+               this._loggedInUser().markAsAvailable(this, this.draw);
                this.isAvailable = true;
              },
 

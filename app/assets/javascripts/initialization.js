@@ -20,9 +20,8 @@ $(function(){
   availabilitylistView = new AvailabilityWidget.View();
   availabilitylistController = new AvailabilityWidget.Controller(availabilitylistView);
   availabilitylistView.setEventDelegate(availabilitylistController);
-  applicationController.registerUserDependentController(availabilitylistController, 'init');
 
-  availabilitylistController.init();
+  applicationController.registerUserDependentController(availabilitylistController, 'draw');
 
   usernameView = new Application.LoggedInUserNameView;
   applicationController.registerUserDependentController(usernameView, 'draw');
