@@ -20,7 +20,7 @@ User.prototype = {
                       callback = callback,
                       user = this;
                        $.post('/users/mark_unwilling_to_pair', { user_id: this.user_id }, function () {
-                         if (callback && notifiedContext) callback.call(notifiedContext, [{ getUser: function(){ user }}]);
+                         if (callback && notifiedContext) callback.apply(notifiedContext, [{ getUser: function(){ user }}]);
                        });
   },
 
@@ -29,7 +29,7 @@ User.prototype = {
                       callback = callback,
                       user = this;
                        $.post('/users/mark_willing_to_pair', { user_id: this.user_id }, function () {
-                         if (callback && notifiedContext) callback.call(notifiedContext, [{ getUser: function(){ user }}]);
+                         if (callback && notifiedContext) callback.apply(notifiedContext, [{ getUser: function(){ user }}]);
                        });
   }
 }
