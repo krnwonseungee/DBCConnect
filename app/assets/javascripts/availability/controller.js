@@ -26,13 +26,11 @@ AvailabilityWidget.Controller.prototype  = {
   },
 
   _toggleOff: function () {
-                this._loggedInUser().markAsUnavailable(this, this.draw);
-                this.isAvailable = false;
+                applicationController.setUserAsUnavailable();
               },
 
   _toggleOn: function () {
-               this._loggedInUser().markAsAvailable(this, this.draw);
-               this.isAvailable = true;
+               applicationController.setUserAsAvailable();
              },
 
   _loggedInUser: function () {

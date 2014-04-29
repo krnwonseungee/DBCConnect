@@ -96,7 +96,7 @@ Pairlist.Controller.prototype = {
   },
 
   displayPairingPrompt: function(idToPairWith) {
-                          this._loggedInUser().markAsUnavailable();
+                          applicationController.setUserAsUnavailable();
                           this.view.showGoogleHangoutButtonRequestor(this, idToPairWith);
                         },
 
