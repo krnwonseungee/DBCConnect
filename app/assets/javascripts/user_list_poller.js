@@ -6,7 +6,7 @@ Pairlist.UserListPoller = function(notifier, opts) {
 }
 
 Pairlist.UserListPoller.prototype = {
-  retrieve: function(opts){
+  poll: function(opts){
 
     var cb,
       pollUrl = this.opts.pollUrl || "/users/active",
@@ -37,7 +37,7 @@ Pairlist.UserListPoller.prototype = {
                          if (this.opts.doNotPollForUpdate ||
                              this.interval) return;
                          this.interval = setInterval(function() {
-                           poller.retrieve();
+                           poller.poll();
                          }, pollInterval);
                        },
 

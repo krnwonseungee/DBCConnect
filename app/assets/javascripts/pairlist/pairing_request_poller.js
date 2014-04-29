@@ -6,7 +6,7 @@ Pairlist.PairingRequestPoller = function(notifier, opts) {
 };
 
 Pairlist.PairingRequestPoller.prototype = {
-  retrieve: function(opts){
+  poll: function(opts){
 
     var cb,
       pollUrl = this.opts.pollUrl || "/requests",
@@ -34,7 +34,7 @@ Pairlist.PairingRequestPoller.prototype = {
                          if (this.opts.doNotPollForUpdate ||
                              this.interval) return;
                          this.interval = setInterval(function() {
-                           poller.retrieve();
+                           poller.poll();
                          }, pollInterval);
                        },
 
