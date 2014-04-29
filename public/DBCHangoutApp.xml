@@ -42,10 +42,6 @@ function init() {
   gapi.hangout.onApiReady.add(
       function(eventObj) {
         if (eventObj.isApiReady) {
-          //When everything is completely ready:
-          //Send the url back to DBC connect
-          document.getElementById('getting-pair')
-            .style.visibility = 'visible';
           sendUrlToServer();
         }
       });
