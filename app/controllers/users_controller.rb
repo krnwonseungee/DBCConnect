@@ -42,13 +42,15 @@ class UsersController < ApplicationController
   end
 
   def mark_willing_to_pair
-    User.find(params[:user_id]).update_attribute(:active, true)
-    render json: {}.to_json
+    u = User.find(params[:user_id])
+    u.update_attribute(:active, true)
+    render json: UserPresenter.new(u).to_json
   end
 
   def mark_unwilling_to_pair
-    User.find(params[:user_id]).update_attribute(:active, false)
-    render json: {}.to_json
+    u = User.find(params[:user_id])
+    u.update_attribute(:active, false)
+    render json: UserPresenter.new(u).to_json
   end
 
   def active

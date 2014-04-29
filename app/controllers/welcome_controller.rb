@@ -11,10 +11,6 @@ class WelcomeController < ApplicationController
   end
 
   def user
-    if current_user
-      render json: {user_id: current_user.id, name: current_user.name, active: current_user.active}
-    else
-      render json: {}.to_json
-    end
+    render json: (current_user ? UserPresenter.new(current_user).to_json : {}.to_json)
   end
 end
