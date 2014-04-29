@@ -5,9 +5,9 @@
 
 $(function(){
   var
-    avV, avC,
+    availabilitylistView, availabilitylistController,
     usernameView, logoutView,
-    plV, plC,
+    pairlistView, pairlistController,
     l_map, usersLayerGen, statsLayerGen,
     profileView, profileController,
     searchWidgetView, searchWidgetController;
@@ -17,12 +17,12 @@ $(function(){
 
   new UserDataFetcher(applicationController).fetch();
 
-  avV = new AvailabilityWidget.View();
-  avC = new AvailabilityWidget.Controller(avV);
-  avV.setEventDelegate(avC);
+  availabilitylistView = new AvailabilityWidget.View();
+  availabilitylistController = new AvailabilityWidget.Controller(availabilitylistView);
+  availabilitylistView.setEventDelegate(availabilitylistController);
 
-  applicationController.registerUserDependentController(avC, 'init');
-  avC.init();
+  applicationController.registerUserDependentController(availabilitylistController, 'init');
+  availabilitylistController.init();
 
   usernameView = new Application.LoggedInUserNameView;
   applicationController.registerUserDependentController(usernameView, 'draw');
@@ -34,15 +34,15 @@ $(function(){
     new QuoteWidget.Controller(
       new QuoteWidget.View('#footer'))).retrieve();
 
-  plV = new Pairlist.View({ displaySel:  "#activeUsersList" });
-  plC = new Pairlist.Controller(plV, {
+  pairlistView = new Pairlist.View({ displaySel:  "#activeUsersList" });
+  pairlistController = new Pairlist.Controller(pairlistView, {
     loggedInUserBearer: applicationController,
   });
-  plV.setEventDelegate(plC);
-  plC.initPollers(
+  pairlistView.setEventDelegate(pairlistController);
+  pairlistController.initPollers(
     [
-      new Pairlist.UserListPoller(plC),
-      new Pairlist.PairingRequestPoller(plC)
+      new Pairlist.UserListPoller(pairlistController),
+      new Pairlist.PairingRequestPoller(pairlistController)
   ]);
 
   l_map = new BootMap.MapFactory().map();
