@@ -109,6 +109,8 @@ Pairlist.Controller.prototype = {
 
   _userListSansLoggedInUser: function (userList) {
                                var controller = this;
+                               if (!this._loggedInUser()) return [];
+
                                return userList.reduce(function (memo, user) {
                                  if (user.id != controller._loggedInUser().id) memo.push(user);
                                  return memo;
