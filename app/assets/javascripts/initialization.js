@@ -1,8 +1,3 @@
-  /* TODO
-   * 1.  Add logout functionality (pending sign-on)
-   * 2.  Restore ask to Pair functionality
-   */
-
 $(function(){
   var
     availabilitylistView, availabilitylistController,
@@ -12,7 +7,7 @@ $(function(){
     profileView, profileController,
     searchWidgetView, searchWidgetController;
 
-
+  /* NB: The only global */
   applicationController = new Application.Controller()
 
   new UserDataFetcher(applicationController).fetch();
