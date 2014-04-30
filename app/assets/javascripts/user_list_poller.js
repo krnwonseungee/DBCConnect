@@ -6,20 +6,16 @@ Pairlist.UserListPoller = function(notifier, opts) {
 }
 
 Pairlist.UserListPoller.prototype = {
-  poll: function(opts){
+  poll: function(){
 
     var cb,
-      pollUrl = this.opts.pollUrl || "/users/active",
+      pollUrl = "/users/active",
       poller = this;
 
     $.ajax({
       url: pollUrl,
     }).done(function(serverData){
-      if (cb = poller.opts.doneCallback) {
-        cb.apply(poller, [serverData]);
-      } else {
-        poller.defaultDoneCallback.apply(poller, [serverData]);
-      }
+      poller.defaultDoneCallback.apply(poller, [serverData]);
     })
   },
 

@@ -9,17 +9,13 @@ Pairlist.PairingRequestPoller.prototype = {
   poll: function(opts){
 
     var cb,
-      pollUrl = this.opts.pollUrl || "/requests",
+      pollUrl = "/requests",
       poller = this;
 
     $.ajax({
       url: pollUrl,
     }).done(function(serverData){
-      if (cb = poller.opts.doneCallback) {
-        cb.apply(poller, [serverData]);
-      } else {
-        poller.defaultDoneCallback.apply(poller, [serverData]);
-      }
+      poller.defaultDoneCallback.apply(poller, [serverData]);
     })
   },
 
