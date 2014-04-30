@@ -3,8 +3,7 @@ BootMap.UserFetcher = function() {
 
 BootMap.UserFetcher.prototype = {
   fetch: function(cb) {
-           var layerGenerator = this.layerGenerator,
-            fetcher = this,
+           var fetcher = this,
             cb = cb;
 
              $.ajax({
