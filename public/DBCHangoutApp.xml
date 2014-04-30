@@ -18,6 +18,10 @@
 <script>
 function sendUrlToServer () {
   var hangoutUrl = gapi.hangout.getHangoutUrl();
+  var appData = gadgets.views.getParams()['appData'];
+  billy = appData;
+  var dbcConnectConfig = JSON.parse(decodeURIComponent(appData));
+  console.log(dbcConnectConfig);
   console.log("hangout url is: ")
   console.log(hangoutUrl)
   console.log(gapi.hangout.getEnabledParticipants())

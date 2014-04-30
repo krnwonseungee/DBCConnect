@@ -58,12 +58,25 @@ Pairlist.View.prototype = {
 
   showGoogleHangoutButtonRequestor: function(delegate, idToPairWith){
                                       var template = $("#google-hangout-prompt").html(),
-                                        idToPairWith = idToPairWith;
+                                        idToPairWith = idToPairWith,
+                                        context = this._hangoutButtonLookupData();
+
                                       $(this.googleMenuSelector)
                                         .empty()
-                                        .prepend(Handlebars.compile(template)())
+                                        .prepend(Handlebars.compile(template)(context))
                                         .on('click', 'a', function() {
                                           delegate.requestHangoutSession(idToPairWith);
                                         });
   },
+
+  _hangoutButtonLookupData: function () {
+                              var paramsObj = {
+                                userId: applicationController.getUser().user_id,
+                              },
+                              encString = encodeURIComponent(JSON.stringify(paramsObj));
+
+                              return {
+                                lookupData: encString
+                              };
+  }
 }
