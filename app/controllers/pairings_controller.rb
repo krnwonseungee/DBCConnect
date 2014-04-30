@@ -50,6 +50,7 @@ class PairingsController < ApplicationController
 
   def get_hangout_url #DOES THIS COMPARISON ACCOUNT FOR STRING INSTEAD OF INT IN THE ID???
     @pairing = Pairing.where(requestor_id: params[:requestor_id]).where(responder_id:current_user.id).last
+    Rails.logger.fatal(sprintf("requestor_id = %s AND responder_id = %s and [%s]",params[:requestor_id],current_user.id, @pairing.hangout_url))
 
     if @pairing && @pairing.hangout_url
       @pairing.destroy
