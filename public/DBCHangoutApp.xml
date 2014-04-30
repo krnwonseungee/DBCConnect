@@ -17,22 +17,21 @@
 
 <script>
 function sendUrlToServer () {
-  var hangoutUrl = gapi.hangout.getHangoutUrl(),
+  var callbackPath,
+    hangoutUrl = gapi.hangout.getHangoutUrl(),
     appData = gadgets.views.getParams()['appData'];
     dbcConnectConfig = JSON.parse(decodeURIComponent(appData));
 
   dbcConnectConfig.hangout_url = hangoutUrl;
+  callbackPath = dbcConnectConfig.callbackPath;
+  delete(dbcConnectConfig.callbackPath);
 
   $.ajax({
     type: "PUT",
     crossDomain: true,
-    url: "http://limitless-dawn-7150.herokuapp.com/pairings/update_hangout_info",
+    url: callbackPath,
     data: dbcConnectConfig,
-    dataType: "json",
-    success: function(server_data){
-    },
-    error: function(server_data){
-    }
+    dataType: "json"
   })
 
 }

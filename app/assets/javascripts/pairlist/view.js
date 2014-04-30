@@ -3,6 +3,7 @@ Pairlist.View = function (opts) {
   this.displaySel = opts.displaySel || "#activeUsersList";
   this.templateSel = opts.templateSel || "#pairlist-user-template";
   this.googleMenuSelector = ".button-div";
+  this.hostName = opts.hostName;
 };
 
 Pairlist.View.prototype = {
@@ -67,10 +68,15 @@ Pairlist.View.prototype = {
                                         });
   },
 
+  _calculateCallbackPath: function () {
+    return "http://" + this.hostName + "/pairings/update_hangout_info";
+  },
+
   _hangoutButtonLookupData: function (idToPairWith) {
                               var paramsObj = {
                                 requestor_id: applicationController.getUser().user_id,
-                                responder_id: idToPairWith
+                                responder_id: idToPairWith,
+                                callbackPath: this._calculateCallbackPath()
                               },
                               encString = encodeURIComponent(JSON.stringify(paramsObj));
 

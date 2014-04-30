@@ -5,7 +5,8 @@ $(function(){
     pairlistView, pairlistController,
     l_map, usersLayerGen, statsLayerGen,
     profileView, profileController,
-    searchWidgetView, searchWidgetController;
+    searchWidgetView, searchWidgetController,
+    HOST_NAME = "limitless-dawn-7150.herokuapp.com";
 
   /* NB: The only global */
   applicationController = new Application.Controller()
@@ -28,7 +29,7 @@ $(function(){
     new QuoteWidget.Controller(
       new QuoteWidget.View('#footer'))).retrieve();
 
-  pairlistView = new Pairlist.View({ displaySel:  "#activeUsersList" });
+  pairlistView = new Pairlist.View({ displaySel:  "#activeUsersList", hostName: HOST_NAME });
   pairlistController = new Pairlist.Controller(pairlistView, {
     loggedInUserBearer: applicationController,
   });
