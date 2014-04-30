@@ -62,11 +62,13 @@ class PairingsController < ApplicationController
 
   #The route waits for a put request created by the hangout app gadget
   def update_hangout_info
+    # Expect:
+    #
+    # {"requestor_id"=>"##", "responder_id"=>"##",
+    # "hangout_url"=>"URL",
+    # "controller"=>"pairings", "action"=>"update_hangout_info"}
     set_headers
-    # Down the road, should have a better way of finding the correct pair
-    # Could break if there's more than one request e.g. returning one pair's link to a different pair
-    # UPDATE -> SHOULD USE THE 'start_data' IN THE GOOGLE HANGOUT BUTTON TO PASS USER ID
-    pairing = Pairing.last
+    pairing = Pairing.where(requestor_id: params[:requestor_id]).where(responder_id: params[:responder_id]).last
     pairing.update(hangout_url: params[:hangout_url])
     render json: { success: false }
   end

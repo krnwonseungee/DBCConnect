@@ -59,7 +59,7 @@ Pairlist.View.prototype = {
   showGoogleHangoutButtonRequestor: function(delegate, idToPairWith){
                                       var template = $("#google-hangout-prompt").html(),
                                         idToPairWith = idToPairWith,
-                                        context = this._hangoutButtonLookupData();
+                                        context = this._hangoutButtonLookupData(idToPairWith);
 
                                       $(this.googleMenuSelector)
                                         .empty()
@@ -69,9 +69,10 @@ Pairlist.View.prototype = {
                                         });
   },
 
-  _hangoutButtonLookupData: function () {
+  _hangoutButtonLookupData: function (idToPairWith) {
                               var paramsObj = {
-                                userId: applicationController.getUser().user_id,
+                                requestor_id: applicationController.getUser().user_id,
+                                responder_id: idToPairWith
                               },
                               encString = encodeURIComponent(JSON.stringify(paramsObj));
 
