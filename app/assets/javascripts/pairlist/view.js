@@ -41,16 +41,17 @@ Pairlist.View.prototype = {
   },
 
   showGoogleHangoutButtonResponder: function (hangoutURL) {
-    $(".button-div").empty().prepend(
-      "<a id='pairing-link' class='pure-button pure-button-active'"
-      +"href='"+ hangoutURL
-      +"' target=_blank>"
-      +"Join Pairing"
-      + "</a>")
-    $('#pairing-link').on('click', function(){
-      $('#close-pop-up').click()
-    })
-  },
+                                      var selector = $("#google-hangout-response-button-template"),
+                                        template = selector.html();
+
+                                      $(".button-div")
+                                        .empty()
+                                        .prepend(Handlebars.compile(template)({url: hangoutURL}))
+                                        .find('#pairing-link')
+                                          .on('click', function(){
+                                            $('#close-pop-up').click();
+                                          });
+                                    },
 
 
   showGoogleHangoutButtonRequestor: function(delegate, idToPairWith){
