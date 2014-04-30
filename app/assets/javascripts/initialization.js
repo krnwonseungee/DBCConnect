@@ -33,12 +33,10 @@ $(function(){
     loggedInUserBearer: applicationController,
   });
   pairlistView.setEventDelegate(pairlistController);
-  pollers = [
+  pairlistController.initPollers([
       new Pairlist.UserListPoller(pairlistController),
       new Pairlist.PairingRequestPoller(pairlistController)
-  ];
-  pairlistController.initPollers(pollers);
-  applicationController.registerPollers(pollers)
+  ]);
 
   l_map = new BootMap.MapFactory().map();
   usersLayerGen = new BootMap.UsersLayerGenerator(l_map);

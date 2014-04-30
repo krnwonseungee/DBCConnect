@@ -3,11 +3,15 @@ Pairlist.Controller = function(view, opts) {
   this.view = view;
   this.pairableUsers = [];
   this.loggedInUserBearer = opts.loggedInUserBearer || applicationController;
+  this.pollerRegistrar = opts.pollerRegistrar || applicationController;
 };
 
 Pairlist.Controller.prototype = {
   initPollers: function(pollers) {
           var controller = this;
+
+          this.pollerRegistrar.registerPollers(pollers);
+
           pollers.forEach(function (poller) {
             poller.poll();
           });
