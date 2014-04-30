@@ -41,9 +41,6 @@ Pairlist.View.prototype = {
   },
 
   showGoogleHangoutButtonResponder: function (hangoutURL) {
-    $("#top_navbar").prepend(
-      "<a id='ghost' href='#pop-up' rel='modal:open'>")
-    $('#ghost').click()
     $(".button-div").empty().prepend(
       "<a id='pairing-link' class='pure-button pure-button-active'"
       +"href='"+ hangoutURL

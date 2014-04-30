@@ -65,10 +65,6 @@ i.fa.fa-bars.fa-2x {
   right: 5px;
 }
 
-a#ghost {
-  display: none;
-}
-
 html .fa-chevron-right:before {
   position: absolute;
   color: white;
