@@ -33,6 +33,29 @@ Application.Controller.prototype = {
                                      aController[cbName].apply(aController, [this]);
                                    },
 
+  registerPollers: function (pollers) {
+                     this.pollers = pollers;
+  },
+
+  stopPollers: function () {
+                 this.pollers.forEach(function(poller) {
+                   poller.stop();
+                 });
+               },
+
+  pollOnce: function() {
+              this.pollers.forEach(function(poller) {
+                poller.poll();
+              });
+            },
+
+  resumePollers: function () {
+                   this.pollers.forEach(function(poller) {
+                     poller.resume();
+                   });
+                 },
+
+
   _updateUserPairingWillingnessStatus: function (url) {
                                          var c = this,
                                            loggedUser = this.getUser();

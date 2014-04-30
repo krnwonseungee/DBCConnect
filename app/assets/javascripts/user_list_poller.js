@@ -41,7 +41,15 @@ Pairlist.UserListPoller.prototype = {
                          }, pollInterval);
                        },
 
-  stopPolling: function() {
+  stop: function() {
                  clearInterval(this.interval);
-               }
+               },
+
+  resume: function () {
+            var pollInterval = this.opts.pollInterval || this.DEFAULT_UPDATE_LIST_QUERY_TIME;
+
+            this.interval = setInterval(function() {
+              poller.poll();
+            }, pollInterval);
+          }
 };
