@@ -43,8 +43,8 @@ $(function(){
   statsLayerGen = new BootMap.StatsLayerGenerator(l_map);
 
   new BootMap.UserFetcher().fetch(function(bootList) {
-    usersLayerGen.renderMarkers(bootList);
-    statsLayerGen.renderStats(bootList);
+    usersLayerGen.render(bootList);
+    statsLayerGen.render(bootList);
   });
 
   profileView = new ProfileWidget.View;

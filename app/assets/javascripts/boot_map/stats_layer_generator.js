@@ -3,7 +3,7 @@ BootMap.StatsLayerGenerator = function(map) {
 }
 
 BootMap.StatsLayerGenerator.prototype = {
-  renderStats: function (bootList) {
+  render: function (bootList) {
                  $("#logo-in-map")
                    .append("<h2>DBC CONNECT</h2>Find your fellow boots in " + this._cityCount(bootList) + " cities around the world")
   },

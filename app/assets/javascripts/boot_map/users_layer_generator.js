@@ -11,7 +11,7 @@ BootMap.UsersLayerGenerator.prototype = {
            this.renderMarkers(bootCollection);
          },
 
-  renderMarkers: function(bootList){
+  render: function(bootList){
     var map = this.map;
     var markers = new L.MarkerClusterGroup()
     if (!map) return;
