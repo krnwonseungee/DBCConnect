@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
   end
 
   def main    
+    @public_google_api_id = 235141833113
   end
 
   def quote

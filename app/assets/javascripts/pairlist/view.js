@@ -82,7 +82,8 @@ Pairlist.View.prototype = {
       encString = encodeURIComponent(JSON.stringify(paramsObj));
 
       return {
-        lookupData: encString
+        lookupData: encString,
+        gid: PUBLIC_GOOGLE_API_ID
       };
     }
 }
