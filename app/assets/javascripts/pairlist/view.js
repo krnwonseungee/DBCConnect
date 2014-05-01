@@ -57,13 +57,14 @@ Pairlist.View.prototype = {
 
 
   showGoogleHangoutButtonRequestor: function(delegate, idToPairWith){
-    var template = $("#google-hangout-prompt").html(),
-    idToPairWith = idToPairWith,
-    context = this._hangoutButtonLookupData(idToPairWith);
+    var idToPairWith = idToPairWith,
+      context = this._hangoutButtonLookupData(idToPairWith),
+      template = HandlebarsTemplates.google_hangout_prompt,
+      content = template(context);
 
     $(this.googleMenuSelector)
     .empty()
-    .prepend(Handlebars.compile(template)(context))
+    .prepend(content)
     .on('click', 'a', function() {
       delegate.requestHangoutSession(idToPairWith);
     });
