@@ -5,8 +5,7 @@ $(function(){
     pairlistView, pairlistController,
     l_map, usersLayerGen, statsLayerGen,
     profileView, profileController,
-    searchWidgetView, searchWidgetController,
-    HOST_NAME = "limitless-dawn-7150.herokuapp.com";
+    searchWidgetView, searchWidgetController;
 
   /* NB: The only global */
   applicationController = new Application.Controller()
