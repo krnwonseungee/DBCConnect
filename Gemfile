@@ -42,6 +42,7 @@ gem 'jquery-modal-rails'
 
 gem 'metric_fu'
 gem 'handlebars_assets'
+gem 'handlebars-rails'
 
 group :development, :test do
   gem 'jasmine-rails'

@@ -17,5 +17,6 @@
 //= require jquery_ujs
 //= require leaflet
 //= require namespace
+//= handlebars
 //= require_tree .
 
