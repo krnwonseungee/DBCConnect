@@ -2,8 +2,8 @@ class WelcomeController < ApplicationController
   def index
   end
 
-  def main    
-    @public_google_api_id = 235141833113
+  def main
+    @public_google_api_id = ENV["GOOGLE_API_ID"]
   end
 
   def quote

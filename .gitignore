@@ -21,3 +21,5 @@
 # Ignore rbenv local version file
 /.ruby-version
 
+# Add support for local configuration
+.myconfig.yml
