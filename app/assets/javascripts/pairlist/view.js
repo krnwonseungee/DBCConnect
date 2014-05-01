@@ -83,7 +83,7 @@ Pairlist.View.prototype = {
 
       return {
         lookupData: encString,
-        gid: PUBLIC_GOOGLE_API_ID
+        gid: CONFIG.PUBLIC_GOOGLE_API_ID
       };
     }
 }

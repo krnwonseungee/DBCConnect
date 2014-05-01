@@ -28,7 +28,7 @@ $(function(){
     new QuoteWidget.Controller(
       new QuoteWidget.View('#footer'))).retrieve();
 
-      pairlistView = new Pairlist.View({ displaySel:  "#activeUsersList", hostName: HOST_NAME });
+      pairlistView = new Pairlist.View({ displaySel:  "#activeUsersList", hostName: CONFIG.HOST_NAME });
       pairlistController = new Pairlist.Controller(pairlistView, {
         loggedInUserBearer: applicationController,
       });

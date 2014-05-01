@@ -1,8 +1,10 @@
 <%= javascript_include_tag "application"%>
 
 <script type="text/javascript" charset="utf-8">
-  HOST_NAME = "<%= request.host %>";
-  PUBLIC_GOOGLE_API_ID = "<%= @public_google_api_id %>";
+  CONFIG = {
+    HOST_NAME: "<%= request.host %>",
+    PUBLIC_GOOGLE_API_ID: <%= @public_google_api_id %>
+  }
 </script>
 
 <div class="header">
