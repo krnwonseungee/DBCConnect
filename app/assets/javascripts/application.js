@@ -18,5 +18,6 @@
 //= require leaflet
 //= require namespace
 //= handlebars
+//= require_tree ./templates
 //= require_tree .
 
