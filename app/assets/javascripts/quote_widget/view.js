@@ -1,15 +1,13 @@
 QuoteWidget.View = function(targetSel, templateNameSel) {
   this.targetSel = targetSel;
-  this.templateNameSel = templateNameSel || "#quote-template";
+  this.templateNameSel = templateNameSel || "quote";
 }
 
 QuoteWidget.View.prototype = {
   showQuote: function(quoteBearer){
     var quote = quoteBearer.quote,
-    template = $(this.templateNameSel).html();
+      content = HandlebarsTemplates[this.templateNameSel](quote);
 
-    $(this.targetSel)
-    .empty()
-    .append(Handlebars.compile(template)(quote));
+    $(this.targetSel).empty().append(content);
   }
 };
