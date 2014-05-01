@@ -1,7 +1,7 @@
 Pairlist.View = function (opts) {
   this.opts = opts;
   this.displaySel = opts.displaySel || "#activeUsersList";
-  this.templateSel = opts.templateSel || "#pairlist-user-template";
+  this.templateSel = opts.templateSel || "pairlist_user";
   this.googleMenuSelector = ".button-div";
   this.hostName = opts.hostName;
 };
@@ -23,16 +23,17 @@ Pairlist.View.prototype = {
   renderList: function(userList){
     var clickedUserId,
     $display = $(this.displaySel)
-    template = $(this.templateSel).html(),
     numOfActiveUsers = userList.length,
     delegate = this.getEventDelegate();
 
 
     $display.empty();
 
+
     for (var i = 0; i < numOfActiveUsers; i++){
       clickedUserId = userList[i].id;
-      $display.append(Handlebars.compile(template)(userList[i]))
+      $display
+      .append(HandlebarsTemplates[this.templateSel](userList[i]))
       .find("li:last")
       .bind('click', {clickedUserId: clickedUserId}, function (event) {
         event.preventDefault();
