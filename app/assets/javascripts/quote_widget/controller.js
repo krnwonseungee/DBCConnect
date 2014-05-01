@@ -4,7 +4,7 @@ QuoteWidget.Controller = function(view) {
 
 QuoteWidget.Controller.prototype = {
   handleQuote: function(quote) {
-                 this.quote = quote;
-                 this.view.showQuote(this);
-               }
+    this.quote = quote;
+    this.view.showQuote(this);
+  }
 }

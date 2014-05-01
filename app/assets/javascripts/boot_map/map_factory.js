@@ -7,10 +7,10 @@ BootMap.MapFactory = function(opts) {
 
 BootMap.MapFactory.prototype = {
   map: function() {
-         var lMap = new L.map('map');
-         lMap.setView(L.latLng(this.START_LATITUDE, this.START_LONGITUDE), this.INITIAL_ZOOM);
-         return this._initializeOSM(lMap);
-       },
+    var lMap = new L.map('map');
+    lMap.setView(L.latLng(this.START_LATITUDE, this.START_LONGITUDE), this.INITIAL_ZOOM);
+    return this._initializeOSM(lMap);
+  },
 
   _initializeOSM: function(map){
     var osmUrl    ='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',

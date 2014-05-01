@@ -9,8 +9,8 @@ Pairlist.PairingRequestPoller.prototype = {
   poll: function(opts){
 
     var cb,
-      pollUrl = "/requests",
-      poller = this;
+    pollUrl = "/requests",
+    poller = this;
 
     $.ajax({
       url: pollUrl,
@@ -20,29 +20,29 @@ Pairlist.PairingRequestPoller.prototype = {
   },
 
   defaultDoneCallback: function(serverData) {
-                         var notifier = this.notifier;
-                           pollInterval = this.opts.pollInterval ||
-                             this.DEFAULT_UPDATE_LIST_QUERY_TIME,
-                           poller = this;
+    var notifier = this.notifier;
+    pollInterval = this.opts.pollInterval ||
+      this.DEFAULT_UPDATE_LIST_QUERY_TIME,
+    poller = this;
 
-                         notifier.processPairingRequestData(serverData);
+    notifier.processPairingRequestData(serverData);
 
-                         if (this.opts.doNotPollForUpdate ||
-                             this.interval) return;
-                         this.interval = setInterval(function() {
-                           poller.poll();
-                         }, pollInterval);
-                       },
+    if (this.opts.doNotPollForUpdate ||
+        this.interval) return;
+      this.interval = setInterval(function() {
+        poller.poll();
+      }, pollInterval);
+  },
 
   stop: function () {
-          clearInterval(this.interval);
-        },
+    clearInterval(this.interval);
+  },
 
   resume: function () {
-            var pollInterval = this.opts.pollInterval || this.DEFAULT_UPDATE_LIST_QUERY_TIME;
+    var pollInterval = this.opts.pollInterval || this.DEFAULT_UPDATE_LIST_QUERY_TIME;
 
-            this.interval = setInterval(function() {
-              poller.poll();
-            }, pollInterval);
-          }
+    this.interval = setInterval(function() {
+      poller.poll();
+    }, pollInterval);
+  }
 }

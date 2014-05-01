@@ -6,28 +6,28 @@ AvailabilityWidget.View = function (opts) {
 
 AvailabilityWidget.View.prototype = {
   setEventDelegate: function (delegate) {
-                      this.delegate = delegate;
+    this.delegate = delegate;
   },
 
   initEvents: function () {
-                var delegate = this.delegate;
-                $(this.sel).on('click', function (e) {
-                  e.stopPropagation();
-                  delegate.toggleButtonClicked();
-                });
+    var delegate = this.delegate;
+    $(this.sel).on('click', function (e) {
+      e.stopPropagation();
+      delegate.toggleButtonClicked();
+    });
   },
 
   draw: function (src) {
-          var activityElement = this._element();
-          if (!this.initialized) {
-            this.initialized = true;
-            this.initEvents();
-          }
-          if (src.isAvailable) {
-            activityElement.addClass('active').removeClass('inactive');
-          } else {
-            activityElement.removeClass('active').addClass('inactive');
-          }
+    var activityElement = this._element();
+    if (!this.initialized) {
+      this.initialized = true;
+      this.initEvents();
+    }
+    if (src.isAvailable) {
+      activityElement.addClass('active').removeClass('inactive');
+    } else {
+      activityElement.removeClass('active').addClass('inactive');
+    }
   },
 
   _element: function () {

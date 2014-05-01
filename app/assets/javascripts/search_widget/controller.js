@@ -12,23 +12,23 @@ SearchWidget.Controller.prototype = {
   },
 
   searchBarSubmit: function(searchTerm){
-                     var controller = this;
+    var controller = this;
 
-                     $.ajax({
-                       type: "post",
-                     url: "/users/results",
-                     data: { pgsearch: searchTerm }
-                     }).done(function(searchResultsPartial){
-                       controller.partial = searchResultsPartial;
-                       controller.shouldDisplay = true;
-                       controller.view.draw(controller);
-                     })
-                   },
+    $.ajax({
+      type: "post",
+      url: "/users/results",
+      data: { pgsearch: searchTerm }
+    }).done(function(searchResultsPartial){
+      controller.partial = searchResultsPartial;
+      controller.shouldDisplay = true;
+      controller.view.draw(controller);
+    })
+  },
 
   closeSearchResults: function() {
-                         this.shouldDisplay = false;
-                         this.view.draw(this);
-                      }
+    this.shouldDisplay = false;
+    this.view.draw(this);
+  }
 
 };
 

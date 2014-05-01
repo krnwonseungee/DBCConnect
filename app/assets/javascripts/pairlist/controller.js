@@ -8,43 +8,43 @@ Pairlist.Controller = function(view, opts) {
 
 Pairlist.Controller.prototype = {
   initPollers: function(pollers) {
-          var controller = this;
+    var controller = this;
 
-          this.pollerRegistrar.registerPollers(pollers);
+    this.pollerRegistrar.registerPollers(pollers);
 
-          pollers.forEach(function (poller) {
-            poller.poll();
-          });
-          return this;
-        },
+    pollers.forEach(function (poller) {
+      poller.poll();
+    });
+    return this;
+  },
 
   updateActiveUsers: function(userList) {
-                       this.pairableUsers = this._userListSansLoggedInUser(userList);
-                       this._updateView();
-                     },
+    this.pairableUsers = this._userListSansLoggedInUser(userList);
+    this._updateView();
+  },
 
   getUserList: function() {
-                return this.pairableUsers;
-              },
+    return this.pairableUsers;
+  },
 
   stopPolling: function() {
-                 this.retriever.stopPolling();
-               },
+    this.retriever.stopPolling();
+  },
 
   _updateView: function() {
-                 this.view.draw(this);
-               },
+    this.view.draw(this);
+  },
 
   requestHangoutSession: function(id){
     this.sendPairingRequest(id);
   },
 
   processPairingRequestData: function (serverData) {
-                               var requestorId = serverData.requestor_id;
-                               if (serverData.found) {
-                                 this.addRequest(serverData);
-                                 this.askForHangoutUrlPinger();
-                               }
+    var requestorId = serverData.requestor_id;
+    if (serverData.found) {
+      this.addRequest(serverData);
+      this.askForHangoutUrlPinger();
+    }
   },
 
   currentPairingRequest: function () {
@@ -52,68 +52,68 @@ Pairlist.Controller.prototype = {
   },
 
   askForHangoutUrlPinger: function(){
-                            debugger;
-                            var requestorId = this.currentPairingRequest().requestorId,
-                              controller = this,
-                              view = this.view;
+    debugger;
+    var requestorId = this.currentPairingRequest().requestorId,
+    controller = this,
+    view = this.view;
 
-                            this.hangoutUrlPinger = setInterval(function(){
-                              $.ajax({
-                                type: "get",
-                              url: "/pairings/get_url/" + requestorId,
-                              dataType: "json"
-                              }).done(function(serverData){
-                                if (serverData.success){
-                                  view.showGoogleHangoutButtonResponder(serverData.hangout_url);
-                                  clearInterval(controller.hangoutUrlPinger);
-                                  controller.hangoutUrlPinger = 0;
-                                }
-                              })
-                            }, 833);
-                          },
+    this.hangoutUrlPinger = setInterval(function(){
+      $.ajax({
+        type: "get",
+        url: "/pairings/get_url/" + requestorId,
+        dataType: "json"
+      }).done(function(serverData){
+        if (serverData.success){
+          view.showGoogleHangoutButtonResponder(serverData.hangout_url);
+          clearInterval(controller.hangoutUrlPinger);
+          controller.hangoutUrlPinger = 0;
+        }
+      })
+    }, 833);
+  },
 
 
   makeUserInactive: function(){
-                      this.loggedUser.activeState = false;
-                      this.togglePinging();
-                      view.refreshActiveIcon(this);
-                    },
+    this.loggedUser.activeState = false;
+    this.togglePinging();
+    view.refreshActiveIcon(this);
+  },
 
   sendPairingRequest: function(id){
-                        var controller = this;
-                          $.ajax({
-                            type: "post",
-                            url: "/requests",
-                            data: {responder_id: id},
-                          }).done(function(serverData){
-                            console.log('Request sent!');
-                            //controller.addRequest(serverData);
-                          })
+    var controller = this;
+    $.ajax({
+      type: "post",
+      url: "/requests",
+      data: {responder_id: id},
+    }).done(function(serverData){
+      console.log('Request sent!');
+      //controller.addRequest(serverData);
+    })
   },
 
   addRequest: function(requestJSON) {
-                this.activeRequest = new Pairlist.Request(requestJSON);
-              },
+    this.activeRequest = new Pairlist.Request(requestJSON);
+  },
 
   removeActiveRequest: function () {
-                         this.activeRequest = null;
+    this.activeRequest = null;
   },
 
   displayPairingPrompt: function(idToPairWith) {
-                          applicationController.setUserAsUnavailable();
-                          this.view.showGoogleHangoutButtonRequestor(this, idToPairWith);
-                        },
+    applicationController.setUserAsUnavailable();
+    this.view.showGoogleHangoutButtonRequestor(this, idToPairWith);
+  },
 
   _userListSansLoggedInUser: function (userList) {
-                               var controller = this;
-                               if (!this._loggedInUser()) return [];
+    var controller = this;
+    if (!this._loggedInUser()) return [];
 
-                               return userList.reduce(function (memo, user) {
-                                 if (user.id != controller._loggedInUser().id) memo.push(user);
-                                 return memo;
-                               }, []).sort(function (a, b) {
-                                 return a.name.localeCompare(b.name);
-                               });
+    return userList.reduce(function (memo, user) {
+      if (user.id != controller._loggedInUser().id) memo.push(user);
+      return memo;
+    }, []).sort(function (a, b) {
+      return a.name.localeCompare(b.name);
+    });
   },
 
   _loggedInUser: function () {

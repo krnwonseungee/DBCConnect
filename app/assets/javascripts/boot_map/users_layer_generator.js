@@ -4,12 +4,12 @@ BootMap.UsersLayerGenerator = function(map) {
 
 BootMap.UsersLayerGenerator.prototype = {
   set: function (userCollection) {
-         this.rawUsers = userCollection;
+    this.rawUsers = userCollection;
   },
 
   layer: function(bootCollection) {
-           this.renderMarkers(bootCollection);
-         },
+    this.renderMarkers(bootCollection);
+  },
 
   render: function(bootList){
     var map = this.map;
@@ -20,8 +20,8 @@ BootMap.UsersLayerGenerator.prototype = {
 
       if (!boot.longitude || !boot.longitude) continue;
 
-        var marker = L.marker([boot.latitude, boot.longitude]),
-        content = new BootMap.PopupPresenter(boot).present();
+      var marker = L.marker([boot.latitude, boot.longitude]),
+      content = new BootMap.PopupPresenter(boot).present();
 
       this.bindThisPopup(marker, content)
 

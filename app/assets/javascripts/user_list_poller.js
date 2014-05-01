@@ -9,8 +9,8 @@ Pairlist.UserListPoller.prototype = {
   poll: function(){
 
     var cb,
-      pollUrl = "/users/active",
-      poller = this;
+    pollUrl = "/users/active",
+    poller = this;
 
     $.ajax({
       url: pollUrl,
@@ -20,32 +20,32 @@ Pairlist.UserListPoller.prototype = {
   },
 
   defaultDoneCallback: function(serverData) {
-                         var userClass = this.opts.userClass || User,
-                           users = serverData.activeUsers.map(function(userJson) {
-                             return new userClass(userJson);
-                           }),
-                           pollInterval = this.opts.pollInterval ||
-                             this.DEFAULT_UPDATE_LIST_QUERY_TIME,
-                           poller = this;
+    var userClass = this.opts.userClass || User,
+    users = serverData.activeUsers.map(function(userJson) {
+      return new userClass(userJson);
+    }),
+    pollInterval = this.opts.pollInterval ||
+      this.DEFAULT_UPDATE_LIST_QUERY_TIME,
+    poller = this;
 
-                         this.notifier.updateActiveUsers(users);
+    this.notifier.updateActiveUsers(users);
 
-                         if (this.opts.doNotPollForUpdate ||
-                             this.interval) return;
-                         this.interval = setInterval(function() {
-                           poller.poll();
-                         }, pollInterval);
-                       },
+    if (this.opts.doNotPollForUpdate ||
+        this.interval) return;
+      this.interval = setInterval(function() {
+        poller.poll();
+      }, pollInterval);
+  },
 
   stop: function() {
-                 clearInterval(this.interval);
-               },
+    clearInterval(this.interval);
+  },
 
   resume: function () {
-            var pollInterval = this.opts.pollInterval || this.DEFAULT_UPDATE_LIST_QUERY_TIME;
+    var pollInterval = this.opts.pollInterval || this.DEFAULT_UPDATE_LIST_QUERY_TIME;
 
-            this.interval = setInterval(function() {
-              poller.poll();
-            }, pollInterval);
-          }
+    this.interval = setInterval(function() {
+      poller.poll();
+    }, pollInterval);
+  }
 };

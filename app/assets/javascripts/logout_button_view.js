@@ -5,14 +5,14 @@ Application.LogoutButtonView = function(opts) {
 
 Application.LogoutButtonView.prototype = {
   draw: function (delegate) {
-          var delegate = delegate;
+    var delegate = delegate;
 
-          $(this.sel)
-            .empty()
-            .append('<a>Logout</a>')
-            .on('click', function (e) {
-              e.preventDefault();
-              delegate.logOutUser();
-            });
+    $(this.sel)
+    .empty()
+    .append('<a>Logout</a>')
+    .on('click', function (e) {
+      e.preventDefault();
+      delegate.logOutUser();
+    });
   }
 };

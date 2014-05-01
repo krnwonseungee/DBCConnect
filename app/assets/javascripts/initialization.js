@@ -1,14 +1,14 @@
 $(function(){
   var
-    availabilitylistView, availabilitylistController,
-    usernameView, logoutView,
-    pairlistView, pairlistController,
-    l_map, usersLayerGen, statsLayerGen,
-    profileView, profileController,
-    searchWidgetView, searchWidgetController;
+  availabilitylistView, availabilitylistController,
+  usernameView, logoutView,
+  pairlistView, pairlistController,
+  l_map, usersLayerGen, statsLayerGen,
+  profileView, profileController,
+  searchWidgetView, searchWidgetController;
 
   /* NB: The only global */
-  applicationController = new Application.Controller()
+    applicationController = new Application.Controller()
 
   new UserDataFetcher(applicationController).fetch();
 
@@ -28,36 +28,36 @@ $(function(){
     new QuoteWidget.Controller(
       new QuoteWidget.View('#footer'))).retrieve();
 
-  pairlistView = new Pairlist.View({ displaySel:  "#activeUsersList", hostName: HOST_NAME });
-  pairlistController = new Pairlist.Controller(pairlistView, {
-    loggedInUserBearer: applicationController,
-  });
-  pairlistView.setEventDelegate(pairlistController);
-  pairlistController.initPollers([
-      new Pairlist.UserListPoller(pairlistController),
-      new Pairlist.PairingRequestPoller(pairlistController)
-  ]);
+      pairlistView = new Pairlist.View({ displaySel:  "#activeUsersList", hostName: HOST_NAME });
+      pairlistController = new Pairlist.Controller(pairlistView, {
+        loggedInUserBearer: applicationController,
+      });
+      pairlistView.setEventDelegate(pairlistController);
+      pairlistController.initPollers([
+        new Pairlist.UserListPoller(pairlistController),
+        new Pairlist.PairingRequestPoller(pairlistController)
+      ]);
 
-  l_map = new BootMap.MapFactory().map();
-  usersLayerGen = new BootMap.UsersLayerGenerator(l_map);
-  statsLayerGen = new BootMap.StatsLayerGenerator(l_map);
+      l_map = new BootMap.MapFactory().map();
+      usersLayerGen = new BootMap.UsersLayerGenerator(l_map);
+      statsLayerGen = new BootMap.StatsLayerGenerator(l_map);
 
-  new BootMap.UserFetcher().fetch(function(bootList) {
-    usersLayerGen.render(bootList);
-    statsLayerGen.render(bootList);
-  });
+      new BootMap.UserFetcher().fetch(function(bootList) {
+        usersLayerGen.render(bootList);
+        statsLayerGen.render(bootList);
+      });
 
-  profileView = new ProfileWidget.View;
-  profileController = new ProfileWidget.Controller(profileView);
-  profileController.initializeEventBindings();
-  usernameView.registerEventDelegate({
-    event: 'click',
-    goesTo: profileController,
-    as: 'clickedOnUsernameWidget'
-  });
+      profileView = new ProfileWidget.View;
+      profileController = new ProfileWidget.Controller(profileView);
+      profileController.initializeEventBindings();
+      usernameView.registerEventDelegate({
+        event: 'click',
+        goesTo: profileController,
+        as: 'clickedOnUsernameWidget'
+      });
 
-  searchWidgetView = new SearchWidget.View;
-  searchWidgetController = new SearchWidget.Controller(searchWidgetView);
-  searchWidgetController.init();
+      searchWidgetView = new SearchWidget.View;
+      searchWidgetController = new SearchWidget.Controller(searchWidgetView);
+      searchWidgetController.init();
 });
 
